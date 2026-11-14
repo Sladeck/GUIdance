@@ -1,0 +1,20 @@
+{
+  "name": "guidance",
+  "displayName": "GUIdance",
+  "description": "Evidence-ranked UI design rules for Claude: sets up design tokens in any stack, then builds, audits, inspects and fixes interfaces against Material 3, WCAG 2.2, Apple, Baymard and NN/g. Not a UI kit.",
+  "author": {
+    "name": "Sladeck",
+    "url": "https://github.com/Sladeck"
+  },
+  "homepage": "https://github.com/Sladeck/GUIdance",
+  "repository": "https://github.com/Sladeck/GUIdance",
+  "license": "MIT",
+  "keywords": [
+    "design",
+    "ui",
+    "design-tokens",
+    "accessibility",
+    "wcag",
+    "material-3"
+  ]
+}

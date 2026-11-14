@@ -89,7 +89,26 @@ Some features need a **browser Claude can drive**, which is a separate tool, not
 
 Everything else (rules, tokens, palettes, writing files) works with no extra tools.
 
-**Claude Code**
+**Claude Code (one command)**
+
+In a Claude Code session:
+
+```
+/plugin install guidance --marketplace Sladeck/GUIdance
+```
+
+On versions before 2.1.275, add the marketplace first:
+
+```
+/plugin marketplace add Sladeck/GUIdance
+/plugin install guidance@guidance
+```
+
+Installed as a plugin, the command is `/guidance:guidance` (type `/guidance` and pick it), so `/guidance setup` becomes `/guidance:guidance setup`. Asking in plain words ("set up design tokens", "inspect the settings page") works either way. Update with `/plugin marketplace update guidance`.
+
+**Claude Code (manual copy)**
+
+Gives the short `/guidance` command.
 
 ```bash
 git clone https://github.com/Sladeck/GUIdance.git

@@ -196,11 +196,28 @@ def _rotate(hue, breaks, rots):
     return hue
 
 
+def accent_hue(hue, target=125.0, step=45.0, near=20.0):
+    """Two-tone accent: move the hue 45 degrees toward OKLCH ~125 (lime, the hues that stay
+    colourful at light tones). Within 45 degrees of it, use 125 itself (green gets lime). Within
+    20 degrees, the brand already is yellow-green: move 45 degrees away so the accent stays distinct."""
+    d = (target - hue + 540) % 360 - 180          # signed shortest distance, -180..180
+    if abs(d) < near:
+        return (hue - step) % 360 if d >= 0 else (hue + step) % 360
+    if abs(d) <= step:
+        return target
+    return (hue + (step if d > 0 else -step)) % 360
+
+
 def palettes_for(hue, variant):
     """(hue, chroma) per tonal palette, from material-color-utilities spec 2021."""
     if variant in ("tonal_spot", "fidelity"):
         p = {"primary": (hue, 36), "secondary": (hue, 16), "tertiary": ((hue + 60) % 360, 24),
              "neutral": (hue, 6), "neutral_variant": (hue, 8)}
+    elif variant == "two_tone":
+        # judgment (GUIdance): deep, muted brand plus a bright accent 45 degrees toward yellow-green
+        # (OKLCH ~110, the hues that stay most colourful at light tones), with near-neutral surfaces
+        p = {"primary": (hue, 24), "secondary": (accent_hue(hue), 40), "tertiary": (accent_hue(hue), 20),
+             "neutral": (hue, 2), "neutral_variant": (hue, 2)}
     elif variant == "neutral":
         p = {"primary": (hue, 12), "secondary": (hue, 8), "tertiary": (hue, 16),
              "neutral": (hue, 2), "neutral_variant": (hue, 2)}
@@ -270,6 +287,11 @@ def build(seed, variant):
         h, c = pal[p]
         out["light"][role] = tone_color(h, c, lt)
         out["dark"][role] = tone_color(h, c, dt)
+    if variant == "two_tone":
+        # judgment: the accent stays bright in dark mode (a dark accent container loses the point of two-tone)
+        h, c = pal["secondary"]
+        out["dark"]["secondary-container"] = tone_color(h, c, 85)
+        out["dark"]["on-secondary-container"] = tone_color(h, c, 20)
     if variant == "fidelity":
         # Keep the exact brand colour where contrast allows (Material's fidelity idea):
         # as primary when it reads on the light surfaces and its label reads on it,
@@ -422,7 +444,7 @@ def main():
     ap.add_argument("command", choices=["context", "generate"])
     ap.add_argument("project", nargs="?", default=".")
     ap.add_argument("--seed")
-    ap.add_argument("--variant", default="tonal_spot", choices=["tonal_spot", "neutral", "vibrant", "expressive", "fidelity"])
+    ap.add_argument("--variant", default="tonal_spot", choices=["tonal_spot", "neutral", "vibrant", "expressive", "two_tone", "fidelity"])
     ap.add_argument("--name")
     ap.add_argument("--out")
     ap.add_argument("--json", action="store_true")

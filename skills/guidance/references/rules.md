@@ -37,7 +37,17 @@ Contents: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - Define both themes from the start. In Material, dark is not an inversion: each role has its own tone (values in `design-data.md`).
 - Pick colours from the precomputed palette tables (`palettes/`), which build every role from one hue and are checked pair by pair. Mood ("calm", "playful") is judgment: the evidence for colour psychology is weak, so justify palettes by roles and contrast.
 
+**1.6 Charts in brand shades** (Default) [M3-COLOR A, judgment]
+- One or two data series use the brand's own shades: `primary` for the main series, `primary-container` or the accent (`secondary-container` in two-tone) for the second. The chart then belongs to the product instead of looking pasted in.
+- The categorical colours (`chart-1` to `chart-5`) are for three or more unrelated categories only, and still need labels or a legend next to the marks (rule 1.3).
+- Never a rainbow for one measure over time; use one colour and vary height, not hue.
+
+**1.7 Status values as tinted chips** (Default) [M3-COLOR A, judgment; the colour-alone part is rule 1.3]
+- Changes and states ("+2.7%", "-1.7%", "Paid", "Late") sit in a pill: `success-container` background with `on-success-container` text for good, `error-container` with `on-error-container` for bad, `warning-container` for attention. Each pair is already 4.5:1 in every palette.
+- Keep the sign or a word in the text ("+", "-", "Late"): colour alone never carries the meaning.
+
 ## 2. Target size
+- Backgrounds stay near-neutral in products; colour goes on actions, selection and status. Use neutral surfaces with the accents of the chosen variant (`design-data.md` section 10) [M3-COLOR A for roles; PRIMER-COLOR B, CARBON-COLOR B, RADIX-COMPOSE B for neutral backgrounds]. Tinted surfaces are a choice for expressive, brand-heavy products.
 
 **2.1 Minimum** (Hard) [WCAG-2.5.8 S]
 - Every pointer target at least 24x24 CSS px, or spaced so that a 24px circle centred on it does not overlap another target or another small target's circle.
@@ -109,6 +119,11 @@ Contents: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - Edges that should line up line up exactly; 1 to 3px misses read as mistakes.
 - At most two border widths: a hairline for containers and dividers, a heavier one for focus, selection and errors.
 - One colour per role: two near-identical greys or tints are a hard-coded value that should be a token.
+
+**4.6 Give each component room** (Default) [M3-SPACING A, judgment]
+- Desktop: 24px inside cards and 24 to 32px between them. Mobile: 16px inside and 16 to 24px between. Dense tables and toolbars can go tighter; showcases and dashboards should not.
+- Text at least 16px for content and 14px for labels; 12px only for captions and metadata.
+- When a screen feels cramped, remove or move a component before shrinking the spacing.
 
 ## 5. Shape and radius
 

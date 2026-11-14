@@ -21,13 +21,14 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import palette as P  # noqa: E402
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "skills", "guidance", "references", "palettes")
-VARIANTS = ["tonal_spot", "neutral", "vibrant", "expressive"]
+VARIANTS = ["tonal_spot", "neutral", "vibrant", "expressive", "two_tone"]
 ROLE_ORDER = list(P.ROLES.keys()) + [f"chart-{i}" for i in range(1, 6)]
 BLURB = {
     "tonal_spot": "Calm, balanced (Material's default). Brand hue at moderate colourfulness, a softer secondary, a tertiary 60 degrees away.",
     "neutral": "Quiet, near-greyscale with a hint of the brand hue. Serious tools, dense data, editorial.",
     "vibrant": "Bold and saturated primary at the brand hue. Consumer apps, marketing, playful products.",
     "expressive": "Primary moved 240 degrees away from the brand hue. Only when there is no brand colour to respect.",
+    "two_tone": "Deep, muted brand colour plus a bright accent 45 degrees toward yellow-green (green gets lime, blue gets cyan, red gets amber; a yellow-green brand gets amber) in the secondary roles, with near-neutral surfaces. Dashboards and products that want one strong highlight colour.",
 }
 
 

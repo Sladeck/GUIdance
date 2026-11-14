@@ -2,18 +2,14 @@
 
 **GUI + guidance.** A Claude skill that makes interfaces look professionally designed: spacing, corners, type, colour, motion and accessibility, built on the published rules of Apple, Google Material, the W3C and large-scale UX research. Every rule says where it comes from and when it is fine to break it.
 
-![GUIdance colour preview, light theme](docs/preview-light.png)
+![The same palette and components in light (left) and dark (right, mirrored)](docs/preview-light-dark.png)
 
-<details><summary>Same palette in dark</summary>
-
-![GUIdance colour preview, dark theme](docs/preview-dark.png)
-
-</details>
+<sub>One palette from the GUIdance preview: light theme on the left, dark theme mirrored on the right. Full-size: [light](docs/preview-light.png), [dark](docs/preview-dark.png).</sub>
 
 ## What it does
 
 - **Sets up a design system in your project.** Works with any stack (plain CSS, Tailwind, MUI, shadcn/ui, Bootstrap, Sass, even native theme code): it finds where your styling lives, reads the tokens you already have, flags spacing, radius, type and motion values that sit off the Material 3 scales, and writes clean tokens (spacing, radius, elevation, type, motion, colours) in your stack's own format.
-- **Picks your colours with you.** Learns what your product is (and asks if it can't tell), proposes two palettes built from your brand colour, and shows them on a one-screen showcase of real components in light and dark before anything is written. Every palette is checked against WCAG contrast: 120 colour pairs, light and dark.
+- **Picks your colours with you.** Learns what your product is (and asks if it can't tell), proposes two palettes built from your brand colour, with near-neutral backgrounds the way GitHub, IBM and Radix do it (or a two-tone brand with one bright accent, like many admin dashboards), and shows them on a one-screen showcase of real components in light and dark before anything is written. Every palette is checked against WCAG contrast: 120 colour pairs, light and dark.
 - **Builds UI that follows the rules.** When Claude creates or changes an interface, it uses your tokens and the rules as minimums, then checks its own work.
 - **Inspects your pages on every screen size.** Opens a page from your local dev server at mobile, tablet and desktop widths, and on both sides of each of your own breakpoints, where layouts tend to break. It lists every inconsistency it measures:
   - off-scale spacing and uneven gaps;
@@ -105,9 +101,9 @@ Rules without a source are labelled `judgment`. Where sources disagree, the high
 | Path | What it is |
 | --- | --- |
 | `skills/guidance/SKILL.md` | The skill: commands and how Claude runs them |
-| `skills/guidance/references/rules.md` | 44 rules with source, severity and when to break them |
+| `skills/guidance/references/rules.md` | 47 rules with source, severity and when to break them |
 | `skills/guidance/references/design-data.md` | Every verified number, plus the brand-colour procedures |
-| `skills/guidance/references/palettes/` | 4 palette styles x 73 hues, light and dark, every row WCAG-checked |
+| `skills/guidance/references/palettes/` | 5 palette styles (calm, neutral, vibrant, expressive, two-tone) x 73 hues, light and dark, every row WCAG-checked |
 | `skills/guidance/references/formats/` | Worked token files (CSS, Tailwind v4 and v3, MUI, Sass) that Claude models any stack on |
 | `skills/guidance/references/browser-checks.md` | Snippets that measure a rendered page: targets, typography, contrast, consistency and layout, keyboard and focus |
 | `skills/guidance/assets/preview.html` | The colour preview: computes and checks palettes in the browser |

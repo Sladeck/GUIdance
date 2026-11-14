@@ -67,6 +67,9 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | SHADCN-THEME | stack | shadcn/ui, Theming | https://ui.shadcn.com/docs/theming |
 | BS-SASS | stack | Bootstrap 5.3, Sass customization and _variables.scss | https://getbootstrap.com/docs/5.3/customize/sass/ |
 | BS-COLOR-MODES | stack | Bootstrap 5.3, Color modes | https://getbootstrap.com/docs/5.3/customize/color-modes/ |
+| PRIMER-COLOR | B | GitHub Primer, Color primitives (neutral backgrounds, one accent) | https://primer.style/foundations/primitives/color |
+| CARBON-COLOR | B | IBM Carbon Design System, Color overview | https://carbondesignsystem.com/elements/color/overview/ |
+| RADIX-COMPOSE | B | Radix Colors, Composing a palette (accent and gray pairing) | https://www.radix-ui.com/colors/docs/palette-composition/composing-a-palette |
 | LAWS-PROX | C | Laws of UX, Law of Proximity | https://lawsofux.com/law-of-proximity/ |
 | NESTED-RADIUS | C | 30 seconds of code, Nested border radius | https://30secondsofcode.org/css/s/nested-border-radius |
 

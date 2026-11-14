@@ -46,9 +46,11 @@ const GD = (() => {
   const lum = hex => { const [r, g, b] = hexToRgb(hex).map(toLin); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
   const contrast = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
   const rot = (h, br, rs) => { for (let i = 0; i < br.length - 1; i++) if (br[i] <= h && h < br[i + 1]) return (h + rs[i]) % 360; return h; };
+  const accentHue = (h, t = 125, s = 45, near = 20) => { const d = ((t - h + 540) % 360) - 180; if (Math.abs(d) < near) return d >= 0 ? (h - s + 360) % 360 : (h + s) % 360; if (Math.abs(d) <= s) return t; return (h + (d > 0 ? s : -s) + 360) % 360; };
   function palettesFor(hue, v) {
     let p;
     if (v === 'tonal_spot' || v === 'fidelity') p = { primary: [hue, 36], secondary: [hue, 16], tertiary: [(hue + 60) % 360, 24], neutral: [hue, 6], neutral_variant: [hue, 8] };
+    else if (v === 'two_tone') p = { primary: [hue, 24], secondary: [accentHue(hue), 40], tertiary: [accentHue(hue), 20], neutral: [hue, 2], neutral_variant: [hue, 2] };
     else if (v === 'neutral') p = { primary: [hue, 12], secondary: [hue, 8], tertiary: [hue, 16], neutral: [hue, 2], neutral_variant: [hue, 2] };
     else if (v === 'vibrant') { const b = [0, 41, 61, 101, 131, 181, 251, 301, 360]; p = { primary: [hue, 200], secondary: [rot(hue, b, [18, 15, 10, 12, 15, 18, 15, 12, 12]), 24], tertiary: [rot(hue, b, [35, 30, 20, 25, 30, 35, 30, 25, 25]), 32], neutral: [hue, 10], neutral_variant: [hue, 12] }; }
     else if (v === 'expressive') { const b = [0, 21, 51, 121, 151, 191, 271, 321, 360]; p = { primary: [(hue + 240) % 360, 40], secondary: [rot(hue, b, [45, 95, 45, 20, 45, 90, 45, 45, 45]), 24], tertiary: [rot(hue, b, [120, 120, 20, 45, 20, 15, 20, 120, 120]), 32], neutral: [(hue + 15) % 360, 8], neutral_variant: [(hue + 15) % 360, 12] }; }
@@ -75,14 +77,18 @@ const GD = (() => {
     return rgbToHex([r + m, g + m, b + m]);
   }
   // row: HSL hue multiple of 5, or 'grey'. brand: optional exact brand hex (fidelity).
-  function build({ row, variant = 'tonal_spot', brand = null }) {
+  // surfaces: 'tinted' (Material default: backgrounds carry the brand hue) or 'neutral' (near-grey backgrounds,
+  // text greys and outlines, as in GitHub Primer, IBM Carbon or Radix gray: same tones, so every WCAG pair still holds).
+  function build({ row, variant = 'tonal_spot', brand = null, surfaces = 'tinted' }) {
     const isGrey = row === 'grey';
     const seed = isGrey ? '#666666' : hslSeed(+row);
     const [, okc, H] = oklch(hexToRgb(seed));
     const pal = palettesFor(isGrey ? 250 : H, isGrey ? 'grey' : (variant === 'fidelity' ? 'tonal_spot' : variant));
     if (variant === 'vibrant' && !isGrey) pal.primary = [H, Math.max(okc / K, 60)];
+    if (surfaces === 'neutral' && !isGrey) { pal.neutral = [H, 2]; pal.neutral_variant = [H, 2]; }   // = the same row of palettes/neutral.md
     const out = { light: {}, dark: {} };
     for (const [role, [p, lt, dt]] of Object.entries(ROLES)) { const [h, c] = pal[p]; out.light[role] = toneColor(h, c, lt); out.dark[role] = toneColor(h, c, dt); }
+    if (variant === 'two_tone' && !isGrey) { const [h, c] = pal.secondary; out.dark['secondary-container'] = toneColor(h, c, 85); out.dark['on-secondary-container'] = toneColor(h, c, 20); }   // accent stays bright in dark
     const ch = [0, 150, 60, 250, 310].map(s => ((isGrey ? 250 : pal.primary[0]) + s) % 360);
     ch.forEach((h, i) => { out.light['chart-' + (i + 1)] = toneColor(h, 60, 48); out.dark['chart-' + (i + 1)] = toneColor(h, 50, 72); });
     if (brand) {

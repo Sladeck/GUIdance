@@ -20,8 +20,10 @@ What Claude did, step by step, following `skills/guidance/SKILL.md`.
 - It is at or under 0.179, so the text on it is `#ffffff`. That is 5.06:1.
 
 **Two directions:**
-- **A. Calm:** `tonal_spot`, row 140. Its primary `#196d30` sits close to the brand.
+- **A. Two-tone:** `two_tone`, row 140: a deep green with a lime accent, the look of many admin dashboards.
 - **B. Exact brand:** `fidelity`, with `#2f7d4a` kept as is.
+
+Both use neutral surfaces (built into two-tone): near-grey backgrounds, text greys and outlines from row 140 of the `neutral` table, so the green goes on actions only, as in GitHub's or IBM's design systems.
 
 **Preview:** `assets/preview.html` was copied to [`palette-preview.html`](palette-preview.html), and only its CONFIG block was edited:
 
@@ -29,26 +31,26 @@ What Claude did, step by step, following `skills/guidance/SKILL.md`.
 const CONFIG = {
   title: "Sprout palettes",
   palettes: [
-    { name: "Calm", row: 140, variant: "tonal_spot" },
-    { name: "Exact brand", row: 140, variant: "fidelity", brand: "#2f7d4a" }
+    { name: "Two-tone", row: 140, variant: "two_tone" },
+    { name: "Exact brand", row: 140, variant: "fidelity", brand: "#2f7d4a", surfaces: "neutral" }
   ]
 };
 ```
 
 Both palettes pass 120/120 WCAG pairs. The page also labels B "exact brand as primary-container", which matches the hand calculation.
 
-| A. Calm | B. Exact brand |
+| A. Two-tone | B. Exact brand |
 | --- | --- |
-| ![Palette A](palette-a-calm.png) | ![Palette B](palette-b-exact-brand.png) |
+| ![Palette A](palette-a-two-tone.png) | ![Palette B](palette-b-exact-brand.png) |
 
-**Pick:** B. Sprout already has a green worth keeping.
+**Pick:** B. Sprout already has a green worth keeping; two-tone would suit it too if it wanted a livelier dashboard look.
 
 ## C. Write the tokens
 
 With no token system, Claude did the following:
 1. Created `after/guidance.css` from the CSS template.
 2. Filled every `{L.role}` and `{D.role}` from row `h140` of `palettes/tonal_spot.md`.
-3. Replaced the two light roles section 10 names (`primary-container` → `#2f7d4a`, `on-primary-container` → `#ffffff`).
+3. Replaced the two light roles section 10 names (`primary-container` → `#2f7d4a`, `on-primary-container` → `#ffffff`), and took the 12 surface roles from row `h140` of `palettes/neutral.md`.
 4. Recorded the palette in the file's header comment.
 5. Added the wiring line `@import "./guidance.css";` at the top of `styles.css`.
 

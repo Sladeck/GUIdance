@@ -208,6 +208,16 @@ Example: `#e8590c` gives r 0.910, g 0.349, b 0.047; max r, d 0.863; hue 60 x ((0
 
 Example: `#e8590c` has L of about 0.24, so it becomes `primary-container` with `#000000` text.
 
+**Two-tone palettes.** The `two_tone` table pairs a deep, muted brand colour (`primary`, low colourfulness) with one bright accent in the `secondary` roles, like admin templates that use forest green with lime. The accent hue is the brand hue moved 45 degrees toward OKLCH 125 (lime, the hues that stay most colourful when light); a brand within 45 degrees of 125 takes 125 itself (green gets lime), and a brand within 20 degrees moves 45 degrees away instead. Surfaces are already neutral. Unlike Material's default, the accent container stays bright in dark mode (tone 85 with tone 20 text), so the highlight keeps working in both themes. Use the accent for one kind of thing (selected states, the main call to action on a dark hero, a chart's second series), not everywhere.
+
+**Neutral surfaces (recommended for products).** Material's default tints every surface with the brand hue. Large product design systems keep backgrounds close to grey and spend colour on actions only [PRIMER-COLOR, CARBON-COLOR, RADIX-COMPOSE]:
+- GitHub Primer: page `#ffffff`, muted background `#f6f8fa` (OKLCH chroma 0.003), text `#1f2328`, muted text `#59636e`, border `#d1d9e0`, one accent `#0969da`.
+- IBM Carbon: "the neutral gray family is dominant", one blue for primary actions, other colours "used sparingly and purposefully"; dark background `#161616`.
+- Radix: pure gray works with any accent; for a warmer look, a gray lightly tinted toward the accent's hue (slate for blue, sage for green, mauve for purple and red, sand for yellow and orange).
+- For comparison, a `tonal_spot` surface tinted with a green brand has chroma 0.021, six times GitHub's. The `neutral` table's surfaces sit near 0.007, like Radix's tinted grays.
+
+How: keep the accent roles from the chosen variant's row, and take these roles from the **same row of `palettes/neutral.md`**: `surface`, `surface-container-lowest`, `-low`, `surface-container`, `-high`, `-highest`, `on-surface`, `on-surface-variant`, `outline`, `outline-variant`, `inverse-surface`, `inverse-on-surface`. Every role has the same tone in every table, and contrast depends only on tone, so all 120 pairs still pass. In the preview, add `surfaces: "neutral"` to a palette. Keep tinted surfaces for expressive, brand-heavy products (games, kids, marketing pages).
+
 **Contrast of any two colours by hand** (for existing project colours): compute L for both as above, then (lighter + 0.05) / (darker + 0.05). Show the working and round down. When a browser is available, the snippets in `browser-checks.md` measure rendered pages exactly.
 
 ## 11. Elevation and shadows [M3-ELEVATION]

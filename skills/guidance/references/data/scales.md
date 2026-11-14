@@ -80,4 +80,4 @@ M3 Expressive components now use spring physics; durations and easing still appl
 
 Height classes: compact under 480dp, medium 480 to 899, expanded 900 and up.
 
-Layouts break right before they switch: test both sides of each edge (599 and 600, 839 and 840, 1199 and 1200). `/guidance inspect` tests 320 (WCAG reflow), 390, 768 and 1440, plus both sides of the page's own breakpoints, falling back to these Material edges when the page has none.
+Layouts break right before they switch: test both sides of each edge (599 and 600, 839 and 840, 1199 and 1200). `/guidance review` tests 320 (WCAG reflow), 390, 768 and 1440, plus both sides of the page's own breakpoints, falling back to these Material edges when the page has none.

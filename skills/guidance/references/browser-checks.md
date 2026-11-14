@@ -6,15 +6,15 @@ Five self-contained JavaScript checks that measure a rendered page, in `checks/`
 
 **Run it again cheaply:** the first run registers the check on the page as `window.__gd.<name>`. After resizing the window or switching theme on the same page, run `__gd.inspect()` (or `__gd.targets()`, `__gd.contrast()`...) instead of sending the file again. After a navigation or reload, `__gd` is gone: send the file again.
 
-They measure what the browser actually rendered (computed styles and boxes), so they work on any stack, including pages built by JavaScript. They need a real browser: fetched HTML is not enough (see "Opening a page" in SKILL.md).
+They measure what the browser actually rendered (computed styles and boxes), so they work on any stack, including pages built by JavaScript. They need a real browser: fetched HTML is not enough (see `commands/open-page.md`).
 
 | Check (file) | Used by | Run at |
 | --- | --- | --- |
-| 1. Target size (`targets.js`) | check, inspect | 390 and desktop (the 44px check is mobile only) |
-| 2. Typography (`typography.js`) | check, audit | desktop, then 390 |
-| 3. Rendered contrast (`contrast.js`) | check, inspect | one width per theme |
-| 4. Inspect (`inspect.js`) | inspect, audit, fix | 390x844, 768x1024, 1440x900, 320, and both sides of each breakpoint it reports |
-| 5. Keyboard and focus (`keyboard.js`) | inspect, audit, fix | desktop, after one real Tab key press |
+| 1. Target size (`targets.js`) | review, quick | 390 and desktop (the 44px check is mobile only) |
+| 2. Typography (`typography.js`) | review, quick | desktop, then 390 |
+| 3. Rendered contrast (`contrast.js`) | review, quick | one width per theme |
+| 4. Inspect (`inspect.js`) | review, fix | 390x844, 768x1024, 1440x900, 320, and both sides of each breakpoint it reports |
+| 5. Keyboard and focus (`keyboard.js`) | review, fix | desktop, after one real Tab key press |
 
 To change the width, resize the browser window or viewport (DevTools device toolbar for the user), wait for the layout to settle, then run the snippet again.
 

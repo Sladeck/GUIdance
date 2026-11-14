@@ -16,11 +16,11 @@ Open `before/index.html` and `after/index.html` in a browser to compare. No serv
    - located it in the palette tables by hand (row h140);
    - showed two palettes in the [preview](guidance-run/palette-preview.html), both with near-grey backgrounds so the green stays on actions;
    - wrote [`after/guidance.css`](after/guidance.css) from the chosen one.
-2. **`/guidance inspect`** on the before page at 390, 768, 1440 and 320px wide, on both sides of its breakpoint (800/801), and through the keyboard. The report is [inspect-before.md](guidance-run/inspect-before.md): 17 findings, most serious first, each with where, why and how to fix it. The overlay below numbers each measured problem on the page.
+2. **`/guidance review`** on the before page at 390, 768, 1440 and 320px wide, on both sides of its breakpoint (800/801), and through the keyboard. The report is [inspect-before.md](guidance-run/inspect-before.md): 17 findings, most serious first, each with where, why and how to fix it. The overlay below numbers each measured problem on the page.
 3. **The fixes** (what `/guidance fix` applies): [`after/styles.css`](after/styles.css) rebuilt on the tokens, plus small structural changes in [`after/index.html`](after/index.html) (heading groups, no inline styles, no nested tip box).
-4. **`/guidance inspect`** again on the after page: [0 findings at every width and breakpoint, in light and dark, with every button showing keyboard focus](guidance-run/inspect-after.md).
+4. **`/guidance review`** again on the after page: [0 findings at every width and breakpoint, in light and dark, with every button showing keyboard focus](guidance-run/inspect-after.md).
 
-| What inspect saw on the before page at 390px | After, dark theme |
+| What the review saw on the before page at 390px | After, dark theme |
 | --- | --- |
 | ![Before page with numbered findings](screenshots/before-mobile-overlay.png) | ![After page in dark](screenshots/after-mobile-dark.png) |
 

@@ -1,4 +1,4 @@
-# `/guidance inspect` on Sprout (after)
+# `/guidance review` on Sprout (after)
 
 Page: `after/index.html`, served over http, same snippets as the first run. Its breakpoints are now 600px and 800px, so both sides of each were measured too. Raw output: [`inspect-after.json`](inspect-after.json).
 

@@ -1,6 +1,6 @@
 # Report format
 
-Used by audit, inspect, fix and check.
+Used by review and fix.
 
 ## Severity
 
@@ -8,13 +8,15 @@ Used by audit, inspect, fix and check.
 - **Strong**: backed by tier A research, or tier A and B agreeing. Break only with a stated reason.
 - **Default**: a platform convention or system value. Deviate freely if consistent.
 
-## Finding format
+## Findings
+
+One numbered list, most serious first: Hard, then Strong, then Default. Within a level, findings that break layout or appear at more widths and more places come first. Quote measured numbers.
 
 ```
-[Hard|Strong|Default] <what is wrong, where (file:line or screen area)>
-Rule: <the rule, with the number>
-Source: <key (tier) + link from references/sources.md>
-Fix: <concrete change, using the project's tokens where they exist>
+1. [Hard] Stars stick out of the rating card (mobile and tablet)
+   Where: RatingCard.tsx:14, .stars (10px past the card at 390px)
+   Why: content crossing its card looks broken and can hide the next element. Rule 4.4, WCAG 1.4.10 (S).
+   Fix: font-size: var(--text-body) under 900px, or let the stars wrap.
 ```
 
-Never cite a source for a claim it does not make. Your own reasoning is `Source: judgment`.
+Why names the rule number and its source key with tier from `references/sources.md`. Never cite a source for a claim it does not make; your own reasoning is "judgment". Fix uses the project's tokens where they exist.

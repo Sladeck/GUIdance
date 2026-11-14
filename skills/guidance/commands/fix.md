@@ -1,6 +1,6 @@
 # `/guidance fix [which]`
 
-Fixes findings from the last `inspect`, `audit` or `check` in this conversation, then measures again. Without a previous report, run `/guidance inspect` first (ask which page if it is unclear).
+Fixes findings from the last `review` in this conversation, then measures again. Without a previous report, run `/guidance review` first (ask which page if it is unclear).
 
 `which` picks the findings: numbers (`1-5`, `2,7`), a severity (`hard`, `strong`), or nothing for all of them.
 

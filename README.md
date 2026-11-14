@@ -22,17 +22,17 @@ GUIdance is a Claude skill that gives your interfaces a professional finish: con
 - **Sets up a design system in your project.** Works with any stack (plain CSS, Tailwind, MUI, shadcn/ui, Bootstrap, Sass, even native theme code): it finds where your styling lives, reads the tokens you already have, flags spacing, radius, type and motion values that sit off the Material 3 scales, and writes clean tokens (spacing, radius, elevation, type, motion, colours) in your stack's own format.
 - **Picks your colours with you.** Learns what your product is (and asks if it can't tell), proposes two palettes built from your brand colour, with near-neutral backgrounds the way GitHub, IBM and Radix do it (or a two-tone brand with one bright accent, like many admin dashboards), and shows them on sample components in light and dark before anything is written. Every palette is checked against WCAG contrast: 120 colour pairs, light and dark.
 - **Builds UI that follows the rules.** When Claude creates or changes an interface, it uses your tokens and the rules as minimums, then checks its own work.
-- **Inspects your pages on every screen size.** Opens a page from your local dev server at mobile, tablet and desktop widths, and on both sides of each of your own breakpoints, where layouts tend to break. It lists every inconsistency it measures:
+- **Reviews your code and your pages on every screen size.** Checks the code against the rules, then opens the page from your local dev server at mobile, tablet and desktop widths, and on both sides of each of your own breakpoints, where layouts tend to break. It measures instead of guessing:
   - off-scale spacing and uneven gaps;
   - mismatched corners, borders and shadows;
   - mixed icon sizes and styles;
   - near-duplicate colours and components that drifted apart;
   - content that overflows or gets cut off;
+  - contrast ratios, touch target sizes, font sizes and line lengths;
   - keyboard problems: missing focus rings, focus hidden under sticky bars, clickable things the keyboard can't reach.
 
-  One ordered list, most serious first, each with why it's a problem and how to fix it.
+  One ordered list, most serious first, each with where it is in your code, why it's a problem (rule and source) and how to fix it.
 - **Fixes what it found.** Shows the planned changes, applies them at the source (a token, the shared component, the parent's spacing), then measures again to confirm each fix.
-- **Audits what you have.** Measures instead of guessing: contrast ratios, touch target sizes, font sizes, line lengths. Reports each finding with its severity, the rule, the source and the fix.
 
 Claude does all the work itself. The exact maths (contrast-checked palettes, Material values, token formats) ships with the skill as data.
 
@@ -87,7 +87,7 @@ On versions before 2.1.275, add the marketplace first:
 /plugin install guidance@guidance
 ```
 
-Installed as a plugin, the command is `/guidance:guidance` (type `/guidance` and pick it), so `/guidance setup` becomes `/guidance:guidance setup`. Asking in plain words ("set up design tokens", "inspect the settings page") works either way. Update with `/plugin marketplace update guidance`.
+Installed as a plugin, the command is `/guidance:guidance` (type `/guidance` and pick it), so `/guidance setup` becomes `/guidance:guidance setup`. Asking in plain words ("set up design tokens", "review the settings page") works either way. Update with `/plugin marketplace update guidance`.
 
 ### Claude Code (manual copy)
 
@@ -109,14 +109,13 @@ Some features need a **browser Claude can drive**, which is a separate tool, not
 
 | Feature | Without a browser |
 | --- | --- |
-| `/guidance inspect` (measures pages at mobile, tablet, desktop and breakpoint widths, plus keyboard focus) | **Required.** Claude hands you the snippets to paste into your browser's DevTools console, one per width, and works from the results you send back. |
-| `/guidance check` (targets, typography, contrast numbers) | **Required.** Same DevTools fallback. |
+| `/guidance review` (measuring pages at every width, plus keyboard focus) | Optional. Claude hands you the snippets to paste into your browser's DevTools console, one per width, and works from the results you send back. Or it reviews the code only and labels findings "read from code, not measured". |
+| `/guidance review quick` (targets, typography, contrast numbers) | **Required.** Without one, Claude hands you the same DevTools snippets. |
 | `/guidance fix` (measuring again after the changes) | Optional. Claude makes the fixes, then asks you to re-run the snippets or checks the code by reading it. |
-| `/guidance audit` (the measured part) | Optional. Claude reviews the code only and labels findings "read from code, not measured". |
 | `/guidance setup` (showing the colour preview) | Optional. The preview shows as an artifact in Claude apps, or Claude gives you the file to open yourself. |
 | `/guidance build` (checking its own work in the page) | Optional. The check is done by reading the code instead. |
 
-**About page checks.** `inspect` and `check` are meant for your local dev pages during a coding session. A public URL works too, through a real browser only: fetched HTML is never enough, since many sites build the page with JavaScript. Even then the result is a snapshot, as cookie banners, lazy loading and the signed-out view can differ from what users see.
+**About page checks.** `review` is meant for your local dev pages during a coding session. A public URL works too, through a real browser only: fetched HTML is never enough, since many sites build the page with JavaScript. Even then the result is a snapshot, as cookie banners, lazy loading and the signed-out view can differ from what users see.
 
 ## How to use it
 
@@ -128,11 +127,11 @@ This is the preview you choose from, with sample components only, to judge the c
 
 <sub>Full-size: [light](docs/preview-light.png), [dark](docs/preview-dark.png).</sub>
 
-After that, just work: ask Claude to build a screen and it follows the rules, or run `/guidance inspect /settings` to see what's off on mobile, tablet and desktop, then `/guidance fix` to clean it up.
+After that, just work: ask Claude to build a screen and it follows the rules, or run `/guidance review /settings` to see what's off on mobile, tablet and desktop, then `/guidance fix` to clean it up.
 
-Plain requests work too: "set up design tokens", "check this page for inconsistencies", "build a settings screen".
+Plain requests work too: "set up design tokens", "review this page", "does this look right on mobile?", "build a settings screen".
 
-**See it on a real page:** [`examples/sprout`](examples/sprout) is a small hand-written dashboard before and after GUIdance, with the palette preview, the full inspect report (17 findings across phone, tablet, desktop and breakpoint widths) and the clean re-check.
+**See it on a real page:** [`examples/sprout`](examples/sprout) is a small hand-written dashboard before and after GUIdance, with the palette preview, the full review report (17 findings across phone, tablet, desktop and breakpoint widths) and the clean re-check.
 
 ## Commands
 
@@ -141,10 +140,9 @@ Plain requests work too: "set up design tokens", "check this page for inconsiste
 | `/guidance` | Lists the commands. |
 | `/guidance setup` | Learns what the project is, proposes two colour palettes with a light and dark preview, then writes or fixes design tokens (spacing, radius, type, motion, colours) in your stack's format. Never overwrites a file, and shows every change before making it. |
 | `/guidance build <what>` | Builds or changes UI with your tokens and the rules, then checks the result. |
-| `/guidance audit [target]` | Full review of a file, folder, component or page, or of your uncommitted changes when no target is given. Findings are ranked Hard / Strong / Default, each with rule, source and fix. Changes nothing until you ask. |
-| `/guidance inspect [page]` | Opens a page (a route like `/settings`, a page or component file, or a description) at mobile, tablet, desktop and breakpoint widths, and returns one ordered list of inconsistencies: spacing, gaps, borders, corners, shadows, icons, colours, type, overflow, keyboard and focus. Each finding says where it is in your code, why it's a problem and how to fix it. Starts your dev server if it isn't running. |
-| `/guidance fix [which]` | Fixes the findings of the last inspect, audit or check: all of them, by number (`1-5`) or by severity (`hard`). Shows the plan first, applies it, then measures again and reports what is fixed, what is left and anything new. |
-| `/guidance check [page]` | Quick numbers-only pass on a page: touch targets, typography and contrast, as a short table and a one-line verdict. |
+| `/guidance review [target]` | Finds what's wrong. Give it a page (a route like `/settings`, a page file or a description), a file, folder or component, or nothing for your uncommitted changes. It reviews the code against the rules and measures the page at mobile, tablet, desktop and breakpoint widths: spacing, gaps, borders, corners, shadows, icons, colours, contrast, targets, type, overflow, keyboard and focus. One ordered list, Hard / Strong / Default, each with where it is in your code, why and how to fix it. Starts your dev server if it isn't running. Changes nothing until you ask. |
+| `/guidance review quick [page]` | Numbers only: touch targets, typography and contrast, as a short table and a one-line verdict. |
+| `/guidance fix [which]` | Fixes the findings of the last review: all of them, by number (`1-5`) or by severity (`hard`). Shows the plan first, applies it, then measures again and reports what is fixed, what is left and anything new. |
 
 ## How sources are weighted
 

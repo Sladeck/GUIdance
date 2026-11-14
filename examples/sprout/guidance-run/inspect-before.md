@@ -1,4 +1,4 @@
-# `/guidance inspect` on Sprout (before)
+# `/guidance review` on Sprout (before)
 
 Page: `before/index.html`, served over http. Measured with the snippets from `browser-checks.md`:
 - inspect (snippet 4) at 390x844 (mobile), 768x1024 (tablet), 1440x900 (desktop), 320 wide (WCAG reflow), and 800/801, both sides of the page's only breakpoint (`max-width: 800px`);

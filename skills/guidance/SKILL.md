@@ -1,15 +1,15 @@
 ---
 name: guidance
-description: Evidence-cited UI rules for building, auditing, inspecting, fixing or checking interfaces, and setting up design tokens and colour palettes with a live preview (/guidance setup, build, audit, inspect, fix, check). Inspect measures a local page at mobile, tablet and desktop widths for spacing, border, corner, colour and layout inconsistencies. Sources ranked by weight (WCAG, Apple, Material, Baymard, GOV.UK, NN/g). Needs no Python or Node.
+description: Evidence-cited UI rules for building, reviewing and fixing interfaces, and setting up design tokens and colour palettes with a live preview (/guidance setup, build, review, fix). Review checks code and measures a local page at mobile, tablet and desktop widths for spacing, border, corner, colour, contrast, target, keyboard and layout problems. Sources ranked by weight (WCAG, Apple, Material, Baymard, GOV.UK, NN/g).
 ---
 
 # GUIdance
 
-Design rules you can defend: each rule in `references/rules.md` states a number or a behaviour, its sources with their weight, and when to break it. You do all the work with your own tools; nothing needs Python, Node or the network. Read only what the current command needs.
+Design rules you can defend: each rule in `references/rules.md` states a number or a behaviour, its sources with their weight, and when to break it. You do all the work with your own tools. Read only what the current command needs.
 
 ## Commands
 
-The first word after `/guidance` picks the command. Plain requests map the same way: "set up design tokens" is setup, "build a settings screen" is build, "review this code" is audit, "check this page for inconsistencies" or "does this look right on mobile" is inspect, "fix those" after a report is fix.
+The first word after `/guidance` picks the command. Plain requests map the same way: "set up design tokens" is setup, "build a settings screen" is build, "review this code", "check this page for inconsistencies" or "does this look right on mobile" is review, "fix those" after a report is fix.
 
 **Before acting, read the command's file.** It lists the other files it needs.
 
@@ -18,10 +18,8 @@ The first word after `/guidance` picks the command. Plain requests map the same 
 | `/guidance` | Lists these commands in a few lines. Nothing else. | |
 | `/guidance setup` | Learns what the project is, proposes two colour palettes with a live preview, then writes or fixes design tokens and colours in the project. | `commands/setup.md` |
 | `/guidance build <what>` | Builds or changes UI following the rules and the project's tokens. | `commands/build.md` |
-| `/guidance audit [target]` | Full review of a file, folder, component or page: code, tokens and measurements, with findings and fixes. | `commands/audit.md` |
-| `/guidance inspect [page]` | Opens a page at mobile, tablet, desktop and its own breakpoint widths and lists every inconsistency it measures, most serious first, each with why and how to fix. | `commands/inspect.md` |
-| `/guidance fix [which]` | Fixes findings from the last inspect, audit or check, then measures again. | `commands/fix.md` |
-| `/guidance check [page]` | Quick measured pass: targets, typography and contrast numbers only. | `commands/check.md` |
+| `/guidance review [target] [quick]` | Reviews code (a file, folder, component, or the uncommitted changes) and measures its page at mobile, tablet, desktop and breakpoint widths; one ordered list of findings with why and fix. `quick`: target, type and contrast numbers only. | `commands/review.md` |
+| `/guidance fix [which]` | Fixes findings from the last review, then measures again. | `commands/fix.md` |
 
 Commands that open a page also read `commands/open-page.md`; commands that report findings also read `commands/report-format.md`.
 

@@ -56,4 +56,4 @@ With no token system, Claude did the following:
 
 Check: every colour in `guidance.css` matches the row exactly. Rendered contrast was 0 failures in light and dark.
 
-The page was then rebuilt on the tokens (`after/styles.css`) to fix what `/guidance inspect` found: [inspect-before.md](inspect-before.md).
+The page was then rebuilt on the tokens (`after/styles.css`) to fix what `/guidance review` found: [inspect-before.md](inspect-before.md).

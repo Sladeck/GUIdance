@@ -125,7 +125,7 @@ def main():
     print("\nPage audits")
     node = shutil.which("node")
     if not node:
-        skip("targets.js / type-audit.js", "Node.js not found. Install Node 18+ to use /guidance check.")
+        skip("targets.js / type-audit.js", "Node.js not found. Install Node 18+ to run the command-line checks.")
     else:
         probe = subprocess.run([node, "-e", "try{require('playwright')}catch(e){try{require('module').createRequire(process.cwd()+'/')('playwright')}catch(e){process.exit(3)}}"],
                                capture_output=True, text=True, cwd=os.getcwd())

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sprout · Plant care</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#"><span class="leaf"></span>Sprout</a>
+    <nav class="nav">
+      <a href="#" class="active">Today</a>
+      <a href="#">Plants</a>
+      <a href="#">Calendar</a>
+    </nav>
+    <span class="avatar">MA</span>
+  </header>
+
+  <main class="page">
+    <p class="hello">Saturday, 14 November</p>
+    <h1>Good morning, Mina</h1>
+
+    <section class="stats">
+      <div class="stat"><span class="stat-label">Plants</span><strong>12</strong></div>
+      <div class="stat"><span class="stat-label">Need water today</span><strong>3</strong></div>
+      <div class="stat" style="padding:20px"><span class="stat-label">Healthy</span><strong>92%</strong></div>
+    </section>
+
+    <div class="layout">
+      <section class="today">
+        <p class="section-intro">Watering is based on each plant's schedule.</p>
+        <h2>To water today</h2>
+        <ul class="plants">
+          <li class="plant">
+            <div class="thumb">🌿</div>
+            <div class="plant-info"><b>Monstera</b><span class="meta">Living room · last watered 8 days ago</span></div>
+            <button class="water">Water now</button>
+            <button class="icon-btn" aria-label="Edit">✎</button>
+            <button class="icon-btn" aria-label="Delete">✕</button>
+          </li>
+          <li class="plant">
+            <div class="thumb">🌵</div>
+            <div class="plant-info"><b>Golden barrel cactus</b><span class="meta">Window sill · last watered 21 days ago</span></div>
+            <button class="water">Water now</button>
+            <button class="icon-btn" aria-label="Edit">✎</button>
+            <button class="icon-btn" aria-label="Delete">✕</button>
+          </li>
+          <li class="plant late">
+            <div class="thumb">🌱</div>
+            <div class="plant-info"><b>Calathea</b><span class="meta">Bathroom · 2 days late</span></div>
+            <button class="water">Water now</button>
+            <button class="icon-btn" aria-label="Edit">✎</button>
+            <button class="icon-btn" aria-label="Delete">✕</button>
+          </li>
+        </ul>
+      </section>
+
+      <aside class="add">
+        <h2>Add a plant</h2>
+        <form class="form">
+          <label>Name<input type="text" placeholder="e.g. Fiddle leaf fig"></label>
+          <label>Room<input type="text" placeholder="e.g. Bedroom"></label>
+          <label>Water every
+            <select><option>7 days</option><option>14 days</option><option>21 days</option></select>
+          </label>
+          <button type="submit" class="primary">Add plant</button>
+        </form>
+        <div class="tip"><div class="tip-inner">Tip: most plants prefer too little water over too much.</div></div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

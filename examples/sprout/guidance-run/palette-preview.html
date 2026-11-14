@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Palette preview</title>
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--surface-container-low)}
+body{font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--on-surface);padding:16px 24px 24px;transition:background .2s,color .2s}
+button{font:inherit;cursor:pointer;color:inherit}
+:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.title{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.title h1{font-size:22px;line-height:28px;font-weight:500}
+.sub{font-size:12px;color:var(--on-surface-variant)}
+.logo{width:26px;height:26px;border-radius:8px;background:conic-gradient(var(--primary) 0 25%,var(--tertiary) 0 50%,var(--primary-container) 0 75%,var(--secondary-container) 0)}
+.ctrls{display:flex;gap:8px;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--outline);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:0 14px;min-height:36px;font-weight:500;font-size:12px}
+.seg button+button{border-left:1px solid var(--outline)}
+.seg button[aria-pressed=true]{background:var(--secondary-container);color:var(--on-secondary-container)}
+.strip{display:grid;grid-template-columns:repeat(17,1fr);gap:4px;margin:12px 0 14px}
+.sw{border:0;border-radius:8px;min-height:44px;padding:4px 6px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.sw .n{font-size:11px;font-weight:500;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sw .h{font:11px ui-monospace,Menlo,monospace}
+.sw.edge{box-shadow:inset 0 0 0 1px var(--outline-variant)}
+.bento{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;align-items:start}
+.col{display:flex;flex-direction:column;gap:12px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--outline-variant);border-radius:16px;padding:14px;min-width:0}
+.row{display:flex;gap:8px;align-items:center}.between{justify-content:space-between}.end{justify-content:flex-end}.grow{flex:1}
+.lbl{font-size:12px;font-weight:500;color:var(--on-surface-variant)}
+.av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:500;font-size:12px;background:var(--primary-container);color:var(--on-primary-container);flex:none}
+.icon{width:36px;height:36px;border-radius:50%;border:0;background:transparent;color:var(--primary);font-size:20px;display:inline-grid;place-items:center}
+.icon.o{border:1px solid var(--outline);color:var(--on-surface-variant);font-size:20px;width:40px;height:40px}
+/* hero */
+.hero{background:var(--primary);color:var(--on-primary);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.date{font-size:12px;font-weight:500;opacity:.92}
+.hero h2{font-size:22px;line-height:28px;font-weight:500}
+.who{display:flex;gap:10px;align-items:center}.who small{display:block;font-size:12px;opacity:.85}
+.av.big{width:44px;height:44px;background:var(--primary-container);color:var(--on-primary-container);box-shadow:0 0 0 3px var(--on-primary)}
+.prog{display:flex;align-items:center;gap:12px}
+.prog .track{flex:1;height:6px;border-radius:999px;background:color-mix(in srgb,var(--on-primary) 30%,transparent);overflow:hidden}
+.prog .track span{display:block;height:100%;background:var(--on-primary);border-radius:999px}
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:0 12px;min-height:30px;font-size:12px;font-weight:500;border:1px solid transparent}
+.c-primary{background:var(--primary-container);color:var(--on-primary-container)}
+.c-warn{background:var(--warning-container);color:var(--on-warning-container)}
+.c-ok{background:var(--success-container);color:var(--on-success-container)}
+.c-bad{background:var(--error-container);color:var(--on-error-container)}
+.c-plain{border-color:var(--outline);color:var(--on-surface-variant)}
+/* calendar */
+.cal{display:flex;flex-direction:column;gap:8px}
+.calhead{display:flex;justify-content:space-between;align-items:center}.calhead b{font-size:16px;font-weight:500}
+.grid7{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;gap:2px 0}
+.grid7 .dh{font-size:12px;color:var(--on-surface-variant);font-weight:500;padding:4px 0}
+.grid7 .d{border:0;background:transparent;width:34px;height:34px;border-radius:50%;justify-self:center;font-size:12px}
+.grid7 .d.today{box-shadow:inset 0 0 0 1px var(--primary);color:var(--primary);font-weight:500}
+.grid7 .d.sel{background:var(--primary);color:var(--on-primary);font-weight:500}
+.grid7 .d.inr{background:var(--secondary-container);color:var(--on-secondary-container);border-radius:0;width:100%}
+/* buttons */
+.btn{border:0;border-radius:999px;padding:0 16px;min-height:40px;font-weight:500;white-space:nowrap}
+.btn.filled{background:var(--primary);color:var(--on-primary)}
+.btn.outlined{background:transparent;border:1px solid var(--outline);color:var(--primary)}
+.btn.tonal{background:var(--secondary-container);color:var(--on-secondary-container)}
+.btn.text{background:transparent;color:var(--primary);padding:0 12px}
+.btn.inv{color:var(--inverse-primary);min-height:32px}
+/* stepper */
+.stepper{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500}
+.st{display:flex;align-items:center;gap:6px;white-space:nowrap;color:var(--on-surface-variant)}
+.st i{font-style:normal;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:var(--surface-container-highest);color:var(--on-surface-variant)}
+.st.done,.st.on{color:var(--on-surface)}.st.done i,.st.on i{background:var(--primary);color:var(--on-primary)}
+.ln{flex:1;height:1px;background:var(--outline-variant);min-width:12px}
+/* accordion */
+.acc{padding:0;overflow:hidden}
+.ai+.ai{border-top:1px solid var(--outline-variant)}
+.ah{width:100%;border:0;background:transparent;display:flex;justify-content:space-between;align-items:center;padding:0 16px;min-height:48px;font-weight:500;text-align:left}
+.ah span{color:var(--on-surface-variant);font-size:20px;line-height:1}
+.ai p{padding:0 16px 14px;color:var(--on-surface-variant);font-size:12px}
+.ai.dis{background:var(--surface-container)}.ai.dis .ah{color:color-mix(in srgb,var(--on-surface) 38%,transparent);cursor:not-allowed}
+/* alert */
+.alert{background:var(--primary-container);color:var(--on-primary-container);border-radius:12px;padding:12px 14px;font-weight:500;display:flex;gap:10px;align-items:center}
+.alert b{width:22px;height:22px;border-radius:50%;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;font-size:12px}
+/* toggles */
+.toggles{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.switch{display:inline-flex;cursor:pointer}
+.switch input{position:absolute;opacity:0;width:1px;height:1px}
+.switch .track{width:52px;height:32px;border-radius:999px;border:2px solid var(--outline);background:var(--surface-container-highest);position:relative;transition:background .2s}
+.thumb{position:absolute;top:50%;left:6px;width:16px;height:16px;border-radius:50%;background:var(--outline);transform:translateY(-50%);transition:left .2s cubic-bezier(.2,0,0,1),width .2s,height .2s}
+.switch input:checked+.track{background:var(--primary);border-color:var(--primary)}
+.switch input:checked+.track .thumb{left:24px;width:24px;height:24px;background:var(--on-primary)}
+.switch input:focus-visible+.track{outline:2px solid var(--primary);outline-offset:2px}
+.cb{width:22px;height:22px;accent-color:var(--primary);margin:0 4px}
+.tgl{display:inline-flex;border:1px solid var(--outline);border-radius:8px;overflow:hidden}
+.tgl button{border:0;background:transparent;width:40px;height:40px;color:var(--on-surface-variant);font-size:20px}
+.tgl button+button{border-left:1px solid var(--outline)}
+.tgl button[aria-pressed=true]{background:var(--secondary-container);color:var(--on-secondary-container)}
+/* icon tabs */
+.itabs{display:grid;grid-template-columns:repeat(3,1fr);padding:0;overflow:hidden}
+.itabs button{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 0 8px;min-height:60px;font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--on-surface-variant);border-bottom:3px solid transparent}
+.itabs button span{font-size:24px;line-height:1}
+.itabs button[aria-selected=true]{color:var(--primary);border-bottom-color:var(--primary)}
+/* range */
+.range{display:flex;flex-direction:column;gap:12px}
+.rs{position:relative;height:24px}
+.rs .rail,.rs .fill{position:absolute;top:50%;height:6px;transform:translateY(-50%);border-radius:999px}
+.rs .rail{left:0;right:0;background:var(--secondary-container)}
+.rs .fill{background:var(--primary)}
+.knob{position:absolute;top:50%;width:22px;height:22px;border-radius:50%;background:var(--primary);border:3px solid var(--surface);transform:translate(-50%,-50%);box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.ticks{font-size:12px;color:var(--on-surface-variant)}
+/* outlined fields */
+.ofld{position:relative;display:flex;flex-direction:column;gap:4px}
+.ofld span{position:absolute;top:-8px;left:12px;padding:0 4px;background:var(--surface-container-low);font-size:12px;font-weight:500;color:var(--on-surface-variant)}
+.ofld input{font:inherit;font-size:16px;color:var(--on-surface);background:transparent;border:1px solid var(--outline);border-radius:8px;padding:0 14px;min-height:52px}
+.ofld input:focus{outline:none;border:2px solid var(--primary);padding:0 12px}
+.ofld:focus-within span{color:var(--primary)}
+.ofld.err input{border:2px solid var(--error);padding:0 12px}.ofld.err span{color:var(--error)}
+.ofld.err input:focus{border-width:3px;padding:0 11px}
+.ofld small{color:var(--error);font-size:12px;font-weight:500;padding-left:14px}
+/* minis */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mini{display:grid;place-items:center;min-height:64px;padding:8px}
+.bell{position:relative;display:inline-grid;color:var(--on-surface-variant)}
+.bell i{position:absolute;top:-6px;right:-10px;font-style:normal;min-width:18px;height:18px;padding:0 4px;border-radius:999px;background:var(--error);color:var(--on-error);font-size:11px;font-weight:500;display:grid;place-items:center}
+.step{display:inline-flex;align-items:center;border:1px solid var(--outline);border-radius:8px;overflow:hidden}
+.step button{border:0;background:transparent;width:36px;height:36px;color:var(--primary);font-size:20px}
+.step b{min-width:28px;text-align:center;border-left:1px solid var(--outline);border-right:1px solid var(--outline);line-height:36px}
+.stars{color:var(--warning);font-size:16px;letter-spacing:0;white-space:nowrap}
+.stars .half{background:linear-gradient(90deg,var(--warning) 50%,var(--outline) 50%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stars .off{color:var(--outline)}
+/* media */
+.media{padding:0;overflow:hidden}
+.mh{display:flex;align-items:center;gap:10px;padding:12px 12px 10px}
+.mh div{flex:1;display:flex;flex-direction:column}.mh small{font-size:12px;color:var(--on-surface-variant)}
+.art{display:block;width:100%;height:110px;background:var(--surface-container)}
+.ctrl{padding:10px 12px}
+.play{width:48px;height:48px;border-radius:12px;border:0;background:var(--primary);color:var(--on-primary);font-size:20px}
+.snack{background:var(--inverse-surface);color:var(--inverse-on-surface);border-radius:8px;padding:2px 2px 2px 12px;font-size:12px;display:flex;align-items:center;gap:4px}
+.snack :focus-visible{outline-color:var(--inverse-primary)}
+@media (max-width:1100px){.bento{grid-template-columns:1fr 1fr}.strip{grid-template-columns:repeat(9,1fr)}}
+@media (max-width:720px){.bento{grid-template-columns:1fr}.strip{grid-template-columns:repeat(5,1fr)}}
+@media (max-width:360px){.three{grid-template-columns:1fr 1fr}.three>:last-child{grid-column:span 2}.stepper{gap:4px}.stepper .ln{display:none}.stepper{justify-content:space-between}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.fails{margin-top:10px;background:var(--error-container);color:var(--on-error-container);border-radius:8px;padding:10px 12px;font-weight:500}
+.copybtn{border:1px solid var(--outline);background:transparent;border-radius:999px;padding:0 14px;min-height:36px;font-weight:500;font-size:12px;color:var(--primary)}
+</style>
+</head>
+<body>
+<script id="guidance-config">
+/* GUIdance palette preview. Edit ONLY this block.
+   row:     HSL hue of the brand colour rounded to a multiple of 5 (0..355), or "grey".
+   variant: "tonal_spot" | "neutral" | "vibrant" | "expressive" | "fidelity"
+   brand:   with "fidelity", the exact brand hex to keep.
+   The page computes every colour itself (same values as references/palettes/*.md)
+   and checks 120 role pairs against WCAG. No network, nothing to install. */
+const CONFIG = {
+  title: "Sprout palettes",
+  palettes: [
+    { name: "Calm", row: 140, variant: "tonal_spot" },
+    { name: "Exact brand", row: 140, variant: "fidelity", brand: "#2f7d4a" }
+  ]
+};
+</script>
+
+<header class="bar">
+  <div class="title"><span class="logo" aria-hidden="true"></span><h1><span id="ttl"></span></h1><span class="sub" id="meta"></span></div>
+  <div class="ctrls">
+    <div class="seg" role="group" aria-label="Palette" id="pals"></div>
+    <button type="button" class="copybtn" id="copy">Copy CSS tokens</button>
+    <div class="seg" role="group" aria-label="Theme">
+      <button type="button" data-theme-btn="light" aria-pressed="true">Light</button>
+      <button type="button" data-theme-btn="dark" aria-pressed="false">Dark</button>
+    </div>
+  </div>
+</header>
+<div class="fails" id="fails" role="alert" hidden></div>
+<div class="strip" id="swatches" aria-label="Colour roles"></div>
+
+<main class="bento">
+  <!-- column 1 -->
+  <div class="col">
+    <section class="hero" aria-label="Task card">
+      <span class="date">&#9719; Due March 25th</span>
+      <h2>Ship the new onboarding flow</h2>
+      <div class="who"><span class="av big">LS</span><div><small>Assigned to</small><b>Lucie Simon</b></div></div>
+      <div class="prog"><span class="track"><span style="width:62%"></span></span><b>62%</b></div>
+    </section>
+    <div class="chips">
+      <span class="chip c-primary">Design</span><span class="chip c-warn">&#9888; Review</span><span class="chip c-ok">&#10003; Done</span><span class="chip c-bad">&#10005; Blocked</span><span class="chip c-plain">Backlog</span>
+    </div>
+    <section class="card cal" aria-label="Date picker">
+      <div class="calhead"><b id="calmonth">Month</b><span><button class="icon" aria-label="Previous month">&#8249;</button><button class="icon" aria-label="Next month">&#8250;</button></span></div>
+      <div class="grid7" id="calgrid"></div>
+      <div class="row end"><button class="btn text">Cancel</button><button class="btn text">OK</button></div>
+    </section>
+  </div>
+
+  <!-- column 2 -->
+  <div class="col">
+    <section class="card stepper" aria-label="Stepper">
+      <span class="st done"><i>&#10003;</i>Account</span><span class="ln"></span>
+      <span class="st on"><i>2</i>Workspace</span><span class="ln"></span>
+      <span class="st"><i>3</i>Invite</span>
+    </section>
+    <section class="card acc" aria-label="Accordion">
+      <div class="ai open"><button class="ah" aria-expanded="true">Usage <span>&#8963;</span></button><p>Components read their colours from roles, so one palette change restyles every screen.</p></div>
+      <div class="ai"><button class="ah" aria-expanded="false">Globals <span>&#8964;</span></button></div>
+      <div class="ai dis"><button class="ah" disabled>Archived <span>&#8964;</span></button></div>
+    </section>
+    <div class="alert"><b>&#10003;</b> Palette applied to 42 components</div>
+    <section class="card toggles" aria-label="Toggles">
+      <label class="switch"><input type="checkbox" checked role="switch" aria-label="On"><span class="track"><span class="thumb"></span></span></label>
+      <label class="switch"><input type="checkbox" role="switch" aria-label="Off"><span class="track"><span class="thumb"></span></span></label>
+      <input type="checkbox" class="cb" checked aria-label="Checked">
+      <input type="checkbox" class="cb" aria-label="Unchecked">
+      <span class="tgl" role="group" aria-label="Align"><button aria-pressed="true" aria-label="Left">&#8676;</button><button aria-pressed="false" aria-label="Center">&#8596;</button><button aria-pressed="false" aria-label="Right">&#8677;</button></span>
+    </section>
+    <section class="card itabs" role="tablist" aria-label="Icon tabs">
+      <button role="tab" aria-selected="true"><span>&#9750;</span>Home</button>
+      <button role="tab" aria-selected="false"><span>&#9733;</span>Saved</button>
+      <button role="tab" aria-selected="false"><span>&#9881;</span>Settings</button>
+    </section>
+  </div>
+
+  <!-- column 3 -->
+  <div class="col">
+    <div class="row">
+      <button class="btn filled">&#8615; Install</button><button class="btn outlined">&#8615; Install</button><button class="btn tonal">Later</button>
+    </div>
+    <section class="card range" aria-label="Range slider">
+      <div class="row between"><span class="lbl">Price range</span><b id="rangeval">&euro;20 to &euro;60</b></div>
+      <div class="rs"><span class="rail"></span><span class="fill" style="left:20%;right:40%"></span><span class="knob" style="left:20%"></span><span class="knob" style="left:60%"></span></div>
+      <div class="row between ticks"><span>&euro;0</span><span>&euro;50</span><span>&euro;100</span></div>
+    </section>
+    <label class="ofld"><span>Component library</span><input value="GUIdance"></label>
+    <label class="ofld err"><span>Email</span><input value="lucie@" aria-invalid="true"><small>&#9888; Enter a full email address</small></label>
+    <div class="row three">
+      <section class="card mini"><span class="bell" aria-label="3 notifications"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5.5-6.84V3.5a1.5 1.5 0 0 0-3 0v.66A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2Z"/></svg><i>3</i></span></section>
+      <section class="card mini"><span class="step"><button aria-label="Decrease">&minus;</button><b>2</b><button aria-label="Increase">+</button></span></section>
+      <section class="card mini"><span class="stars" aria-label="3.5 out of 5">&#9733;&#9733;&#9733;<span class="half">&#9733;</span><span class="off">&#9733;</span></span></section>
+    </div>
+    <section class="card media" aria-label="Media card">
+      <div class="mh"><span class="av">KY</span><div><b>Kyoto trip</b><small>12 photos &middot; shared</small></div><button class="icon" aria-label="More">&#8942;</button></div>
+      <svg class="art" id="pattern" viewBox="0 0 320 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+      <div class="row ctrl"><button class="icon o" aria-label="Previous">&#9198;</button><button class="play" aria-label="Play">&#9654;</button><button class="icon o" aria-label="Next">&#9197;</button><span class="grow"></span><span class="snack">Saved <button class="btn text inv">Undo</button></span></div>
+    </section>
+  </div>
+</main>
+
+<script>
+/* GUIdance palette engine (browser). Same algorithm as tools/palette.py and the
+   precomputed tables: Material 3 role tones, tone = CIE L*, hue/chroma in OKLCH. */
+const GD = (() => {
+  const WHITE = [0.95047, 1.0, 1.08883];
+  const toLin = c => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
+  const toSrgb = c => (c <= 0.0031308 ? 12.92 * c : 1.055 * c ** (1 / 2.4) - 0.055);
+  const hexToRgb = h => { h = h.replace('#', ''); if (h.length === 3) h = [...h].map(c => c + c).join(''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16) / 255); };
+  // Python's round() is round-half-even; match it so hex values agree with the tables.
+  const pyRound = x => { const f = Math.floor(x), d = x - f; if (d > 0.5) return f + 1; if (d < 0.5) return f; return f % 2 === 0 ? f : f + 1; };
+  const rgbToHex = rgb => '#' + rgb.map(c => Math.max(0, Math.min(255, pyRound(c * 255))).toString(16).padStart(2, '0')).join('');
+  const f = t => (t > 216 / 24389 ? Math.cbrt(t) : (24389 / 27 * t + 16) / 116);
+  const xyz = rgb => { const [r, g, b] = rgb.map(toLin); return [0.4124564 * r + 0.3575761 * g + 0.1804375 * b, 0.2126729 * r + 0.7151522 * g + 0.0721750 * b, 0.0193339 * r + 0.1191920 * g + 0.9503041 * b]; };
+  const lstar = rgb => 116 * f(xyz(rgb)[1] / WHITE[1]) - 16;
+  const cbrt = v => Math.sign(v) * Math.abs(v) ** (1 / 3);
+  function linToOklab(r, g, b) {
+    let l = 0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b, m = 0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b, s = 0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b;
+    l = cbrt(l); m = cbrt(m); s = cbrt(s);
+    return [0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s, 1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s, 0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s];
+  }
+  function oklabToLin(L, a, b) {
+    const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3, m = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3, s = (L - 0.0894841775 * a - 1.2914855480 * b) ** 3;
+    return [4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s, -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s, -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s];
+  }
+  const oklch = rgb => { const [L, a, b] = linToOklab(...rgb.map(toLin)); return [L, Math.hypot(a, b), ((Math.atan2(b, a) * 180 / Math.PI) % 360 + 360) % 360]; };
+  const K = 0.0034;
+  function okAtTone(okc, hue, tone) {
+    const a = okc * Math.cos(hue * Math.PI / 180), b = okc * Math.sin(hue * Math.PI / 180);
+    let lo = 0, hi = 1;
+    for (let i = 0; i < 40; i++) {
+      const mid = (lo + hi) / 2, [r, g, bl] = oklabToLin(mid, a, b);
+      const y = 0.2126729 * r + 0.7151522 * g + 0.0721750 * bl;
+      if (116 * f(Math.max(y, 0)) - 16 < tone) lo = mid; else hi = mid;
+    }
+    return [(lo + hi) / 2, a, b];
+  }
+  function toneColor(hue, chroma, tone) {
+    if (tone <= 0) return '#000000';
+    if (tone >= 100) return '#ffffff';
+    const at = c => { const [L, a, b] = okAtTone(c, hue, tone); return oklabToLin(L, a, b); };
+    const ok = c => at(c).every(v => v >= -1e-7 && v <= 1 + 1e-7);
+    const target = chroma * K;
+    let lo = 0, hi = target;
+    if (ok(hi)) lo = hi; else for (let i = 0; i < 30; i++) { const mid = (lo + hi) / 2; if (ok(mid)) lo = mid; else hi = mid; }
+    return rgbToHex(at(lo).map(v => toSrgb(Math.max(0, Math.min(1, v)))));
+  }
+  const lum = hex => { const [r, g, b] = hexToRgb(hex).map(toLin); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+  const contrast = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+  const rot = (h, br, rs) => { for (let i = 0; i < br.length - 1; i++) if (br[i] <= h && h < br[i + 1]) return (h + rs[i]) % 360; return h; };
+  function palettesFor(hue, v) {
+    let p;
+    if (v === 'tonal_spot' || v === 'fidelity') p = { primary: [hue, 36], secondary: [hue, 16], tertiary: [(hue + 60) % 360, 24], neutral: [hue, 6], neutral_variant: [hue, 8] };
+    else if (v === 'neutral') p = { primary: [hue, 12], secondary: [hue, 8], tertiary: [hue, 16], neutral: [hue, 2], neutral_variant: [hue, 2] };
+    else if (v === 'vibrant') { const b = [0, 41, 61, 101, 131, 181, 251, 301, 360]; p = { primary: [hue, 200], secondary: [rot(hue, b, [18, 15, 10, 12, 15, 18, 15, 12, 12]), 24], tertiary: [rot(hue, b, [35, 30, 20, 25, 30, 35, 30, 25, 25]), 32], neutral: [hue, 10], neutral_variant: [hue, 12] }; }
+    else if (v === 'expressive') { const b = [0, 21, 51, 121, 151, 191, 271, 321, 360]; p = { primary: [(hue + 240) % 360, 40], secondary: [rot(hue, b, [45, 95, 45, 20, 45, 90, 45, 45, 45]), 24], tertiary: [rot(hue, b, [120, 120, 20, 45, 20, 15, 20, 120, 120]), 32], neutral: [(hue + 15) % 360, 8], neutral_variant: [(hue + 15) % 360, 12] }; }
+    else if (v === 'grey') p = { primary: [250, 0], secondary: [250, 0], tertiary: [250, 0], neutral: [250, 0], neutral_variant: [250, 0] };
+    else throw new Error('unknown variant ' + v);
+    p.error = [25, 84]; p.success = [150, 48]; p.warning = [70, 60];
+    return p;
+  }
+  const ROLES = {
+    'primary': ['primary', 40, 80], 'on-primary': ['primary', 100, 20], 'primary-container': ['primary', 90, 30], 'on-primary-container': ['primary', 30, 90],
+    'secondary': ['secondary', 40, 80], 'on-secondary': ['secondary', 100, 20], 'secondary-container': ['secondary', 90, 30], 'on-secondary-container': ['secondary', 30, 90],
+    'tertiary': ['tertiary', 40, 80], 'on-tertiary': ['tertiary', 100, 20], 'tertiary-container': ['tertiary', 90, 30], 'on-tertiary-container': ['tertiary', 30, 90],
+    'error': ['error', 40, 80], 'on-error': ['error', 100, 20], 'error-container': ['error', 90, 30], 'on-error-container': ['error', 30, 90],
+    'success': ['success', 40, 80], 'on-success': ['success', 100, 20], 'success-container': ['success', 90, 30], 'on-success-container': ['success', 30, 90],
+    'warning': ['warning', 40, 80], 'on-warning': ['warning', 100, 20], 'warning-container': ['warning', 90, 30], 'on-warning-container': ['warning', 30, 90],
+    'surface': ['neutral', 98, 6], 'surface-container-lowest': ['neutral', 100, 4], 'surface-container-low': ['neutral', 96, 10], 'surface-container': ['neutral', 94, 12],
+    'surface-container-high': ['neutral', 92, 17], 'surface-container-highest': ['neutral', 90, 22], 'on-surface': ['neutral', 10, 90], 'on-surface-variant': ['neutral_variant', 30, 80],
+    'outline': ['neutral_variant', 50, 60], 'outline-variant': ['neutral_variant', 80, 30], 'inverse-surface': ['neutral', 20, 90], 'inverse-on-surface': ['neutral', 95, 20], 'inverse-primary': ['primary', 80, 40],
+  };
+  const SURFACES = ['surface', 'surface-container-lowest', 'surface-container-low', 'surface-container', 'surface-container-high', 'surface-container-highest'];
+  function hslSeed(h) {   // row seed: hsl(h, 75%, 45%), same as the tables
+    const s = 0.75, l = 0.45, c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = l - c / 2;
+    const [r, g, b] = h < 60 ? [c, x, 0] : h < 120 ? [x, c, 0] : h < 180 ? [0, c, x] : h < 240 ? [0, x, c] : h < 300 ? [x, 0, c] : [c, 0, x];
+    return rgbToHex([r + m, g + m, b + m]);
+  }
+  // row: HSL hue multiple of 5, or 'grey'. brand: optional exact brand hex (fidelity).
+  function build({ row, variant = 'tonal_spot', brand = null }) {
+    const isGrey = row === 'grey';
+    const seed = isGrey ? '#666666' : hslSeed(+row);
+    const [, okc, H] = oklch(hexToRgb(seed));
+    const pal = palettesFor(isGrey ? 250 : H, isGrey ? 'grey' : (variant === 'fidelity' ? 'tonal_spot' : variant));
+    if (variant === 'vibrant' && !isGrey) pal.primary = [H, Math.max(okc / K, 60)];
+    const out = { light: {}, dark: {} };
+    for (const [role, [p, lt, dt]] of Object.entries(ROLES)) { const [h, c] = pal[p]; out.light[role] = toneColor(h, c, lt); out.dark[role] = toneColor(h, c, dt); }
+    const ch = [0, 150, 60, 250, 310].map(s => ((isGrey ? 250 : pal.primary[0]) + s) % 360);
+    ch.forEach((h, i) => { out.light['chart-' + (i + 1)] = toneColor(h, 60, 48); out.dark['chart-' + (i + 1)] = toneColor(h, 50, 72); });
+    if (brand) {
+      brand = brand.toLowerCase();
+      const on = contrast(brand, '#ffffff') >= contrast(brand, '#000000') ? '#ffffff' : '#000000';
+      const asPrimary = Math.min(...SURFACES.map(s => contrast(brand, out.light[s]))) >= 4.5 && contrast(on, brand) >= 4.5;
+      if (asPrimary) { out.light.primary = brand; out.light['on-primary'] = on; } else { out.light['primary-container'] = brand; out.light['on-primary-container'] = on; }
+      out.brandRole = asPrimary ? 'primary' : 'primary-container';
+    }
+    const d = (a, b) => { const x = Math.abs(a - b) % 360; return Math.min(x, 360 - x); };
+    out.notes = isGrey ? [] : ['error', 'success', 'warning'].filter(r => d(pal.primary[0], pal[r][0]) < 30 && pal.primary[1] >= 12)
+      .map(r => `primary hue is close to ${r}: ${r} states need an icon and a word, never colour alone`);
+    out.checks = checks(out);
+    return out;
+  }
+  function checks(s) {
+    const pairs = [];
+    for (const sf of SURFACES) pairs.push(['on-surface', sf, 4.5], ['on-surface-variant', sf, 4.5], ['primary', sf, 3], ['outline', sf, 3], ['error', sf, 4.5]);
+    pairs.push(['primary', 'surface', 4.5]);
+    for (const g of ['primary', 'secondary', 'tertiary', 'error', 'success', 'warning']) pairs.push(['on-' + g, g, 4.5], [`on-${g}-container`, `${g}-container`, 4.5]);
+    pairs.push(['inverse-on-surface', 'inverse-surface', 4.5], ['inverse-primary', 'inverse-surface', 3]);
+    for (let i = 1; i <= 5; i++) for (const sf of ['surface', 'surface-container-low', 'surface-container-lowest']) pairs.push(['chart-' + i, sf, 3]);
+    const res = [];
+    for (const t of ['light', 'dark']) for (const [fg, bg, need] of pairs) { const r = contrast(s[t][fg], s[t][bg]); res.push({ theme: t, fg, bg, need, ratio: Math.round(r * 100) / 100, pass: r >= need }); }
+    return res;
+  }
+  return { build, contrast, hslSeed };
+})();
+
+</script>
+<script>
+document.title = CONFIG.title; document.getElementById('ttl').textContent = CONFIG.title;
+
+const PALETTES = CONFIG.palettes.map(c => {
+  const b = GD.build(c);
+  const failed = b.checks.filter(x => !x.pass);
+  return { name: c.name, variant: c.variant + (c.brand ? '' : ''), seed: { hex: c.brand || (c.row === 'grey' ? 'grey' : 'hue ' + c.row) },
+           light: b.light, dark: b.dark, checks: { total: b.checks.length, failed }, notes: b.notes, fidelity_role: b.brandRole };
+});
+const SWATCHES = ["primary", "on-primary", "primary-container", "secondary-container", "tertiary", "tertiary-container", "surface", "surface-container", "on-surface", "on-surface-variant", "outline", "error", "success", "warning", "chart-1", "chart-2", "chart-3"];
+let cur = 0, theme = 'light';
+const root = document.documentElement;
+function lum(h) { const c = [1,3,5].map(i => parseInt(h.slice(i, i+2), 16) / 255).map(x => x <= .04045 ? x/12.92 : ((x+.055)/1.055) ** 2.4); return .2126*c[0] + .7152*c[1] + .0722*c[2]; }
+function cr(a, b) { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); }
+
+function apply() {
+  const p = PALETTES[cur], s = p[theme];
+  for (const [k, v] of Object.entries(s)) root.style.setProperty('--' + k, v);
+  root.style.colorScheme = theme;
+  document.querySelectorAll('[data-pal]').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.pal === cur)));
+  document.querySelectorAll('[data-theme-btn]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.themeBtn === theme)));
+  const total = p.checks ? p.checks.total : 0, failed = p.checks ? p.checks.failed.length : 0;
+  document.getElementById('meta').textContent = `${p.seed.hex} · ${p.variant}` +
+    (p.fidelity_role ? ` · exact brand as ${p.fidelity_role}` : '') +
+    (total ? ` · ${total - failed}/${total} pairs pass WCAG` : '');
+  strip(s); pattern(p.name + p.variant);
+  const warn = document.getElementById('fails');
+  warn.hidden = !p.checks.failed.length;
+  warn.textContent = p.checks.failed.length ? 'Contrast failures: ' + p.checks.failed.map(x => `${x.theme} ${x.fg} on ${x.bg} ${x.ratio}:1 (need ${x.need})`).join('; ') : '';
+}
+function tokensCss(p) {
+  const blk = (s, ind) => Object.entries(s).map(([k, v]) => `${ind}--color-${k}: ${v};`).join('\n');
+  return `:root {\n  color-scheme: light dark;\n${blk(p.light, '  ')}\n}\n@media (prefers-color-scheme: dark) {\n  :root:not([data-theme="light"]) {\n${blk(p.dark, '    ')}\n  }\n}\n[data-theme="dark"] {\n${blk(p.dark, '  ')}\n}\n`;
+}
+document.getElementById('copy').onclick = e => { navigator.clipboard && navigator.clipboard.writeText(tokensCss(PALETTES[cur])); e.target.textContent = 'Copied'; setTimeout(() => e.target.textContent = 'Copy CSS tokens', 1200); };
+
+function strip(s) {
+  const el = document.getElementById('swatches'); el.innerHTML = '';
+  for (const r of SWATCHES) {
+    if (!s[r]) continue;
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'sw';
+    b.style.background = s[r];
+    const txt = cr('#000000', s[r]) >= cr('#ffffff', s[r]) ? '#000000' : '#ffffff';
+    b.style.color = txt;
+    if (cr(s[r], s['surface-container-low']) < 1.3) b.classList.add('edge');
+    b.innerHTML = `<span class="n">${r}</span><span class="h">${s[r]}</span>`;
+    b.title = r + ' ' + s[r] + ' (click to copy)';
+    b.onclick = () => { navigator.clipboard && navigator.clipboard.writeText(s[r]); const h = b.querySelector('.h'); h.textContent = 'copied'; setTimeout(() => h.textContent = s[r], 900); };
+    el.append(b);
+  }
+}
+
+function rng(seed) { let x = [...seed].reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) % 2147483647, 7) || 1; return () => (x = (x * 1103515245 + 12345) % 2147483648) / 2147483648; }
+function pattern(seedHex) {
+  const svg = document.getElementById('pattern'); if (!svg) return;
+  const r = rng(seedHex), S = 40, cols = 8, rows = 3;
+  const fills = ['var(--primary)', 'var(--tertiary)', 'var(--primary-container)', 'var(--secondary-container)',
+                 'var(--tertiary-container)', 'var(--chart-2)', 'var(--chart-3)', 'var(--surface-container-high)'];
+  const pick = () => fills[Math.floor(r() * fills.length)];
+  let out = '';
+  for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+    const X = x * S, Y = y * S, bg = pick(); let fg = pick(); if (fg === bg) fg = fills[(fills.indexOf(bg) + 3) % fills.length];
+    out += `<rect x="${X}" y="${Y}" width="${S}" height="${S}" fill="${bg}"/>`;
+    const t = Math.floor(r() * 5), c = Math.floor(r() * 4);
+    if (t === 0) out += `<path d="M${X + (c % 2) * S} ${Y + (c > 1 ? S : 0)} m0 0 ${c % 2 ? 'h' + -S : 'h' + S} a${S} ${S} 0 0 ${c === 1 || c === 2 ? 0 : 1} ${c % 2 ? S : -S} ${c > 1 ? -S : S} z" fill="${fg}"/>`;
+    else if (t === 1) out += `<circle cx="${X + S/2}" cy="${Y + S/2}" r="${S/3}" fill="${fg}"/>`;
+    else if (t === 2) out += `<path d="M${X} ${Y + S} L${X + S} ${Y + S} L${X + (c % 2 ? S : 0)} ${Y} Z" fill="${fg}"/>`;
+    else if (t === 3) out += `<path d="M${X} ${Y + S/2} A${S/2} ${S/2} 0 0 1 ${X + S} ${Y + S/2} Z" fill="${fg}"/>`;
+    else out += `<rect x="${X + S/4}" y="${Y + S/4}" width="${S/2}" height="${S/2}" rx="4" fill="${fg}"/>`;
+  }
+  svg.innerHTML = out;
+}
+
+function calendar() {
+  const now = new Date(), y = now.getFullYear(), m = now.getMonth(), today = now.getDate();
+  document.getElementById('calmonth').textContent = now.toLocaleString('en', { month: 'long', year: 'numeric' });
+  const g = document.getElementById('calgrid');
+  g.innerHTML = ['S', 'M', 'T', 'W', 'T', 'F', 'S'].map(d => `<span class="dh">${d}</span>`).join('');
+  const first = new Date(y, m, 1).getDay(), days = new Date(y, m + 1, 0).getDate();
+  const a = Math.min(today + 3, days - 3), b = Math.min(a + 3, days);
+  for (let i = 0; i < first; i++) g.insertAdjacentHTML('beforeend', '<span></span>');
+  for (let d = 1; d <= days; d++) {
+    const cls = d === a || d === b ? 'sel' : (d > a && d < b ? 'inr' : (d === today ? 'today' : ''));
+    g.insertAdjacentHTML('beforeend', `<button class="d ${cls}" aria-label="Day ${d}">${d}</button>`);
+  }
+}
+
+const pals = document.getElementById('pals');
+PALETTES.forEach((p, i) => {
+  const b = document.createElement('button'); b.type = 'button'; b.dataset.pal = i;
+  b.textContent = String.fromCharCode(65 + i) + '. ' + p.name; b.onclick = () => { cur = i; apply(); }; pals.append(b);
+});
+document.querySelectorAll('[data-theme-btn]').forEach(b => b.onclick = () => { theme = b.dataset.themeBtn; apply(); });
+document.querySelectorAll('[role=tablist]').forEach(l => l.querySelectorAll('[role=tab]').forEach(t => t.onclick = () => l.querySelectorAll('[role=tab]').forEach(o => o.setAttribute('aria-selected', String(o === t)))));
+document.querySelectorAll('.tgl button').forEach(t => t.onclick = () => t.parentElement.querySelectorAll('button').forEach(o => o.setAttribute('aria-pressed', String(o === t))));
+document.querySelectorAll('.ah:not([disabled])').forEach(h => h.onclick = () => { const it = h.parentElement, open = it.classList.toggle('open'); h.setAttribute('aria-expanded', String(open)); let p = it.querySelector('p'); if (open && !p) { p = document.createElement('p'); p.textContent = 'Shared tokens: spacing, radius, type scale and motion, set once for the whole app.'; it.append(p); } if (p) p.hidden = !open; h.querySelector('span').innerHTML = open ? '&#8963;' : '&#8964;'; });
+const st = document.querySelector('.step b');
+document.querySelectorAll('.step button').forEach((b, i) => b.onclick = () => { st.textContent = Math.max(0, +st.textContent + (i ? 1 : -1)); });
+calendar();
+const h = new URLSearchParams(location.hash.slice(1));
+cur = Math.min(+(h.get('p') || 0), PALETTES.length - 1); theme = h.get('t') === 'dark' ? 'dark' : 'light';
+apply();
+
+</script>
+</body>
+</html>

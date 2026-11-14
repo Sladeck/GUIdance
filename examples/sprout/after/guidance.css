@@ -1,0 +1,244 @@
+/*
+GUIdance design tokens.
+Palette: fidelity, row h140 (tonal_spot), brand #2f7d4a as light primary-container with #ffffff text.
+Sources: Material 3 spacing, shape, type and motion tokens; WCAG 2.2 (2.5.8, focus);
+Apple HIG accessibility. Colours: palette "Exact brand" from GUIdance's palette tables
+(every text pair 4.5:1, every boundary and chart colour 3:1). Edit values freely; keep the names.
+*/
+
+:root {
+  /* Spacing: Material 3 tokens, 8px base (space-100), nested 2/4/6/10 for component internals. */
+  --space-0: 0px;
+  --space-25: 2px;
+  --space-50: 4px;
+  --space-75: 6px;
+  --space-100: 8px;
+  --space-125: 10px;
+  --space-150: 12px;
+  --space-175: 14px;
+  --space-200: 16px;
+  --space-250: 20px;
+  --space-300: 24px;
+  --space-400: 32px;
+  --space-450: 36px;
+  --space-500: 40px;
+  --space-600: 48px;
+  --space-700: 56px;
+  --space-800: 64px;
+  --space-900: 72px;
+
+  /* Radius: Material 3 corner scale. Nested corners: inner = outer - padding. */
+  --radius-none: 0;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-lg-plus: 20px;
+  --radius-xl: 28px;
+  --radius-xl-plus: 32px;
+  --radius-2xl: 48px;
+  --radius-full: 9999px;
+
+  /* Type: Material 3 scale (product subset of 5). Body 16px. */
+  --text-headline: 2rem;
+  --text-headline-line-height: 2.5rem;
+  --text-headline-weight: 400;
+  --text-title: 1.375rem;
+  --text-title-line-height: 1.75rem;
+  --text-title-weight: 400;
+  --text-body: 1rem;
+  --text-body-line-height: 1.5rem;
+  --text-body-weight: 400;
+  --text-body-sm: 0.875rem;
+  --text-body-sm-line-height: 1.25rem;
+  --text-body-sm-weight: 400;
+  --text-label: 0.75rem;
+  --text-label-line-height: 1rem;
+  --text-label-weight: 500;
+  --leading-prose: 1.5;
+  --measure: 60ch; /* about 70 to 75 characters in most sans fonts; check with the typography snippet in browser-checks.md */
+
+  /* Motion: Material 3 durations and easing. */
+  --duration-short-1: 50ms;
+  --duration-short-2: 100ms;
+  --duration-short-3: 150ms;
+  --duration-short-4: 200ms;
+  --duration-medium-1: 250ms;
+  --duration-medium-2: 300ms;
+  --duration-medium-3: 350ms;
+  --duration-medium-4: 400ms;
+  --duration-long-1: 450ms;
+  --duration-long-2: 500ms;
+  --duration-long-3: 550ms;
+  --duration-long-4: 600ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-standard-decelerate: cubic-bezier(0, 0, 0, 1);
+  --ease-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --ease-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --ease-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+
+  /* Targets: 24px is the WCAG 2.5.8 floor; 44px is the touch comfort size (Apple 44pt, Material 48dp). */
+  --target-min: 24px;
+  --target-touch: 44px;
+
+  /* Focus: colour must reach 3:1 against what it sits on (WCAG 1.4.11). Set it to your accent. */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: Highlight;
+  --scroll-padding-top: 0px; /* set to the sticky header height (WCAG 2.4.11) */
+}
+
+/* Reduced motion: shorten movement, keep fades (Apple HIG, WCAG C39). */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-medium-1: 150ms;
+    --duration-medium-2: 150ms;
+    --duration-medium-3: 150ms;
+    --duration-medium-4: 150ms;
+    --duration-long-1: 150ms;
+    --duration-long-2: 150ms;
+    --duration-long-3: 150ms;
+    --duration-long-4: 150ms;
+  }
+}
+
+/* Colours: palette "Exact brand", Material 3 colour roles, light and dark.
+   Every text pair reaches 4.5:1 and every boundary or chart colour 3:1 (checked when the palette tables were built).
+   Dark follows the OS unless data-theme="light" or data-theme="dark" is set on <html>. */
+:root {
+  color-scheme: light dark;
+  --color-primary: #196d30;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #2f7d4a;
+  --color-on-primary-container: #ffffff;
+  --color-secondary: #47654b;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #c9ebcd;
+  --color-on-secondary-container: #304d34;
+  --color-tertiary: #006874;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #9df0fc;
+  --color-on-tertiary-container: #004f58;
+  --color-error: #c0001e;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #930014;
+  --color-success: #006d30;
+  --color-on-success: #ffffff;
+  --color-success-container: #85fba2;
+  --color-on-success-container: #005322;
+  --color-warning: #855300;
+  --color-on-warning: #ffffff;
+  --color-warning-container: #ffddb7;
+  --color-on-warning-container: #653e00;
+  --color-surface: #f0fdf1;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #eaf7eb;
+  --color-surface-container: #e4f1e6;
+  --color-surface-container-high: #dfebe0;
+  --color-surface-container-highest: #d9e6da;
+  --color-on-surface: #151e16;
+  --color-on-surface-variant: #3c4a3e;
+  --color-outline: #6c7b6d;
+  --color-outline-variant: #bacbbc;
+  --color-inverse-surface: #29332a;
+  --color-inverse-on-surface: #e7f4e8;
+  --color-inverse-primary: #89d895;
+  --color-chart-1: #008433;
+  --color-chart-2: #8a52de;
+  --color-chart-3: #007e8c;
+  --color-chart-4: #ce4000;
+  --color-chart-5: #847100;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-primary: #89d895;
+    --color-on-primary: #003912;
+    --color-primary-container: #00531d;
+    --color-on-primary-container: #a5f5b0;
+    --color-secondary: #aecfb1;
+    --color-on-secondary: #1a361f;
+    --color-secondary-container: #304d34;
+    --color-on-secondary-container: #c9ebcd;
+    --color-tertiary: #81d3e0;
+    --color-on-tertiary: #00363d;
+    --color-tertiary-container: #004f58;
+    --color-on-tertiary-container: #9df0fc;
+    --color-error: #ffb3ad;
+    --color-on-error: #68000b;
+    --color-error-container: #930014;
+    --color-on-error-container: #ffdad6;
+    --color-success: #67de87;
+    --color-on-success: #003915;
+    --color-success-container: #005322;
+    --color-on-success-container: #85fba2;
+    --color-warning: #ffb962;
+    --color-on-warning: #472a00;
+    --color-warning-container: #653e00;
+    --color-on-warning-container: #ffddb7;
+    --color-surface: #0d150e;
+    --color-surface-container-lowest: #081009;
+    --color-surface-container-low: #151e16;
+    --color-surface-container: #19221a;
+    --color-surface-container-high: #232c24;
+    --color-surface-container-highest: #2d372e;
+    --color-on-surface: #d9e6da;
+    --color-on-surface-variant: #bacbbc;
+    --color-outline: #859587;
+    --color-outline-variant: #3c4a3e;
+    --color-inverse-surface: #d9e6da;
+    --color-inverse-on-surface: #29332a;
+    --color-inverse-primary: #196d30;
+    --color-chart-1: #4fc76a;
+    --color-chart-2: #bfa1ff;
+    --color-chart-3: #00c2d7;
+    --color-chart-4: #ff9473;
+    --color-chart-5: #cbb000;
+  }
+}
+[data-theme="dark"] {
+  --color-primary: #89d895;
+  --color-on-primary: #003912;
+  --color-primary-container: #00531d;
+  --color-on-primary-container: #a5f5b0;
+  --color-secondary: #aecfb1;
+  --color-on-secondary: #1a361f;
+  --color-secondary-container: #304d34;
+  --color-on-secondary-container: #c9ebcd;
+  --color-tertiary: #81d3e0;
+  --color-on-tertiary: #00363d;
+  --color-tertiary-container: #004f58;
+  --color-on-tertiary-container: #9df0fc;
+  --color-error: #ffb3ad;
+  --color-on-error: #68000b;
+  --color-error-container: #930014;
+  --color-on-error-container: #ffdad6;
+  --color-success: #67de87;
+  --color-on-success: #003915;
+  --color-success-container: #005322;
+  --color-on-success-container: #85fba2;
+  --color-warning: #ffb962;
+  --color-on-warning: #472a00;
+  --color-warning-container: #653e00;
+  --color-on-warning-container: #ffddb7;
+  --color-surface: #0d150e;
+  --color-surface-container-lowest: #081009;
+  --color-surface-container-low: #151e16;
+  --color-surface-container: #19221a;
+  --color-surface-container-high: #232c24;
+  --color-surface-container-highest: #2d372e;
+  --color-on-surface: #d9e6da;
+  --color-on-surface-variant: #bacbbc;
+  --color-outline: #859587;
+  --color-outline-variant: #3c4a3e;
+  --color-inverse-surface: #d9e6da;
+  --color-inverse-on-surface: #29332a;
+  --color-inverse-primary: #196d30;
+  --color-chart-1: #4fc76a;
+  --color-chart-2: #bfa1ff;
+  --color-chart-3: #00c2d7;
+  --color-chart-4: #ff9473;
+  --color-chart-5: #cbb000;
+}
+[data-theme="light"] { color-scheme: light; }
+[data-theme="dark"] { color-scheme: dark; }

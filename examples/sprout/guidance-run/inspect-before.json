@@ -1,0 +1,2698 @@
+{
+ "320": {
+  "4": {
+   "viewport": "320x640",
+   "breakpoints": {
+    "from": "project media queries",
+    "widths": [
+     [
+      800,
+      801
+     ]
+    ]
+   },
+   "scales": {
+    "spacing": "Material 3",
+    "radius": "Material 3",
+    "type": "Material 3"
+   },
+   "findings": [
+    {
+     "n": 1,
+     "severity": "Hard",
+     "rule": "4.4",
+     "kind": "horizontal-scroll",
+     "where": "main.page > section.stats \"Plants 12 Need water today 3 Healthy 92%\"",
+     "value": "page is 688px wide in a 320px viewport (2 children of main.page > section.stats reach 688px)",
+     "expected": "no horizontal scroll at 320px",
+     "why": "Content wider than the screen forces sideways scrolling and hides content; WCAG 1.4.10 (Reflow) requires none at 320px.",
+     "fix": "Constrain the element: max-width: 100%, min-width: 0 on flex/grid children, wrap long words (overflow-wrap: anywhere), or let tables scroll inside their own container. Its children have min-width: 210px; let them wrap or stack (flex-wrap: wrap, or a grid with minmax).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 2,
+     "severity": "Hard",
+     "rule": "4.4",
+     "kind": "horizontal-scroll",
+     "where": "main.page > div.layout \"Watering is based on each plant's schedu\"",
+     "value": "page is 688px wide in a 320px viewport (2 children of main.page > div.layout reach 366px)",
+     "expected": "no horizontal scroll at 320px",
+     "why": "Content wider than the screen forces sideways scrolling and hides content; WCAG 1.4.10 (Reflow) requires none at 320px.",
+     "fix": "Constrain the element: max-width: 100%, min-width: 0 on flex/grid children, wrap long words (overflow-wrap: anywhere), or let tables scroll inside their own container.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 3,
+     "severity": "Hard",
+     "rule": "4.4",
+     "kind": "horizontal-scroll",
+     "where": "header.topbar > span.avatar \"MA\"",
+     "value": "page is 688px wide in a 320px viewport",
+     "expected": "no horizontal scroll at 320px",
+     "why": "Content wider than the screen forces sideways scrolling and hides content; WCAG 1.4.10 (Reflow) requires none at 320px.",
+     "fix": "Constrain the element: max-width: 100%, min-width: 0 on flex/grid children, wrap long words (overflow-wrap: anywhere), or let tables scroll inside their own container.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 4,
+     "severity": "Hard",
+     "rule": "4.4",
+     "kind": "overflows-container",
+     "where": "header.topbar > span.avatar \"MA\"",
+     "value": "sticks out 39px past header.topbar",
+     "expected": "inside its container with its padding",
+     "why": "Content that crosses the edge of its card looks broken and can cover neighbouring content or become unreadable.",
+     "fix": "Make it fit at this width: smaller size or fewer items on small screens, let it wrap (flex-wrap), or give the container min-width: auto / more room. Avoid fixed widths.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 5,
+     "severity": "Hard",
+     "rule": "4.4",
+     "kind": "clipped-content",
+     "where": "ul.plants > li.plant > button.water \"Water now\"",
+     "value": "content 3px larger than its box (overflow: hidden) (on 3 elements)",
+     "expected": "content fits, or is truncated on purpose",
+     "why": "Part of the content is cut off with no sign it is there, so people miss information or controls.",
+     "fix": "Let the box grow (min-width: 0 on flex/grid children, no fixed width or height), wrap the content, or truncate deliberately with text-overflow: ellipsis and the full text in a tooltip or title.",
+     "count": 3,
+     "others": [
+      "ul.plants > li.plant > button.water \"Water now\"",
+      "ul.plants > li.plant.late > button.water \"Water now\""
+     ]
+    },
+    {
+     "n": 6,
+     "severity": "Hard",
+     "rule": "1.2",
+     "kind": "faint-field",
+     "where": "form.form > label > input",
+     "value": "border 1.21:1, fill 1.00:1 against the page (on 2 elements)",
+     "expected": "3:1 for the border or the fill",
+     "why": "People cannot see where to click or type when a field has no visible edge (WCAG 1.4.11).",
+     "fix": "Use the outline token (3:1) for field borders, or give the field a fill that contrasts 3:1 with the page.",
+     "count": 2,
+     "others": [
+      "form.form > label > input"
+     ]
+    },
+    {
+     "n": 7,
+     "severity": "Hard",
+     "rule": "1.2",
+     "kind": "faint-field",
+     "where": "form.form > label > select \"7 days 14 days 21 days\"",
+     "value": "border 1.21:1, fill 1.00:1 against the page",
+     "expected": "3:1 for the border or the fill",
+     "why": "People cannot see where to click or type when a field has no visible edge (WCAG 1.4.11).",
+     "fix": "Use the outline token (3:1) for field borders, or give the field a fill that contrasts 3:1 with the page.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 8,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "main.page \"Saturday, 14 November Good morning, Mina\"",
+     "value": "gaps 6, 22, 30px between 4 stacked items",
+     "expected": "one gap (6px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 6px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 9,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "main.page > div.layout > section.today \"Watering is based on each plant's schedu\"",
+     "value": "gaps 6, 20px between 3 stacked items",
+     "expected": "one gap (6px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 6px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 10,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "div.layout > section.today > ul.plants \"🌿 Monstera Living room · last watered 8\"",
+     "value": "gaps 10, 18px between 3 stacked items",
+     "expected": "one gap (10px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 10px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 11,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "div.layout > aside.add > form.form \"Name Room Water every 7 days 14 days 21 \"",
+     "value": "gaps 14, 14, 18px between 4 stacked items",
+     "expected": "one gap (14px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 14px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 12,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "heading-proximity",
+     "where": "main.page > h1 \"Good morning, Mina\"",
+     "value": "6px above, 22px below",
+     "expected": "more space above than below",
+     "why": "A heading belongs to the content under it; when it sits closer to the previous section, readers group it with the wrong block.",
+     "fix": "Increase the space above the heading and reduce the space below (for example 24px above, 6px below).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 13,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "heading-proximity",
+     "where": "div.layout > section.today > h2 \"To water today\"",
+     "value": "6px above, 20px below",
+     "expected": "more space above than below",
+     "why": "A heading belongs to the content under it; when it sits closer to the previous section, readers group it with the wrong block.",
+     "fix": "Increase the space above the heading and reduce the space below (for example 24px above, 6px below).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 14,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar > nav.nav \"Today Plants Calendar\"",
+     "value": "18px used 12 times",
+     "expected": "16px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (16px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar > nav.nav \"Today Plants Calendar\"",
+      "main.page > section.stats > div.stat \"Plants 12\""
+     ]
+    },
+    {
+     "n": 15,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "section.today > ul.plants > li.plant \"🌿 Monstera Living room · last watered 8\"",
+     "value": "13px used 6 times",
+     "expected": "12px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (12px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "section.today > ul.plants > li.plant \"🌿 Monstera Living room · last watered 8\"",
+      "section.today > ul.plants > li.plant \"🌵 Golden barrel cactus Window sill · la\""
+     ]
+    },
+    {
+     "n": 16,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "ul.plants > li.plant > button.water \"Water now\"",
+     "value": "9px used 6 times",
+     "expected": "8px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (8px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "ul.plants > li.plant > button.water \"Water now\"",
+      "ul.plants > li.plant > button.water \"Water now\""
+     ]
+    },
+    {
+     "n": 17,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar \"Sprout Today Plants Calendar MA\"",
+     "value": "26px used 4 times",
+     "expected": "24px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (24px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar \"Sprout Today Plants Calendar MA\"",
+      "main.page \"Saturday, 14 November Good morning, Mina\""
+     ]
+    },
+    {
+     "n": 18,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar \"Sprout Today Plants Calendar MA\"",
+     "value": "22px used 3 times",
+     "expected": "20px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (20px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar \"Sprout Today Plants Calendar MA\"",
+      "main.page > h1 \"Good morning, Mina\""
+     ]
+    },
+    {
+     "n": 19,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "main.page \"Saturday, 14 November Good morning, Mina\"",
+     "value": "30px used 3 times",
+     "expected": "32px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (32px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "main.page \"Saturday, 14 November Good morning, Mina\"",
+      "main.page > section.stats \"Plants 12 Need water today 3 Healthy 92%\""
+     ]
+    },
+    {
+     "n": 20,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "component-drift",
+     "where": "main.page > section.stats > div.stat \"Healthy 92%\"",
+     "value": "padding differs between 3 \"stat\" elements: 18px 18px 18px 18px (x2), 20px 20px 20px 20px (x1)",
+     "expected": "18px 18px 18px 18px on all",
+     "why": "The same component should look the same everywhere; small variations read as mistakes and erode trust.",
+     "fix": "Give every instance the component's padding (18px 18px 18px 18px) from one shared style, or make the difference an explicit variant.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 21,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "main.page > section.stats > div.stat \"Plants 12\"",
+     "value": "14px corner radius (x3)",
+     "expected": "12px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 12px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 22,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "ul.plants > li.plant > div.thumb \"🌿\"",
+     "value": "10px corner radius (x4)",
+     "expected": "8px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 8px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 23,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "form.form > label > input",
+     "value": "6px corner radius (x3)",
+     "expected": "4px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 4px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 24,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-count",
+     "where": "(page)",
+     "value": "6 different corner radii: 6, 8, 10, 12, 14, 16px",
+     "expected": "3 or 4 steps",
+     "why": "Too many radii make the interface feel assembled from different kits.",
+     "fix": "Map every radius to 3 or 4 named steps (small controls, inputs and cards, sheets and dialogs, full).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 25,
+     "severity": "Default",
+     "rule": "5.2",
+     "kind": "nested-radius",
+     "where": "aside.add > div.tip > div.tip-inner \"Tip: most plants prefer too little water\"",
+     "value": "12px inside a 12px parent with 6px padding",
+     "expected": "about 6px (outer - padding)",
+     "why": "Nested corners that are not concentric look pinched or bulging next to their container.",
+     "fix": "Set the inner radius to 6px, or change the padding so outer minus padding lands on a scale step.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 26,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "near-duplicate-colour",
+     "where": "section.stats > div.stat > strong \"12\"",
+     "value": "rgb(47,126,75) next to rgb(47,125,74)",
+     "expected": "one colour",
+     "why": "Two almost identical colours are never intentional; they come from hard-coded values and make surfaces look patchy.",
+     "fix": "Replace both with the same colour token.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 27,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "near-duplicate-colour",
+     "where": "form.form > label > input",
+     "value": "rgb(233,233,233) next to rgb(230,230,230)",
+     "expected": "one colour",
+     "why": "Two almost identical colours are never intentional; they come from hard-coded values and make surfaces look patchy.",
+     "fix": "Replace both with the same colour token.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 28,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "header.topbar > a.logo \"Sprout\"",
+     "value": "19px text (x3)",
+     "expected": "16px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (16px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 29,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "header.topbar > span.avatar \"MA\"",
+     "value": "13px text (x13)",
+     "expected": "12px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (12px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 30,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "main.page > h1 \"Good morning, Mina\"",
+     "value": "30px text (x1)",
+     "expected": "28px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (28px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 31,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "aside.add > form.form > button.primary \"Add plant\"",
+     "value": "15px text (x1)",
+     "expected": "14px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (14px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 32,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "weight-count",
+     "where": "(page)",
+     "value": "4 font weights: 300, 400, 600, 700",
+     "expected": "3 weights at most (regular, medium, bold)",
+     "why": "Many weights compete with each other and weaken emphasis.",
+     "fix": "Keep regular for text, one medium for labels and buttons, one bold for headings.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 33,
+     "severity": "Default",
+     "rule": "5.4",
+     "kind": "icon-size-off",
+     "where": "ul.plants > li.plant > button.icon-btn \"Edit\"",
+     "value": "13px icons (x6)",
+     "expected": "20 or 24px (16, 18, 32, 40, 48 for special cases)",
+     "why": "Icon sets are drawn for specific sizes; in between, strokes blur and icons look mismatched next to each other.",
+     "fix": "Use 20px, through an icon size token.",
+     "count": 1,
+     "others": []
+    }
+   ],
+   "unreadableStylesheets": 0,
+   "summary": "33 findings at 320px: 7 Hard, 6 Strong, 20 Default (scales from Material 3)"
+  }
+ },
+ "800": {
+  "4": {
+   "viewport": "800x900",
+   "breakpoints": {
+    "from": "project media queries",
+    "widths": [
+     [
+      800,
+      801
+     ]
+    ]
+   },
+   "scales": {
+    "spacing": "Material 3",
+    "radius": "Material 3",
+    "type": "Material 3"
+   },
+   "findings": [
+    {
+     "n": 1,
+     "severity": "Hard",
+     "rule": "4.4",
+     "kind": "clipped-content",
+     "where": "ul.plants > li.plant > button.water \"Water now\"",
+     "value": "content 3px larger than its box (overflow: hidden) (on 3 elements)",
+     "expected": "content fits, or is truncated on purpose",
+     "why": "Part of the content is cut off with no sign it is there, so people miss information or controls.",
+     "fix": "Let the box grow (min-width: 0 on flex/grid children, no fixed width or height), wrap the content, or truncate deliberately with text-overflow: ellipsis and the full text in a tooltip or title.",
+     "count": 3,
+     "others": [
+      "ul.plants > li.plant > button.water \"Water now\"",
+      "ul.plants > li.plant.late > button.water \"Water now\""
+     ]
+    },
+    {
+     "n": 2,
+     "severity": "Hard",
+     "rule": "1.2",
+     "kind": "faint-field",
+     "where": "form.form > label > input",
+     "value": "border 1.21:1, fill 1.00:1 against the page (on 2 elements)",
+     "expected": "3:1 for the border or the fill",
+     "why": "People cannot see where to click or type when a field has no visible edge (WCAG 1.4.11).",
+     "fix": "Use the outline token (3:1) for field borders, or give the field a fill that contrasts 3:1 with the page.",
+     "count": 2,
+     "others": [
+      "form.form > label > input"
+     ]
+    },
+    {
+     "n": 3,
+     "severity": "Hard",
+     "rule": "1.2",
+     "kind": "faint-field",
+     "where": "form.form > label > select \"7 days 14 days 21 days\"",
+     "value": "border 1.21:1, fill 1.00:1 against the page",
+     "expected": "3:1 for the border or the fill",
+     "why": "People cannot see where to click or type when a field has no visible edge (WCAG 1.4.11).",
+     "fix": "Use the outline token (3:1) for field borders, or give the field a fill that contrasts 3:1 with the page.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 4,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "main.page \"Saturday, 14 November Good morning, Mina\"",
+     "value": "gaps 6, 22, 30px between 4 stacked items",
+     "expected": "one gap (6px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 6px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 5,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "main.page > div.layout > section.today \"Watering is based on each plant's schedu\"",
+     "value": "gaps 6, 20px between 3 stacked items",
+     "expected": "one gap (6px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 6px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 6,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "div.layout > section.today > ul.plants \"🌿 Monstera Living room · last watered 8\"",
+     "value": "gaps 10, 18px between 3 stacked items",
+     "expected": "one gap (10px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 10px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 7,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "div.layout > aside.add > form.form \"Name Room Water every 7 days 14 days 21 \"",
+     "value": "gaps 14, 14, 18px between 4 stacked items",
+     "expected": "one gap (14px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 14px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 8,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "heading-proximity",
+     "where": "main.page > h1 \"Good morning, Mina\"",
+     "value": "6px above, 22px below",
+     "expected": "more space above than below",
+     "why": "A heading belongs to the content under it; when it sits closer to the previous section, readers group it with the wrong block.",
+     "fix": "Increase the space above the heading and reduce the space below (for example 24px above, 6px below).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 9,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "heading-proximity",
+     "where": "div.layout > section.today > h2 \"To water today\"",
+     "value": "6px above, 20px below",
+     "expected": "more space above than below",
+     "why": "A heading belongs to the content under it; when it sits closer to the previous section, readers group it with the wrong block.",
+     "fix": "Increase the space above the heading and reduce the space below (for example 24px above, 6px below).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 10,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar > nav.nav \"Today Plants Calendar\"",
+     "value": "18px used 12 times",
+     "expected": "16px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (16px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar > nav.nav \"Today Plants Calendar\"",
+      "main.page > section.stats > div.stat \"Plants 12\""
+     ]
+    },
+    {
+     "n": 11,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "section.today > ul.plants > li.plant \"🌿 Monstera Living room · last watered 8\"",
+     "value": "13px used 6 times",
+     "expected": "12px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (12px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "section.today > ul.plants > li.plant \"🌿 Monstera Living room · last watered 8\"",
+      "section.today > ul.plants > li.plant \"🌵 Golden barrel cactus Window sill · la\""
+     ]
+    },
+    {
+     "n": 12,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "ul.plants > li.plant > button.water \"Water now\"",
+     "value": "9px used 6 times",
+     "expected": "8px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (8px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "ul.plants > li.plant > button.water \"Water now\"",
+      "ul.plants > li.plant > button.water \"Water now\""
+     ]
+    },
+    {
+     "n": 13,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar \"Sprout Today Plants Calendar MA\"",
+     "value": "26px used 4 times",
+     "expected": "24px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (24px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar \"Sprout Today Plants Calendar MA\"",
+      "main.page \"Saturday, 14 November Good morning, Mina\""
+     ]
+    },
+    {
+     "n": 14,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar \"Sprout Today Plants Calendar MA\"",
+     "value": "22px used 3 times",
+     "expected": "20px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (20px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar \"Sprout Today Plants Calendar MA\"",
+      "main.page > h1 \"Good morning, Mina\""
+     ]
+    },
+    {
+     "n": 15,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "main.page \"Saturday, 14 November Good morning, Mina\"",
+     "value": "30px used 3 times",
+     "expected": "32px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (32px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "main.page \"Saturday, 14 November Good morning, Mina\"",
+      "main.page > section.stats \"Plants 12 Need water today 3 Healthy 92%\""
+     ]
+    },
+    {
+     "n": 16,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "component-drift",
+     "where": "main.page > section.stats > div.stat \"Healthy 92%\"",
+     "value": "padding differs between 3 \"stat\" elements: 18px 18px 18px 18px (x2), 20px 20px 20px 20px (x1)",
+     "expected": "18px 18px 18px 18px on all",
+     "why": "The same component should look the same everywhere; small variations read as mistakes and erode trust.",
+     "fix": "Give every instance the component's padding (18px 18px 18px 18px) from one shared style, or make the difference an explicit variant.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 17,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "main.page > section.stats > div.stat \"Plants 12\"",
+     "value": "14px corner radius (x3)",
+     "expected": "12px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 12px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 18,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "ul.plants > li.plant > div.thumb \"🌿\"",
+     "value": "10px corner radius (x4)",
+     "expected": "8px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 8px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 19,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "form.form > label > input",
+     "value": "6px corner radius (x3)",
+     "expected": "4px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 4px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 20,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-count",
+     "where": "(page)",
+     "value": "6 different corner radii: 6, 8, 10, 12, 14, 16px",
+     "expected": "3 or 4 steps",
+     "why": "Too many radii make the interface feel assembled from different kits.",
+     "fix": "Map every radius to 3 or 4 named steps (small controls, inputs and cards, sheets and dialogs, full).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 21,
+     "severity": "Default",
+     "rule": "5.2",
+     "kind": "nested-radius",
+     "where": "aside.add > div.tip > div.tip-inner \"Tip: most plants prefer too little water\"",
+     "value": "12px inside a 12px parent with 6px padding",
+     "expected": "about 6px (outer - padding)",
+     "why": "Nested corners that are not concentric look pinched or bulging next to their container.",
+     "fix": "Set the inner radius to 6px, or change the padding so outer minus padding lands on a scale step.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 22,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "near-duplicate-colour",
+     "where": "section.stats > div.stat > strong \"12\"",
+     "value": "rgb(47,126,75) next to rgb(47,125,74)",
+     "expected": "one colour",
+     "why": "Two almost identical colours are never intentional; they come from hard-coded values and make surfaces look patchy.",
+     "fix": "Replace both with the same colour token.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 23,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "near-duplicate-colour",
+     "where": "form.form > label > input",
+     "value": "rgb(233,233,233) next to rgb(230,230,230)",
+     "expected": "one colour",
+     "why": "Two almost identical colours are never intentional; they come from hard-coded values and make surfaces look patchy.",
+     "fix": "Replace both with the same colour token.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 24,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "header.topbar > a.logo \"Sprout\"",
+     "value": "19px text (x3)",
+     "expected": "16px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (16px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 25,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "header.topbar > span.avatar \"MA\"",
+     "value": "13px text (x13)",
+     "expected": "12px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (12px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 26,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "main.page > h1 \"Good morning, Mina\"",
+     "value": "30px text (x1)",
+     "expected": "28px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (28px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 27,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "aside.add > form.form > button.primary \"Add plant\"",
+     "value": "15px text (x1)",
+     "expected": "14px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (14px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 28,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "weight-count",
+     "where": "(page)",
+     "value": "4 font weights: 300, 400, 600, 700",
+     "expected": "3 weights at most (regular, medium, bold)",
+     "why": "Many weights compete with each other and weaken emphasis.",
+     "fix": "Keep regular for text, one medium for labels and buttons, one bold for headings.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 29,
+     "severity": "Default",
+     "rule": "5.4",
+     "kind": "icon-size-off",
+     "where": "ul.plants > li.plant > button.icon-btn \"Edit\"",
+     "value": "13px icons (x6)",
+     "expected": "20 or 24px (16, 18, 32, 40, 48 for special cases)",
+     "why": "Icon sets are drawn for specific sizes; in between, strokes blur and icons look mismatched next to each other.",
+     "fix": "Use 20px, through an icon size token.",
+     "count": 1,
+     "others": []
+    }
+   ],
+   "unreadableStylesheets": 0,
+   "summary": "29 findings at 800px: 3 Hard, 6 Strong, 20 Default (scales from Material 3)"
+  }
+ },
+ "801": {
+  "4": {
+   "viewport": "801x900",
+   "breakpoints": {
+    "from": "project media queries",
+    "widths": [
+     [
+      800,
+      801
+     ]
+    ]
+   },
+   "scales": {
+    "spacing": "Material 3",
+    "radius": "Material 3",
+    "type": "Material 3"
+   },
+   "findings": [
+    {
+     "n": 1,
+     "severity": "Hard",
+     "rule": "4.4",
+     "kind": "clipped-content",
+     "where": "ul.plants > li.plant > button.water \"Water now\"",
+     "value": "content 3px larger than its box (overflow: hidden) (on 3 elements)",
+     "expected": "content fits, or is truncated on purpose",
+     "why": "Part of the content is cut off with no sign it is there, so people miss information or controls.",
+     "fix": "Let the box grow (min-width: 0 on flex/grid children, no fixed width or height), wrap the content, or truncate deliberately with text-overflow: ellipsis and the full text in a tooltip or title.",
+     "count": 3,
+     "others": [
+      "ul.plants > li.plant > button.water \"Water now\"",
+      "ul.plants > li.plant.late > button.water \"Water now\""
+     ]
+    },
+    {
+     "n": 2,
+     "severity": "Hard",
+     "rule": "1.2",
+     "kind": "faint-field",
+     "where": "form.form > label > input",
+     "value": "border 1.21:1, fill 1.00:1 against the page (on 2 elements)",
+     "expected": "3:1 for the border or the fill",
+     "why": "People cannot see where to click or type when a field has no visible edge (WCAG 1.4.11).",
+     "fix": "Use the outline token (3:1) for field borders, or give the field a fill that contrasts 3:1 with the page.",
+     "count": 2,
+     "others": [
+      "form.form > label > input"
+     ]
+    },
+    {
+     "n": 3,
+     "severity": "Hard",
+     "rule": "1.2",
+     "kind": "faint-field",
+     "where": "form.form > label > select \"7 days 14 days 21 days\"",
+     "value": "border 1.21:1, fill 1.00:1 against the page",
+     "expected": "3:1 for the border or the fill",
+     "why": "People cannot see where to click or type when a field has no visible edge (WCAG 1.4.11).",
+     "fix": "Use the outline token (3:1) for field borders, or give the field a fill that contrasts 3:1 with the page.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 4,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "main.page \"Saturday, 14 November Good morning, Mina\"",
+     "value": "gaps 6, 22, 30px between 4 stacked items",
+     "expected": "one gap (6px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 6px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 5,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "main.page > div.layout > section.today \"Watering is based on each plant's schedu\"",
+     "value": "gaps 6, 20px between 3 stacked items",
+     "expected": "one gap (6px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 6px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 6,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "div.layout > section.today > ul.plants \"🌿 Monstera Living room · last watered 8\"",
+     "value": "gaps 10, 18px between 3 stacked items",
+     "expected": "one gap (10px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 10px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 7,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "div.layout > aside.add > form.form \"Name Room Water every 7 days 14 days 21 \"",
+     "value": "gaps 14, 14, 18px between 4 stacked items",
+     "expected": "one gap (14px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 14px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 8,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "heading-proximity",
+     "where": "main.page > h1 \"Good morning, Mina\"",
+     "value": "6px above, 22px below",
+     "expected": "more space above than below",
+     "why": "A heading belongs to the content under it; when it sits closer to the previous section, readers group it with the wrong block.",
+     "fix": "Increase the space above the heading and reduce the space below (for example 24px above, 6px below).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 9,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "heading-proximity",
+     "where": "div.layout > section.today > h2 \"To water today\"",
+     "value": "6px above, 20px below",
+     "expected": "more space above than below",
+     "why": "A heading belongs to the content under it; when it sits closer to the previous section, readers group it with the wrong block.",
+     "fix": "Increase the space above the heading and reduce the space below (for example 24px above, 6px below).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 10,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar > nav.nav \"Today Plants Calendar\"",
+     "value": "18px used 12 times",
+     "expected": "16px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (16px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar > nav.nav \"Today Plants Calendar\"",
+      "main.page > section.stats > div.stat \"Plants 12\""
+     ]
+    },
+    {
+     "n": 11,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "section.today > ul.plants > li.plant \"🌿 Monstera Living room · last watered 8\"",
+     "value": "13px used 6 times",
+     "expected": "12px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (12px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "section.today > ul.plants > li.plant \"🌿 Monstera Living room · last watered 8\"",
+      "section.today > ul.plants > li.plant \"🌵 Golden barrel cactus Window sill · la\""
+     ]
+    },
+    {
+     "n": 12,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "ul.plants > li.plant > button.water \"Water now\"",
+     "value": "9px used 6 times",
+     "expected": "8px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (8px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "ul.plants > li.plant > button.water \"Water now\"",
+      "ul.plants > li.plant > button.water \"Water now\""
+     ]
+    },
+    {
+     "n": 13,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar \"Sprout Today Plants Calendar MA\"",
+     "value": "26px used 4 times",
+     "expected": "24px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (24px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar \"Sprout Today Plants Calendar MA\"",
+      "main.page \"Saturday, 14 November Good morning, Mina\""
+     ]
+    },
+    {
+     "n": 14,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar \"Sprout Today Plants Calendar MA\"",
+     "value": "22px used 3 times",
+     "expected": "20px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (20px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar \"Sprout Today Plants Calendar MA\"",
+      "main.page > h1 \"Good morning, Mina\""
+     ]
+    },
+    {
+     "n": 15,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "main.page \"Saturday, 14 November Good morning, Mina\"",
+     "value": "30px used 3 times",
+     "expected": "32px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (32px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "main.page \"Saturday, 14 November Good morning, Mina\"",
+      "main.page > section.stats \"Plants 12 Need water today 3 Healthy 92%\""
+     ]
+    },
+    {
+     "n": 16,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "component-drift",
+     "where": "main.page > section.stats > div.stat \"Healthy 92%\"",
+     "value": "padding differs between 3 \"stat\" elements: 18px 18px 18px 18px (x2), 20px 20px 20px 20px (x1)",
+     "expected": "18px 18px 18px 18px on all",
+     "why": "The same component should look the same everywhere; small variations read as mistakes and erode trust.",
+     "fix": "Give every instance the component's padding (18px 18px 18px 18px) from one shared style, or make the difference an explicit variant.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 17,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "main.page > section.stats > div.stat \"Plants 12\"",
+     "value": "14px corner radius (x3)",
+     "expected": "12px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 12px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 18,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "ul.plants > li.plant > div.thumb \"🌿\"",
+     "value": "10px corner radius (x4)",
+     "expected": "8px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 8px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 19,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "form.form > label > input",
+     "value": "6px corner radius (x3)",
+     "expected": "4px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 4px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 20,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-count",
+     "where": "(page)",
+     "value": "6 different corner radii: 6, 8, 10, 12, 14, 16px",
+     "expected": "3 or 4 steps",
+     "why": "Too many radii make the interface feel assembled from different kits.",
+     "fix": "Map every radius to 3 or 4 named steps (small controls, inputs and cards, sheets and dialogs, full).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 21,
+     "severity": "Default",
+     "rule": "5.2",
+     "kind": "nested-radius",
+     "where": "aside.add > div.tip > div.tip-inner \"Tip: most plants prefer too little water\"",
+     "value": "12px inside a 12px parent with 6px padding",
+     "expected": "about 6px (outer - padding)",
+     "why": "Nested corners that are not concentric look pinched or bulging next to their container.",
+     "fix": "Set the inner radius to 6px, or change the padding so outer minus padding lands on a scale step.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 22,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "near-duplicate-colour",
+     "where": "section.stats > div.stat > strong \"12\"",
+     "value": "rgb(47,126,75) next to rgb(47,125,74)",
+     "expected": "one colour",
+     "why": "Two almost identical colours are never intentional; they come from hard-coded values and make surfaces look patchy.",
+     "fix": "Replace both with the same colour token.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 23,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "near-duplicate-colour",
+     "where": "form.form > label > input",
+     "value": "rgb(233,233,233) next to rgb(230,230,230)",
+     "expected": "one colour",
+     "why": "Two almost identical colours are never intentional; they come from hard-coded values and make surfaces look patchy.",
+     "fix": "Replace both with the same colour token.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 24,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "header.topbar > a.logo \"Sprout\"",
+     "value": "19px text (x3)",
+     "expected": "16px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (16px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 25,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "header.topbar > span.avatar \"MA\"",
+     "value": "13px text (x13)",
+     "expected": "12px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (12px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 26,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "main.page > h1 \"Good morning, Mina\"",
+     "value": "30px text (x1)",
+     "expected": "28px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (28px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 27,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "aside.add > form.form > button.primary \"Add plant\"",
+     "value": "15px text (x1)",
+     "expected": "14px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (14px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 28,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "weight-count",
+     "where": "(page)",
+     "value": "4 font weights: 300, 400, 600, 700",
+     "expected": "3 weights at most (regular, medium, bold)",
+     "why": "Many weights compete with each other and weaken emphasis.",
+     "fix": "Keep regular for text, one medium for labels and buttons, one bold for headings.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 29,
+     "severity": "Default",
+     "rule": "5.4",
+     "kind": "icon-size-off",
+     "where": "ul.plants > li.plant > button.icon-btn \"Edit\"",
+     "value": "13px icons (x6)",
+     "expected": "20 or 24px (16, 18, 32, 40, 48 for special cases)",
+     "why": "Icon sets are drawn for specific sizes; in between, strokes blur and icons look mismatched next to each other.",
+     "fix": "Use 20px, through an icon size token.",
+     "count": 1,
+     "others": []
+    }
+   ],
+   "unreadableStylesheets": 0,
+   "summary": "29 findings at 801px: 3 Hard, 6 Strong, 20 Default (scales from Material 3)"
+  }
+ },
+ "desktop": {
+  "1": {
+   "viewport": "1440x900",
+   "targets": 17,
+   "fail": [],
+   "warn": [],
+   "note": [],
+   "summary": "0 FAIL, 0 WARN, 0 NOTE of 17 targets at 1440x900 (resize to 390px wide for the touch check)"
+  },
+  "3": {
+   "checked": 39,
+   "fails": [
+    "4.21:1 (need 4.5) \"MA\" rgb(47, 125, 74) on rgb(220,239,226)",
+    "2.67:1 (need 4.5) \"Saturday, 14 November\" rgb(153, 153, 153) on rgb(247,248,246)",
+    "2.67:1 (need 4.5) \"Watering is based on each plant's schedu\" rgb(153, 153, 153) on rgb(247,248,246)",
+    "3.45:1 (need 4.5) \"Living room · last watered 8 days ago\" rgb(138, 138, 138) on rgb(255,255,255)",
+    "3.45:1 (need 4.5) \"Window sill · last watered 21 days ago\" rgb(138, 138, 138) on rgb(255,255,255)",
+    "3.67:1 (need 4.5) \"Bathroom · 2 days late\" rgb(224, 90, 71) on rgb(255,255,255)",
+    "4.31:1 (need 4.5) \"Tip: most plants prefer too little water\" rgb(47, 125, 74) on rgb(227,240,231)"
+   ],
+   "unknownBackground": [],
+   "summary": "7 FAIL of 39 text elements"
+  },
+  "4": {
+   "viewport": "1440x900",
+   "breakpoints": {
+    "from": "project media queries",
+    "widths": [
+     [
+      800,
+      801
+     ]
+    ]
+   },
+   "scales": {
+    "spacing": "Material 3",
+    "radius": "Material 3",
+    "type": "Material 3"
+   },
+   "findings": [
+    {
+     "n": 1,
+     "severity": "Hard",
+     "rule": "4.4",
+     "kind": "clipped-content",
+     "where": "ul.plants > li.plant > button.water \"Water now\"",
+     "value": "content 3px larger than its box (overflow: hidden) (on 3 elements)",
+     "expected": "content fits, or is truncated on purpose",
+     "why": "Part of the content is cut off with no sign it is there, so people miss information or controls.",
+     "fix": "Let the box grow (min-width: 0 on flex/grid children, no fixed width or height), wrap the content, or truncate deliberately with text-overflow: ellipsis and the full text in a tooltip or title.",
+     "count": 3,
+     "others": [
+      "ul.plants > li.plant > button.water \"Water now\"",
+      "ul.plants > li.plant.late > button.water \"Water now\""
+     ]
+    },
+    {
+     "n": 2,
+     "severity": "Hard",
+     "rule": "1.2",
+     "kind": "faint-field",
+     "where": "form.form > label > input",
+     "value": "border 1.21:1, fill 1.00:1 against the page (on 2 elements)",
+     "expected": "3:1 for the border or the fill",
+     "why": "People cannot see where to click or type when a field has no visible edge (WCAG 1.4.11).",
+     "fix": "Use the outline token (3:1) for field borders, or give the field a fill that contrasts 3:1 with the page.",
+     "count": 2,
+     "others": [
+      "form.form > label > input"
+     ]
+    },
+    {
+     "n": 3,
+     "severity": "Hard",
+     "rule": "1.2",
+     "kind": "faint-field",
+     "where": "form.form > label > select \"7 days 14 days 21 days\"",
+     "value": "border 1.21:1, fill 1.00:1 against the page",
+     "expected": "3:1 for the border or the fill",
+     "why": "People cannot see where to click or type when a field has no visible edge (WCAG 1.4.11).",
+     "fix": "Use the outline token (3:1) for field borders, or give the field a fill that contrasts 3:1 with the page.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 4,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "main.page \"Saturday, 14 November Good morning, Mina\"",
+     "value": "gaps 6, 22, 30px between 4 stacked items",
+     "expected": "one gap (6px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 6px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 5,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "main.page > div.layout > section.today \"Watering is based on each plant's schedu\"",
+     "value": "gaps 6, 20px between 3 stacked items",
+     "expected": "one gap (6px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 6px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 6,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "div.layout > section.today > ul.plants \"🌿 Monstera Living room · last watered 8\"",
+     "value": "gaps 10, 18px between 3 stacked items",
+     "expected": "one gap (10px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 10px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 7,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "div.layout > aside.add > form.form \"Name Room Water every 7 days 14 days 21 \"",
+     "value": "gaps 14, 14, 18px between 4 stacked items",
+     "expected": "one gap (14px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 14px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 8,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "heading-proximity",
+     "where": "main.page > h1 \"Good morning, Mina\"",
+     "value": "6px above, 22px below",
+     "expected": "more space above than below",
+     "why": "A heading belongs to the content under it; when it sits closer to the previous section, readers group it with the wrong block.",
+     "fix": "Increase the space above the heading and reduce the space below (for example 24px above, 6px below).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 9,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "heading-proximity",
+     "where": "div.layout > section.today > h2 \"To water today\"",
+     "value": "6px above, 20px below",
+     "expected": "more space above than below",
+     "why": "A heading belongs to the content under it; when it sits closer to the previous section, readers group it with the wrong block.",
+     "fix": "Increase the space above the heading and reduce the space below (for example 24px above, 6px below).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 10,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar > nav.nav \"Today Plants Calendar\"",
+     "value": "18px used 12 times",
+     "expected": "16px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (16px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar > nav.nav \"Today Plants Calendar\"",
+      "main.page > section.stats > div.stat \"Plants 12\""
+     ]
+    },
+    {
+     "n": 11,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "section.today > ul.plants > li.plant \"🌿 Monstera Living room · last watered 8\"",
+     "value": "13px used 6 times",
+     "expected": "12px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (12px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "section.today > ul.plants > li.plant \"🌿 Monstera Living room · last watered 8\"",
+      "section.today > ul.plants > li.plant \"🌵 Golden barrel cactus Window sill · la\""
+     ]
+    },
+    {
+     "n": 12,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "ul.plants > li.plant > button.water \"Water now\"",
+     "value": "9px used 6 times",
+     "expected": "8px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (8px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "ul.plants > li.plant > button.water \"Water now\"",
+      "ul.plants > li.plant > button.water \"Water now\""
+     ]
+    },
+    {
+     "n": 13,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar \"Sprout Today Plants Calendar MA\"",
+     "value": "26px used 4 times",
+     "expected": "24px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (24px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar \"Sprout Today Plants Calendar MA\"",
+      "main.page \"Saturday, 14 November Good morning, Mina\""
+     ]
+    },
+    {
+     "n": 14,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar \"Sprout Today Plants Calendar MA\"",
+     "value": "22px used 3 times",
+     "expected": "20px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (20px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar \"Sprout Today Plants Calendar MA\"",
+      "main.page > h1 \"Good morning, Mina\""
+     ]
+    },
+    {
+     "n": 15,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "main.page \"Saturday, 14 November Good morning, Mina\"",
+     "value": "30px used 3 times",
+     "expected": "32px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (32px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "main.page \"Saturday, 14 November Good morning, Mina\"",
+      "main.page > section.stats \"Plants 12 Need water today 3 Healthy 92%\""
+     ]
+    },
+    {
+     "n": 16,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "component-drift",
+     "where": "main.page > section.stats > div.stat \"Healthy 92%\"",
+     "value": "padding differs between 3 \"stat\" elements: 18px 18px 18px 18px (x2), 20px 20px 20px 20px (x1)",
+     "expected": "18px 18px 18px 18px on all",
+     "why": "The same component should look the same everywhere; small variations read as mistakes and erode trust.",
+     "fix": "Give every instance the component's padding (18px 18px 18px 18px) from one shared style, or make the difference an explicit variant.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 17,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "main.page > section.stats > div.stat \"Plants 12\"",
+     "value": "14px corner radius (x3)",
+     "expected": "12px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 12px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 18,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "ul.plants > li.plant > div.thumb \"🌿\"",
+     "value": "10px corner radius (x4)",
+     "expected": "8px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 8px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 19,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "form.form > label > input",
+     "value": "6px corner radius (x3)",
+     "expected": "4px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 4px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 20,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-count",
+     "where": "(page)",
+     "value": "6 different corner radii: 6, 8, 10, 12, 14, 16px",
+     "expected": "3 or 4 steps",
+     "why": "Too many radii make the interface feel assembled from different kits.",
+     "fix": "Map every radius to 3 or 4 named steps (small controls, inputs and cards, sheets and dialogs, full).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 21,
+     "severity": "Default",
+     "rule": "5.2",
+     "kind": "nested-radius",
+     "where": "aside.add > div.tip > div.tip-inner \"Tip: most plants prefer too little water\"",
+     "value": "12px inside a 12px parent with 6px padding",
+     "expected": "about 6px (outer - padding)",
+     "why": "Nested corners that are not concentric look pinched or bulging next to their container.",
+     "fix": "Set the inner radius to 6px, or change the padding so outer minus padding lands on a scale step.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 22,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "near-duplicate-colour",
+     "where": "section.stats > div.stat > strong \"12\"",
+     "value": "rgb(47,126,75) next to rgb(47,125,74)",
+     "expected": "one colour",
+     "why": "Two almost identical colours are never intentional; they come from hard-coded values and make surfaces look patchy.",
+     "fix": "Replace both with the same colour token.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 23,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "near-duplicate-colour",
+     "where": "form.form > label > input",
+     "value": "rgb(233,233,233) next to rgb(230,230,230)",
+     "expected": "one colour",
+     "why": "Two almost identical colours are never intentional; they come from hard-coded values and make surfaces look patchy.",
+     "fix": "Replace both with the same colour token.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 24,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "header.topbar > a.logo \"Sprout\"",
+     "value": "19px text (x3)",
+     "expected": "16px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (16px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 25,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "header.topbar > span.avatar \"MA\"",
+     "value": "13px text (x13)",
+     "expected": "12px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (12px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 26,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "main.page > h1 \"Good morning, Mina\"",
+     "value": "30px text (x1)",
+     "expected": "28px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (28px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 27,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "aside.add > form.form > button.primary \"Add plant\"",
+     "value": "15px text (x1)",
+     "expected": "14px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (14px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 28,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "weight-count",
+     "where": "(page)",
+     "value": "4 font weights: 300, 400, 600, 700",
+     "expected": "3 weights at most (regular, medium, bold)",
+     "why": "Many weights compete with each other and weaken emphasis.",
+     "fix": "Keep regular for text, one medium for labels and buttons, one bold for headings.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 29,
+     "severity": "Default",
+     "rule": "5.4",
+     "kind": "icon-size-off",
+     "where": "ul.plants > li.plant > button.icon-btn \"Edit\"",
+     "value": "13px icons (x6)",
+     "expected": "20 or 24px (16, 18, 32, 40, 48 for special cases)",
+     "why": "Icon sets are drawn for specific sizes; in between, strokes blur and icons look mismatched next to each other.",
+     "fix": "Use 20px, through an icon size token.",
+     "count": 1,
+     "others": []
+    }
+   ],
+   "unreadableStylesheets": 0,
+   "summary": "29 findings at 1440px: 3 Hard, 6 Strong, 20 Default (scales from Material 3)"
+  },
+  "5": {
+   "viewport": "1440x900",
+   "stops": 17,
+   "fail": [
+    "ul.plants > li.plant > button.water \"Water now\": no visible change on focus (2.4.7). Add a :focus-visible outline, for example 2px solid var(--focus-ring-color) with 2px offset.",
+    "ul.plants > li.plant > button.icon-btn \"Edit\": no visible change on focus (2.4.7). Add a :focus-visible outline, for example 2px solid var(--focus-ring-color) with 2px offset.",
+    "ul.plants > li.plant > button.icon-btn \"Delete\": no visible change on focus (2.4.7). Add a :focus-visible outline, for example 2px solid var(--focus-ring-color) with 2px offset.",
+    "ul.plants > li.plant.late > button.water \"Water now\": no visible change on focus (2.4.7). Add a :focus-visible outline, for example 2px solid var(--focus-ring-color) with 2px offset.",
+    "ul.plants > li.plant.late > button.icon-btn \"Edit\": no visible change on focus (2.4.7). Add a :focus-visible outline, for example 2px solid var(--focus-ring-color) with 2px offset.",
+    "ul.plants > li.plant.late > button.icon-btn \"Delete\": no visible change on focus (2.4.7). Add a :focus-visible outline, for example 2px solid var(--focus-ring-color) with 2px offset.",
+    "aside.add > form.form > button.primary \"Add plant\": no visible change on focus (2.4.7). Add a :focus-visible outline, for example 2px solid var(--focus-ring-color) with 2px offset."
+   ],
+   "warn": [],
+   "order": [
+    "header.topbar > a.logo \"Sprout\"",
+    "header.topbar > nav.nav > a.active \"Today\"",
+    "header.topbar > nav.nav > a \"Plants\"",
+    "header.topbar > nav.nav > a \"Calendar\"",
+    "ul.plants > li.plant > button.water \"Water now\"",
+    "ul.plants > li.plant > button.icon-btn \"Edit\"",
+    "ul.plants > li.plant > button.icon-btn \"Delete\"",
+    "ul.plants > li.plant > button.water \"Water now\"",
+    "ul.plants > li.plant > button.icon-btn \"Edit\"",
+    "ul.plants > li.plant > button.icon-btn \"Delete\"",
+    "ul.plants > li.plant.late > button.water \"Water now\"",
+    "ul.plants > li.plant.late > button.icon-btn \"Edit\"",
+    "ul.plants > li.plant.late > button.icon-btn \"Delete\"",
+    "form.form > label > input \"e.g. Fiddle leaf fig\"",
+    "form.form > label > input \"e.g. Bedroom\"",
+    "form.form > label > select \"7 days 14 days 21 days\"",
+    "aside.add > form.form > button.primary \"Add plant\""
+   ],
+   "summary": "7 FAIL, 0 WARN over 17 Tab stops at 1440x900"
+  }
+ },
+ "mobile": {
+  "1": {
+   "viewport": "390x844",
+   "targets": 17,
+   "fail": [],
+   "warn": [
+    "html > body > header.topbar > a.logo \"Sprout\" 90.1x23 under 44x44 on mobile",
+    "body > header.topbar > nav.nav > a.active:nth-of-type(1) \"Today\" 41.5x17 under 44x44 on mobile",
+    "body > header.topbar > nav.nav > a:nth-of-type(2) \"Plants\" 40.3x17 under 44x44 on mobile",
+    "body > header.topbar > nav.nav > a:nth-of-type(3) \"Calendar\" 59.6x17 under 44x44 on mobile",
+    "section.today > ul.plants > li.plant:nth-of-type(1) > button.water:nth-of-type(1) \"Water now\" 96x35 under 44x44 on mobile",
+    "section.today > ul.plants > li.plant:nth-of-type(1) > button.icon-btn:nth-of-type(2) \"Edit\" 22x22 under 44x44 on mobile",
+    "section.today > ul.plants > li.plant:nth-of-type(1) > button.icon-btn:nth-of-type(3) \"Delete\" 22x22 under 44x44 on mobile",
+    "section.today > ul.plants > li.plant:nth-of-type(2) > button.water:nth-of-type(1) \"Water now\" 96x35 under 44x44 on mobile",
+    "section.today > ul.plants > li.plant:nth-of-type(2) > button.icon-btn:nth-of-type(2) \"Edit\" 22x22 under 44x44 on mobile",
+    "section.today > ul.plants > li.plant:nth-of-type(2) > button.icon-btn:nth-of-type(3) \"Delete\" 22x22 under 44x44 on mobile",
+    "section.today > ul.plants > li.plant.late:nth-of-type(3) > button.water:nth-of-type(1) \"Water now\" 96x35 under 44x44 on mobile",
+    "section.today > ul.plants > li.plant.late:nth-of-type(3) > button.icon-btn:nth-of-type(2) \"Edit\" 22x22 under 44x44 on mobile",
+    "section.today > ul.plants > li.plant.late:nth-of-type(3) > button.icon-btn:nth-of-type(3) \"Delete\" 22x22 under 44x44 on mobile",
+    "div.layout > aside.add > form.form > button.primary \"Add plant\" 298.5x43 under 44x44 on mobile"
+   ],
+   "note": [],
+   "summary": "0 FAIL, 14 WARN, 0 NOTE of 17 targets at 390x844"
+  },
+  "3": {
+   "checked": 39,
+   "fails": [
+    "4.21:1 (need 4.5) \"MA\" rgb(47, 125, 74) on rgb(220,239,226)",
+    "2.67:1 (need 4.5) \"Saturday, 14 November\" rgb(153, 153, 153) on rgb(247,248,246)",
+    "2.67:1 (need 4.5) \"Watering is based on each plant's schedu\" rgb(153, 153, 153) on rgb(247,248,246)",
+    "3.45:1 (need 4.5) \"Living room · last watered 8 days ago\" rgb(138, 138, 138) on rgb(255,255,255)",
+    "3.45:1 (need 4.5) \"Window sill · last watered 21 days ago\" rgb(138, 138, 138) on rgb(255,255,255)",
+    "3.67:1 (need 4.5) \"Bathroom · 2 days late\" rgb(224, 90, 71) on rgb(255,255,255)",
+    "4.31:1 (need 4.5) \"Tip: most plants prefer too little water\" rgb(47, 125, 74) on rgb(227,240,231)"
+   ],
+   "unknownBackground": [],
+   "summary": "7 FAIL of 39 text elements"
+  },
+  "4": {
+   "viewport": "390x844",
+   "breakpoints": {
+    "from": "project media queries",
+    "widths": [
+     [
+      800,
+      801
+     ]
+    ]
+   },
+   "scales": {
+    "spacing": "Material 3",
+    "radius": "Material 3",
+    "type": "Material 3"
+   },
+   "findings": [
+    {
+     "n": 1,
+     "severity": "Hard",
+     "rule": "4.4",
+     "kind": "horizontal-scroll",
+     "where": "main.page > section.stats \"Plants 12 Need water today 3 Healthy 92%\"",
+     "value": "page is 688px wide in a 390px viewport (2 children of main.page > section.stats reach 688px)",
+     "expected": "no horizontal scroll at 390px",
+     "why": "Content wider than the screen forces sideways scrolling and hides content; WCAG 1.4.10 (Reflow) requires none at 320px.",
+     "fix": "Constrain the element: max-width: 100%, min-width: 0 on flex/grid children, wrap long words (overflow-wrap: anywhere), or let tables scroll inside their own container. Its children have min-width: 210px; let them wrap or stack (flex-wrap: wrap, or a grid with minmax).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 2,
+     "severity": "Hard",
+     "rule": "4.4",
+     "kind": "clipped-content",
+     "where": "ul.plants > li.plant > button.water \"Water now\"",
+     "value": "content 3px larger than its box (overflow: hidden) (on 3 elements)",
+     "expected": "content fits, or is truncated on purpose",
+     "why": "Part of the content is cut off with no sign it is there, so people miss information or controls.",
+     "fix": "Let the box grow (min-width: 0 on flex/grid children, no fixed width or height), wrap the content, or truncate deliberately with text-overflow: ellipsis and the full text in a tooltip or title.",
+     "count": 3,
+     "others": [
+      "ul.plants > li.plant > button.water \"Water now\"",
+      "ul.plants > li.plant.late > button.water \"Water now\""
+     ]
+    },
+    {
+     "n": 3,
+     "severity": "Hard",
+     "rule": "1.2",
+     "kind": "faint-field",
+     "where": "form.form > label > input",
+     "value": "border 1.21:1, fill 1.00:1 against the page (on 2 elements)",
+     "expected": "3:1 for the border or the fill",
+     "why": "People cannot see where to click or type when a field has no visible edge (WCAG 1.4.11).",
+     "fix": "Use the outline token (3:1) for field borders, or give the field a fill that contrasts 3:1 with the page.",
+     "count": 2,
+     "others": [
+      "form.form > label > input"
+     ]
+    },
+    {
+     "n": 4,
+     "severity": "Hard",
+     "rule": "1.2",
+     "kind": "faint-field",
+     "where": "form.form > label > select \"7 days 14 days 21 days\"",
+     "value": "border 1.21:1, fill 1.00:1 against the page",
+     "expected": "3:1 for the border or the fill",
+     "why": "People cannot see where to click or type when a field has no visible edge (WCAG 1.4.11).",
+     "fix": "Use the outline token (3:1) for field borders, or give the field a fill that contrasts 3:1 with the page.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 5,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "main.page \"Saturday, 14 November Good morning, Mina\"",
+     "value": "gaps 6, 22, 30px between 4 stacked items",
+     "expected": "one gap (6px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 6px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 6,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "main.page > div.layout > section.today \"Watering is based on each plant's schedu\"",
+     "value": "gaps 6, 20px between 3 stacked items",
+     "expected": "one gap (6px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 6px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 7,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "div.layout > section.today > ul.plants \"🌿 Monstera Living room · last watered 8\"",
+     "value": "gaps 10, 18px between 3 stacked items",
+     "expected": "one gap (10px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 10px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 8,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "div.layout > aside.add > form.form \"Name Room Water every 7 days 14 days 21 \"",
+     "value": "gaps 14, 14, 18px between 4 stacked items",
+     "expected": "one gap (14px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 14px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 9,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "heading-proximity",
+     "where": "main.page > h1 \"Good morning, Mina\"",
+     "value": "6px above, 22px below",
+     "expected": "more space above than below",
+     "why": "A heading belongs to the content under it; when it sits closer to the previous section, readers group it with the wrong block.",
+     "fix": "Increase the space above the heading and reduce the space below (for example 24px above, 6px below).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 10,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "heading-proximity",
+     "where": "div.layout > section.today > h2 \"To water today\"",
+     "value": "6px above, 20px below",
+     "expected": "more space above than below",
+     "why": "A heading belongs to the content under it; when it sits closer to the previous section, readers group it with the wrong block.",
+     "fix": "Increase the space above the heading and reduce the space below (for example 24px above, 6px below).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 11,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar > nav.nav \"Today Plants Calendar\"",
+     "value": "18px used 12 times",
+     "expected": "16px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (16px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar > nav.nav \"Today Plants Calendar\"",
+      "main.page > section.stats > div.stat \"Plants 12\""
+     ]
+    },
+    {
+     "n": 12,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "section.today > ul.plants > li.plant \"🌿 Monstera Living room · last watered 8\"",
+     "value": "13px used 6 times",
+     "expected": "12px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (12px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "section.today > ul.plants > li.plant \"🌿 Monstera Living room · last watered 8\"",
+      "section.today > ul.plants > li.plant \"🌵 Golden barrel cactus Window sill · la\""
+     ]
+    },
+    {
+     "n": 13,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "ul.plants > li.plant > button.water \"Water now\"",
+     "value": "9px used 6 times",
+     "expected": "8px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (8px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "ul.plants > li.plant > button.water \"Water now\"",
+      "ul.plants > li.plant > button.water \"Water now\""
+     ]
+    },
+    {
+     "n": 14,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar \"Sprout Today Plants Calendar MA\"",
+     "value": "26px used 4 times",
+     "expected": "24px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (24px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar \"Sprout Today Plants Calendar MA\"",
+      "main.page \"Saturday, 14 November Good morning, Mina\""
+     ]
+    },
+    {
+     "n": 15,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar \"Sprout Today Plants Calendar MA\"",
+     "value": "22px used 3 times",
+     "expected": "20px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (20px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar \"Sprout Today Plants Calendar MA\"",
+      "main.page > h1 \"Good morning, Mina\""
+     ]
+    },
+    {
+     "n": 16,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "main.page \"Saturday, 14 November Good morning, Mina\"",
+     "value": "30px used 3 times",
+     "expected": "32px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (32px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "main.page \"Saturday, 14 November Good morning, Mina\"",
+      "main.page > section.stats \"Plants 12 Need water today 3 Healthy 92%\""
+     ]
+    },
+    {
+     "n": 17,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "component-drift",
+     "where": "main.page > section.stats > div.stat \"Healthy 92%\"",
+     "value": "padding differs between 3 \"stat\" elements: 18px 18px 18px 18px (x2), 20px 20px 20px 20px (x1)",
+     "expected": "18px 18px 18px 18px on all",
+     "why": "The same component should look the same everywhere; small variations read as mistakes and erode trust.",
+     "fix": "Give every instance the component's padding (18px 18px 18px 18px) from one shared style, or make the difference an explicit variant.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 18,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "main.page > section.stats > div.stat \"Plants 12\"",
+     "value": "14px corner radius (x3)",
+     "expected": "12px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 12px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 19,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "ul.plants > li.plant > div.thumb \"🌿\"",
+     "value": "10px corner radius (x4)",
+     "expected": "8px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 8px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 20,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "form.form > label > input",
+     "value": "6px corner radius (x3)",
+     "expected": "4px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 4px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 21,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-count",
+     "where": "(page)",
+     "value": "6 different corner radii: 6, 8, 10, 12, 14, 16px",
+     "expected": "3 or 4 steps",
+     "why": "Too many radii make the interface feel assembled from different kits.",
+     "fix": "Map every radius to 3 or 4 named steps (small controls, inputs and cards, sheets and dialogs, full).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 22,
+     "severity": "Default",
+     "rule": "5.2",
+     "kind": "nested-radius",
+     "where": "aside.add > div.tip > div.tip-inner \"Tip: most plants prefer too little water\"",
+     "value": "12px inside a 12px parent with 6px padding",
+     "expected": "about 6px (outer - padding)",
+     "why": "Nested corners that are not concentric look pinched or bulging next to their container.",
+     "fix": "Set the inner radius to 6px, or change the padding so outer minus padding lands on a scale step.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 23,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "near-duplicate-colour",
+     "where": "section.stats > div.stat > strong \"12\"",
+     "value": "rgb(47,126,75) next to rgb(47,125,74)",
+     "expected": "one colour",
+     "why": "Two almost identical colours are never intentional; they come from hard-coded values and make surfaces look patchy.",
+     "fix": "Replace both with the same colour token.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 24,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "near-duplicate-colour",
+     "where": "form.form > label > input",
+     "value": "rgb(233,233,233) next to rgb(230,230,230)",
+     "expected": "one colour",
+     "why": "Two almost identical colours are never intentional; they come from hard-coded values and make surfaces look patchy.",
+     "fix": "Replace both with the same colour token.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 25,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "header.topbar > a.logo \"Sprout\"",
+     "value": "19px text (x3)",
+     "expected": "16px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (16px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 26,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "header.topbar > span.avatar \"MA\"",
+     "value": "13px text (x13)",
+     "expected": "12px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (12px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 27,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "main.page > h1 \"Good morning, Mina\"",
+     "value": "30px text (x1)",
+     "expected": "28px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (28px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 28,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "aside.add > form.form > button.primary \"Add plant\"",
+     "value": "15px text (x1)",
+     "expected": "14px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (14px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 29,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "weight-count",
+     "where": "(page)",
+     "value": "4 font weights: 300, 400, 600, 700",
+     "expected": "3 weights at most (regular, medium, bold)",
+     "why": "Many weights compete with each other and weaken emphasis.",
+     "fix": "Keep regular for text, one medium for labels and buttons, one bold for headings.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 30,
+     "severity": "Default",
+     "rule": "5.4",
+     "kind": "icon-size-off",
+     "where": "ul.plants > li.plant > button.icon-btn \"Edit\"",
+     "value": "13px icons (x6)",
+     "expected": "20 or 24px (16, 18, 32, 40, 48 for special cases)",
+     "why": "Icon sets are drawn for specific sizes; in between, strokes blur and icons look mismatched next to each other.",
+     "fix": "Use 20px, through an icon size token.",
+     "count": 1,
+     "others": []
+    }
+   ],
+   "unreadableStylesheets": 0,
+   "summary": "30 findings at 390px: 4 Hard, 6 Strong, 20 Default (scales from Material 3)"
+  }
+ },
+ "tablet": {
+  "4": {
+   "viewport": "768x1024",
+   "breakpoints": {
+    "from": "project media queries",
+    "widths": [
+     [
+      800,
+      801
+     ]
+    ]
+   },
+   "scales": {
+    "spacing": "Material 3",
+    "radius": "Material 3",
+    "type": "Material 3"
+   },
+   "findings": [
+    {
+     "n": 1,
+     "severity": "Hard",
+     "rule": "4.4",
+     "kind": "clipped-content",
+     "where": "ul.plants > li.plant > button.water \"Water now\"",
+     "value": "content 3px larger than its box (overflow: hidden) (on 3 elements)",
+     "expected": "content fits, or is truncated on purpose",
+     "why": "Part of the content is cut off with no sign it is there, so people miss information or controls.",
+     "fix": "Let the box grow (min-width: 0 on flex/grid children, no fixed width or height), wrap the content, or truncate deliberately with text-overflow: ellipsis and the full text in a tooltip or title.",
+     "count": 3,
+     "others": [
+      "ul.plants > li.plant > button.water \"Water now\"",
+      "ul.plants > li.plant.late > button.water \"Water now\""
+     ]
+    },
+    {
+     "n": 2,
+     "severity": "Hard",
+     "rule": "1.2",
+     "kind": "faint-field",
+     "where": "form.form > label > input",
+     "value": "border 1.21:1, fill 1.00:1 against the page (on 2 elements)",
+     "expected": "3:1 for the border or the fill",
+     "why": "People cannot see where to click or type when a field has no visible edge (WCAG 1.4.11).",
+     "fix": "Use the outline token (3:1) for field borders, or give the field a fill that contrasts 3:1 with the page.",
+     "count": 2,
+     "others": [
+      "form.form > label > input"
+     ]
+    },
+    {
+     "n": 3,
+     "severity": "Hard",
+     "rule": "1.2",
+     "kind": "faint-field",
+     "where": "form.form > label > select \"7 days 14 days 21 days\"",
+     "value": "border 1.21:1, fill 1.00:1 against the page",
+     "expected": "3:1 for the border or the fill",
+     "why": "People cannot see where to click or type when a field has no visible edge (WCAG 1.4.11).",
+     "fix": "Use the outline token (3:1) for field borders, or give the field a fill that contrasts 3:1 with the page.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 4,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "main.page \"Saturday, 14 November Good morning, Mina\"",
+     "value": "gaps 6, 22, 30px between 4 stacked items",
+     "expected": "one gap (6px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 6px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 5,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "main.page > div.layout > section.today \"Watering is based on each plant's schedu\"",
+     "value": "gaps 6, 20px between 3 stacked items",
+     "expected": "one gap (6px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 6px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 6,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "div.layout > section.today > ul.plants \"🌿 Monstera Living room · last watered 8\"",
+     "value": "gaps 10, 18px between 3 stacked items",
+     "expected": "one gap (10px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 10px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 7,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "uneven-gaps",
+     "where": "div.layout > aside.add > form.form \"Name Room Water every 7 days 14 days 21 \"",
+     "value": "gaps 14, 14, 18px between 4 stacked items",
+     "expected": "one gap (14px)",
+     "why": "Items of the same group should sit at equal distances; uneven gaps break the grouping and look unfinished (proximity).",
+     "fix": "Set the spacing once on the parent (gap: 14px) and remove per-item margins.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 8,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "heading-proximity",
+     "where": "main.page > h1 \"Good morning, Mina\"",
+     "value": "6px above, 22px below",
+     "expected": "more space above than below",
+     "why": "A heading belongs to the content under it; when it sits closer to the previous section, readers group it with the wrong block.",
+     "fix": "Increase the space above the heading and reduce the space below (for example 24px above, 6px below).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 9,
+     "severity": "Strong",
+     "rule": "4.2",
+     "kind": "heading-proximity",
+     "where": "div.layout > section.today > h2 \"To water today\"",
+     "value": "6px above, 20px below",
+     "expected": "more space above than below",
+     "why": "A heading belongs to the content under it; when it sits closer to the previous section, readers group it with the wrong block.",
+     "fix": "Increase the space above the heading and reduce the space below (for example 24px above, 6px below).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 10,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar > nav.nav \"Today Plants Calendar\"",
+     "value": "18px used 12 times",
+     "expected": "16px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (16px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar > nav.nav \"Today Plants Calendar\"",
+      "main.page > section.stats > div.stat \"Plants 12\""
+     ]
+    },
+    {
+     "n": 11,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "section.today > ul.plants > li.plant \"🌿 Monstera Living room · last watered 8\"",
+     "value": "13px used 6 times",
+     "expected": "12px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (12px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "section.today > ul.plants > li.plant \"🌿 Monstera Living room · last watered 8\"",
+      "section.today > ul.plants > li.plant \"🌵 Golden barrel cactus Window sill · la\""
+     ]
+    },
+    {
+     "n": 12,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "ul.plants > li.plant > button.water \"Water now\"",
+     "value": "9px used 6 times",
+     "expected": "8px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (8px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "ul.plants > li.plant > button.water \"Water now\"",
+      "ul.plants > li.plant > button.water \"Water now\""
+     ]
+    },
+    {
+     "n": 13,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar \"Sprout Today Plants Calendar MA\"",
+     "value": "26px used 4 times",
+     "expected": "24px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (24px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar \"Sprout Today Plants Calendar MA\"",
+      "main.page \"Saturday, 14 November Good morning, Mina\""
+     ]
+    },
+    {
+     "n": 14,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "header.topbar \"Sprout Today Plants Calendar MA\"",
+     "value": "22px used 3 times",
+     "expected": "20px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (20px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "header.topbar \"Sprout Today Plants Calendar MA\"",
+      "main.page > h1 \"Good morning, Mina\""
+     ]
+    },
+    {
+     "n": 15,
+     "severity": "Default",
+     "rule": "4.1",
+     "kind": "spacing-off-scale",
+     "where": "main.page \"Saturday, 14 November Good morning, Mina\"",
+     "value": "30px used 3 times",
+     "expected": "32px (Material 3 scale)",
+     "why": "Spacing outside the scale makes rhythm uneven and stacks small differences the eye reads as sloppiness.",
+     "fix": "Use the nearest scale step (32px) through a spacing token.",
+     "count": 1,
+     "others": [
+      "main.page \"Saturday, 14 November Good morning, Mina\"",
+      "main.page > section.stats \"Plants 12 Need water today 3 Healthy 92%\""
+     ]
+    },
+    {
+     "n": 16,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "component-drift",
+     "where": "main.page > section.stats > div.stat \"Healthy 92%\"",
+     "value": "padding differs between 3 \"stat\" elements: 18px 18px 18px 18px (x2), 20px 20px 20px 20px (x1)",
+     "expected": "18px 18px 18px 18px on all",
+     "why": "The same component should look the same everywhere; small variations read as mistakes and erode trust.",
+     "fix": "Give every instance the component's padding (18px 18px 18px 18px) from one shared style, or make the difference an explicit variant.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 17,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "main.page > section.stats > div.stat \"Plants 12\"",
+     "value": "14px corner radius (x3)",
+     "expected": "12px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 12px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 18,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "ul.plants > li.plant > div.thumb \"🌿\"",
+     "value": "10px corner radius (x4)",
+     "expected": "8px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 8px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 19,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-off-scale",
+     "where": "form.form > label > input",
+     "value": "6px corner radius (x3)",
+     "expected": "4px (Material 3 scale)",
+     "why": "Corner radii outside the scale make shapes look slightly different for no reason.",
+     "fix": "Use 4px from the radius tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 20,
+     "severity": "Default",
+     "rule": "5.1",
+     "kind": "radius-count",
+     "where": "(page)",
+     "value": "6 different corner radii: 6, 8, 10, 12, 14, 16px",
+     "expected": "3 or 4 steps",
+     "why": "Too many radii make the interface feel assembled from different kits.",
+     "fix": "Map every radius to 3 or 4 named steps (small controls, inputs and cards, sheets and dialogs, full).",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 21,
+     "severity": "Default",
+     "rule": "5.2",
+     "kind": "nested-radius",
+     "where": "aside.add > div.tip > div.tip-inner \"Tip: most plants prefer too little water\"",
+     "value": "12px inside a 12px parent with 6px padding",
+     "expected": "about 6px (outer - padding)",
+     "why": "Nested corners that are not concentric look pinched or bulging next to their container.",
+     "fix": "Set the inner radius to 6px, or change the padding so outer minus padding lands on a scale step.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 22,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "near-duplicate-colour",
+     "where": "section.stats > div.stat > strong \"12\"",
+     "value": "rgb(47,126,75) next to rgb(47,125,74)",
+     "expected": "one colour",
+     "why": "Two almost identical colours are never intentional; they come from hard-coded values and make surfaces look patchy.",
+     "fix": "Replace both with the same colour token.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 23,
+     "severity": "Default",
+     "rule": "4.5",
+     "kind": "near-duplicate-colour",
+     "where": "form.form > label > input",
+     "value": "rgb(233,233,233) next to rgb(230,230,230)",
+     "expected": "one colour",
+     "why": "Two almost identical colours are never intentional; they come from hard-coded values and make surfaces look patchy.",
+     "fix": "Replace both with the same colour token.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 24,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "header.topbar > a.logo \"Sprout\"",
+     "value": "19px text (x3)",
+     "expected": "16px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (16px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 25,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "header.topbar > span.avatar \"MA\"",
+     "value": "13px text (x13)",
+     "expected": "12px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (12px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 26,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "main.page > h1 \"Good morning, Mina\"",
+     "value": "30px text (x1)",
+     "expected": "28px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (28px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 27,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "type-off-scale",
+     "where": "aside.add > form.form > button.primary \"Add plant\"",
+     "value": "15px text (x1)",
+     "expected": "14px (Material 3 scale)",
+     "why": "Font sizes outside the type scale blur the hierarchy and multiply styles to maintain.",
+     "fix": "Use the nearest type style (14px) from the type tokens.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 28,
+     "severity": "Default",
+     "rule": "3.1",
+     "kind": "weight-count",
+     "where": "(page)",
+     "value": "4 font weights: 300, 400, 600, 700",
+     "expected": "3 weights at most (regular, medium, bold)",
+     "why": "Many weights compete with each other and weaken emphasis.",
+     "fix": "Keep regular for text, one medium for labels and buttons, one bold for headings.",
+     "count": 1,
+     "others": []
+    },
+    {
+     "n": 29,
+     "severity": "Default",
+     "rule": "5.4",
+     "kind": "icon-size-off",
+     "where": "ul.plants > li.plant > button.icon-btn \"Edit\"",
+     "value": "13px icons (x6)",
+     "expected": "20 or 24px (16, 18, 32, 40, 48 for special cases)",
+     "why": "Icon sets are drawn for specific sizes; in between, strokes blur and icons look mismatched next to each other.",
+     "fix": "Use 20px, through an icon size token.",
+     "count": 1,
+     "others": []
+    }
+   ],
+   "unreadableStylesheets": 0,
+   "summary": "29 findings at 768px: 3 Hard, 6 Strong, 20 Default (scales from Material 3)"
+  }
+ }
+}

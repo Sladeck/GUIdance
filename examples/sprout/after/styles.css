@@ -1,0 +1,117 @@
+/* Sprout styles, after /guidance setup and /guidance inspect.
+   Every value comes from guidance.css: spacing, radius, type and colour roles. */
+@import "./guidance.css";
+
+* { box-sizing: border-box; }
+:root { --focus-ring-color: var(--color-primary); }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--text-body);
+  line-height: var(--text-body-line-height);
+  color: var(--color-on-surface);
+  background: var(--color-surface);
+}
+:focus-visible { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); }
+h1, h2, p { margin: 0; }
+
+/* Top bar */
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-100) var(--space-300);
+  padding: var(--space-100) var(--space-300);
+  background: var(--color-surface-container-lowest);
+  border-bottom: 1px solid var(--color-outline-variant);
+}
+.logo { display: flex; align-items: center; gap: var(--space-100); min-height: var(--target-touch); font-weight: 700; font-size: var(--text-title); color: var(--color-primary); text-decoration: none; }
+.leaf { width: var(--space-250); height: var(--space-250); border-radius: 0 var(--radius-md); background: var(--color-primary-container); }
+.nav { display: flex; gap: var(--space-100); margin-left: auto; }
+.nav a { display: inline-flex; align-items: center; min-height: var(--target-touch); padding: 0 var(--space-100); color: var(--color-on-surface-variant); text-decoration: none; font-size: var(--text-body-sm); border-radius: var(--radius-sm); }
+.nav a.active { color: var(--color-primary); font-weight: 500; }
+.avatar { width: var(--target-touch); height: var(--target-touch); border-radius: var(--radius-full); background: var(--color-primary-container); color: var(--color-on-primary-container); display: grid; place-items: center; font-size: var(--text-body-sm); font-weight: 500; }
+
+/* Page */
+.page { max-width: 1080px; margin: 0 auto; padding: var(--space-400) var(--space-300); display: flex; flex-direction: column; gap: var(--space-400); }
+.page-head { display: flex; flex-direction: column; gap: var(--space-50); }
+.eyebrow { color: var(--color-on-surface-variant); font-size: var(--text-body-sm); }
+h1 { font-size: var(--text-headline); line-height: var(--text-headline-line-height); font-weight: var(--text-headline-weight); }
+
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-200); }
+.stat {
+  background: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+  padding: var(--space-200);
+}
+.stat-label { display: block; color: var(--color-on-surface-variant); font-size: var(--text-body-sm); }
+.stat strong { display: block; margin-top: var(--space-100); font-size: var(--text-headline); line-height: var(--text-headline-line-height); font-weight: 500; color: var(--color-primary); }
+
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: var(--space-300); align-items: start; }
+.section-head { display: flex; flex-direction: column; gap: var(--space-50); margin-bottom: var(--space-200); }
+h2 { font-size: var(--text-title); line-height: var(--text-title-line-height); font-weight: 500; }
+.section-intro { color: var(--color-on-surface-variant); font-size: var(--text-body-sm); }
+
+/* Plant list */
+.plants { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-100); }
+.plant {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-150);
+  padding: var(--space-150) var(--space-200);
+  background: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+}
+.thumb { width: var(--target-touch); height: var(--target-touch); border-radius: var(--radius-md); background: var(--color-secondary-container); display: grid; place-items: center; font-size: var(--text-title); }
+.plant-info { flex: 1 1 12rem; min-width: 0; display: flex; flex-direction: column; gap: var(--space-25); }
+.plant-info b { font-weight: 500; }
+.meta { color: var(--color-on-surface-variant); font-size: var(--text-body-sm); }
+.late .meta { color: var(--color-error); }
+.actions { display: flex; align-items: center; gap: var(--space-50); margin-left: auto; }
+.water {
+  min-height: var(--target-touch);
+  padding: 0 var(--space-200);
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font: inherit;
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.icon-btn { width: var(--target-touch); height: var(--target-touch); border: 0; border-radius: var(--radius-full); background: none; color: var(--color-on-surface-variant); padding: 0; font-size: var(--text-body); }
+
+/* Add form */
+.add { background: var(--color-surface-container-lowest); border: 1px solid var(--color-outline-variant); border-radius: var(--radius-lg); padding: var(--space-300); }
+.add h2 { margin-bottom: var(--space-200); }
+.form { display: flex; flex-direction: column; gap: var(--space-200); }
+.form label { display: flex; flex-direction: column; gap: var(--space-75); font-size: var(--text-body-sm); color: var(--color-on-surface-variant); }
+.form input, .form select {
+  min-height: var(--target-touch);
+  padding: 0 var(--space-150);
+  border: 1px solid var(--color-outline);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  color: var(--color-on-surface);
+  background: var(--color-surface-container-lowest);
+}
+.primary { min-height: var(--target-touch); border: 0; border-radius: var(--radius-full); background: var(--color-primary); color: var(--color-on-primary); font: inherit; font-weight: 500; }
+.tip { margin-top: var(--space-200); padding: var(--space-150); border-radius: var(--radius-md); background: var(--color-secondary-container); color: var(--color-on-secondary-container); font-size: var(--text-body-sm); }
+
+/* Tablet and phone */
+@media (max-width: 800px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .topbar { padding: var(--space-100) var(--space-200); }
+  .nav { order: 3; width: 100%; margin-left: 0; }
+  .avatar { margin-left: auto; }
+  .page { padding: var(--space-300) var(--space-200); gap: var(--space-300); }
+  .stats { gap: var(--space-100); }
+  .stat { padding: var(--space-150); }
+  .stat strong { font-size: var(--text-title); line-height: var(--text-title-line-height); }
+}

@@ -5,11 +5,11 @@
 **Wiring:** Add `@use "./guidance" as *;` at the top of the global .scss (or any file that needs the variables).
 
 **Filling it in**
-- Fixed values (spacing, radius, elevation, type, motion, targets, focus, measure) are already filled from `../design-data.md`. Keep them unless the user chose otherwise.
+- Fixed values (spacing, radius, elevation, type, motion, targets, focus, measure) are already filled from `../data/scales.md` and `../data/accessibility.md`. Keep them unless the user chose otherwise.
 - `{L.role}` and `{D.role}` are the light and dark colours of that role. Copy them exactly from the chosen row of `../palettes/<variant>.md` (the `light:` and `dark:` halves). With an exact brand colour (fidelity), replace the one or two light roles the setup step decided (see SKILL.md), nothing else.
 - `{palette name}` is the name the user picked.
 - Without a chosen palette, delete every colour block and keep the rest.
-- Type: this template has the 5-style subset. For all 15 styles, take the table in `../design-data.md` section 5.
+- Type: this template has the 5-style subset. For all 15 styles, take the type table in `../data/scales.md`.
 
 ```scss
 /*

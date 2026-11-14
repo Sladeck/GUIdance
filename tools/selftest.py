@@ -137,6 +137,8 @@ def main():
             check("targets.js runs on the preview", p.returncode in (0, 1) and '"viewports"' in p.stdout, p.stderr)
             p = subprocess.run([node, S("type-audit.js"), url, "--json"], capture_output=True, text=True)
             check("type-audit.js runs on the preview", p.returncode in (0, 1) and '"sizes"' in p.stdout, p.stderr)
+            p = subprocess.run([node, S("check_equivalence.js")], capture_output=True, text=True)
+            check("minified checks match their readable sources", p.returncode == 0, p.stdout + p.stderr)
 
     failed = [r for r in results if r[1] is False]
     skipped = [r for r in results if r[1] is None]

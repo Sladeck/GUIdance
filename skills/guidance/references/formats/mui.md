@@ -5,11 +5,11 @@
 **Wiring:** Wrap the existing options: `createTheme(deepmerge(existingOptions, guidanceThemeOptions))` with `import { deepmerge } from '@mui/utils';`. Put `guidanceThemeOptions` second to let it win, first to only fill gaps. If the existing options have a top-level `palette`, MUI lets it override `colorSchemes`: move those colours into the palette tables' roles or remove it. For `.js`, drop the `type GuidanceThemeOptions` line and the `: GuidanceThemeOptions` and `as const` annotations.
 
 **Filling it in**
-- Fixed values (spacing, radius, type, motion, targets, focus, measure) are already filled from `../design-data.md`. Keep them unless the user chose otherwise.
+- Fixed values (spacing, radius, type, motion, targets, focus, measure) are already filled from `../data/scales.md` and `../data/accessibility.md`. Keep them unless the user chose otherwise.
 - `{L.role}` and `{D.role}` are the light and dark colours of that role. Copy them exactly from the chosen row of `../palettes/<variant>.md` (the `light:` and `dark:` halves). With an exact brand colour (fidelity), replace the one or two light roles the setup step decided (see SKILL.md), nothing else.
 - `{palette name}` is the name the user picked.
 - Without a chosen palette, delete every colour block and keep the rest.
-- Type: this template has the 5-style subset. For all 15 styles, take the table in `../design-data.md` section 5.
+- Type: this template has the 5-style subset. For all 15 styles, take the type table in `../data/scales.md`.
 
 ```ts
 /*

@@ -73,7 +73,7 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | LAWS-PROX | C | Laws of UX, Law of Proximity | https://lawsofux.com/law-of-proximity/ |
 | NESTED-RADIUS | C | 30 seconds of code, Nested border radius | https://30secondsofcode.org/css/s/nested-border-radius |
 
-"stack" sources are documentation for writing tokens in a given framework, not design evidence. The values taken from every source are in `design-data.md`.
+"stack" sources are documentation for writing tokens in a given framework, not design evidence. The values taken from every source are in `data/`.
 
 Notes:
 - Replaced earlier secondary citations (DAISY summaries of WCAG, a Flutter constant for Apple's 44pt) with the primary W3C and Apple pages.

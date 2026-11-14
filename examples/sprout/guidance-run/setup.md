@@ -11,7 +11,7 @@ What Claude did, step by step, following `skills/guidance/SKILL.md`.
 
 ## B. Colour wizard
 
-**Finding the palette row by hand** (`design-data.md` section 10):
+**Finding the palette row by hand** (`references/data/colour.md`):
 - `#2f7d4a` → r 0.184, g 0.490, b 0.290. The max is g, d = 0.306, saturation 45% (not grey).
 - Hue = 60 × ((0.290 − 0.184) / 0.306 + 2) = 140.8, which rounds to row **h140**.
 
@@ -50,7 +50,7 @@ Both palettes pass 120/120 WCAG pairs. The page also labels B "exact brand as pr
 With no token system, Claude did the following:
 1. Created `after/guidance.css` from the CSS template.
 2. Filled every `{L.role}` and `{D.role}` from row `h140` of `palettes/tonal_spot.md`.
-3. Replaced the two light roles section 10 names (`primary-container` → `#2f7d4a`, `on-primary-container` → `#ffffff`), and took the 12 surface roles from row `h140` of `palettes/neutral.md`.
+3. Replaced the two light roles the brand-colour procedure names (`primary-container` → `#2f7d4a`, `on-primary-container` → `#ffffff`), and took the 12 surface roles from row `h140` of `palettes/neutral.md`.
 4. Recorded the palette in the file's header comment.
 5. Added the wiring line `@import "./guidance.css";` at the top of `styles.css`.
 

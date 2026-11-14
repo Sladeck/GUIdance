@@ -34,7 +34,7 @@ GUIdance is a Claude skill that gives your interfaces a professional finish: con
 - **Fixes what it found.** Shows the planned changes, applies them at the source (a token, the shared component, the parent's spacing), then measures again to confirm each fix.
 - **Audits what you have.** Measures instead of guessing: contrast ratios, touch target sizes, font sizes, line lengths. Reports each finding with its severity, the rule, the source and the fix.
 
-Claude does all the work itself, with no Python, Node or network needed. The exact maths (contrast-checked palettes, Material values, token formats) ships with the skill as data, so it never needs to search the web or run code.
+Claude does all the work itself. The exact maths (contrast-checked palettes, Material values, token formats) ships with the skill as data.
 
 ## What it adds to your project
 
@@ -72,24 +72,7 @@ A few of the tokens it writes:
 
 ## Install
 
-The skill itself needs no Python, no Node and no packages.
-
-### Requirements
-
-Some features need a **browser Claude can drive**, which is a separate tool, not part of this skill: a browser MCP server such as [Playwright MCP](https://github.com/microsoft/playwright-mcp) or [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp), Claude in Chrome, or the built-in browser of the Claude desktop app.
-
-| Feature | Without a browser |
-| --- | --- |
-| `/guidance inspect` (measures pages at mobile, tablet, desktop and breakpoint widths, plus keyboard focus) | **Required.** Claude hands you the snippets to paste into your browser's DevTools console, one per width, and works from the results you send back. |
-| `/guidance check` (targets, typography, contrast numbers) | **Required.** Same DevTools fallback. |
-| `/guidance fix` (measuring again after the changes) | Optional. Claude makes the fixes, then asks you to re-run the snippets or checks the code by reading it. |
-| `/guidance audit` (the measured part) | Optional. Claude reviews the code only and labels findings "read from code, not measured". |
-| `/guidance setup` (showing the colour preview) | Optional. The preview shows as an artifact in Claude apps, or Claude gives you the file to open yourself. |
-| `/guidance build` (checking its own work in the page) | Optional. The check is done by reading the code instead. |
-
-Everything else (rules, tokens, palettes, writing files) works with no extra tools.
-
-**Claude Code (one command)**
+### Claude Code (plugin)
 
 In a Claude Code session:
 
@@ -106,7 +89,7 @@ On versions before 2.1.275, add the marketplace first:
 
 Installed as a plugin, the command is `/guidance:guidance` (type `/guidance` and pick it), so `/guidance setup` becomes `/guidance:guidance setup`. Asking in plain words ("set up design tokens", "inspect the settings page") works either way. Update with `/plugin marketplace update guidance`.
 
-**Claude Code (manual copy)**
+### Claude Code (manual copy)
 
 Gives the short `/guidance` command.
 
@@ -116,9 +99,22 @@ cp -r GUIdance/skills/guidance ~/.claude/skills/guidance     # all your projects
 # or: cp -r GUIdance/skills/guidance .claude/skills/guidance  (one project)
 ```
 
-**Claude apps (web, desktop)**
+### Claude apps (web, desktop)
 
 Zip the `skills/guidance` folder and upload it as a custom skill in Claude's settings.
+
+### Requirements
+
+Some features need a **browser Claude can drive**, which is a separate tool, not part of this skill: a browser MCP server such as [Playwright MCP](https://github.com/microsoft/playwright-mcp) or [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp), Claude in Chrome, or the built-in browser of the Claude desktop app.
+
+| Feature | Without a browser |
+| --- | --- |
+| `/guidance inspect` (measures pages at mobile, tablet, desktop and breakpoint widths, plus keyboard focus) | **Required.** Claude hands you the snippets to paste into your browser's DevTools console, one per width, and works from the results you send back. |
+| `/guidance check` (targets, typography, contrast numbers) | **Required.** Same DevTools fallback. |
+| `/guidance fix` (measuring again after the changes) | Optional. Claude makes the fixes, then asks you to re-run the snippets or checks the code by reading it. |
+| `/guidance audit` (the measured part) | Optional. Claude reviews the code only and labels findings "read from code, not measured". |
+| `/guidance setup` (showing the colour preview) | Optional. The preview shows as an artifact in Claude apps, or Claude gives you the file to open yourself. |
+| `/guidance build` (checking its own work in the page) | Optional. The check is done by reading the code instead. |
 
 **About page checks.** `inspect` and `check` are meant for your local dev pages during a coding session. A public URL works too, through a real browser only: fetched HTML is never enough, since many sites build the page with JavaScript. Even then the result is a snapshot, as cookie banners, lazy loading and the signed-out view can differ from what users see.
 

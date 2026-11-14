@@ -7,8 +7,8 @@ GUIdance is a Claude skill that gives your interfaces a professional finish: con
 
 ## Summary
 
-- [What it adds to your project](#what-it-adds-to-your-project)
 - [What it does](#what-it-does)
+- [What it adds to your project](#what-it-adds-to-your-project)
 - [Install](#install)
 - [How to use it](#how-to-use-it)
 - [Commands](#commands)
@@ -16,6 +16,25 @@ GUIdance is a Claude skill that gives your interfaces a professional finish: con
 - [Citations and resources](#citations-and-resources)
 - [Why I made this](#why-i-made-this)
 - [License](#license)
+
+## What it does
+
+- **Sets up a design system in your project.** Works with any stack (plain CSS, Tailwind, MUI, shadcn/ui, Bootstrap, Sass, even native theme code): it finds where your styling lives, reads the tokens you already have, flags spacing, radius, type and motion values that sit off the Material 3 scales, and writes clean tokens (spacing, radius, elevation, type, motion, colours) in your stack's own format.
+- **Picks your colours with you.** Learns what your product is (and asks if it can't tell), proposes two palettes built from your brand colour, with near-neutral backgrounds the way GitHub, IBM and Radix do it (or a two-tone brand with one bright accent, like many admin dashboards), and shows them on sample components in light and dark before anything is written. Every palette is checked against WCAG contrast: 120 colour pairs, light and dark.
+- **Builds UI that follows the rules.** When Claude creates or changes an interface, it uses your tokens and the rules as minimums, then checks its own work.
+- **Inspects your pages on every screen size.** Opens a page from your local dev server at mobile, tablet and desktop widths, and on both sides of each of your own breakpoints, where layouts tend to break. It lists every inconsistency it measures:
+  - off-scale spacing and uneven gaps;
+  - mismatched corners, borders and shadows;
+  - mixed icon sizes and styles;
+  - near-duplicate colours and components that drifted apart;
+  - content that overflows or gets cut off;
+  - keyboard problems: missing focus rings, focus hidden under sticky bars, clickable things the keyboard can't reach.
+
+  One ordered list, most serious first, each with why it's a problem and how to fix it.
+- **Fixes what it found.** Shows the planned changes, applies them at the source (a token, the shared component, the parent's spacing), then measures again to confirm each fix.
+- **Audits what you have.** Measures instead of guessing: contrast ratios, touch target sizes, font sizes, line lengths. Reports each finding with its severity, the rule, the source and the fix.
+
+Claude does all the work itself, with no Python, Node or network needed. The exact maths (contrast-checked palettes, Material values, token formats) ships with the skill as data, so it never needs to search the web or run code.
 
 ## What it adds to your project
 
@@ -50,25 +69,6 @@ A few of the tokens it writes:
 --color-primary: #5a3ee4;           --color-on-primary: #ffffff;
 --elevation-1: 0 1px 2px 0 rgb(0 0 0 / 0.3), 0 1px 3px 1px rgb(0 0 0 / 0.15);
 ```
-
-## What it does
-
-- **Sets up a design system in your project.** Works with any stack (plain CSS, Tailwind, MUI, shadcn/ui, Bootstrap, Sass, even native theme code): it finds where your styling lives, reads the tokens you already have, flags spacing, radius, type and motion values that sit off the Material 3 scales, and writes clean tokens (spacing, radius, elevation, type, motion, colours) in your stack's own format.
-- **Picks your colours with you.** Learns what your product is (and asks if it can't tell), proposes two palettes built from your brand colour, with near-neutral backgrounds the way GitHub, IBM and Radix do it (or a two-tone brand with one bright accent, like many admin dashboards), and shows them on sample components in light and dark before anything is written. Every palette is checked against WCAG contrast: 120 colour pairs, light and dark.
-- **Builds UI that follows the rules.** When Claude creates or changes an interface, it uses your tokens and the rules as minimums, then checks its own work.
-- **Inspects your pages on every screen size.** Opens a page from your local dev server at mobile, tablet and desktop widths, and on both sides of each of your own breakpoints, where layouts tend to break. It lists every inconsistency it measures:
-  - off-scale spacing and uneven gaps;
-  - mismatched corners, borders and shadows;
-  - mixed icon sizes and styles;
-  - near-duplicate colours and components that drifted apart;
-  - content that overflows or gets cut off;
-  - keyboard problems: missing focus rings, focus hidden under sticky bars, clickable things the keyboard can't reach.
-
-  One ordered list, most serious first, each with why it's a problem and how to fix it.
-- **Fixes what it found.** Shows the planned changes, applies them at the source (a token, the shared component, the parent's spacing), then measures again to confirm each fix.
-- **Audits what you have.** Measures instead of guessing: contrast ratios, touch target sizes, font sizes, line lengths. Reports each finding with its severity, the rule, the source and the fix.
-
-Claude does all the work itself, with no Python, Node or network needed. The exact maths (contrast-checked palettes, Material values, token formats) ships with the skill as data, so it never needs to search the web or run code.
 
 ## Install
 

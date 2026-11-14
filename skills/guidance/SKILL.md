@@ -28,8 +28,8 @@ Commands that open a page also read `commands/open-page.md`; commands that repor
 Sources are ranked in `references/sources.md`:
 
 - **S**: W3C WCAG 2.2. Legal and consensus standard. Wins every conflict it covers.
-- **A**: Apple HIG and Google Material 3 (platform authority: what users already expect), Baymard and GOV.UK (large-scale published research).
-- **B**: Nielsen Norman Group (decades of mostly small qualitative studies: strong on problems, weaker on exact numbers).
+- **A**: Apple HIG and Google Material 3 (platform authority: what users already expect), Baymard and GOV.UK (large-scale published research), peer-reviewed studies with 400+ people or field data (`SCI-*`).
+- **B**: Nielsen Norman Group (decades of mostly small qualitative studies: strong on problems, weaker on exact numbers), smaller peer-reviewed experiments (`SCI-*`).
 - **C**: secondary summaries. Never decisive.
 - **Judgment**: no source. Always labelled.
 

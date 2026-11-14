@@ -9,6 +9,7 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 **1.1 Text contrast** (Hard) [WCAG-1.4.3 S, APPLE-A11Y A]
 - Normal text 4.5:1; large text 3:1 (24px regular, or about 18.5px bold: 18pt / 14pt bold). Apple's inspector uses the same AA values (4.5:1 up to 17pt, 3:1 from 18pt or bold).
 - No rounding: 4.499:1 fails. Check light and dark.
+- Measured cost: reduced contrast and unclear links consistently slowed people and increased search effort (102 people, eye tracking) [SCI-GUIDE-COST B].
 - Exempt: disabled controls, decoration, text in photos, logotypes. Break: never for readable content.
 
 **1.2 Non-text contrast** (Hard) [WCAG-1.4.11 S]
@@ -42,6 +43,13 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - Changes and states ("+2.7%", "-1.7%", "Paid", "Late") in a pill: `success-container` with `on-success-container` text for good, `error-container` with `on-error-container` for bad, `warning-container` for attention. Every pair is 4.5:1 in every palette.
 - Keep the sign or a word ("+", "-", "Late"): colour alone never carries the meaning.
 
+**1.8 Light by default for reading, dark as a choice** (Default) [SCI-POLARITY-READ A, SCI-POLARITY B, SCI-LUMINANCE B, SCI-POL-SIZE B, SCI-POL-AGE B, SCI-VIS-POL B]
+- Dark text on a light background was read reliably faster than dark mode, for glances and for paragraphs, in two studies with 459 people; paragraph readers did not prefer light mode despite the gain [SCI-POLARITY-READ A].
+- The light-mode advantage held in darkness and in office light [SCI-POLARITY B], for younger and older adults [SCI-POL-AGE B], and grew as text got smaller [SCI-POL-SIZE B]. It comes from the brighter screen, not polarity itself: at equal luminance it disappeared [SCI-LUMINANCE B].
+- Charts are personal: which mode gave better analysis varied by person, often not the one they preferred, with time differences around 36% [SCI-VIS-POL B]. Offer both.
+- So: follow the system setting and ship both themes (rule 1.5). Where the product picks the default, reading-heavy surfaces start light. In dark mode keep text at body size or above where possible: small captions and dense labels lose the most (judgment from SCI-POL-SIZE, which tested light against dark at small sizes).
+- Break: media, video and night-use products, where dark is the expected default (judgment).
+
 ## 2. Target size
 
 **2.1 Minimum** (Hard) [WCAG-2.5.8 S]
@@ -53,6 +61,9 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - Spacing: Apple, about 12pt around bezeled controls and 24pt around unbezeled ones; Android, at least 8dp between targets.
 - The hit area can exceed the visible element (a 24dp icon in a 48dp hit area is fine).
 - Who wins: WCAG's 24px is the floor everywhere; above it, the platform's number on that platform. Responsive web: 44 to 48px on touch layouts; desktop pointer layouts 24 to 32px.
+- Evidence behind the platform numbers: for one-handed thumb use, error rates stopped improving at 9.6mm for single taps and 7.7mm for taps in sequence; the study recommends 9.2mm and 9.6mm [SCI-THUMB B]. Android's 48dp is 7.6mm at the nominal 160dpi (1dp = 1/160in) and about 9mm as Google describes it: at or just under the study's recommendation, not above it, so treat 48dp as a floor on touch layouts.
+- Position matters as well as size: 120 million taps from 91,731 installs showed error rates vary with target size and screen location, and touches land systematically off-centre [SCI-TAPS A]. Give targets near screen edges and corners extra room (judgment: the study does not say which locations are worst).
+- Swipe-operated targets (swipe to delete, carousels) had longer times, more errors and shifted touch points than taps, so tap-size guidance may not cover them [SCI-SWIPE B]. Make swipeable rows full width and at least the platform size tall (judgment), and keep a button alternative (rule 12.2).
 
 ## 3. Typography
 
@@ -66,6 +77,7 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - iOS body 17pt (minimum 11pt). macOS body 13pt (minimum 10pt). Material base body 14 (scale anchor).
 - Web: 16px is the browser default and the safe body size; NN/g gives 14 to 16px.
 - Dense dashboards at 13 to 14px: judgment only, with strong contrast and working zoom. Body text below 13px: no source supports it.
+- Web reading pages (articles, docs, help) benefit from more: in a 104-person eye-tracking study on Wikipedia, readability rose with font size and comprehension was better at 18 and 26 points; the authors recommend 18 or larger for text-heavy sites [SCI-FONTSIZE B]. The study reports points: if typographic points, 18pt is 24px. So long-form body on the web goes above 16px, at 18px at least and larger where the layout allows (judgment). Web application UI stays at 16px; native apps keep Apple's and Material's body sizes above.
 
 **3.3 Avoid light weights at small sizes** (Default) [APPLE-TYPE A]
 - Prefer Regular, Medium, Semibold, Bold; avoid Thin, Light, Ultralight for small text. A thin custom font needs a larger size.
@@ -77,10 +89,17 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 
 **3.5 Line height** (Default) [APPLE-TYPE A, M3-TYPE A]
 - About 1.5 for paragraphs and wide columns. Tight leading only for one or two lines in constrained rows, never at three lines or more.
+- Avoid extremes: marginal effects suggested line spacing of 0.8 and 1.8 impair readability [SCI-FONTSIZE B]. The study's line-spacing unit may not equal CSS `line-height`, so read it as direction, not a threshold.
 - Japanese, Chinese, Korean and many other scripts are about 7% taller than Latin; Material adapts line height by language. Do not reuse Latin line heights for JA blindly.
 
 **3.6 Respect user text size** (Strong) [APPLE-A11Y A, APPLE-TYPE A]
 - Text can grow to at least 200%: Dynamic Type on iOS, rem on the web. Hierarchy survives the growth; meaningful icons scale with text.
+- Readers differ: across hundreds of crowdsourced readers, speed differed by 35% between their fastest and slowest fonts with no loss of comprehension, and no one font suited everyone [SCI-FONTS B]. Never block user font overrides or reader modes.
+
+**3.7 Letter and word spacing near default** (Default) [SCI-SPACING B, SCI-DYSLEXIA B]
+- Paragraphs keep the font's own letter and word spacing. In two online studies (102 and 113 readers), character spacing of -0.1em or 0.4em and word spacing of -0.2em or 1.5em caused significant drops in speed, comprehension and preference; faster readers slowed most at wide spacing [SCI-SPACING B].
+- Larger text and character spacing helped people with and without dyslexia read faster (92 people, eye tracking) [SCI-DYSLEXIA B]: a small opening up is safe, extremes are not.
+- Tracking on display headings and all-caps labels is a design choice (judgment), never on paragraphs. User-chosen spacing always wins.
 
 ## 4. Spacing and grouping
 
@@ -153,7 +172,17 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 **6.2 Squint test** (Default) [NNG-HIER B]
 - Blur the screen (or squint): the intended order of importance stays visible.
 
+**6.3 Simple and familiar beats novel** (Default) [SCI-VC-PT B, SCI-FIRSTIMP A, SCI-PREF A, SCI-STRUCT B]
+- People judge a screen's appeal within 17 to 50ms, first by its visual complexity, then by prototypicality (how much it looks like others of its kind); low complexity with a familiar layout was rated most appealing [SCI-VC-PT B].
+- Complexity and colourfulness, with age and education, explained about half the variance in appeal after 500ms (548 people, 450 sites) [SCI-FIRSTIMP A]. The authors note, from earlier work, that this first impression later colours judgments of usability and trust.
+- Symmetry, low complexity, blue hue, medium brightness and medium-to-high saturation rated highest, and structure mattered more than colour (194 people) [SCI-STRUCT B]. Not palette advice: colours still come from roles and contrast (rule 1.5).
+- The best level varies by audience: 2.4 million ratings from nearly 40,000 people showed peak appeal for colourfulness and complexity shifting with gender, education and country [SCI-PREF A]. Check with the product's real audience.
+- In practice (judgment): fewer distinct elements, colours and alignments per screen; the platform's usual layout for that kind of page (navigation, search, account where people expect them).
+- Break: expressive brand and campaign pages, by choice and tested.
+
 ## 7. Forms
+
+Applying 20 form guidelines together to real company forms gave faster completion, fewer submission attempts, fewer eye movements and higher satisfaction (65 people, eye tracking) [SCI-FORMS B]. The rules below are the ones with the strongest sources.
 
 **7.1 Single column** (Strong) [BAY-COLUMNS A]
 - One field per row; users skip or misfill multi-column layouts.
@@ -167,6 +196,7 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - Baymard (e-commerce, long forms): validate when the user leaves a field or completes a fixed-length value; check marks on valid fields. Use for long multi-field forms (checkout, sign-up, settings with many fields).
 - GOV.UK (public services, one question per page): validate on submit only; "do not validate when the user moves away from a field", since early validation hurts slower typists. Use for short forms, one-question-per-page flows, and audiences with many slow or assistive-technology users.
 - Both, and NN/g, agree: no error while the user is still typing; clear an error once fixed; error summary on submit; preserve what was entered.
+- Peer-reviewed lab evidence leans to submit-time: in two studies (77 and 90 people), showing errors after the whole form was completed performed best and immediate feedback worst; people filling a form often ignored immediate messages [SCI-FORM-ERR B]. Tier B and from 2007, so it does not overturn Baymard for long forms, but it adds weight to GOV.UK's approach for short ones.
 
 **7.4 Do not ask twice** (Hard, Level A) [WCAG-2.2 S]
 - Information already entered in the same process is prefilled or selectable (3.3.7).
@@ -176,8 +206,9 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 
 ## 8. Feedback and loading
 
-**8.1 Response time limits** (Strong) [NNG-RESPONSE B]
-- Under 0.1s feels instant; under 1s keeps the flow (no indicator); over 1s show the system is working; over 10s percent-done progress or a time estimate, plus cancel.
+**8.1 Response time limits** (Strong) [NNG-RESPONSE B, SCI-WAIT-CLOCK A]
+- Under 0.1s feels instant; under 1s keeps the flow (no indicator); over 1s show the system is working; over 10s percent-done progress, plus cancel.
+- Showing time over 10s: elapsed time, not a countdown. A remaining-time display increased frustration compared with elapsed time (425 people) [SCI-WAIT-CLOCK A], which outranks NN/g's "time estimate".
 - Long-standing HCI research; NN/g's most stable numbers.
 
 **8.2 Which indicator** (Strong) [NNG-SKELETON B]
@@ -185,6 +216,8 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - Full page expected to take about 2 to 10s: skeleton of the real layout, never frame-only.
 - One module loading (a card, a chart): spinner in that module.
 - Processes (upload, export, conversion) or anything over 10s: progress bar.
+- Never wait in silence: across 10, 30 and 60 second waits, no time display made waits feel longer, and an elapsed-time display caused less frustration than a remaining-time countdown (425 people) [SCI-WAIT-CLOCK A]. A percent-done bar stays the default (rule 8.1).
+- An animated indicator made waits feel shorter than a static one across four experiments of 198 to 411 people each, though less so when people are focused on a task or have a practical goal, which covers most product UI [SCI-WAIT-ANIM A]. Under reduced motion keep a progress cue that does not move continuously (rule 11.2).
 
 **8.3 Optimistic state** (Default) [judgment]
 - Reflect safe actions immediately (toggle, like, reorder), reconcile on response, roll back visibly on failure.

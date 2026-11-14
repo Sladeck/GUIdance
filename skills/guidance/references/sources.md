@@ -11,7 +11,9 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | **S: Standard** | International consensus standard, referenced by law (EU European Accessibility Act via EN 301 549, US ADA and Section 508 practice). Wins every conflict it covers. | W3C WCAG 2.2 |
 | **A: Platform authority** | Defines what users already expect on that platform, backed by large internal research and use on billions of devices. Research mostly unpublished, so weight comes from scale and convention. Wins on its own platform. | Apple HIG, Google Material 3 and Android accessibility |
 | **A: Large-scale research** | Published methodology with large samples. | Baymard Institute (200,000+ research hours, 4,400+ moderated test sessions on 240+ sites, quantitative surveys of 1,000+ people per study; e-commerce focused). GOV.UK Design System (patterns validated before inclusion, evidence from user research plus analytics on national services used by millions; transactional public services) |
+| **A: Peer-reviewed, large sample** | Peer-reviewed studies with 400 or more participants, or field data at scale. Measured effects, but each is one study: a number from it is evidence, not a platform standard. | `SCI-*` keys marked A |
 | **B: Expert research** | Decades of studies, but most are qualitative with small samples (NN/g itself says 5 users find problems but do not produce reliable numbers; quantitative claims need 40+). Strong on what goes wrong, weaker on exact thresholds. Some articles are expert guidelines rather than single studies. | Nielsen Norman Group |
+| **B: Peer-reviewed experiments** | Controlled, peer-reviewed experiments with smaller samples (tens to a few hundred people). Good on the direction of an effect, weaker on exact thresholds. | `SCI-*` keys marked B |
 | **C: Secondary** | Summaries or tutorials of other sources. Used only where they add a formula or a clean statement; never decisive. | Laws of UX, 30 seconds of code |
 | **Judgment** | No source; reasoning from the rules above. Lowest weight; always labelled. | (none) |
 
@@ -60,6 +62,28 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | NNG-CONFIRM | B | NN/g, Confirmation Dialogs | https://www.nngroup.com/articles/confirmation-dialog/ |
 | NNG-PLACEHOLDER | B | NN/g, Placeholders in Form Fields Are Harmful | https://www.nngroup.com/videos/placeholders-form-fields/ |
 | NNG-SAMPLE | B | NN/g, 5 Test Users: Okay for Qual, Wrong for Quant | https://www.nngroup.com/articles/5-test-users-qual-quant/ |
+| SCI-TAPS | A | Henze et al., 100,000,000 taps, MobileHCI 2011 (120,626,225 touch events from 91,731 installs) | https://consensus.app/papers/details/w:c498eb74-279c-4fa9-9f5b-c9d150dc3919/ |
+| SCI-THUMB | B | Parhi et al., Target size study for one-handed thumb use on small touchscreen devices, MobileHCI 2006 | https://consensus.app/papers/details/w:e2bdf7b7-a7b1-41d5-8409-eddaaf21d30c/ |
+| SCI-SWIPE | B | Yamanaka et al., Behavioral Differences between Tap and Swipe, CHI 2024 (crowdsourced) | https://consensus.app/papers/details/w:42218538-5a60-4b13-800d-0784735f4a7c/ |
+| SCI-FIRSTIMP | A | Reinecke et al., Predicting users' first impressions of website aesthetics, CHI 2013 (548 people, 450 sites) | https://consensus.app/papers/details/w:c542c130-f681-4f51-9f51-f8df9b6a7aa5/ |
+| SCI-PREF | A | Reinecke et al., Quantifying visual preferences around the world, CHI 2014 (2.4 million ratings, nearly 40,000 people) | https://consensus.app/papers/details/w:fa53f007-d546-44a3-a225-49a2974d1cb4/ |
+| SCI-VC-PT | B | Tuch et al., The role of visual complexity and prototypicality regarding first impression of websites, IJHCS 2012 | https://consensus.app/papers/details/w:64c01ca4-5200-48e1-966f-12b6054e7f73/ |
+| SCI-STRUCT | B | Seckler et al., Linking objective design factors with subjective aesthetics, Computers in Human Behavior 2015 (194 people) | https://consensus.app/papers/details/w:91daa016-41f7-432f-b423-91a0f8988484/ |
+| SCI-FONTSIZE | B | Rello et al., Make It Big!, CHI 2016 (104 people, eye tracking) | https://consensus.app/papers/details/w:c450318c-b710-404a-9091-77c2f5e420bb/ |
+| SCI-FONTS | B | Wallace et al., Towards Individuated Reading Experiences, ACM TOCHI 2022 (hundreds of crowdsourced readers) | https://consensus.app/papers/details/w:97e9d83b-53ef-496e-bdea-0113a38ef93d/ |
+| SCI-SPACING | B | Wallace et al., Space for Readability, Journal of Vision 2022 (102 and 113 readers) | https://consensus.app/papers/details/w:ebeab8aa-4155-4967-ac1d-45115be5d985/ |
+| SCI-DYSLEXIA | B | Rello et al., How to present more readable text for people with dyslexia, UAIS 2015 (92 people, eye tracking) | https://consensus.app/papers/details/w:5970367e-3bb3-422a-8c85-2db03bf8bcca/ |
+| SCI-POLARITY-READ | A | Palmén et al., How bold can we be? Font grade in light and dark polarities, CHI 2023 (459 people) | https://consensus.app/papers/details/w:0615a93d-471e-4418-a5e8-e3dfbbcecb8d/ |
+| SCI-POLARITY | B | Buchner et al., Text-background polarity affects performance irrespective of ambient illumination and colour contrast, Ergonomics 2007 | https://consensus.app/papers/details/w:091b9f63-90f9-435c-a880-9e5779cc7d7b/ |
+| SCI-LUMINANCE | B | Buchner et al., The advantage of positive text-background polarity is due to high display luminance, Ergonomics 2009 | https://consensus.app/papers/details/w:b62a5d16-6b5f-4a1c-a7af-34f1a1df8089/ |
+| SCI-POL-SIZE | B | Piepenbrock et al., Positive display polarity is particularly advantageous for small character sizes, Human Factors 2013 | https://consensus.app/papers/details/w:48fdf521-5105-4b9e-b1e1-790f73678555/ |
+| SCI-POL-AGE | B | Piepenbrock et al., Positive display polarity is advantageous for both younger and older adults, Ergonomics 2013 | https://consensus.app/papers/details/w:882ab7e7-e2e7-403a-b1ec-ba387e2da412/ |
+| SCI-VIS-POL | B | While et al., Dark Mode or Light Mode? Contrast polarity and visualization performance between age groups, IEEE VIS 2024 (134 people) | https://consensus.app/papers/details/w:41493219-ef46-4a27-8e49-9181e17fdb1f/ |
+| SCI-WAIT-CLOCK | A | Tan et al., Counting the Wait: Effects of Temporal Feedback on Downstream Task Performance and Perceived Wait-Time Experience during System-Imposed Delays, CHI 2026 (425 people) | https://consensus.app/papers/details/w:c81e24ee-626a-43f3-b726-17bcf9449605/ |
+| SCI-WAIT-ANIM | A | Wang et al., Website Loading Animation and Perceived Waiting Time, JTAER 2025 (four experiments, 198 to 411 people each) | https://consensus.app/papers/details/w:bbd4a9b0-5b33-41fd-a11b-c40655b2701f/ |
+| SCI-FORM-ERR | B | Bargas-Avila et al., Usable error message presentation in the World Wide Web: Do not show errors right away, Interacting with Computers 2007 (77 and 90 people) | https://consensus.app/papers/details/w:74ac86cf-5c9b-4ff7-8707-bcab95c7495e/ |
+| SCI-FORMS | B | Seckler et al., Designing usable web forms, CHI 2014 (65 people, eye tracking) | https://consensus.app/papers/details/w:b97b4351-73fd-4f9f-86e4-db37676cbfd5/ |
+| SCI-GUIDE-COST | B | Falkowska et al., Utilization of Eye-Tracking Metrics to Evaluate User Experiences, Sensors 2025 (102 people) | https://consensus.app/papers/details/w:3c2584ba-6ae1-4e50-8c47-353d69f79cf5/ |
 | TW-THEME | stack | Tailwind CSS v4, Theme variables | https://tailwindcss.com/docs/theme |
 | TW-DARK | stack | Tailwind CSS v4, Dark mode | https://tailwindcss.com/docs/dark-mode |
 | MUI-DARK | stack | MUI, Dark mode | https://mui.com/material-ui/customization/dark-mode/ |
@@ -79,3 +103,4 @@ Notes:
 - Replaced earlier secondary citations (DAISY summaries of WCAG, a Flutter constant for Apple's 44pt) with the primary W3C and Apple pages.
 - Material 3 and Apple pages were read directly on 2026-11-02; colour, type-scale and stack pages on 2026-11-14.
 - Re-check yearly: WCAG 3, Material and Apple HIG all move.
+- `SCI-*` studies were found through Consensus on 2026-11-15. Numbers come from the published abstracts; full texts were not read. Links go to each paper's Consensus page, which links to the publisher.

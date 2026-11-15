@@ -1,4 +1,4 @@
-# Scales: spacing, density, shape, type, motion, elevation, icons, breakpoints
+# Scales: spacing, density, shape and shape presets, type, motion, elevation, icons, breakpoints
 
 Verified Material 3 values (plus GUIdance judgment where marked); use them directly. Verified 2026-11-02 to 2026-11-15. Keys match `sources.md`.
 
@@ -27,7 +27,7 @@ Values in CSS px. Roles point at scale tokens (`--space-group: var(--space-300)`
 
 - Sourced: every step is on the Material scale [M3-SPACING]. Density is applied in steps of 4dp on padding or height, numbered 0, -1, -2, -3 [M3-DENSITY]; the presets' heights are 8px apart, two such steps. Compact rows of 32px match SAP Fiori's compact mode, whose cozy touch area is 44px [FIORI-DENSITY]. Which products suit high or low density [M3-DENSITY, FIORI-DENSITY, CLOUDSCAPE-DENSITY].
 - No source sets a minimum gap: the only requirement is the order, tighter inside a group than between groups (rule 4.2), so stack stays under field, field under group, group under section. A project may point a role at a smaller step as long as that order holds.
-- Tuning: a project may move single roles off its preset, one step per request along 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72 (the scale from 4 up without 6, 10, 14 and 36), with no cap other than the ends of that list and the limits: spacing values from that list, the order (inline under field too), the target floors. The two heights move by 4px, Material's density step [M3-DENSITY], and need not be on the spacing scale. A tuning is a distance from the preset, recorded with its value: `density: default, tuned: section +1 (40)`. Which roles to tune for which product is judgment.
+- Tuning: a project may move single roles off its preset, one step by default (two when asked for a lot) along 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72 (the scale from 4 up without 6, 10, 14 and 36), with no cap other than the ends of that list and the limits: spacing values from that list, the order (inline under field too), the target floors. The two heights move by 4px, Material's density step [M3-DENSITY], and need not be on the spacing scale. A tuning is a distance from the preset, recorded with its value: `density: default, tuned: section +1 (40)`. Which roles to tune for which product is judgment.
 - Judgment: which step each role takes, a default height of 40px, and the whole comfortable column. No source publishes a preset above its default. Card and group values in the default column are rule 4.6's. Cloudscape names its two levels comfortable (its default) and compact: its comfortable is this table's default.
 - Fixed in every preset: font sizes and line heights (Fiori: in compact "the font size stays the same"), the scale, radius, the 24px target floor, and at least `target-touch` for control and row heights on touch layouts: under 600px wide (the width the target check treats as touch) or a coarse pointer, for example `min-height: max(var(--control-height), var(--target-touch))` inside `@media (max-width: 599px), (pointer: coarse)`.
 - Phone widths (under 600px): page gutter 16 in every preset and `space-card` at 12, 16, 24, which gives rule 4.6's mobile values at default. The other roles keep their values, so field stays under group. This is responsive layout, not a density change (judgment).
@@ -38,6 +38,25 @@ Values in CSS px. Roles point at scale tokens (`--space-group: var(--space-300)`
 None 0 · extra small 4dp · small 8dp · medium 12dp (cards, small FAB) · large 16dp · large increased 20dp · extra large 28dp · extra large increased 32dp · extra extra large 48dp · full (buttons by default).
 
 Nested shapes (optical roundness): inner = outer - padding (48 - 14 = 34). No large or full corners on information-dense containers.
+
+**Shape presets.** Each maps the same radius roles to steps of the scale above. One preset for the product (rule 5.5); `/guidance shape` changes it.
+
+| Role | Use | sharp | soft | round |
+| --- | --- | --- | --- | --- |
+| `radius-button` | buttons | 4 | 8 | full |
+| `radius-field` | inputs, selects, text boxes | 4 | 8 | 12 |
+| `radius-chip` | chips, tags, badges | 4 | 8 | full |
+| `radius-card` | cards, panels; menus, popovers, tooltips | 4 | 8 | 12 |
+| `radius-overlay` | dialogs, sheets | 8 | 12 | 28 |
+| Use for | | tools, data, finance, developer and admin products; a precise, serious feel | most products | consumer, touch-first and playful products; a friendly feel |
+
+Values in CSS px. Roles point at scale tokens (`--radius-card: var(--radius-sm)`), in the project's own naming.
+
+- Sourced [M3-SHAPE]: every value is on the scale. Round follows Material's own defaults where its shape page states them: buttons full, cards medium (12). Remapping a component to another step is allowed: "by default, buttons are mapped to the full corner radius shape style. If your product needs a less rounded shape, remap the token to another style in the shape scale, such as small or medium." Products should use their shape styles consistently, with customization for hero moments or custom components.
+- Judgment: the sharp and soft columns, the field, chip and overlay values of round, and which product suits which preset. No study in the sources measures corner radius.
+- Tuning: a project may move single roles off its preset, one scale step by default and further when asked, within the limits of rule 5.5. A relative change is a distance from the preset, recorded with its value (`shape: soft, tuned: card +1 (12)`); an explicit value (a number, full, 0) is recorded as that value and kept under any preset (`button full`).
+- Menus, popovers and tooltips sit with cards, not dialogs: they are small or hold lists, so they stay at 12 or under (judgment). A list item or thumbnail close to a card's edge takes the nested value (inner = outer - padding), not the card role; further in, it is never rounder than the card.
+- Circles (avatars, round icon buttons) are not part of the presets.
 
 ## Type [M3-TYPE]
 

@@ -175,6 +175,14 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - A 20 to 24px glyph still has a 44 to 48px tap area on touch (rule 2.2) and at least 24px everywhere (rule 2.1).
 - Meaningful icons: 3:1 contrast (rule 1.2) and an accessible name when they stand alone.
 
+**5.5 One shape for the product** (Default) [M3-SHAPE A, judgment]
+- The product has one shape: sharp, soft or round (values in `data/scales.md`, Shape presets), expressed through radius role tokens for buttons, fields, chips, cards and overlays (dialogs and sheets), so a change moves every instance together.
+- Material assigns steps to components by how round they should look and allows a product to remap them: buttons are full by default and may be moved to small or medium; products should then use their shape consistently [M3-SHAPE A]. So the preset is the product's, not a page's: no page overrides (rule 4.5). Hero moments and custom components may take their own shape [M3-SHAPE A].
+- Single roles may be tuned on top of the preset: pill buttons on a soft product, rounder cards (judgment). The limits do not move: values on the scale and three or four of them in all (rule 5.1), no large or full corners on information-dense containers [M3-SHAPE A], concentric nested corners (rule 5.2).
+- Dialogs and sheets are never full and at least as round as cards; menus, popovers and tooltips take the card value, since they are small or hold lists; fields are full only when all are single-line (judgment).
+- No source measures which shape performs or rates best; which preset fits which product is judgment.
+- Break: a brand with a defined corner style keeps it, mapped to the nearest scale steps.
+
 ## 6. Hierarchy
 
 **6.1 One primary action** (Strong) [NNG-HIER B, M3-SPACING A]

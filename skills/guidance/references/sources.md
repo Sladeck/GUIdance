@@ -109,3 +109,4 @@ Notes:
 - Re-check yearly: WCAG 3, Material and Apple HIG all move.
 - `SCI-*` studies were found through Consensus on 2026-11-15. Numbers come from the published abstracts; full texts were not read. Links go to each paper's Consensus page, which links to the publisher.
 - Density pages were read on 2026-11-15: Material 3 and SAP Fiori in a browser (both block plain fetches), Cloudscape through a page fetch.
+- The Material 3 corner radius page was read again in a browser on 2026-11-15 for the shape presets (buttons full by default, remapping allowed, no large corners on information-dense components).

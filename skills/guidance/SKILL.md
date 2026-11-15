@@ -1,6 +1,6 @@
 ---
 name: guidance
-description: Evidence-cited UI rules for building, reviewing and fixing interfaces, and setting up design tokens and colour palettes with a live preview (/guidance setup, build, review, fix). Review checks code and measures a local page at mobile, tablet and desktop widths for spacing, border, corner, colour, contrast, target, keyboard and layout problems. Sources ranked by weight (WCAG, Apple, Material, Baymard, GOV.UK, NN/g).
+description: Evidence-cited UI rules for building, reviewing and fixing interfaces, and setting up design tokens and colour palettes with a live preview (/guidance setup, spacing, build, review, fix). Review checks code and measures a local page at mobile, tablet and desktop widths for spacing, border, corner, colour, contrast, target, keyboard and layout problems. Sources ranked by weight (WCAG, Apple, Material, Baymard, GOV.UK, NN/g).
 ---
 
 # GUIdance
@@ -9,7 +9,7 @@ Design rules you can defend: each rule in `references/rules.md` states a number 
 
 ## Commands
 
-The first word after `/guidance` picks the command. Plain requests map the same way: "set up design tokens" is setup, "build a settings screen" is build, "review this code", "check this page for inconsistencies" or "does this look right on mobile" is review, "fix those" after a report is fix.
+The first word after `/guidance` picks the command. Plain requests map the same way: "set up design tokens" is setup, "make it denser", "more breathing room", "tighter lists on the reports page" or "change the spacing" is spacing, "build a settings screen" is build, "review this code", "check this page for inconsistencies" or "does this look right on mobile" is review, "fix those" after a report is fix.
 
 **Before acting, read the command's file.** It lists the other files it needs.
 
@@ -17,6 +17,7 @@ The first word after `/guidance` picks the command. Plain requests map the same 
 | --- | --- | --- |
 | `/guidance` | Lists these commands in a few lines. Nothing else. | |
 | `/guidance setup` | Learns what the project is, proposes two colour palettes with a live preview, then writes or fixes design tokens and colours in the project. | `commands/setup.md` |
+| `/guidance spacing [preset or what to change] [page\|all]` | Sets or changes density, for the whole project (`all`, or no scope) or one page. Takes a preset (`compact`, `default`, `comfortable`), a change in plain words ("more room between the cards") or nothing, in which case it proposes two directions built for the product. Shows the plan, applies it at the token source, then measures. | `commands/spacing.md` |
 | `/guidance build <what>` | Builds or changes UI following the rules and the project's tokens. | `commands/build.md` |
 | `/guidance review [target] [quick]` | Reviews code (a file, folder, component, or the uncommitted changes) and measures its page at mobile, tablet, desktop and breakpoint widths; one ordered list of findings with why and fix. `quick`: target, type and contrast numbers only. | `commands/review.md` |
 | `/guidance fix [which]` | Fixes findings from the last review, then measures again. | `commands/fix.md` |
@@ -40,7 +41,7 @@ Conflict rule: higher tier wins. Same tier, context decides (Apple on Apple plat
 | File | Use |
 | --- | --- |
 | `references/rules.md` | The rules, with sources, severity and when to break them |
-| `references/data/` | Every verified number, so you never search the web: `accessibility.md` (WCAG, platform sizes), `scales.md` (spacing, shape, type, motion, elevation, icons, breakpoints), `colour.md` (Material roles and tones, brand colour to palette row, neutral surfaces, two-tone), `stacks.md` (framework traps), `research.md` |
+| `references/data/` | Every verified number, so you never search the web: `accessibility.md` (WCAG, platform sizes), `scales.md` (spacing, density presets, shape, type, motion, elevation, icons, breakpoints), `colour.md` (Material roles and tones, brand colour to palette row, neutral surfaces, two-tone), `stacks.md` (framework traps), `research.md` |
 | `references/palettes/<variant>.md` | WCAG-checked palettes, one line per hue. Large: search for the one row you need, never read a whole file |
 | `references/formats/<stack>.md` | Worked token files (css, tailwind4, tailwind3, mui, scss) to model any stack on |
 | `references/browser-checks.md` | How to run the page checks and what each finding means |

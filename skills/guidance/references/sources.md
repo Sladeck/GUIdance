@@ -14,6 +14,7 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | **A: Peer-reviewed, large sample** | Peer-reviewed studies with 400 or more participants, or field data at scale. Measured effects, but each is one study: a number from it is evidence, not a platform standard. | `SCI-*` keys marked A |
 | **B: Expert research** | Decades of studies, but most are qualitative with small samples (NN/g itself says 5 users find problems but do not produce reliable numbers; quantitative claims need 40+). Strong on what goes wrong, weaker on exact thresholds. Some articles are expert guidelines rather than single studies. | Nielsen Norman Group |
 | **B: Peer-reviewed experiments** | Controlled, peer-reviewed experiments with smaller samples (tens to a few hundred people). Good on the direction of an effect, weaker on exact thresholds. | `SCI-*` keys marked B |
+| **B: Product design systems** | How large products solved a problem, documented by their own teams. Shows established practice, not measured evidence, and they can disagree with each other. | GitHub Primer, IBM Carbon, SAP Fiori, AWS Cloudscape |
 | **C: Secondary** | Summaries or tutorials of other sources. Used only where they add a formula or a clean statement; never decisive. | Laws of UX, 30 seconds of code |
 | **Judgment** | No source; reasoning from the rules above. Lowest weight; always labelled. | (none) |
 
@@ -40,6 +41,7 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | APPLE-TYPE | A | Apple HIG, Typography | https://developer.apple.com/design/human-interface-guidelines/typography |
 | APPLE-ALERTS | A | Apple HIG, Alerts | https://developer.apple.com/design/human-interface-guidelines/alerts |
 | ANDROID-TARGET | A | Google, Android Accessibility Help: Touch target size | https://support.google.com/accessibility/android/answer/7101858 |
+| M3-DENSITY | A | Material Design 3, Grids & spacing: Density | https://m3.material.io/foundations/layout/grids-spacing/density |
 | M3-SPACING | A | Material Design 3, Spacing (overview, tokens) and Grids & spacing | https://m3.material.io/styles/spacing/tokens |
 | M3-SHAPE | A | Material Design 3, Corner radius scale | https://m3.material.io/styles/shape/corner-radius-scale |
 | M3-TYPE | A | Material Design 3, Type scale and tokens | https://m3.material.io/styles/typography/type-scale-tokens |
@@ -93,6 +95,8 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | BS-COLOR-MODES | stack | Bootstrap 5.3, Color modes | https://getbootstrap.com/docs/5.3/customize/color-modes/ |
 | PRIMER-COLOR | B | GitHub Primer, Color primitives (neutral backgrounds, one accent) | https://primer.style/foundations/primitives/color |
 | CARBON-COLOR | B | IBM Carbon Design System, Color overview | https://carbondesignsystem.com/elements/color/overview/ |
+| FIORI-DENSITY | B | SAP Fiori for Web, Content Density (Cozy and Compact) | https://www.sap.com/design-system/fiori-design-web/v1-154/foundations/visual/cozy-compact |
+| CLOUDSCAPE-DENSITY | B | AWS Cloudscape Design System, Content density | https://cloudscape.design/foundation/visual-foundation/content-density/ |
 | RADIX-COMPOSE | B | Radix Colors, Composing a palette (accent and gray pairing) | https://www.radix-ui.com/colors/docs/palette-composition/composing-a-palette |
 | LAWS-PROX | C | Laws of UX, Law of Proximity | https://lawsofux.com/law-of-proximity/ |
 | NESTED-RADIUS | C | 30 seconds of code, Nested border radius | https://30secondsofcode.org/css/s/nested-border-radius |
@@ -104,3 +108,4 @@ Notes:
 - Material 3 and Apple pages were read directly on 2026-11-02; colour, type-scale and stack pages on 2026-11-14.
 - Re-check yearly: WCAG 3, Material and Apple HIG all move.
 - `SCI-*` studies were found through Consensus on 2026-11-15. Numbers come from the published abstracts; full texts were not read. Links go to each paper's Consensus page, which links to the publisher.
+- Density pages were read on 2026-11-15: Material 3 and SAP Fiori in a browser (both block plain fetches), Cloudscape through a page fetch.

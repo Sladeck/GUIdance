@@ -105,7 +105,7 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 
 **4.1 One spacing scale** (Default) [M3-SPACING A]
 - Material 3: 8dp base (space100 = 8dp). Tokens 0, 2, 4, 6, 8, 10, 12, 14, 16, 20, 24, 32, 36, 40, 48, 56, 64, 72dp; main units are multiples of 8, while 2, 4, 6 and 10 are for tight component internals.
-- Layout: 8, 16, 24, 32, 48, 64. Inside components: 4, 8, 12, 16.
+- Layout: 8, 16, 24, 32, 48, 64. Inside components: 4, 8, 12, 16. Density roles may take any step of the scale (rule 4.7).
 - Padding and gaps on the parent, not margins on children.
 - Desktop can be more generous than mobile; dense reads serious and focused, spacious reads calm.
 - Break: documented optical adjustments of 1 to 2px.
@@ -132,9 +132,22 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - One colour per role: near-identical greys or tints are hard-coded values that should be a token.
 
 **4.6 Give each component room** (Default) [M3-SPACING A, judgment]
-- Desktop: 24px inside cards, 24 to 32px between. Mobile: 16px inside, 16 to 24px between. Dense tables and toolbars can go tighter; showcases and dashboards should not.
+- Desktop: 24px inside cards, 24 to 32px between. Mobile: 16px inside, 16 to 24px between. These are the default density; the compact and comfortable presets, or a tuned role, move them (rule 4.7). Dense tables and toolbars can go tighter; showcases should not.
 - Text at least 16px for content, 14px for labels; 12px only for captions and metadata.
 - Cramped screen: remove or move a component before shrinking spacing.
+
+**4.7 One density for the product, one per page** (Default) [M3-DENSITY A, FIORI-DENSITY B, CLOUDSCAPE-DENSITY B]
+- The product has one density: compact, default or comfortable (values in `data/scales.md`, Density), expressed through role tokens so the whole app moves together.
+- A page may override it when its content calls for it: a report table in a default product, a welcome page in a compact one. Material says density can change with context and that not every layout needs it [M3-DENSITY A]. Fiori and Cloudscape disagree: both set density for the whole application and Cloudscape says not to apply compact to individual pages or components [FIORI-DENSITY B, CLOUDSCAPE-DENSITY B]. Material is the higher tier, so overrides are permitted, but keep them few.
+- One density within a page's content: no mixing of presets between its sections [FIORI-DENSITY B]. Two exceptions, both judgment: the shared shell (navigation, header) keeps the product's density on an overridden page, and one self-contained dense component (a data grid, a code editor) may run compact, in line with Material's per-component density scale [M3-DENSITY A].
+- Compact: data-rich products where people scan and compare a lot, such as dashboards, tables and financial tools [M3-DENSITY A], on devices used with a mouse and keyboard [FIORI-DENSITY B]. Comfortable: products that put a focused message, less information or easier navigation first [M3-DENSITY A]. Default: everything else.
+- A product may ship compact as its only density when it needs high information density [FIORI-DENSITY B]. A product that lets people choose always offers default as well, and starts on it [CLOUDSCAPE-DENSITY B, which calls that level "comfortable"].
+- A preset changes spacing and control height only. Font size stays the same [FIORI-DENSITY B]; so do the scale, radius and the target floors. Accessible targets keep their minimum size even when the visible element is smaller [M3-DENSITY A]: on touch layouts (under 600px wide or a coarse pointer) control and row heights are at least the touch size in every preset (rule 2.2), and nothing drops under 24x24 CSS px (rule 2.1).
+- Never densify focused tasks such as choosing from a menu, or components that alert people to a change, such as snackbars and dialogs [M3-DENSITY A]. In a compact product or page they keep the default values.
+- Density does not change by itself across breakpoints or orientation; only the person changes it [M3-DENSITY A]. If the product offers a density setting, its control keeps default target sizes [M3-DENSITY A].
+- Who wins: Fiori forces its touch-size mode on phones while Material says density should not switch automatically. Rule 2.2 settles it: spacing roles stay as chosen, control and row heights rise to the touch size on touch layouts. That is a target-size floor, not a density change (judgment).
+- Single roles may be tuned on top of the preset, so products of the same density do not all share one rhythm: wider sections for reading, tighter lists for data (judgment). The limits are sourced and do not move: spacing on scale steps only (rule 4.1; control and row heights move by Material's 4dp density step instead [M3-DENSITY A]), tighter inside a group than between groups (rule 4.2), the target floors (rules 2.1 and 2.2). A tuned role changes everywhere in its scope, never in one section of a page.
+- No study in the sources says which density performs best; the preset values beyond Material's and Fiori's numbers, and every tuning, are judgment.
 
 ## 5. Shape, elevation and icons
 

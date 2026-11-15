@@ -46,7 +46,7 @@ One numbered list in the format of `commands/report-format.md`, then the counts 
 2. **Targets**: 24x24 CSS px or spaced (Hard); 44pt iOS, 48dp Android, 44 to 48px on touch web layouts.
 3. **Colour alone**: status, errors, series and links always have a second cue.
 4. **Type**: a named subset of the platform scale; about three sizes per screen; body at platform default; 50 to 75 characters per line; no light weights small; text can grow to 200%.
-5. **Spacing and grouping**: one scale; tighter inside groups than between; padding and gaps on parents; actions next to what they affect.
+5. **Spacing and grouping**: one scale; tighter inside groups than between; padding and gaps on parents; actions next to what they affect; one density within a page (the project's, or the page's own override), with dialogs, menus and alerts at default in compact (rule 4.7).
 6. **Radius, elevation and icons**: one radius scale with concentric nested corners; elevation from the six Material levels, one separation cue per surface; one icon set and style, two sizes.
 7. **Hierarchy**: one clear primary action; squint test passes.
 8. **Forms**: single column, visible labels, validation timing matched to form type (long form: on blur; short or one-per-page: on submit), errors clear when fixed, input preserved.

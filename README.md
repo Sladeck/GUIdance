@@ -21,6 +21,7 @@ GUIdance is a Claude skill that gives your interfaces a professional finish: con
 
 - **Sets up a design system in your project.** Works with any stack (plain CSS, Tailwind, MUI, shadcn/ui, Bootstrap, Sass, even native theme code): it finds where your styling lives, reads the tokens you already have, flags spacing, radius, type and motion values that sit off the Material 3 scales, and writes clean tokens (spacing, radius, elevation, type, motion, colours) in your stack's own format.
 - **Picks your colours with you.** Learns what your product is (and asks if it can't tell), proposes two palettes built from your brand colour, with near-neutral backgrounds the way GitHub, IBM and Radix do it (or a two-tone brand with one bright accent, like many admin dashboards), and shows them on sample components in light and dark before anything is written. Every palette is checked against WCAG contrast: 120 colour pairs, light and dark.
+- **Sets your density.** Three spacing presets (compact, default, comfortable) map the same spacing roles to different steps of the scale, and each role can be tuned on top, so a data tool and a marketing site do not end up with the same rhythm. Ask with no argument and Claude proposes two directions built for your product, as it does for colours. Ask in plain words ("more room between the cards", "tighter lists on the reports page") and it finds the right value to move. It works on the whole app or a single page; font sizes and touch targets never shrink.
 - **Builds UI that follows the rules.** When Claude creates or changes an interface, it uses your tokens and the rules as minimums, then checks its own work.
 - **Reviews your code and your pages on every screen size.** Checks the code against the rules, then opens the page from your local dev server at mobile, tablet and desktop widths, and on both sides of each of your own breakpoints, where layouts tend to break. It measures instead of guessing:
   - off-scale spacing and uneven gaps;
@@ -44,6 +45,7 @@ Design tokens: named values your whole UI uses instead of numbers picked by eye.
 | --- | --- | --- |
 | **Colours** | A full colour scheme from your brand colour: 37 colour roles in light and dark (see below), plus 5 chart colours. Every pair checked for contrast | Material 3 roles, WCAG 2.2 |
 | **Spacing** | 18 steps on an 8px grid: 0, 2, 4, 6, 8, 10, 12, 14, 16, 20, 24, 32 ... 72px | Material 3 |
+| **Density** | Spacing roles (field, card, group, section, page gutter, control height...) in three presets: compact, default, comfortable | Material 3 density, SAP Fiori, AWS Cloudscape; preset values are judgment |
 | **Corner radius** | 0, 4, 8, 12, 16, 20, 28, 32, 48px and full (pills) | Material 3 |
 | **Elevation** | 6 shadow levels, from flat to dragged | Material 3 |
 | **Type** | Headline 32, title 22, body 16, small body 14, label 12px, with line heights and weights | Material 3, Apple |
@@ -113,6 +115,7 @@ Some features need a **browser Claude can drive**, which is a separate tool, not
 | `/guidance review quick` (targets, typography, contrast numbers) | **Required.** Without one, Claude hands you the same DevTools snippets. |
 | `/guidance fix` (measuring again after the changes) | Optional. Claude makes the fixes, then asks you to re-run the snippets or checks the code by reading it. |
 | `/guidance setup` (showing the colour preview) | Optional. The preview shows as an artifact in Claude apps, or Claude gives you the file to open yourself. |
+| `/guidance spacing` (previewing the two directions, measuring and screenshots after the change) | Optional. The directions are shown as tables of values, and the result is checked by reading the token file. |
 | `/guidance build` (checking its own work in the page) | Optional. The check is done by reading the code instead. |
 
 **About page checks.** `review` is meant for your local dev pages during a coding session. A public URL works too, through a real browser only: fetched HTML is never enough, since many sites build the page with JavaScript. Even then the result is a snapshot, as cookie banners, lazy loading and the signed-out view can differ from what users see.
@@ -129,7 +132,7 @@ This is the preview you choose from, with sample components only, to judge the c
 
 After that, just work: ask Claude to build a screen and it follows the rules, or run `/guidance review /settings` to see what's off on mobile, tablet and desktop, then `/guidance fix` to clean it up.
 
-Plain requests work too: "set up design tokens", "review this page", "does this look right on mobile?", "build a settings screen".
+Plain requests work too: "set up design tokens", "make it denser", "review this page", "does this look right on mobile?", "build a settings screen".
 
 **See it on a real page:** [`examples/sprout`](examples/sprout) is a small hand-written dashboard before and after GUIdance, with the palette preview, the full review report (17 findings across phone, tablet, desktop and breakpoint widths) and the clean re-check.
 
@@ -139,6 +142,7 @@ Plain requests work too: "set up design tokens", "review this page", "does this 
 | --- | --- |
 | `/guidance` | Lists the commands. |
 | `/guidance setup` | Learns what the project is, proposes two colour palettes with a light and dark preview, then writes or fixes design tokens (spacing, radius, type, motion, colours) in your stack's format. Never overwrites a file, and shows every change before making it. |
+| `/guidance spacing [preset or what to change] [page\|all]` | Sets or changes density. A preset: `/guidance spacing compact` changes the whole project, `/guidance spacing compact /reports` one page. Plain words: `/guidance spacing more room between the cards`, `/guidance spacing tighter lists on /reports`. Nothing: it proposes two directions built for your product, with the plain preset as a third choice. Shows every value before and after, changes the spacing role tokens at their source, then measures the page. |
 | `/guidance build <what>` | Builds or changes UI with your tokens and the rules, then checks the result. |
 | `/guidance review [target]` | Finds what's wrong. Give it a page (a route like `/settings`, a page file or a description), a file, folder or component, or nothing for your uncommitted changes. It reviews the code against the rules and measures the page at mobile, tablet, desktop and breakpoint widths: spacing, gaps, borders, corners, shadows, icons, colours, contrast, targets, type, overflow, keyboard and focus. One ordered list, Hard / Strong / Default, each with where it is in your code, why and how to fix it. Starts your dev server if it isn't running. Changes nothing until you ask. |
 | `/guidance review quick [page]` | Numbers only: touch targets, typography and contrast, as a short table and a one-line verdict. |
@@ -160,7 +164,7 @@ Rules without a source are labelled `judgment`. Where sources disagree, the high
 
 ## Citations and resources
 
-Verified on 2026-11-02 (rules), 2026-11-14 (colour, type scale, stack formats) and 2026-11-15 (elevation, icons, breakpoints, focus, shadcn/ui and Bootstrap). Peer-reviewed studies were added on 2026-11-15 from their published abstracts; full texts were not read. Every value taken from these sources is stored in [`skills/guidance/references/data/`](skills/guidance/references/data/).
+Verified on 2026-11-02 (rules), 2026-11-14 (colour, type scale, stack formats) and 2026-11-15 (elevation, icons, breakpoints, focus, shadcn/ui and Bootstrap, density). Peer-reviewed studies were added on 2026-11-15 from their published abstracts; full texts were not read. Every value taken from these sources is stored in [`skills/guidance/references/data/`](skills/guidance/references/data/).
 
 **Standards (W3C)**
 - [Understanding SC 1.4.3 Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
@@ -179,6 +183,7 @@ Verified on 2026-11-02 (rules), 2026-11-14 (colour, type scale, stack formats) a
 
 **Google**
 - [Material Design 3: Spacing](https://m3.material.io/styles/spacing/tokens)
+- [Material Design 3: Density](https://m3.material.io/foundations/layout/grids-spacing/density)
 - [Material Design 3: Corner radius scale](https://m3.material.io/styles/shape/corner-radius-scale)
 - [Material Design 3: Type scale and tokens](https://m3.material.io/styles/typography/type-scale-tokens)
 - [Material Design 3: Color roles](https://m3.material.io/styles/color/roles)
@@ -206,6 +211,7 @@ Verified on 2026-11-02 (rules), 2026-11-14 (colour, type scale, stack formats) a
 - [GitHub Primer: Color primitives](https://primer.style/foundations/primitives/color)
 - [IBM Carbon: Color overview](https://carbondesignsystem.com/elements/color/overview/)
 - [Radix Colors: Composing a palette](https://www.radix-ui.com/colors/docs/palette-composition/composing-a-palette)
+- [SAP Fiori: Content density (cozy and compact)](https://www.sap.com/design-system/fiori-design-web/v1-154/foundations/visual/cozy-compact) and [AWS Cloudscape: Content density](https://cloudscape.design/foundation/visual-foundation/content-density/) (how products offer density)
 
 **Secondary**
 - [Laws of UX: Law of Proximity](https://lawsofux.com/law-of-proximity/)

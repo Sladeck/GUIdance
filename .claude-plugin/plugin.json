@@ -1,7 +1,7 @@
 {
   "name": "guidance",
   "displayName": "GUIdance",
-  "description": "Evidence-ranked UI design rules for Claude: sets up design tokens in any stack, then builds, audits, inspects and fixes interfaces against Material 3, WCAG 2.2, Apple, Baymard and NN/g. Not a UI kit.",
+  "description": "Evidence-ranked UI design rules for Claude: sets up design tokens, spacing density and corner shape in any stack, then builds, reviews and fixes interfaces against WCAG 2.2, Material 3, Apple, Baymard, GOV.UK and NN/g. Not a UI kit.",
   "author": {
     "name": "Sladeck",
     "url": "https://github.com/Sladeck"

@@ -1,12 +1,12 @@
 {
   "name": "guidance",
-  "description": "GUIdance, UI design rules and tools for Claude",
+  "description": "GUIdance, UI design rules with their sources, for Claude",
   "owner": { "name": "Sladeck", "url": "https://github.com/Sladeck" },
   "plugins": [
     {
       "name": "guidance",
       "source": "./",
-      "description": "Evidence-ranked UI design rules: tokens in any stack, then build, audit, inspect, fix and check. Not a UI kit."
+      "description": "Evidence-ranked UI design rules: tokens, spacing density and corner shape in any stack, then build, review and fix. Not a UI kit."
     }
   ]
 }

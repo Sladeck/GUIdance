@@ -1,44 +1,41 @@
-# `/guidance review [target] [quick]`
+# `/guidance review [target]`
 
-Finds what is wrong with an interface: in its code, on the rendered page at every width, or both. Change nothing; offer `/guidance fix` at the end.
+Finds where an interface breaks the rules, and says why each rule exists and where it comes from. Change nothing; offer `/guidance fix` at the end.
 
 ## 1. Scope
 
-The target decides what to do:
+| Target | What is reviewed |
+| --- | --- |
+| nothing | the files changed in the working tree (version control) |
+| a file, folder or component | that code |
+| a page: route (`/settings`), page file or description | the code behind that page: its template, styles and the components it uses |
 
-| Target | Code review | Page measurement |
-| --- | --- | --- |
-| nothing | the files changed in the working tree (version control) | the pages those files render on |
-| a file, folder or component | that code | the page it renders on, if one can be found |
-| a page: route (`/settings`), page file, description, local address | the code behind the page | the page |
+With no changes and no target, ask what to review.
 
-With no changes and no target, ask what to review. Opening a page: `commands/open-page.md`. No browser at all: review the code only and label the report "read from code, not measured".
+## 2. Read the project's choices first
 
-`quick` (or "quick check"): measure only, with `targets.js`, `typography.js` and `contrast.js` at 1440 and 390 (`__gd.<name>()` for the second width). Reply with one short table per check (FAIL and WARN only) and a one-line verdict. No code review, no fixes. Stop there.
-
-## 2. Measure the page
-
-Read `references/browser-checks.md` once for how to run the checks in `checks/`. Send each check's file once per page; at the next width or theme, call it again with `__gd.<name>()`.
-
-- **`inspect.js`** at **mobile 390x844, tablet 768x1024, desktop 1440x900** and **320 wide** (WCAG reflow). Its result lists `breakpoints`: the widths where the layout switches, read from the page's own media queries (Material's 600, 840 and 1200 if it has none). Run it again on both sides of each one (for example 799 and 800): layouts break right before they switch.
-- **`targets.js`** and **`contrast.js`** at 390 and 1440; **`typography.js`** at 1440 and 390.
-- **`keyboard.js`** once at desktop width, after pressing Tab once in the page (a real key press with your browser tool); it says INCONCLUSIVE otherwise.
-- **Dark theme**, if the app has one: switch, wait for the colours to settle, then run contrast, inspect and keyboard again at one width.
-- INCONCLUSIVE: do what it says and run again. If inspect warns that stylesheets could not be read, the page was opened as a file: serve it over http (the dev server, or your browser tool's preview server) and run again.
+Read the token file: the scales it defines, its `density:` and `shape:` comments, and anything recorded as tuned or accepted. Those are the user's decisions: a value that follows them is not a finding. List them in one line under the report.
 
 ## 3. Review the code
 
-Go through the checklist below on the code in scope, section by section, skipping what the measurements already cover. Colours that were not measured: compute contrast by hand with `references/data/colour.md` and show the working.
+Go through the checklist below on the code in scope, section by section, reading only the `references/rules.md` sections you need. For each candidate finding, read the rule itself before reporting it: its number, severity, sources and its "Break" line.
 
-## 4. Merge, trace, judge
+- Colours: compute contrast by hand with `references/data/colour.md` and show the working. Say that ratios are computed by hand, and name those within 0.3 of their threshold.
+- Sizes and spacing: follow tokens and aliases to the real value before judging it.
+- Responsive behaviour: read the media queries and what changes at each one.
 
-- The same finding (same kind, element and value) at several widths is one finding, tagged with where it happens: "all sizes", "mobile only", "mobile and tablet". Width-specific findings matter most: say so. A measured finding and a code finding about the same thing are one finding.
-- Give each finding its `file:line`: search the project for the class, component or value. Use the project's token names in the fix.
-- The checks measure; you decide. Take Why and Fix for measured findings from the kind table in `browser-checks.md`, adapted to the values. Drop a finding when the code shows it is intended (a documented optical adjustment, a deliberate variant, a decorative element). Look at a screenshot when a finding is unclear.
+A browser tool is optional and only for looking: if one is available and the page can be opened, open it at 320, 390, 768 and 1440 wide to confirm what the code suggests (something overflowing, a target that looks small). Never type a password; ask the user to sign in. Label each finding "read from code" or "seen on the page".
+
+## 4. Judge
+
+- The same finding in several places is one finding, with the places listed.
+- Give each finding its `file:line`. Use the project's token names in the fix.
+- Drop a finding when the code shows it is intended (a documented optical adjustment, a deliberate variant, a decorative element), or when the token file lists it as tuned or accepted.
+- Never report a rule as broken when its "Break" line covers the case.
 
 ## 5. Report
 
-One numbered list in the format of `commands/report-format.md`, then the counts per severity (and per width when measured), the three fixes with the most impact, and an offer of `/guidance fix`.
+One numbered list in the format of `commands/report-format.md`, then the counts per severity, the three fixes with the most impact, and an offer of `/guidance fix`.
 
 ## Checklist
 
@@ -54,5 +51,5 @@ One numbered list in the format of `commands/report-format.md`, then the counts 
 10. **Errors**: next to the cause, plus summary on submit; plain and specific; a way out.
 11. **Destructive actions**: undo over confirmation; confirmations specific, outcome-named buttons, Cancel never default.
 12. **Motion**: platform durations; honour reduced motion (fades instead of slides and zooms).
-13. **Layout at every width**: nothing overflows, clips or scrolls sideways at 320, 390, 768 and desktop; the same component looks the same everywhere; edges align exactly.
+13. **Layout at every width**: nothing overflows, clips or scrolls sideways at 320, 390, 768 and desktop (read the media queries, fixed widths, `overflow` and flex or grid children without `min-width: 0`); the same component looks the same everywhere; edges align exactly.
 14. **Keyboard and focus**: visible, unobscured focus; non-drag and non-gesture alternatives; no auto-dismiss timers.

@@ -46,7 +46,7 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | M3-SHAPE | A | Material Design 3, Corner radius scale | https://m3.material.io/styles/shape/corner-radius-scale |
 | M3-TYPE | A | Material Design 3, Type scale and tokens | https://m3.material.io/styles/typography/type-scale-tokens |
 | M3-COLOR | A | Material Design 3, Color roles and How the system works | https://m3.material.io/styles/color/roles |
-| M3-COLOR-SPEC | A | material-color-utilities: role tones (color_spec_2021) and scheme variants (dynamic_scheme) | https://github.com/material-foundation/material-color-utilities |
+| M3-COLOR-SPEC | A | material-color-utilities: role tones (color_spec_2021) | https://github.com/material-foundation/material-color-utilities |
 | M3-MOTION | A | Material Design 3, Easing and duration tokens | https://m3.material.io/styles/motion/easing-and-duration/tokens-specs |
 | M3-ELEVATION | A | Material Design 3 elevation: levels and shadow values from Google's Material Web source (elevation and md-sys-elevation tokens) | https://material-web.dev/components/elevation |
 | M3-ICONS | A | Google Fonts, Material Symbols guide (sizes, weight, grade) | https://developers.google.com/fonts/docs/material_symbols |

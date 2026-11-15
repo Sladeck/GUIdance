@@ -6,16 +6,16 @@
 
 **Filling it in**
 - Fixed values (spacing, radius, elevation, type, motion, targets, focus, measure) are already filled from `../data/scales.md` and `../data/accessibility.md`. Keep them unless the user chose otherwise.
-- `{L.role}` and `{D.role}` are the light and dark colours of that role. Copy them exactly from the chosen row of `../palettes/<variant>.md` (the `light:` and `dark:` halves). With an exact brand colour (fidelity), replace the one or two light roles the setup step decided (see SKILL.md), nothing else.
-- `{palette name}` is the name the user picked.
-- Without a chosen palette, delete every colour block and keep the rest.
+- Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales.md` (and its Phone widths line for card padding), and update the `density:` and `shape:` notes.
+- `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour.md`, Building a colour set from a brand colour).
+- When the user keeps their own colours, delete every colour block and keep the rest.
 - Type: this template has the 5-style subset. For all 15 styles, take the type table in `../data/scales.md`.
 
 ```js
 /*
 GUIdance design tokens.
 Sources: Material 3 spacing, shape, type and motion tokens; WCAG 2.2 (2.5.8, focus);
-Apple HIG accessibility. Colours: palette "{palette name}" from GUIdance's palette tables
+Apple HIG accessibility. Colours: built from the brand colour with GUIdance's colour rules
 (every text pair 4.5:1, every boundary and chart colour 3:1). Edit values freely; keep the names.
 Add to tailwind.config: presets: [require('./guidance.preset.js')]
 Spacing: Tailwind's default 4px step already matches the Material 3 grid, so it is unchanged.
@@ -33,7 +33,13 @@ module.exports = {
         'ui-xl': '28px',
         'ui-xl-plus': '32px',
         'ui-2xl': '48px',
-        'ui-full': '9999px'
+        'ui-full': '9999px',
+        // shape: soft (rule 5.5). Utilities: rounded-card, rounded-button. Change with /guidance shape.
+        'button': '8px',
+        'field': '8px',
+        'chip': '8px',
+        'card': '8px',
+        'overlay': '12px'
       },
       // Elevation: Material 3 levels 0-5 (0, 1, 3, 6, 8, 12dp). Rest at 0-3; 4 and 5 only for hover and drag.
       boxShadow: {
@@ -72,8 +78,23 @@ module.exports = {
         'emphasized-decelerate': 'cubic-bezier(0.05, 0.7, 0.1, 1)',
         'emphasized-accelerate': 'cubic-bezier(0.3, 0, 0.8, 0.15)'
       },
+      // density: default (rule 4.7). Utilities: gap-group, p-card, px-control-x, h-control. Change with /guidance spacing.
+      // Phone widths: p-card-phone and px-page-phone below your phone breakpoint (rule 4.6), for example p-card-phone sm:p-card (sm is 640px by default; add a 600px screen for the exact width).
+      spacing: {
+        'inline': '8px',
+        'control-x': '16px',
+        'stack': '8px',
+        'field': '16px',
+        'card': '24px',
+        'group': '24px',
+        'section': '32px',
+        'page': '24px',
+        'card-phone': '16px',
+        'page-phone': '16px'
+      },
+      height: { control: '40px', row: '40px' },
       minWidth: { target: '24px', touch: '44px' },
-      minHeight: { target: '24px', touch: '44px' },
+      minHeight: { target: '24px', touch: '44px', control: '40px', row: '40px' },
       maxWidth: { measure: '60ch' },
       colors: {
         'primary': 'var(--color-primary)',

@@ -6,19 +6,20 @@
 
 **Filling it in**
 - Fixed values (spacing, radius, elevation, type, motion, targets, focus, measure) are already filled from `../data/scales.md` and `../data/accessibility.md`. Keep them unless the user chose otherwise.
-- `{L.role}` and `{D.role}` are the light and dark colours of that role. Copy them exactly from the chosen row of `../palettes/<variant>.md` (the `light:` and `dark:` halves). With an exact brand colour (fidelity), replace the one or two light roles the setup step decided (see SKILL.md), nothing else.
-- `{palette name}` is the name the user picked.
-- Without a chosen palette, delete every colour block and keep the rest.
+- Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales.md` (and its Phone widths line for card padding), and update the `density:` and `shape:` notes.
+- `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour.md`, Building a colour set from a brand colour).
+- When the user keeps their own colours, delete every colour block and keep the rest.
 - Type: this template has the 5-style subset. For all 15 styles, take the type table in `../data/scales.md`.
 
 ```css
 /*
 GUIdance design tokens.
 Sources: Material 3 spacing, shape, type and motion tokens; WCAG 2.2 (2.5.8, focus);
-Apple HIG accessibility. Colours: palette "{palette name}" from GUIdance's palette tables
+Apple HIG accessibility. Colours: built from the brand colour with GUIdance's colour rules
 (every text pair 4.5:1, every boundary and chart colour 3:1). Edit values freely; keep the names.
 Import this file right after @import "tailwindcss".
 Utilities: rounded-ui-md, shadow-elevation-1, text-ui-body, ease-standard, min-h-(--target-touch) ...
+Density and shape roles: gap-(--space-group), p-(--space-card), rounded-(--radius-card) ...
 Spacing: Tailwind's default --spacing (0.25rem = 4px) already matches the Material 3
 4/8px grid (p-2 = 8px, p-4 = 16px, p-6 = 24px). It is left unchanged.
 */
@@ -226,8 +227,27 @@ Spacing: Tailwind's default --spacing (0.25rem = 4px) already matches the Materi
   --space-700: 56px;
   --space-800: 64px;
   --space-900: 72px;
+
+  /* Density roles (rule 4.7). density: default. Change with /guidance spacing; roles point at scale tokens. */
+  --space-inline: var(--space-100);
+  --space-control: var(--space-200);
+  --space-stack: var(--space-100);
+  --space-field: var(--space-200);
+  --space-card: var(--space-300);
+  --space-group: var(--space-300);
+  --space-section: var(--space-400);
+  --space-page: var(--space-300);
+  --control-height: 40px;
+  --row-height: 40px;
+
+  /* Shape roles (rule 5.5). shape: soft. Change with /guidance shape; roles point at scale tokens. */
+  --radius-button: var(--radius-ui-sm);
+  --radius-field: var(--radius-ui-sm);
+  --radius-chip: var(--radius-ui-sm);
+  --radius-card: var(--radius-ui-sm);
+  --radius-overlay: var(--radius-ui-md);
   --leading-prose: 1.5;
-  --measure: 60ch; /* about 70 to 75 characters in most sans fonts; check with the typography snippet in browser-checks.md */
+  --measure: 60ch; /* about 70 to 75 characters in most sans fonts */
 
   /* Motion: Material 3 durations and easing. */
   --duration-short-1: 50ms;
@@ -252,6 +272,14 @@ Spacing: Tailwind's default --spacing (0.25rem = 4px) already matches the Materi
   --focus-ring-offset: 2px;
   --focus-ring-color: Highlight;
   --scroll-padding-top: 0px; /* set to the sticky header height (WCAG 2.4.11) */
+}
+
+/* Phone widths: page gutter and card padding (rule 4.6). Responsive layout, not a density change. */
+@media (max-width: 599px) {
+  :root {
+    --space-page: var(--space-200);
+    --space-card: var(--space-200);
+  }
 }
 
 /* Reduced motion: shorten movement, keep fades (Apple HIG, WCAG C39). */

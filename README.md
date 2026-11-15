@@ -1,9 +1,9 @@
 # GUIdance
 
-GUIdance is a Claude skill that gives your interfaces a professional finish: consistent spacing, corners, type, colour, motion and accessibility. It is a set of design rules taken from Apple, Google Material, the W3C and large-scale UX research, ranked by how much evidence stands behind each one, plus the tools to use them: it sets up design tokens and colour palettes in your project, makes Claude follow the rules when it builds UI, and checks your pages against them at every screen size. Every rule says where it comes from and when it is fine to break it.
+GUIdance is a Claude skill that gives your interfaces a professional finish: consistent spacing, corners, type, colour, motion and accessibility. It is a set of design rules taken from Apple, Google Material, the W3C and large-scale UX research, ranked by how much evidence stands behind each one, and the commands to use them: install the rules in a project as design tokens, build UI that follows them, find where existing code breaks them, and fix it. Every rule says where it comes from and when it is fine to break it, so Claude can always tell you why.
 
 > [!IMPORTANT]
-> **GUIdance is not a UI kit, a template or a component library.** It ships no components and no ready-made pages. Your components, your framework and your design stay yours; GUIdance makes them consistent.
+> **GUIdance is not a UI kit, a template or a component library.** It ships no components, no ready-made pages and no scripts: it is rules, their sources, and commands written for Claude. Your components, your framework and your design stay yours; GUIdance makes them consistent.
 
 ## Summary
 
@@ -19,24 +19,15 @@ GUIdance is a Claude skill that gives your interfaces a professional finish: con
 
 ## What it does
 
-- **Sets up a design system in your project.** Works with any stack (plain CSS, Tailwind, MUI, shadcn/ui, Bootstrap, Sass, even native theme code): it finds where your styling lives, reads the tokens you already have, flags spacing, radius, type and motion values that sit off the Material 3 scales, and writes clean tokens (spacing, radius, elevation, type, motion, colours) in your stack's own format.
-- **Picks your colours with you.** Learns what your product is (and asks if it can't tell), proposes two palettes built from your brand colour, with near-neutral backgrounds the way GitHub, IBM and Radix do it (or a two-tone brand with one bright accent, like many admin dashboards), and shows them on sample components in light and dark before anything is written. Every palette is checked against WCAG contrast: 120 colour pairs, light and dark.
-- **Sets your density.** Three spacing presets (compact, default, comfortable) map the same spacing roles to different steps of the scale, and each role can be tuned on top, so a data tool and a marketing site do not end up with the same rhythm. Ask with no argument and Claude proposes two directions built for your product, as it does for colours. Ask in plain words ("more room between the cards", "tighter lists on the reports page") and it finds the right value to move. It works on the whole app or a single page; font sizes and touch targets never shrink.
-- **Sets your shape.** Three corner presets (sharp, soft, round) map buttons, fields, chips, cards and dialogs to steps of the radius scale, and each can be tuned ("rounder buttons", "pill-shaped tags"). Like spacing, asking with no argument gets you two directions to choose from.
+- **Installs the rules in your project.** Works with any stack (plain CSS, Tailwind, MUI, shadcn/ui, Bootstrap, Sass, even native theme code): it finds where your styling lives, reads the tokens you already have, flags spacing, radius, type and motion values that sit off the scales, and writes clean tokens in your stack's own format.
+- **Builds your colours with you.** From your brand colour it builds the colour roles for light and dark, with near-grey backgrounds the way GitHub, IBM and Radix do it, and shows you every text and boundary pair with its contrast ratio before writing anything.
+- **Sets your density and shape.** Three spacing presets (compact, default, comfortable) and three corner presets (sharp, soft, round), each role adjustable on top, so a data tool and a marketing site do not end up looking the same. You get a table of choices and answer with what you want, in plain words if you like ("more room between the cards", "rounder buttons").
+- **Tells you why, and asks before doing something risky.** When a choice goes against a rule (compact spacing on a touch product, large corners on dense cards, a colour that fails contrast), Claude says what the risk is, which source says so, and what the safer value is. You decide; what you accepted is recorded so later reviews do not flag it again.
 - **Builds UI that follows the rules.** When Claude creates or changes an interface, it uses your tokens and the rules as minimums, then checks its own work.
-- **Reviews your code and your pages on every screen size.** Checks the code against the rules, then opens the page from your local dev server at mobile, tablet and desktop widths, and on both sides of each of your own breakpoints, where layouts tend to break. It measures instead of guessing:
-  - off-scale spacing and uneven gaps;
-  - mismatched corners, borders and shadows;
-  - mixed icon sizes and styles;
-  - near-duplicate colours and components that drifted apart;
-  - content that overflows or gets cut off;
-  - contrast ratios, touch target sizes, font sizes and line lengths;
-  - keyboard problems: missing focus rings, focus hidden under sticky bars, clickable things the keyboard can't reach.
+- **Reviews your code.** Checks the code against the rules: contrast, target sizes, type, spacing and grouping, corners, elevation, hierarchy, forms, feedback, errors, destructive actions, motion, layout at every width, keyboard and focus. One ordered list, most serious first, each with where it is, why it is a problem (rule and source) and how to fix it.
+- **Fixes what it found.** Shows the planned changes, applies them at the source (a token, the shared component, the parent's spacing), then checks each fix again.
 
-  One ordered list, most serious first, each with where it is in your code, why it's a problem (rule and source) and how to fix it.
-- **Fixes what it found.** Shows the planned changes, applies them at the source (a token, the shared component, the parent's spacing), then measures again to confirm each fix.
-
-Claude does all the work itself. The exact maths (contrast-checked palettes, Material values, token formats) ships with the skill as data.
+Claude does all the work itself, from the rules and their sources. Nothing is generated by a script and nothing needs installing.
 
 ## What it adds to your project
 
@@ -44,7 +35,7 @@ Design tokens: named values your whole UI uses instead of numbers picked by eye.
 
 | Tokens | What you get | Based on |
 | --- | --- | --- |
-| **Colours** | A full colour scheme from your brand colour: 37 colour roles in light and dark (see below), plus 5 chart colours. Every pair checked for contrast | Material 3 roles, WCAG 2.2 |
+| **Colours** | A colour set built from your brand colour: 37 colour roles in light and dark (see below), plus chart colours. Every text and boundary pair is checked against its contrast threshold before it is written | Material 3 roles, WCAG 2.2 |
 | **Spacing** | 18 steps on an 8px grid: 0, 2, 4, 6, 8, 10, 12, 14, 16, 20, 24, 32 ... 72px | Material 3 |
 | **Density** | Spacing roles (field, card, group, section, page gutter, control height...) in three presets: compact, default, comfortable | Material 3 density, SAP Fiori, AWS Cloudscape; preset values are judgment |
 | **Corner radius** | 0, 4, 8, 12, 16, 20, 28, 32, 48px and full (pills) | Material 3 |
@@ -54,7 +45,7 @@ Design tokens: named values your whole UI uses instead of numbers picked by eye.
 | **Motion** | Durations from 50 to 600ms, 5 easing curves, shorter versions for reduced motion | Material 3, WCAG |
 | **Targets and focus** | 24px minimum and 44px touch target sizes, focus ring width and offset, readable line length | WCAG 2.2, Apple |
 
-**Colour roles.** A colour role is a colour named after its job, not its look: your code says `--color-primary` or `--color-on-surface` instead of `#5a3ee4`. Change the palette and every button, background and text colour follows, in light and dark.
+**Colour roles.** A colour role is a colour named after its job, not its look: your code says `--color-primary` or `--color-on-surface` instead of `#5a3ee4`. Change a role's value and every button, background and text colour that uses it follows, in light and dark.
 
 | Group | Roles | Count |
 | --- | --- | --- |
@@ -109,48 +100,27 @@ Zip the `skills/guidance` folder and upload it as a custom skill in Claude's set
 
 ### Requirements
 
-Some features need a **browser Claude can drive**, which is a separate tool, not part of this skill: a browser MCP server such as [Playwright MCP](https://github.com/microsoft/playwright-mcp) or [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp), Claude in Chrome, or the built-in browser of the Claude desktop app.
-
-| Feature | Without a browser |
-| --- | --- |
-| `/guidance review` (measuring pages at every width, plus keyboard focus) | Optional. Claude hands you the snippets to paste into your browser's DevTools console, one per width, and works from the results you send back. Or it reviews the code only and labels findings "read from code, not measured". |
-| `/guidance review quick` (targets, typography, contrast numbers) | **Required.** Without one, Claude hands you the same DevTools snippets. |
-| `/guidance fix` (measuring again after the changes) | Optional. Claude makes the fixes, then asks you to re-run the snippets or checks the code by reading it. |
-| `/guidance setup` (showing the colour preview) | Optional. The preview shows as an artifact in Claude apps, or Claude gives you the file to open yourself. |
-| `/guidance spacing` (previewing the two directions, measuring and screenshots after the change) | Optional. The directions are shown as tables of values, and the result is checked by reading the token file. |
-| `/guidance shape` (previewing the two directions, measuring and screenshots after the change) | Optional. The directions are shown as tables of values, and the result is checked by reading the token file. |
-| `/guidance build` (checking its own work in the page) | Optional. The check is done by reading the code instead. |
-
-**About page checks.** `review` is meant for your local dev pages during a coding session. A public URL works too, through a real browser only: fetched HTML is never enough, since many sites build the page with JavaScript. Even then the result is a snapshot, as cookie banners, lazy loading and the signed-out view can differ from what users see.
+None. The skill is text: rules, sources and commands. A browser Claude can drive is optional: with one, Claude can open your page to look at what it reviewed in the code.
 
 ## How to use it
 
-Start in a project with `/guidance setup`. Claude looks at the project, asks a few questions if it needs to, shows you two colour palettes on a component preview, and writes the tokens once you pick one.
+Start in a project with `/guidance setup`. Claude looks at the project, asks a few questions if it needs to, shows you the choices for colours, density and shape as tables, and writes the tokens once you have answered.
 
-This is the preview you choose from, with sample components only, to judge the colours (light on the left, dark mirrored on the right):
+After that, just work: ask Claude to build a screen and it follows the rules, or run `/guidance review /settings` to see what breaks them, then `/guidance fix` to clean it up. Change your mind later with `/guidance spacing` or `/guidance shape`.
 
-![The same palette and components in light (left) and dark (right, mirrored)](docs/preview-light-dark.png)
-
-<sub>Full-size: [light](docs/preview-light.png), [dark](docs/preview-dark.png).</sub>
-
-After that, just work: ask Claude to build a screen and it follows the rules, or run `/guidance review /settings` to see what's off on mobile, tablet and desktop, then `/guidance fix` to clean it up.
-
-Plain requests work too: "set up design tokens", "make it denser", "rounder buttons", "review this page", "does this look right on mobile?", "build a settings screen".
-
-**See it on a real page:** [`examples/sprout`](examples/sprout) is a small hand-written dashboard before and after GUIdance, with the palette preview, the full review report (17 findings across phone, tablet, desktop and breakpoint widths) and the clean re-check.
+Plain requests work too: "set up design tokens", "make it denser", "rounder buttons", "review this page", "why is 16px the body size?", "build a settings screen".
 
 ## Commands
 
 | Command | What it does |
 | --- | --- |
 | `/guidance` | Lists the commands. |
-| `/guidance setup` | Learns what the project is, proposes two colour palettes with a light and dark preview, then writes or fixes design tokens (spacing, radius, type, motion, colours) in your stack's format. Never overwrites a file, and shows every change before making it. |
-| `/guidance spacing [preset or what to change] [page\|all]` | Sets or changes density. A preset: `/guidance spacing compact` changes the whole project, `/guidance spacing compact /reports` one page. Plain words: `/guidance spacing more room between the cards`, `/guidance spacing tighter lists on /reports`. Nothing: it proposes two directions built for your product, with the plain preset as a third choice. Shows every value before and after, changes the spacing role tokens at their source, then measures the page. |
-| `/guidance shape [preset or what to change]` | Sets or changes how rounded the corners are, for the whole product. A preset: `/guidance shape round`. Plain words: `/guidance shape rounder buttons`, `/guidance shape sharper cards`. Nothing: it proposes two directions. Shows every value before and after, changes the radius role tokens at their source, fixes nested corners so they stay concentric, then measures the page. |
+| `/guidance setup` | Learns what the project is, builds the colour roles from your brand colour and checks every pair for contrast, asks which density and shape you want, then writes or fixes design tokens (spacing, radius, type, motion, colours) in your stack's format. Never overwrites a file, and shows every change before making it. |
+| `/guidance spacing [preset or what to change] [page\|all]` | Sets or changes density. A preset: `/guidance spacing compact` changes the whole project, `/guidance spacing compact /reports` one page. Plain words: `/guidance spacing more room between the cards`. Nothing: it shows a table of choices (every role, its value now, the three presets) and you answer. Risky picks are explained and need your confirmation. |
+| `/guidance shape [preset or what to change]` | Sets or changes how rounded the corners are. A preset: `/guidance shape round`. Plain words: `/guidance shape rounder buttons`. Nothing: it shows a table of choices and you answer. Risky picks are explained and need your confirmation. Keeps nested corners concentric. |
 | `/guidance build <what>` | Builds or changes UI with your tokens and the rules, then checks the result. |
-| `/guidance review [target]` | Finds what's wrong. Give it a page (a route like `/settings`, a page file or a description), a file, folder or component, or nothing for your uncommitted changes. It reviews the code against the rules and measures the page at mobile, tablet, desktop and breakpoint widths: spacing, gaps, borders, corners, shadows, icons, colours, contrast, targets, type, overflow, keyboard and focus. One ordered list, Hard / Strong / Default, each with where it is in your code, why and how to fix it. Starts your dev server if it isn't running. Changes nothing until you ask. |
-| `/guidance review quick [page]` | Numbers only: touch targets, typography and contrast, as a short table and a one-line verdict. |
-| `/guidance fix [which]` | Fixes the findings of the last review: all of them, by number (`1-5`) or by severity (`hard`). Shows the plan first, applies it, then measures again and reports what is fixed, what is left and anything new. |
+| `/guidance review [target]` | Finds what breaks the rules. Give it a page (a route like `/settings`, a page file or a description), a file, folder or component, or nothing for your uncommitted changes. Each finding comes with where it is, why it matters (rule and source) and a fix. Changes nothing. |
+| `/guidance fix [which]` | Fixes the findings of the last review: all of them, by number (`1-5`) or by severity (`hard`). Shows the plan first, applies it, then checks again and reports what is fixed, what is left and anything new. |
 
 ## How sources are weighted
 
@@ -192,7 +162,7 @@ Verified on 2026-11-02 (rules), 2026-11-14 (colour, type scale, stack formats) a
 - [Material Design 3: Type scale and tokens](https://m3.material.io/styles/typography/type-scale-tokens)
 - [Material Design 3: Color roles](https://m3.material.io/styles/color/roles)
 - [Material Design 3: Easing and duration](https://m3.material.io/styles/motion/easing-and-duration/tokens-specs)
-- [material-color-utilities](https://github.com/material-foundation/material-color-utilities) (role tones and scheme variants)
+- [material-color-utilities](https://github.com/material-foundation/material-color-utilities) (role tones)
 - [Material Web: Elevation](https://material-web.dev/components/elevation) (levels and shadow values)
 - [Material Symbols guide](https://developers.google.com/fonts/docs/material_symbols) (icon sizes, weight, grade)
 - [Android Developers: Window size classes](https://developer.android.com/develop/ui/compose/layouts/adaptive/use-window-size-classes) (breakpoints)
@@ -233,7 +203,7 @@ GUIdance is not affiliated with or endorsed by Apple, Google, the W3C, Baymard I
 
 I was sick of searching again and again for the same answers: how much white space between sections, which corner radius, how big body text should be, which colours actually work together, how long an animation should last. The answers exist, spread across Apple's guidelines, Material Design, the W3C and years of usability research, but every project started with the same hunt, and the results still didn't look pro-made.
 
-So I gathered the best of it in one place, ranked by how much evidence stands behind each source, settled the cases where they disagree, and turned it into something Claude can apply directly: real tokens in real code, palettes you can see before you commit, and checks that measure instead of guess.
+So I gathered the best of it in one place, ranked by how much evidence stands behind each source, settled the cases where they disagree, and turned it into something Claude can apply directly: real tokens in real code, and for every choice the reason and the source behind it.
 
 ## License
 

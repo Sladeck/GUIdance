@@ -2,20 +2,20 @@
 
 **File to create:** guidanceTheme.ts (or .js) next to the file that calls `createTheme`. Never overwrite an existing file: if it exists, ask, or merge only what is missing.
 
-**Wiring:** Wrap the existing options: `createTheme(deepmerge(existingOptions, guidanceThemeOptions))` with `import { deepmerge } from '@mui/utils';`. Put `guidanceThemeOptions` second to let it win, first to only fill gaps. If the existing options have a top-level `palette`, MUI lets it override `colorSchemes`: move those colours into the palette tables' roles or remove it. For `.js`, drop the `type GuidanceThemeOptions` line and the `: GuidanceThemeOptions` and `as const` annotations.
+**Wiring:** Wrap the existing options: `createTheme(deepmerge(existingOptions, guidanceThemeOptions))` with `import { deepmerge } from '@mui/utils';`. Put `guidanceThemeOptions` second to let it win, first to only fill gaps. If the existing options have a top-level `palette`, MUI lets it override `colorSchemes`: move those colours into the colour roles below or remove it. For `.js`, drop the `type GuidanceThemeOptions` line and the `: GuidanceThemeOptions` and `as const` annotations.
 
 **Filling it in**
 - Fixed values (spacing, radius, type, motion, targets, focus, measure) are already filled from `../data/scales.md` and `../data/accessibility.md`. Keep them unless the user chose otherwise.
-- `{L.role}` and `{D.role}` are the light and dark colours of that role. Copy them exactly from the chosen row of `../palettes/<variant>.md` (the `light:` and `dark:` halves). With an exact brand colour (fidelity), replace the one or two light roles the setup step decided (see SKILL.md), nothing else.
-- `{palette name}` is the name the user picked.
-- Without a chosen palette, delete every colour block and keep the rest.
+- Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales.md` (and its Phone widths line for card padding), and update the `density:` and `shape:` notes.
+- `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour.md`, Building a colour set from a brand colour).
+- When the user keeps their own colours, delete every colour block and keep the rest.
 - Type: this template has the 5-style subset. For all 15 styles, take the type table in `../data/scales.md`.
 
 ```ts
 /*
 GUIdance design tokens.
 Sources: Material 3 spacing, shape, type and motion tokens; WCAG 2.2 (2.5.8, focus);
-Apple HIG accessibility. Colours: palette "{palette name}" from GUIdance's palette tables
+Apple HIG accessibility. Colours: built from the brand colour with GUIdance's colour rules
 (every text pair 4.5:1, every boundary and chart colour 3:1). Edit values freely; keep the names.
 
 Merge into your theme:
@@ -96,4 +96,19 @@ export const guidanceThemeOptions: GuidanceThemeOptions = {
     },
   },
 };
+
+// density: default (rule 4.7), shape: soft (rule 5.5). Change with /guidance spacing and /guidance shape.
+// Spacing roles are multiples for theme.spacing(): theme.spacing(guidanceRoles.space.group) = 24px.
+// Phone widths (rule 4.6): sx={{ p: { xs: guidanceRoles.phone.card, sm: guidanceRoles.space.card } }}.
+// Radius roles are px strings, because a number in sx is multiplied by theme.shape.borderRadius:
+// sx={{ borderRadius: guidanceRoles.radius.card }}.
+// MUI's own components do not read these roles: they keep theme.shape.borderRadius and their default sizes
+// until you map them in components.<Name>.styleOverrides (for example MuiButton root: borderRadius, minHeight).
+export const guidanceRoles = {
+  space: { inline: 1, control: 2, stack: 1, field: 2, card: 3, group: 3, section: 4, page: 3 },
+  phone: { card: 2, page: 2 },
+  radius: { button: '8px', field: '8px', chip: '8px', card: '8px', overlay: '12px' },
+  controlHeight: 40,
+  rowHeight: 40,
+} as const;
 ```

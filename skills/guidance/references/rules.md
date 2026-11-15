@@ -31,16 +31,16 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - Text only in its pair: on-X on X; on-surface and on-surface-variant on any surface. Containers are fills, never text.
 - Outline (3:1) for borders that identify a control; outline variant only for decorative dividers or when the content inside provides the contrast.
 - Both themes from the start. In Material, dark is not an inversion: each role has its own tone (`data/colour.md`).
-- Take colours from the `palettes/` tables (every role from one hue, checked pair by pair). Mood ("calm", "playful") is judgment: colour-psychology evidence is weak, so justify palettes by roles and contrast.
-- Backgrounds stay near-neutral in products; colour goes on actions, selection and status: neutral surfaces with the chosen variant's accents (`data/colour.md`) [M3-COLOR A for roles; PRIMER-COLOR B, CARBON-COLOR B, RADIX-COMPOSE B for neutral backgrounds]. Tinted surfaces are a choice for expressive, brand-heavy products.
+- Build the colour set from the brand colour and prove every pair with the contrast formula (`data/colour.md`). Mood ("calm", "playful") is judgment: colour-psychology evidence is weak, so justify colours by roles and contrast.
+- Backgrounds stay near-neutral in products; colour goes on actions, selection and status: near-grey surfaces with the brand's accents (`data/colour.md`) [M3-COLOR A for roles; PRIMER-COLOR B, CARBON-COLOR B, RADIX-COMPOSE B for neutral backgrounds]. Tinted surfaces are a choice for expressive, brand-heavy products.
 
 **1.6 Charts in brand shades** (Default) [M3-COLOR A, judgment]
-- One or two series use brand shades: `primary` for the main one, `primary-container` or the accent (`secondary-container` in two-tone) for the second, so the chart belongs to the product.
+- One or two series use brand shades: `primary` for the main one, `primary-container` or the second accent, if the product has one, for the second, so the chart belongs to the product.
 - `chart-1` to `chart-5` only for three or more unrelated categories, still with labels or a legend by the marks (rule 1.3).
 - Never a rainbow for one measure over time: one colour, vary height, not hue.
 
 **1.7 Status values as tinted chips** (Default) [M3-COLOR A, judgment; the colour-alone part is rule 1.3]
-- Changes and states ("+2.7%", "-1.7%", "Paid", "Late") in a pill: `success-container` with `on-success-container` text for good, `error-container` with `on-error-container` for bad, `warning-container` for attention. Every pair is 4.5:1 in every palette.
+- Changes and states ("+2.7%", "-1.7%", "Paid", "Late") in a pill: `success-container` with `on-success-container` text for good, `error-container` with `on-error-container` for bad, `warning-container` for attention. Each pair must reach 4.5:1.
 - Keep the sign or a word ("+", "-", "Late"): colour alone never carries the meaning.
 
 **1.8 Light by default for reading, dark as a choice** (Default) [SCI-POLARITY-READ A, SCI-POLARITY B, SCI-LUMINANCE B, SCI-POL-SIZE B, SCI-POL-AGE B, SCI-VIS-POL B]
@@ -84,7 +84,7 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 
 **3.4 Line length** (Strong) [BAY-LINE A, WCAG-1.4.8 S-AAA]
 - Body text 50 to 75 characters per line; ceiling 80 (40 for Chinese, Japanese, Korean).
-- CSS `ch` misleads: `1ch` is the width of the digit 0, wider than an average letter in most sans-serif fonts; `max-width: 65ch` in Arial measured 81 to 85 characters. Start at `55ch` to `60ch` and measure with the typography check (`browser-checks.md`) (measured, judgment).
+- CSS `ch` misleads: `1ch` is the width of the digit 0, wider than an average letter in most sans-serif fonts; `max-width: 65ch` in Arial measured 81 to 85 characters. Start at `55ch` to `60ch` and count the characters of a real line (measured, judgment).
 - Break: short UI strings, tables, code.
 
 **3.5 Line height** (Default) [APPLE-TYPE A, M3-TYPE A]
@@ -105,7 +105,7 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 
 **4.1 One spacing scale** (Default) [M3-SPACING A]
 - Material 3: 8dp base (space100 = 8dp). Tokens 0, 2, 4, 6, 8, 10, 12, 14, 16, 20, 24, 32, 36, 40, 48, 56, 64, 72dp; main units are multiples of 8, while 2, 4, 6 and 10 are for tight component internals.
-- Layout: 8, 16, 24, 32, 48, 64. Inside components: 4, 8, 12, 16. Density roles may take any step of the scale (rule 4.7).
+- Layout: 8, 16, 24, 32, 48, 64. Inside components: 4, 8, 12, 16. Density roles use the scale from 4 up without 6, 10, 14 and 36 (rule 4.7; judgment).
 - Padding and gaps on the parent, not margins on children.
 - Desktop can be more generous than mobile; dense reads serious and focused, spacious reads calm.
 - Break: documented optical adjustments of 1 to 2px.
@@ -142,11 +142,11 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - One density within a page's content: no mixing of presets between its sections [FIORI-DENSITY B]. Two exceptions, both judgment: the shared shell (navigation, header) keeps the product's density on an overridden page, and one self-contained dense component (a data grid, a code editor) may run compact, in line with Material's per-component density scale [M3-DENSITY A].
 - Compact: data-rich products where people scan and compare a lot, such as dashboards, tables and financial tools [M3-DENSITY A], on devices used with a mouse and keyboard [FIORI-DENSITY B]. Comfortable: products that put a focused message, less information or easier navigation first [M3-DENSITY A]. Default: everything else.
 - A product may ship compact as its only density when it needs high information density [FIORI-DENSITY B]. A product that lets people choose always offers default as well, and starts on it [CLOUDSCAPE-DENSITY B, which calls that level "comfortable"].
-- A preset changes spacing and control height only. Font size stays the same [FIORI-DENSITY B]; so do the scale, radius and the target floors. Accessible targets keep their minimum size even when the visible element is smaller [M3-DENSITY A]: on touch layouts (under 600px wide or a coarse pointer) control and row heights are at least the touch size in every preset (rule 2.2), and nothing drops under 24x24 CSS px (rule 2.1).
-- Never densify focused tasks such as choosing from a menu, or components that alert people to a change, such as snackbars and dialogs [M3-DENSITY A]. In a compact product or page they keep the default values.
+- A preset changes spacing and control height only. Font size stays the same [FIORI-DENSITY B]; so do the scale, radius and the target floors. Accessible targets keep their minimum size even when the visible element is smaller [M3-DENSITY A]: by default, on touch layouts (under 600px wide or a coarse pointer) control and row heights are at least the touch size in every preset (rule 2.2). Nothing drops under 24x24 CSS px (rule 2.1).
+- Do not densify focused tasks such as choosing from a menu, or components that alert people to a change, such as snackbars and dialogs [M3-DENSITY A]. By default they keep the default values in a compact product or page.
 - Density does not change by itself across breakpoints or orientation; only the person changes it [M3-DENSITY A]. If the product offers a density setting, its control keeps default target sizes [M3-DENSITY A].
-- Who wins: Fiori forces its touch-size mode on phones while Material says density should not switch automatically. Rule 2.2 settles it: spacing roles stay as chosen, control and row heights rise to the touch size on touch layouts. That is a target-size floor, not a density change (judgment).
-- Single roles may be tuned on top of the preset, so products of the same density do not all share one rhythm: wider sections for reading, tighter lists for data (judgment). The limits are sourced and do not move: spacing on scale steps only (rule 4.1; control and row heights move by Material's 4dp density step instead [M3-DENSITY A]), tighter inside a group than between groups (rule 4.2), the target floors (rules 2.1 and 2.2). A tuned role changes everywhere in its scope, never in one section of a page.
+- Who wins: Fiori forces its touch-size mode on phones while Material says density should not switch automatically. Rule 2.2 settles the default: spacing roles stay as chosen, control and row heights rise to the touch size on touch layouts. That is a target-size floor, not a density change (judgment).
+- Single roles may be tuned on top of the preset, so products of the same density do not all share one rhythm: wider sections for reading, tighter lists for data (judgment). The user decides. A pick becomes a risk where it leaves the spacing scale (rule 4.1; control and row heights move by Material's 4dp density step instead [M3-DENSITY A]), stops being tighter inside a group than between groups (rule 4.2), or goes under the touch size on touch layouts (rule 2.2): the command says why, and an accepted risk is recorded in the token file. Only the 24px target floor (rule 2.1, Hard) is not open to choice.
 - No study in the sources says which density performs best; the preset values beyond Material's and Fiori's numbers, and every tuning, are judgment.
 
 ## 5. Shape, elevation and icons
@@ -177,9 +177,9 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 
 **5.5 One shape for the product** (Default) [M3-SHAPE A, judgment]
 - The product has one shape: sharp, soft or round (values in `data/scales.md`, Shape presets), expressed through radius role tokens for buttons, fields, chips, cards and overlays (dialogs and sheets), so a change moves every instance together.
-- Material assigns steps to components by how round they should look and allows a product to remap them: buttons are full by default and may be moved to small or medium; products should then use their shape consistently [M3-SHAPE A]. So the preset is the product's, not a page's: no page overrides (rule 4.5). Hero moments and custom components may take their own shape [M3-SHAPE A].
-- Single roles may be tuned on top of the preset: pill buttons on a soft product, rounder cards (judgment). The limits do not move: values on the scale and three or four of them in all (rule 5.1), no large or full corners on information-dense containers [M3-SHAPE A], concentric nested corners (rule 5.2).
-- Dialogs and sheets are never full and at least as round as cards; menus, popovers and tooltips take the card value, since they are small or hold lists; fields are full only when all are single-line (judgment).
+- Material assigns steps to components by how round they should look and allows a product to remap them: buttons are full by default and may be moved to small or medium; products should then use their shape consistently [M3-SHAPE A]. So the preset is the product's, not a page's: a shape for one page goes against rule 4.5 and is applied only as a risk the user accepted. Hero moments and custom components may take their own shape [M3-SHAPE A].
+- Single roles may be tuned on top of the preset: pill buttons on a soft product, rounder cards (judgment). The user decides. A pick becomes a risk where it leaves the scale or passes four values in all (rule 5.1), or puts large or full corners on information-dense containers [M3-SHAPE A]: the command says why, and an accepted risk is recorded in the token file. Nested corners stay concentric either way (rule 5.2).
+- Also flagged as risks (judgment): dialogs and sheets at full or less round than cards; fields at full when some are multi-line. Menus, popovers and tooltips take the card value, since they are small or hold lists.
 - No source measures which shape performs or rates best; which preset fits which product is judgment.
 - Break: a brand with a defined corner style keeps it, mapped to the nearest scale steps.
 

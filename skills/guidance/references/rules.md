@@ -77,7 +77,9 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - iOS body 17pt (minimum 11pt). macOS body 13pt (minimum 10pt). Material base body 14 (scale anchor).
 - Web: 16px is the browser default and the safe body size; NN/g gives 14 to 16px.
 - Dense dashboards at 13 to 14px: judgment only, with strong contrast and working zoom. Body text below 13px: no source supports it.
-- Web reading pages (articles, docs, help) benefit from more: in a 104-person eye-tracking study on Wikipedia, readability rose with font size and comprehension was better at 18 and 26 points; the authors recommend 18 or larger for text-heavy sites [SCI-FONTSIZE B]. The study reports points: if typographic points, 18pt is 24px. So long-form body on the web goes above 16px, at 18px at least and larger where the layout allows (judgment). Web application UI stays at 16px; native apps keep Apple's and Material's body sizes above.
+- Web reading pages (articles, docs, help) benefit from more. In an eye-tracking study of 104 people reading Wikipedia at 10, 12, 14, 18, 22 and 26, reading got easier with every step up to 18, comprehension was lower at 10 and 12 than at 18, nothing improved past 22, and 26 was rated less readable than 18. The authors recommend at least 18 for the body text of websites [SCI-FONTSIZE B, full text read].
+- The paper calls its sizes points but set them in CSS, and it also calls the browsers' default of 16 "points", so its sizes are most likely CSS pixels (judgment). It tested one font (Arial) on a 17-inch desktop monitor at about 60cm, and its authors say phones and tablets need their own studies.
+- So long-form body on desktop web goes to 18px, and up to about 22px where the layout allows (judgment); phones keep the 16px above, since the study did not cover them. Web application UI stays at 16px; native apps keep Apple's and Material's body sizes above.
 
 **3.3 Avoid light weights at small sizes** (Default) [APPLE-TYPE A]
 - Prefer Regular, Medium, Semibold, Bold; avoid Thin, Light, Ultralight for small text. A thin custom font needs a larger size.
@@ -89,7 +91,7 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 
 **3.5 Line height** (Default) [APPLE-TYPE A, M3-TYPE A]
 - About 1.5 for paragraphs and wide columns. Tight leading only for one or two lines in constrained rows, never at three lines or more.
-- Avoid extremes: marginal effects suggested line spacing of 0.8 and 1.8 impair readability [SCI-FONTSIZE B]. The study's line-spacing unit may not equal CSS `line-height`, so read it as direction, not a threshold.
+- Avoid extremes. The same study tested line spacing in units where 1.0 is the browser default, 120% of the font size, so its 0.8, 1.0, 1.4 and 1.8 are CSS `line-height` 0.96, 1.2, 1.68 and 2.16. Line spacing did not change how easily people read, but comprehension scores were lower at 0.96 than at the three others, and people rated their own comprehension lower at 2.16 than at 1.2 [SCI-FONTSIZE B, full text read]. The authors advise staying near the default and say 1.5 spacing may do as well. So paragraphs sit between about 1.2 and 1.7, never under 1 (judgment for the range).
 - Japanese, Chinese, Korean and many other scripts are about 7% taller than Latin; Material adapts line height by language. Do not reuse Latin line heights for JA blindly.
 
 **3.6 Respect user text size** (Hard: the first bullet; Default: the rest) [WCAG-1.4.4 S, APPLE-A11Y A, APPLE-TYPE A]
@@ -198,13 +200,14 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - People judge a screen's appeal within 17 to 50ms, first by its visual complexity, then by prototypicality (how much it looks like others of its kind); low complexity with a familiar layout was rated most appealing [SCI-VC-PT B].
 - Complexity and colourfulness, with age and education, explained about half the variance in appeal after 500ms (548 people, 450 sites) [SCI-FIRSTIMP A]. The authors note, from earlier work, that this first impression later colours judgments of usability and trust.
 - Symmetry, low complexity, blue hue, medium brightness and medium-to-high saturation rated highest, and structure mattered more than colour (194 people) [SCI-STRUCT B]. Not palette advice: colours still come from roles and contrast (rule 1.5).
-- The best level varies by audience: 2.4 million ratings from nearly 40,000 people showed peak appeal for colourfulness and complexity shifting with gender, education and country [SCI-PREF A]. Check with the product's real audience.
+- The best level is moderate, and it varies by audience. In 2.4 million ratings of 430 websites by nearly 40,000 people from 179 countries, each site shown for 500ms, appeal followed an inverted U: it peaked at moderate complexity (4.2 on a scale of 10) and medium to high colourfulness (6.1 on a scale of 9). Too much complexity cost far more appeal than too little, and the authors conclude that low to medium complexity, but not extremely low, appeals to most [SCI-PREF A, full text read].
+- The peak moved with age, gender, education and country: from 2.5 to 4.8 for complexity and from 3.6 to 7.6 for colourfulness. People over 41 preferred more complexity and colour, more education went with less of both, and Northern European countries preferred less colour than Southern European and English-speaking ones [SCI-PREF A]. Check with the product's real audience.
 - In practice (judgment): fewer distinct elements, colours and alignments per screen; the platform's usual layout for that kind of page (navigation, search, account where people expect them).
 - Break: expressive brand and campaign pages, by choice and tested.
 
 ## 7. Forms
 
-Applying 20 form guidelines together to real company forms gave faster completion, fewer submission attempts, fewer eye movements and higher satisfaction (65 people, eye tracking) [SCI-FORMS B]. The rules below are the ones with the strongest sources.
+Applying 19 of 20 published form guidelines together to three real newspaper registration forms meant fewer submission attempts on all three and completion times 18 to 33% shorter, significant on two of the three; usability ratings rose by up to 16% (65 people in a lab, eye tracking) [SCI-FORMS B, full text read]. The authors say longer forms, shops and mobile still need testing. The rules below are the ones with the strongest sources.
 
 **7.1 Single column** (Strong) [BAY-COLUMNS A]
 - One field per row; users skip or misfill multi-column layouts.
@@ -226,6 +229,11 @@ Applying 20 form guidelines together to real company forms gave faster completio
 
 **7.5 Login without puzzles** (Hard) [WCAG-2.2 S]
 - No cognitive test at login without an alternative: allow paste and password managers (3.3.8).
+
+**7.6 State formats and required fields up front** (Default) [SCI-FORMS B]
+- A field that needs a specific format (password rules, a date format, a length) says so before submission, beside the field; rule 7.2 puts it in hint text.
+- Required and optional fields are clearly told apart, with a marker that is not colour alone (rule 1.3).
+- These were the two changes people noticed most in the study above. On the original forms, missing format rules and unclear required fields were the most frequent complaints, and on two of the three forms most people needed more than one attempt to submit [SCI-FORMS B, full text read].
 
 ## 8. Feedback and loading
 

@@ -24,10 +24,10 @@ Found 2026-11-15; numbers from the published abstracts. Tier A: 400+ people or f
 | Swipe vs tap | swipe targets: longer times, more errors, shifted touch points | SCI-SWIPE (B) |
 | First impression speed | complexity and prototypicality affect appeal within 17 to 50ms; low complexity plus familiar layout most appealing | SCI-VC-PT (B) |
 | What drives appeal | complexity, colourfulness, age and education explain about half the variance after 500ms (548 people, 450 sites) | SCI-FIRSTIMP (A) |
-| Preferences by audience | 2.4 million ratings, nearly 40,000 people: peak colourfulness and complexity vary by gender, education, country | SCI-PREF (A) |
+| Preferences by audience | 2.4 million ratings of 430 sites, 39,975 people from 179 countries, 500ms exposure (1,542,166 ratings from 32,222 people after cleaning; country analysis on 43 countries, 43% of it from the US). Inverted U: peak appeal at complexity 4.2 of 10 and colourfulness 6.1 of 9; high complexity costs more than low (Cohen's d 2.0 against 0.6). Peaks range 2.5 to 4.8 (complexity) and 3.6 to 7.6 (colourfulness) by age, gender, education and country. Full text read 2026-11-17 | SCI-PREF (A) |
 | Highest-rated factors | symmetry, low complexity, blue hue, medium brightness, medium to high saturation; structure outweighs colour (194 people) | SCI-STRUCT (B) |
-| Reading font size | readability rises with size; comprehension better at 18 and 26 points; 18+ recommended for text-heavy sites (104 people) | SCI-FONTSIZE (B) |
-| Line spacing extremes | marginal effects suggest 0.8 and 1.8 impair readability; unit may differ from CSS `line-height` | SCI-FONTSIZE (B) |
+| Reading font size | sizes 10, 12, 14, 18, 22, 26 in Arial on a 17-inch desktop monitor at about 60cm; fixation duration fell steadily to 18 and was lowest at 22; comprehension lower at 10 and 12 than at 18; 26 rated less readable than 18; at least 18 recommended for website body text. 104 people, 93 analysed for fixations. Sizes called points but set in CSS; browser default of 16 also called points. Full text read 2026-11-17 | SCI-FONTSIZE (B) |
+| Line spacing | study units 0.8, 1.0, 1.4, 1.8 = 96%, 120%, 168%, 216% of the font size (CSS `line-height` 0.96, 1.2, 1.68, 2.16). No effect on fixation duration; comprehension scores lower at 0.96 than at the other three; self-rated comprehension lower at 2.16 than at 1.2 | SCI-FONTSIZE (B) |
 | Font choice | 35% reading speed difference between a reader's fastest and slowest font, comprehension unchanged | SCI-FONTS (B) |
 | Letter and word spacing | character -0.1em or 0.4em and word -0.2em or 1.5em drop speed, comprehension and preference (102 and 113 readers) | SCI-SPACING (B) |
 | Dyslexia | larger text and character spacing read faster, with and without dyslexia (92 people) | SCI-DYSLEXIA (B) |
@@ -37,5 +37,5 @@ Found 2026-11-15; numbers from the published abstracts. Tier A: 400+ people or f
 | Wait feedback | no display feels longer; elapsed time less frustrating than countdown (425 people, 10 to 60s waits) | SCI-WAIT-CLOCK (A) |
 | Loading animation | animated beats static on perceived wait, four experiments of 198 to 411 people; weaker under high task involvement or practical goals | SCI-WAIT-ANIM (A) |
 | Form error timing | errors after the whole form best, immediate worst (77 and 90 people) | SCI-FORM-ERR (B) |
-| Form guidelines combined | faster completion, fewer submission attempts, higher satisfaction (65 people) | SCI-FORMS (B) |
+| Form guidelines combined | 19 of 20 guidelines applied to three German-language newspaper registration forms; 65 people, lab, 32 on originals and 33 on improved. First-attempt submissions: 10, 9, 22 of 32 on originals against 24, 24, 28 of 33 on improved. Completion time 25%, 33% and 18% shorter (third not significant). Ratings up to 16% higher. Users named format specifications and required-field marking as most important. Full text read 2026-11-17 | SCI-FORMS (B) |
 | Cost of breaking guidelines | low contrast and unclear links slow people and raise search effort (102 people) | SCI-GUIDE-COST (B) |

@@ -28,6 +28,8 @@ A source's weight comes from two things: how its guidance is produced (sample si
 
 | Key | Tier | Source | Link |
 | --- | --- | --- | --- |
+| WCAG-1.3.4 | S | W3C, Understanding SC 1.3.4 Orientation (Level AA) | https://www.w3.org/WAI/WCAG22/Understanding/orientation.html |
+| WCAG-1.3.5 | S | W3C, Understanding SC 1.3.5 Identify Input Purpose (Level AA) | https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html |
 | WCAG-1.4.1 | S | W3C, Understanding SC 1.4.1 Use of Color (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html |
 | WCAG-1.4.2 | S | W3C, Understanding SC 1.4.2 Audio Control (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html |
 | WCAG-1.4.3 | S | W3C, Understanding SC 1.4.3 Contrast (Minimum) | https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html |
@@ -35,6 +37,7 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | WCAG-1.4.4 | S | W3C, Understanding SC 1.4.4 Resize Text (Level AA) | https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html |
 | WCAG-1.4.8 | S (AAA) | W3C, Understanding SC 1.4.8 Visual Presentation (line length) | https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html |
 | WCAG-1.4.10 | S | W3C, Understanding SC 1.4.10 Reflow | https://www.w3.org/WAI/WCAG22/Understanding/reflow.html |
+| WCAG-1.4.13 | S | W3C, Understanding SC 1.4.13 Content on Hover or Focus (Level AA) | https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html |
 | WCAG-2.1.1 | S | W3C, Understanding SC 2.1.1 Keyboard (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html |
 | WCAG-2.2.1 | S | W3C, Understanding SC 2.2.1 Timing Adjustable (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html |
 | WCAG-2.2.2 | S | W3C, Understanding SC 2.2.2 Pause, Stop, Hide (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html |
@@ -42,13 +45,24 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | WCAG-2.4.3 | S | W3C, Understanding SC 2.4.3 Focus Order (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html |
 | WCAG-2.4.7 | S | W3C, Understanding SC 2.4.7 Focus Visible | https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html |
 | WCAG-2.4.11 | S | W3C, Understanding SC 2.4.11 Focus Not Obscured (Minimum) | https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html |
+| WCAG-2.5.1 | S | W3C, Understanding SC 2.5.1 Pointer Gestures (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html |
+| WCAG-2.5.2 | S | W3C, Understanding SC 2.5.2 Pointer Cancellation (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/pointer-cancellation.html |
+| WCAG-2.5.4 | S | W3C, Understanding SC 2.5.4 Motion Actuation (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/motion-actuation.html |
 | WCAG-2.5.8 | S | W3C, Understanding SC 2.5.8 Target Size (Minimum) | https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html |
 | WCAG-2.2 | S | W3C, What's New in WCAG 2.2 | https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22 |
 | WCAG-C39 | S (AAA) | W3C Technique C39, prefers-reduced-motion (SC 2.3.3) | https://www.w3.org/WAI/WCAG22/Techniques/css/C39.html |
 | APPLE-A11Y | A | Apple HIG, Accessibility (control sizes, spacing, contrast, reduce motion) | https://developer.apple.com/design/human-interface-guidelines/accessibility |
 | APPLE-TYPE | A | Apple HIG, Typography | https://developer.apple.com/design/human-interface-guidelines/typography |
 | APPLE-ALERTS | A | Apple HIG, Alerts | https://developer.apple.com/design/human-interface-guidelines/alerts |
+| APPLE-LAYOUT | A | Apple HIG, Layout (safe areas, layout guides) | https://developer.apple.com/design/human-interface-guidelines/layout |
+| APPLE-TABBAR | A | Apple HIG, Tab bars | https://developer.apple.com/design/human-interface-guidelines/tab-bars |
+| APPLE-SIDEBAR | A | Apple HIG, Sidebars | https://developer.apple.com/design/human-interface-guidelines/sidebars |
+| APPLE-SHEETS | A | Apple HIG, Sheets | https://developer.apple.com/design/human-interface-guidelines/sheets |
+| APPLE-GESTURES | A | Apple HIG, Gestures | https://developer.apple.com/design/human-interface-guidelines/gestures |
+| APPLE-KEYBOARDS | A | Apple HIG, Virtual keyboards | https://developer.apple.com/design/human-interface-guidelines/virtual-keyboards |
 | ANDROID-TARGET | A | Google, Android Accessibility Help: Touch target size | https://support.google.com/accessibility/android/answer/7101858 |
+| ANDROID-EDGE | A | Android Developers, Display content edge-to-edge | https://developer.android.com/develop/ui/views/layout/edge-to-edge |
+| ANDROID-GESTURENAV | A | Android Developers, Ensure compatibility with gesture navigation | https://developer.android.com/develop/ui/views/touch-and-input/gestures/gesturenav |
 | M3-DENSITY | A | Material Design 3, Grids & spacing: Density | https://m3.material.io/foundations/layout/grids-spacing/density |
 | M3-SPACING | A | Material Design 3, Spacing (overview, tokens) and Grids & spacing | https://m3.material.io/styles/spacing/tokens |
 | M3-SHAPE | A | Material Design 3, Corner radius scale | https://m3.material.io/styles/shape/corner-radius-scale |
@@ -59,6 +73,9 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | M3-ELEVATION | A | Material Design 3 elevation: levels and shadow values from Google's Material Web source (elevation and md-sys-elevation tokens) | https://material-web.dev/components/elevation |
 | M3-ICONS | A | Google Fonts, Material Symbols guide (sizes, weight, grade) | https://developers.google.com/fonts/docs/material_symbols |
 | M3-WINDOW | A | Android Developers, Use window size classes (Material 3 breakpoints) | https://developer.android.com/develop/ui/compose/layouts/adaptive/use-window-size-classes |
+| M3-NAVBAR | A | Material Design 3, Navigation bar guidelines | https://m3.material.io/components/navigation-bar/guidelines |
+| M3-NAVRAIL | A | Material Design 3, Navigation rail guidelines | https://m3.material.io/components/navigation-rail/guidelines |
+| M3-SHEETS | A | Material Design 3, Bottom sheets guidelines | https://m3.material.io/components/bottom-sheets/guidelines |
 | BAY-COLUMNS | A | Baymard Institute, Avoid Multi-Column Forms | https://baymard.com/research-articles/avoid-multi-column-forms |
 | BAY-INLINE | A | Baymard Institute, Inline Form Validation | https://baymard.com/research-articles/inline-form-validation |
 | BAY-LINE | A | Baymard Institute, Line Length Readability | https://baymard.com/research-articles/line-length-readability |
@@ -102,6 +119,9 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | SHADCN-THEME | stack | shadcn/ui, Theming | https://ui.shadcn.com/docs/theming |
 | BS-SASS | stack | Bootstrap 5.3, Sass customization and _variables.scss | https://getbootstrap.com/docs/5.3/customize/sass/ |
 | BS-COLOR-MODES | stack | Bootstrap 5.3, Color modes | https://getbootstrap.com/docs/5.3/customize/color-modes/ |
+| COMPOSE-M3 | stack | Android Developers, androidx.compose.material3 reference (lightColorScheme, darkColorScheme, Shapes, Typography) | https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary |
+| COMPOSE-CUSTOM | stack | Android Developers, Custom design systems in Compose | https://developer.android.com/develop/ui/compose/designsystems/custom |
+| SWIFTUI-DOCS | stack | Apple Developer Documentation, SwiftUI (Color, Font.TextStyle, Animation, ScaledMetric, EnvironmentValues) | https://developer.apple.com/documentation/swiftui |
 | PRIMER-COLOR | B | GitHub Primer, Color primitives (neutral backgrounds, one accent) | https://primer.style/foundations/primitives/color |
 | CARBON-COLOR | B | IBM Carbon Design System, Color overview | https://carbondesignsystem.com/elements/color/overview/ |
 | FIORI-DENSITY | B | SAP Fiori for Web, Content Density (Cozy and Compact) | https://www.sap.com/design-system/fiori-design-web/v1-154/foundations/visual/cozy-compact |
@@ -116,6 +136,7 @@ Notes:
 - Replaced earlier secondary citations (DAISY summaries of WCAG, a Flutter constant for Apple's 44pt) with the primary W3C and Apple pages.
 - Material 3 and Apple pages were read directly on 2026-11-02; colour, type-scale and stack pages on 2026-11-14.
 - Read in a browser on 2026-11-17: W3C Understanding pages for 1.4.1, 1.4.8, 2.1.1 and 2.4.3 (1.4.8 replaces the earlier citation through Baymard), 1.4.3 again for the large-text sizes, and the GOV.UK validation and text input pages. Also 1.4.2, 1.4.4, 2.2.1, 2.2.2 and 2.3.1, which moved parts of rules 3.6, 11.2 and 12.4 to Hard.
+- Platform pages for section 13 were read in a browser on 2026-11-17: W3C 1.3.4, 1.3.5, 1.4.13, 2.5.1, 2.5.2 and 2.5.4; Apple HIG Layout, Tab bars, Sidebars, Sheets, Gestures and Virtual keyboards; Material 3 Navigation bar, Navigation rail and Bottom sheets; Android edge-to-edge and gesture navigation.
 - Re-check yearly: WCAG 3, Material and Apple HIG all move.
 - `SCI-*` studies were found through Consensus on 2026-11-15. Numbers come from the published abstracts; full texts were not read. Links go to each paper's Consensus page, which links to the publisher.
 - Density pages were read on 2026-11-15: Material 3 and SAP Fiori in a browser (both block plain fetches), Cloudscape through a page fetch.

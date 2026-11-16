@@ -34,3 +34,18 @@ Tokens in a preset (`presets: [require('./guidance.preset.js')]`) under `theme.e
 - `$spacers`: 0, 4, 8, 16, 24, 48px (`$spacer` 1rem), already on the Material grid. Radius: `$border-radius`, `-sm`, `-lg`, `-xl`, `-xxl`, `-pill`. Shadows: `$box-shadow`, `-sm`, `-lg`, `-inset`. Type: `$font-size-base` 1rem, `$h1-font-size` to `$h6-font-size` (2.5, 2, 1.75, 1.5, 1.25, 1 x base).
 - Dark mode: `data-bs-theme="dark"` on `<html>` (or one component). `$color-mode-type: media-query` follows the OS but disables per-component themes.
 - CSS-only Bootstrap (CDN, no Sass): override `--bs-body-bg`, `--bs-body-color`, `--bs-secondary-color`, `--bs-border-color`, `--bs-link-color`... under `[data-bs-theme=light]` and `[data-bs-theme=dark]`; buttons read their own `--bs-btn-*` variables per class (`.btn-primary`), so recolour those too.
+
+## Jetpack Compose [COMPOSE-M3, COMPOSE-CUSTOM]
+- Material's colour roles are the parameters of `lightColorScheme` and `darkColorScheme`. Roles outside Material (`success`, `warning`, chart colours) and spacing tokens have no slot in `MaterialTheme`: provide them with `staticCompositionLocalOf` and `CompositionLocalProvider`.
+- `Shapes` has five slots (`extraSmall`, `small`, `medium`, `large`, `extraLarge`), fewer than the radius scale: keep the full scale and the roles as your own values.
+- Text sizes in `sp`, everything else in `dp`. Control and row heights are minimums and never under 48dp (rule 2.2).
+- Stock Material components keep their default shapes unless a `shape` is passed. A theme with dynamic colour replaces the checked colours on Android 12 and later.
+- `background` and `onBackground` need values too: Material screens paint with them.
+
+## SwiftUI [SWIFTUI-DOCS]
+- `Color.primary` and `Color.secondary` already exist and mean label colours: put the roles in their own namespace.
+- Colours live in asset-catalog colour sets with Any and Dark appearances, read with `Color("name")`.
+- Use the system text styles (`Font.TextStyle`), which follow Dynamic Type; scale custom numbers with `ScaledMetric`.
+- Control and row heights are minimums: never under 44pt on iOS and iPadOS; macOS follows the density table (rule 2.2).
+- Set `.tint` on the root view, or system controls keep the default accent colour.
+- Spacing roles go through the environment, so a page or a sheet can take another density.

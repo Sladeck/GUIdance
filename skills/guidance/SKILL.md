@@ -1,6 +1,6 @@
 ---
 name: guidance
-description: Evidence-cited UI design rules and the commands to apply them (/guidance setup, spacing, shape, build, review, fix). Installs the rules in a project as design tokens, builds UI that follows them, reviews code against them and fixes what breaks them, always saying why a rule exists and where it comes from. Use for spacing, corners, type, colour and contrast, targets, forms, motion, layout and accessibility questions. Sources ranked by weight (WCAG, Apple, Material, Baymard, GOV.UK, NN/g, peer-reviewed studies).
+description: Evidence-cited UI design rules and the commands to apply them (/guidance setup, spacing, shape, build, review, fix). Installs the rules in a project as design tokens, builds UI that follows them, reviews code against them and fixes what breaks them, always saying why a rule exists and where it comes from. Use for spacing, corners, type, colour and contrast, targets, forms, motion, layout and accessibility questions, on the web (desktop, tablet, phone) and in native iOS and Android apps. Sources ranked by weight (WCAG, Apple, Material, Baymard, GOV.UK, NN/g, peer-reviewed studies).
 ---
 
 # GUIdance
@@ -43,5 +43,5 @@ Conflict rule: higher tier wins. Same tier, context decides (Apple on Apple plat
 | --- | --- |
 | `references/rules.md` | The rules, with sources, severity and when to break them |
 | `references/data/` | Every verified number, so you never search the web: `accessibility.md` (WCAG, platform sizes), `scales.md` (spacing, density presets, shape and shape presets, type, motion, elevation, icons, breakpoints), `colour.md` (Material roles and tones, the contrast formula, building a colour set from a brand colour, neutral surfaces), `stacks.md` (framework traps), `research.md` |
-| `references/formats/<stack>.md` | Worked token files (css, tailwind4, tailwind3, mui, scss) to model any stack on |
+| `references/formats/<stack>.md` | Worked token files (css, tailwind4, tailwind3, mui, scss, swiftui, compose) to model any stack on |
 | `references/sources.md` | Sources, ranked |

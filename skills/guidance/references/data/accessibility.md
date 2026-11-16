@@ -6,6 +6,8 @@ Verified values; use them directly, do not search the web. Re-verify only if a s
 
 | What | Value |
 | --- | --- |
+| Orientation (1.3.4, AA) | View and operation are not restricted to one orientation, unless that orientation is essential (bank check, piano app, projector slides) |
+| Identify input purpose (1.3.5, AA) | Fields collecting information about the user state their purpose in code (HTML `autocomplete`), where the technology supports it |
 | Use of colour (1.4.1, A) | Colour is never the only visual means of conveying information, indicating an action, prompting a response or distinguishing an element |
 | Audio control (1.4.2, A) | Audio playing automatically for more than 3 seconds can be paused or stopped, or has its own volume control |
 | Normal text contrast (1.4.3, AA) | 4.5:1 |
@@ -13,6 +15,10 @@ Verified values; use them directly, do not search the web. Re-verify only if a s
 | Resize text (1.4.4, AA) | Text resizes up to 200% without loss of content or function. Exempt: captions, images of text. Failures: F69 text, images or controls clipped, truncated or obscured; F80 text form controls that do not resize; F94 text sized in viewport units; a viewport meta that prevents zoom |
 | Non-text contrast (1.4.11, AA) | 3:1 for anything identifying a control or its state, meaningful icons, chart marks |
 | Rounding | None: 4.499:1 fails |
+| Content on hover or focus (1.4.13, AA) | Dismissible without moving pointer or focus (unless it reports an input error or covers nothing), hoverable, persistent until the trigger is left, it is dismissed or it is no longer valid. Exempt: content drawn by the browser unmodified |
+| Pointer gestures (2.5.1, A) | Multipoint and path-based gestures also work with a single pointer and no path, unless essential. Not for gestures of the browser or assistive technology |
+| Pointer cancellation (2.5.2, A) | The down-event triggers nothing; or completion is on the up-event with abort or undo; or the up-event reverses the down-event; or the down-event is essential (keyboard and keypad keys) |
+| Motion actuation (2.5.4, A) | What device or body motion operates also works through interface components, and the response to motion can be disabled. Exempt: accessibility-supported interfaces, essential motion |
 | Target size (2.5.8, AA) | 24x24 CSS px, or a 24px circle centred on the target overlapping no other |
 | Target size exceptions | Inline links in text, equivalent control elsewhere, user-agent controls, essential sizing |
 | Keyboard (2.1.1, A) | All functionality is operable through a keyboard, except input that depends on the path of the movement (freehand drawing) |

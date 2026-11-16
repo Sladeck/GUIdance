@@ -7,7 +7,7 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 ## 1. Contrast and colour
 
 **1.1 Text contrast** (Hard) [WCAG-1.4.3 S, APPLE-A11Y A]
-- Normal text 4.5:1; large text 3:1 (24px regular, or about 18.5px bold: 18pt / 14pt bold). Apple's inspector uses the same AA values (4.5:1 up to 17pt, 3:1 from 18pt or bold).
+- Normal text 4.5:1; large text 3:1 (18pt regular, 24px; or 14pt bold, 18.66px). W3C rounds the bold size to "approximately 18.5px"; 14pt is 18.66px, so treat bold text under 14pt (18.66px) as normal text. Apple's inspector uses the same AA values (4.5:1 up to 17pt, 3:1 from 18pt or bold).
 - No rounding: 4.499:1 fails. Check light and dark.
 - Measured cost: reduced contrast and unclear links consistently slowed people and increased search effort (102 people, eye tracking) [SCI-GUIDE-COST B].
 - Exempt: disabled controls, decoration, text in photos, logotypes. Break: never for readable content.
@@ -17,12 +17,12 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - Fields: the "this is a field" cue needs 3:1, as a border or as the field's background against the page. W3C requires a boundary only when nothing else identifies the control (visible text or a contrasting icon can be enough); a field with no border and no contrasting background fails.
 - Exempt: inactive controls, icons beside a text label saying the same, charts whose values are also given as text.
 
-**1.3 Never colour alone** (Hard) [WCAG-1.4.11 S, APPLE-A11Y A, NNG-ERR B]
+**1.3 Never colour alone** (Hard, Level A) [WCAG-1.4.1 S, APPLE-A11Y A, NNG-ERR B]
 - Status, errors, required fields, chart series and links get a second cue: icon, shape, word, pattern, underline or weight. Apple flags red-green and blue-orange as the most confused pairs.
 
 **1.4 Palette by role** (Default) [NNG-HIER B, APPLE-A11Y A, judgment]
 - About 2 primary and 2 secondary colours (NN/g), counting brand and emphasis colours only (judgment): status colours and chart palettes carry meaning, not emphasis.
-- Name colours by role (primary, accent, surface, text levels, status), not hue.
+- Name colours by role, not hue: primary, secondary, surface, on-surface, error and the other roles of rule 1.5 (`data/colour.md` has the full list).
 - Warm saturated colours, red especially, only for warnings and errors [NNG-HIER B].
 - On Apple platforms prefer system colours: they adapt to Increase Contrast and dark mode [APPLE-A11Y A].
 
@@ -92,8 +92,9 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 - Avoid extremes: marginal effects suggested line spacing of 0.8 and 1.8 impair readability [SCI-FONTSIZE B]. The study's line-spacing unit may not equal CSS `line-height`, so read it as direction, not a threshold.
 - Japanese, Chinese, Korean and many other scripts are about 7% taller than Latin; Material adapts line height by language. Do not reuse Latin line heights for JA blindly.
 
-**3.6 Respect user text size** (Strong) [APPLE-A11Y A, APPLE-TYPE A]
-- Text can grow to at least 200%: Dynamic Type on iOS, rem on the web. Hierarchy survives the growth; meaningful icons scale with text.
+**3.6 Respect user text size** (Hard: the first bullet; Default: the rest) [WCAG-1.4.4 S, APPLE-A11Y A, APPLE-TYPE A]
+- Hard, Level AA: text can be resized up to 200% without loss of content or function (1.4.4). Exempt: captions and images of text. Browser zoom counts: W3C's own example sizes text in px and reaches 200% by zooming, so a px font size is not itself a failure. What fails, by W3C's listed failures: text, images or controls clipped, truncated or obscured at 200% (F69); text form controls that do not resize with the text (F80); text sized only in viewport units (F94); a viewport meta that prevents zoom, such as `user-scalable=no` (W3C test rule "Meta viewport allows for zoom").
+- Dynamic Type on iOS [APPLE-TYPE A]; rem on the web, so text also follows the browser's font-size setting (judgment). Hierarchy survives the growth; meaningful icons scale with text [APPLE-A11Y A].
 - Readers differ: across hundreds of crowdsourced readers, speed differed by 35% between their fastest and slowest fonts with no loss of comprehension, and no one font suited everyone [SCI-FONTS B]. Never block user font overrides or reader modes.
 
 **3.7 Letter and word spacing near default** (Default) [SCI-SPACING B, SCI-DYSLEXIA B]
@@ -133,7 +134,7 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 
 **4.6 Give each component room** (Default) [M3-SPACING A, judgment]
 - Desktop: 24px inside cards, 24 to 32px between. Mobile: 16px inside, 16 to 24px between. These are the default density; the compact and comfortable presets, or a tuned role, move them (rule 4.7). Dense tables and toolbars can go tighter; showcases should not.
-- Text at least 16px for content, 14px for labels; 12px only for captions and metadata.
+- Text at least 16px for content; 14px (`body-sm`) for form labels and secondary text; 12px (the `label` step) only for captions, metadata and short interface labels such as badges and table headers.
 - Cramped screen: remove or move a component before shrinking spacing.
 
 **4.7 One density for the product, one per page** (Default) [M3-DENSITY A, FIORI-DENSITY B, CLOUDSCAPE-DENSITY B]
@@ -210,8 +211,9 @@ Applying 20 form guidelines together to real company forms gave faster completio
 - Exception: fields forming one logical unit share a row (city / postcode, expiry / CVC, day / month / year).
 - Prefer one "Full name" field over first + last.
 
-**7.2 Visible labels, not placeholders** (Strong) [NNG-PLACEHOLDER B]
-- Labels and instructions outside the input, always visible. Placeholders show an example format only.
+**7.2 Visible labels, not placeholders** (Strong) [GOVUK-INPUT A, NNG-PLACEHOLDER B]
+- Labels and instructions outside the input, always visible. Never a placeholder in place of a label.
+- Example formats go in hint text outside the input: GOV.UK rules placeholders out "for hints or examples" as well [GOVUK-INPUT A].
 
 **7.3 When to validate** (Strong) [BAY-INLINE A vs GOVUK-VALID A: same tier, context decides]
 - Baymard (e-commerce, long forms): validate when the user leaves a field or completes a fixed-length value; check marks on valid fields. Use for long multi-field forms (checkout, sign-up, settings with many fields).
@@ -232,7 +234,7 @@ Applying 20 form guidelines together to real company forms gave faster completio
 - Showing time over 10s: elapsed time, not a countdown. A remaining-time display increased frustration compared with elapsed time (425 people) [SCI-WAIT-CLOCK A], which outranks NN/g's "time estimate".
 - Long-standing HCI research; NN/g's most stable numbers.
 
-**8.2 Which indicator** (Strong) [NNG-SKELETON B]
+**8.2 Which indicator** (Default) [NNG-SKELETON B; showing that the system is working is rule 8.1, Strong]
 - Start an indicator only if the load is still running after about 1s, so fast responses never flash one.
 - Full page expected to take about 2 to 10s: skeleton of the real layout, never frame-only.
 - One module loading (a card, a chart): spinner in that module.
@@ -252,13 +254,13 @@ Applying 20 form guidelines together to real company forms gave faster completio
 **9.2 Wording** (Strong) [APPLE-ALERTS A, NNG-ERR B]
 - Plain, specific about what happened and how to fix it; neutral tone, no blame, no jokes. Never a bare "Error" or "Error 329347 occurred"; codes go in a details toggle for support.
 
-**9.3 Recovery** (Strong) [NNG-ERR B]
-- Preserve what the user entered, offer the fix (suggestions, retry, a link), prevent likely mistakes up front.
+**9.3 Recovery** (Strong) [GOVUK-VALID A, NNG-ERR B]
+- Preserve what the user entered, including the answer that failed, and say how to fix it [GOVUK-VALID A]. Offer the fix (suggestions, retry, a link) and prevent likely mistakes up front [NNG-ERR B].
 
 ## 10. Destructive actions
 
 **10.1 Undo first, alerts rarely** (Strong) [APPLE-ALERTS A, NNG-CONFIRM B]
-- Prefer undo (soft delete, a toast with Undo, a recycle bin). No confirmation for common undoable actions such as deleting an email; confirm only uncommon actions that cannot be undone. Frequent confirmations train click-through.
+- Prefer undo (soft delete, a toast with Undo, a recycle bin). A toast that is the only way to undo does not disappear by itself (rule 12.4). No confirmation for common undoable actions such as deleting an email; confirm only uncommon actions that cannot be undone. Frequent confirmations train click-through.
 
 **10.2 Confirmation wording and defaults** (Strong) [APPLE-ALERTS A over NNG-CONFIRM B]
 - Say exactly what happens ("Delete 3 projects and their 128 briefs?"), not "Are you sure?".
@@ -273,15 +275,15 @@ Applying 20 form guidelines together to real company forms gave faster completio
 - CSS easing: standard `cubic-bezier(0.2, 0, 0, 1)` for small transitions; emphasized decelerate `cubic-bezier(0.05, 0.7, 0.1, 1)` for entering; emphasized accelerate `cubic-bezier(0.3, 0, 0.8, 0.15)` for exiting.
 - M3 Expressive components now use spring physics; the duration and easing system still works for transitions but is no longer maintained.
 
-**11.2 Reduced motion** (Strong) [APPLE-A11Y A, WCAG-C39 S-AAA]
+**11.2 Reduced motion and flashing** (Hard: the flashing bullet; Strong: the rest) [APPLE-A11Y A, WCAG-C39 S-AAA, WCAG-2.3.1 S]
 - Honour `prefers-reduced-motion` on the web and Reduce Motion on Apple platforms.
 - When reduced: fades instead of slides and zooms, springs without bounce, no animated blur or depth, fewer automatic and repetitive animations [APPLE-A11Y A].
-- No fast blinking or flashing in any mode.
+- Hard, Level A: nothing flashes more than three times in any one second, in any mode (2.3.1). W3C exempts flashes under its general and red flash thresholds, which depend on the flashing area and luminance and cannot be judged from code: report what flashes faster than that and say the thresholds were not measured. The simple way to pass is not to flash.
 
 ## 12. Keyboard, focus and input
 
-**12.1 Focus visible and unobscured** (Hard) [WCAG-2.2 S]
-- Every interactive element shows a focus indicator with 3:1 contrast. A focused element is never fully hidden by sticky headers, cookie bars or overlays (2.4.11); use `scroll-padding-top` for sticky headers.
+**12.1 Focus visible and unobscured** (Hard) [WCAG-2.4.7 S, WCAG-1.4.11 S, WCAG-2.4.11 S]
+- Every interactive element shows a focus indicator (2.4.7). A focus style the project defines needs 3:1 contrast (1.4.11); the browser's default focus style is exempt. A focused element is never fully hidden by sticky headers, cookie bars or overlays (2.4.11); use `scroll-padding-top` for sticky headers.
 
 **12.2 Alternatives to dragging and gestures** (Hard) [WCAG-2.2 S, APPLE-A11Y A]
 - Anything done by dragging also works with single clicks or taps (2.5.7); custom gestures (swipe to delete) also get an on-screen button.
@@ -289,10 +291,14 @@ Applying 20 form guidelines together to real company forms gave faster completio
 **12.3 Consistent help** (Hard, Level A) [WCAG-2.2 S]
 - Help links or contact options repeated across pages keep the same relative place (3.2.6).
 
-**12.4 No timers on content** (Default) [APPLE-A11Y A]
-- No views that auto-dismiss on a timer: dismiss with an explicit action. No autoplay audio or video without controls.
+**12.4 Time limits and things that start by themselves** (Hard: the first four bullets; Default: the last) [WCAG-2.2.1 S, WCAG-1.4.2 S, WCAG-2.2.2 S, APPLE-A11Y A]
+- Hard, Level A: a time limit set by the product can be turned off before people meet it, adjusted before they meet it to at least ten times the default, or extended: a warning before time runs out, at least 20 seconds to extend with a simple action, and at least ten extensions (2.2.1). A time limit is anything that happens without the user after a set time: a session timeout, a timed step, a page refresh, or a prompt that expires before people can react. Exempt: real-time events with no possible alternative (an auction), limits that are essential because extending them would invalidate the activity, limits over 20 hours.
+- Hard, Level A: a message that disappears on a timer is such a time limit when it is the only place its information or action exists (2.2.1). A toast with Undo, where nothing else offers the undo (rule 10.1), stays until dismissed or meets the bullet above. Where the same information or action is available another way (W3C's example: a new-mail toast, with the mail visible in the inbox), the disappearance is not a time limit.
+- Hard, Level A: audio that plays automatically for more than 3 seconds has a pause or stop control, or its own volume control (1.4.2). W3C discourages starting sound automatically at all.
+- Hard, Level A: anything moving, blinking or scrolling that starts by itself, lasts more than 5 seconds and sits beside other content (a carousel, an autoplaying video, an animated background) can be paused, stopped or hidden. Content that updates by itself beside other content can be paused, stopped or hidden, or its frequency controlled (2.2.2). Exempt in both cases: what is essential to the activity. Loading indicators: W3C treats an animation as essential when nobody can interact during the load and showing no progress would make the page look frozen, and an indicator that is the only content on the page is not beside other content. A spinner or skeleton in one module while the rest of the page works is not settled by that text: raise it as a question, not a Hard finding (judgment).
+- Default: other views that auto-dismiss on a timer (their content is available another way) are still better dismissed with an explicit action [APPLE-A11Y A].
 
-**12.5 Everything works from the keyboard, in order** (Hard, Level A) [WCAG-2.2 S, judgment]
-- Every control a mouse can use is reachable with Tab and works with Enter or Space (2.1.1); clickable `div`s and `span`s become `button` or `a`.
-- Tab order follows reading order (2.4.3): no positive `tabindex`, no backward jumps from CSS reordering (`order`, `flex-direction: row-reverse`, grid placement).
-- Hidden content (closed menus, off-screen drawers) is not focusable until it opens.
+**12.5 Everything works from the keyboard, in order** (Hard, Level A) [WCAG-2.1.1 S, WCAG-2.4.3 S, judgment]
+- Everything a mouse can do works from the keyboard (2.1.1), except input that depends on the path of the movement, such as freehand drawing. In practice (judgment): controls are reached with Tab, or with arrow keys inside composite widgets (tabs, radio groups, menus), and work with Enter or Space; clickable `div`s and `span`s become `button` or `a`.
+- Focus order preserves meaning and operability (2.4.3). In practice (judgment): no positive `tabindex`, no backward jumps from CSS reordering (`order`, `flex-direction: row-reverse`, grid placement).
+- Hidden content (closed menus, off-screen drawers) is not focusable until it opens (judgment).

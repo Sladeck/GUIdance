@@ -42,7 +42,7 @@ One numbered list in the format of `commands/report-format.md`, then the counts 
 1. **Contrast**: text 4.5:1 (large 3:1); control cues, focus rings, meaningful icons and chart marks 3:1. Both themes. Disabled controls exempt.
 2. **Targets**: 24x24 CSS px or spaced (Hard); 44pt iOS, 48dp Android, 44 to 48px on touch web layouts.
 3. **Colour alone**: status, errors, series and links always have a second cue.
-4. **Type**: a named subset of the platform scale; about three sizes per screen; body at platform default; 50 to 75 characters per line; no light weights small; text can grow to 200%.
+4. **Type**: a named subset of the platform scale; about three sizes per screen; body at platform default; 50 to 75 characters per line; no light weights small; at 200% text size nothing is clipped, truncated or hidden (Hard).
 5. **Spacing and grouping**: one scale; tighter inside groups than between; padding and gaps on parents; actions next to what they affect; one density within a page (the project's, or the page's own override), with dialogs, menus and alerts at default in compact (rule 4.7).
 6. **Radius, elevation and icons**: one radius scale with concentric nested corners, components on the project's radius roles where it has them (rule 5.5); elevation from the six Material levels, one separation cue per surface; one icon set and style, two sizes.
 7. **Hierarchy**: one clear primary action; squint test passes.
@@ -50,6 +50,6 @@ One numbered list in the format of `commands/report-format.md`, then the counts 
 9. **Feedback**: indicator only after about 1s; skeleton for page loads, spinner for a module, progress bar over 10s.
 10. **Errors**: next to the cause, plus summary on submit; plain and specific; a way out.
 11. **Destructive actions**: undo over confirmation; confirmations specific, outcome-named buttons, Cancel never default.
-12. **Motion**: platform durations; honour reduced motion (fades instead of slides and zooms).
+12. **Motion**: platform durations; honour reduced motion (fades instead of slides and zooms); nothing flashes more than three times a second (Hard; W3C exempts flashes under its thresholds, which code cannot show).
 13. **Layout at every width**: nothing overflows, clips or scrolls sideways at 320, 390, 768 and desktop (read the media queries, fixed widths, `overflow` and flex or grid children without `min-width: 0`); the same component looks the same everywhere; edges align exactly.
-14. **Keyboard and focus**: visible, unobscured focus; non-drag and non-gesture alternatives; no auto-dismiss timers.
+14. **Keyboard, focus and timing**: visible, unobscured focus; non-drag and non-gesture alternatives; time limits can be turned off or extended, autoplaying audio and moving content can be paused or stopped (Hard); no message that disappears by itself when it is the only place for its information or action (Hard).

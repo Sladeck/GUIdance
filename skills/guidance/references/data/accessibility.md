@@ -1,19 +1,25 @@
 # Accessibility thresholds and platform sizes
 
-Verified values; use them directly, do not search the web. Re-verify only if a source is over a year older than today or the user asks. Verified 2026-11-02 and 2026-11-15. Keys match `sources.md`.
+Verified values; use them directly, do not search the web. Re-verify only if a source is over a year older than today or the user asks. Verified 2026-11-02, 2026-11-15 and 2026-11-17. Keys match `sources.md`.
 
 ## WCAG 2.2 [tier S]
 
 | What | Value |
 | --- | --- |
+| Use of colour (1.4.1, A) | Colour is never the only visual means of conveying information, indicating an action, prompting a response or distinguishing an element |
+| Audio control (1.4.2, A) | Audio playing automatically for more than 3 seconds can be paused or stopped, or has its own volume control |
 | Normal text contrast (1.4.3, AA) | 4.5:1 |
-| Large text contrast (1.4.3, AA) | 3:1. Large = 24px regular, or 18.66px (14pt) bold |
+| Large text contrast (1.4.3, AA) | 3:1. Large = 18pt regular (24px), or 14pt bold (18.66px; W3C says "approximately 18.5px", use 14pt) |
+| Resize text (1.4.4, AA) | Text resizes up to 200% without loss of content or function. Exempt: captions, images of text. Failures: F69 text, images or controls clipped, truncated or obscured; F80 text form controls that do not resize; F94 text sized in viewport units; a viewport meta that prevents zoom |
 | Non-text contrast (1.4.11, AA) | 3:1 for anything identifying a control or its state, meaningful icons, chart marks |
 | Rounding | None: 4.499:1 fails |
 | Target size (2.5.8, AA) | 24x24 CSS px, or a 24px circle centred on the target overlapping no other |
 | Target size exceptions | Inline links in text, equivalent control elsewhere, user-agent controls, essential sizing |
-| Keyboard (2.1.1, A) | Everything that works with a pointer works from the keyboard |
-| Focus order (2.4.3, A) | Tab order follows the page's meaning and reading order |
+| Keyboard (2.1.1, A) | All functionality is operable through a keyboard, except input that depends on the path of the movement (freehand drawing) |
+| Timing adjustable (2.2.1, A) | A time limit is any process that happens without user initiation after a set time, including a prompt or message that expires; not one whose information or function is available another way. It can be turned off or adjusted (to at least ten times the default) before it is met, or extended: warning, at least 20 seconds to extend with a simple action, at least ten times. Exempt: real-time events, essential limits, limits over 20 hours |
+| Pause, stop, hide (2.2.2, A) | Moving, blinking or scrolling content that starts automatically, lasts more than 5 seconds and is shown with other content can be paused, stopped or hidden; auto-updating content also, or its frequency controlled. Exempt: essential |
+| Three flashes (2.3.1, A) | Nothing flashes more than three times in any one second, unless below the general and red flash thresholds (area and luminance; not measurable from code) |
+| Focus order (2.4.3, A) | Focusable components receive focus in an order that preserves meaning and operability |
 | Focus visible (2.4.7, AA) | Keyboard-operable interfaces have a mode where the focus indicator is visible |
 | Focus not obscured (2.4.11, AA) | A focused component is never entirely hidden by author content (sticky header or footer, non-modal dialog); partly hidden passes AA. Fix: `scroll-padding` (technique C43); failure F110 |
 | Line length (1.4.8, AAA) | 80 characters max (40 for CJK) |

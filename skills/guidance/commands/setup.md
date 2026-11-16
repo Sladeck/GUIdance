@@ -12,7 +12,7 @@
    - accents: one accent, or a second brighter one for a single kind of highlight;
    - the brand colour's role: `primary` or `primary-container`, decided by its luminance. Say which and why.
    Mood words ("calm", "playful") are judgment: say so.
-6. Build the colour roles for light and dark as "Building a colour set from a brand colour" describes. Never invent a role name: use the Material roles.
+6. Build the colour roles for light and dark as "Building a colour set from a brand colour" describes. Never invent a role name: use the Material roles, plus `success`, `warning` and `chart-1` to `chart-5` (GUIdance additions, see `references/data/colour.md`).
 7. Check every pair by hand with the contrast formula and show the result: role, light value, dark value, then each pair with its ratio and the threshold it must reach. Fix a failing pair before showing the set as final. Say that the ratios are computed by hand and which pairs sit close to their threshold.
 8. Ask: apply, adjust, or stop. A colour the user insists on that fails its pair is a risk: say which text becomes hard to read and for whom (WCAG 1.4.3, Level AA), and apply it only if they confirm. Record it in the token file.
 

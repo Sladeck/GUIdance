@@ -1,6 +1,6 @@
 # Sources, ranked
 
-Checked on 2026-11-02. Keys match the tags in the rules.
+Checked between 2026-11-02 and 2026-11-17; the Notes give the date per group. Keys match the tags in the rules.
 
 ## How sources are weighted
 
@@ -28,10 +28,18 @@ A source's weight comes from two things: how its guidance is produced (sample si
 
 | Key | Tier | Source | Link |
 | --- | --- | --- | --- |
+| WCAG-1.4.1 | S | W3C, Understanding SC 1.4.1 Use of Color (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html |
+| WCAG-1.4.2 | S | W3C, Understanding SC 1.4.2 Audio Control (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html |
 | WCAG-1.4.3 | S | W3C, Understanding SC 1.4.3 Contrast (Minimum) | https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html |
 | WCAG-1.4.11 | S | W3C, Understanding SC 1.4.11 Non-text Contrast | https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html |
-| WCAG-1.4.8 | S (AAA) | W3C, SC 1.4.8 Visual Presentation (line length), as cited by Baymard | https://baymard.com/research-articles/line-length-readability |
+| WCAG-1.4.4 | S | W3C, Understanding SC 1.4.4 Resize Text (Level AA) | https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html |
+| WCAG-1.4.8 | S (AAA) | W3C, Understanding SC 1.4.8 Visual Presentation (line length) | https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html |
 | WCAG-1.4.10 | S | W3C, Understanding SC 1.4.10 Reflow | https://www.w3.org/WAI/WCAG22/Understanding/reflow.html |
+| WCAG-2.1.1 | S | W3C, Understanding SC 2.1.1 Keyboard (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html |
+| WCAG-2.2.1 | S | W3C, Understanding SC 2.2.1 Timing Adjustable (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html |
+| WCAG-2.2.2 | S | W3C, Understanding SC 2.2.2 Pause, Stop, Hide (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html |
+| WCAG-2.3.1 | S | W3C, Understanding SC 2.3.1 Three Flashes or Below Threshold (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html |
+| WCAG-2.4.3 | S | W3C, Understanding SC 2.4.3 Focus Order (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html |
 | WCAG-2.4.7 | S | W3C, Understanding SC 2.4.7 Focus Visible | https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html |
 | WCAG-2.4.11 | S | W3C, Understanding SC 2.4.11 Focus Not Obscured (Minimum) | https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html |
 | WCAG-2.5.8 | S | W3C, Understanding SC 2.5.8 Target Size (Minimum) | https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html |
@@ -56,6 +64,7 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | BAY-LINE | A | Baymard Institute, Line Length Readability | https://baymard.com/research-articles/line-length-readability |
 | BAY-METHOD | A | Baymard Institute, Research methodology | https://baymard.com/research/methodology |
 | GOVUK-VALID | A | GOV.UK Design System, Recover from validation errors | https://design-system.service.gov.uk/patterns/validation |
+| GOVUK-INPUT | A | GOV.UK Design System, Text input (labels, no placeholder text) | https://design-system.service.gov.uk/components/text-input/ |
 | NNG-RESPONSE | B | NN/g, Response Times: The 3 Important Limits | https://www.nngroup.com/articles/response-times-3-important-limits/ |
 | NNG-SKELETON | B | NN/g, Skeleton Screens 101 | https://www.nngroup.com/articles/skeleton-screens/ |
 | NNG-ERR | B | NN/g, Error-Message Guidelines | https://www.nngroup.com/articles/error-message-guidelines/ |
@@ -106,6 +115,7 @@ A source's weight comes from two things: how its guidance is produced (sample si
 Notes:
 - Replaced earlier secondary citations (DAISY summaries of WCAG, a Flutter constant for Apple's 44pt) with the primary W3C and Apple pages.
 - Material 3 and Apple pages were read directly on 2026-11-02; colour, type-scale and stack pages on 2026-11-14.
+- Read in a browser on 2026-11-17: W3C Understanding pages for 1.4.1, 1.4.8, 2.1.1 and 2.4.3 (1.4.8 replaces the earlier citation through Baymard), 1.4.3 again for the large-text sizes, and the GOV.UK validation and text input pages. Also 1.4.2, 1.4.4, 2.2.1, 2.2.2 and 2.3.1, which moved parts of rules 3.6, 11.2 and 12.4 to Hard.
 - Re-check yearly: WCAG 3, Material and Apple HIG all move.
 - `SCI-*` studies were found through Consensus on 2026-11-15. Numbers come from the published abstracts; full texts were not read. Links go to each paper's Consensus page, which links to the publisher.
 - Density pages were read on 2026-11-15: Material 3 and SAP Fiori in a browser (both block plain fetches), Cloudscape through a page fetch.

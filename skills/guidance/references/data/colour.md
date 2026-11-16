@@ -34,7 +34,7 @@ Tone is lightness (CIE L*), from 0 (black) to 100 (white). Contrast between two 
 
 Luminance from tone: ((tone + 16) / 116) cubed, for tones above 8; tone / 903.3 below.
 
-GUIdance additions (judgment): success (green) and warning (amber) take error's tones. Chart colours: up to five distinct hues, each 3:1 against every surface it sits on.
+GUIdance additions (judgment), not Material roles: success (green) and warning (amber) take error's tones. Amber at the light `warning` luminance (0.113) reads as brown: the price of a value that works as text and icons. Where a warning should look amber, use the chip of rule 1.7 (`warning-container` with `on-warning-container`). A brighter `warning` is a risk the user may accept in setup: it fails 4.5:1 as text and 3:1 as an icon on light surfaces. Chart colours: up to five distinct hues, each 3:1 against every surface it sits on.
 
 ## Contrast of two colours, by hand [WCAG-1.4.3]
 

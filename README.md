@@ -138,12 +138,21 @@ Rules without a source are labelled `judgment`. Where sources disagree, the high
 
 ## Citations and resources
 
-Verified on 2026-11-02 (rules), 2026-11-14 (colour, type scale, stack formats) and 2026-11-15 (elevation, icons, breakpoints, focus, shadcn/ui and Bootstrap, density). Peer-reviewed studies were added on 2026-11-15 from their published abstracts; full texts were not read. Every value taken from these sources is stored in [`skills/guidance/references/data/`](skills/guidance/references/data/).
+Verified on 2026-11-02 (rules), 2026-11-14 (colour, type scale, stack formats), 2026-11-15 (elevation, icons, breakpoints, focus, shadcn/ui and Bootstrap, density) and 2026-11-17 (use of colour, keyboard, focus order, line length, text resize, audio, time limits, moving content, flashing, GOV.UK text input). Peer-reviewed studies were added on 2026-11-15 from their published abstracts; full texts were not read. Every value taken from these sources is stored in [`skills/guidance/references/data/`](skills/guidance/references/data/).
 
 **Standards (W3C)**
+- [Understanding SC 1.4.1 Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)
+- [Understanding SC 1.4.2 Audio Control](https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html)
 - [Understanding SC 1.4.3 Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
 - [Understanding SC 1.4.11 Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)
+- [Understanding SC 1.4.4 Resize Text](https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html)
+- [Understanding SC 1.4.8 Visual Presentation](https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html)
 - [Understanding SC 1.4.10 Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html)
+- [Understanding SC 2.1.1 Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)
+- [Understanding SC 2.2.1 Timing Adjustable](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html)
+- [Understanding SC 2.2.2 Pause, Stop, Hide](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html)
+- [Understanding SC 2.3.1 Three Flashes or Below Threshold](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html)
+- [Understanding SC 2.4.3 Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)
 - [Understanding SC 2.4.7 Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html)
 - [Understanding SC 2.4.11 Focus Not Obscured (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html)
 - [Understanding SC 2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)
@@ -170,7 +179,7 @@ Verified on 2026-11-02 (rules), 2026-11-14 (colour, type scale, stack formats) a
 
 **Research**
 - Baymard Institute: [Avoid multi-column forms](https://baymard.com/research-articles/avoid-multi-column-forms), [Inline form validation](https://baymard.com/research-articles/inline-form-validation), [Line length readability](https://baymard.com/research-articles/line-length-readability), [Research methodology](https://baymard.com/research/methodology)
-- GOV.UK Design System: [Recover from validation errors](https://design-system.service.gov.uk/patterns/validation)
+- GOV.UK Design System: [Recover from validation errors](https://design-system.service.gov.uk/patterns/validation), [Text input](https://design-system.service.gov.uk/components/text-input/)
 - Nielsen Norman Group: [Response times: the 3 important limits](https://www.nngroup.com/articles/response-times-3-important-limits/), [Skeleton screens 101](https://www.nngroup.com/articles/skeleton-screens/), [Error-message guidelines](https://www.nngroup.com/articles/error-message-guidelines/), [Proximity principle](https://www.nngroup.com/articles/gestalt-proximity/), [Visual hierarchy](https://www.nngroup.com/articles/visual-hierarchy-ux-definition/), [Confirmation dialogs](https://www.nngroup.com/articles/confirmation-dialog/), [Placeholders in form fields are harmful](https://www.nngroup.com/videos/placeholders-form-fields/), [5 test users: qual vs quant](https://www.nngroup.com/articles/5-test-users-qual-quant/)
 
 **Peer-reviewed studies** (numbers taken from the published abstracts)

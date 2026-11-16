@@ -6,6 +6,8 @@
 
 **Filling it in**
 - Fixed values (spacing, radius, type, motion, targets, focus, measure) are already filled from `../data/scales.md` and `../data/accessibility.md`. Keep them unless the user chose otherwise.
+- MUI's palette has no slot for the container roles, the surface levels, `outline`, the inverse roles or the chart colours. They are in `guidanceExtraColors`, as `{L.role}` and `{D.role}` like the palette: use the light or dark set with the project's own dark-mode mechanism.
+- Reduced motion (rule 11.2): by default MUI does not shorten its transitions. From v9.1.0, set `theme.motion.reducedMotion` to `'system'` and MUI follows the user's setting. On earlier versions, `guidanceRoles.reducedMotion` holds the shorter duration; read the setting with `useMediaQuery('(prefers-reduced-motion: reduce)')` from `@mui/material/useMediaQuery` and pass that duration to transitions that move, or swap a slide for a fade.
 - Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales.md` (and its Phone widths line for card padding), and update the `density:` and `shape:` notes.
 - `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour.md`, Building a colour set from a brand colour).
 - When the user keeps their own colours, delete every colour block and keep the rest.
@@ -110,5 +112,42 @@ export const guidanceRoles = {
   radius: { button: '8px', field: '8px', chip: '8px', card: '8px', overlay: '12px' },
   controlHeight: 40,
   rowHeight: 40,
+  // Targets: 24px is the WCAG 2.5.8 floor; 44px is the touch size (rule 2.2). Use as minWidth and minHeight.
+  target: { min: 24, touch: 44 },
+  // Focus ring: the colour must reach 3:1 against what it sits on (WCAG 1.4.11).
+  focusRing: { width: 2, offset: 2, color: 'Highlight' }, // set the colour to your accent
+  scrollPaddingTop: 0, // px; set to the sticky header height (WCAG 2.4.11)
+  measure: '60ch', // readable line length (rule 3.4)
+  reducedMotion: { duration: 150 }, // ms, for transitions that move (rule 11.2)
+} as const;
+
+// Roles MUI's palette has no slot for. Same placeholders as the palette above.
+export const guidanceExtraColors = {
+  light: {
+    primaryContainer: '{L.primary-container}', onPrimaryContainer: '{L.on-primary-container}',
+    secondaryContainer: '{L.secondary-container}', onSecondaryContainer: '{L.on-secondary-container}',
+    tertiaryContainer: '{L.tertiary-container}', onTertiaryContainer: '{L.on-tertiary-container}',
+    errorContainer: '{L.error-container}', onErrorContainer: '{L.on-error-container}',
+    successContainer: '{L.success-container}', onSuccessContainer: '{L.on-success-container}',
+    warningContainer: '{L.warning-container}', onWarningContainer: '{L.on-warning-container}',
+    surfaceContainerLowest: '{L.surface-container-lowest}', surfaceContainer: '{L.surface-container}',
+    surfaceContainerHigh: '{L.surface-container-high}', surfaceContainerHighest: '{L.surface-container-highest}',
+    outline: '{L.outline}',
+    inverseSurface: '{L.inverse-surface}', inverseOnSurface: '{L.inverse-on-surface}', inversePrimary: '{L.inverse-primary}',
+    chart: ['{L.chart-1}', '{L.chart-2}', '{L.chart-3}', '{L.chart-4}', '{L.chart-5}'],
+  },
+  dark: {
+    primaryContainer: '{D.primary-container}', onPrimaryContainer: '{D.on-primary-container}',
+    secondaryContainer: '{D.secondary-container}', onSecondaryContainer: '{D.on-secondary-container}',
+    tertiaryContainer: '{D.tertiary-container}', onTertiaryContainer: '{D.on-tertiary-container}',
+    errorContainer: '{D.error-container}', onErrorContainer: '{D.on-error-container}',
+    successContainer: '{D.success-container}', onSuccessContainer: '{D.on-success-container}',
+    warningContainer: '{D.warning-container}', onWarningContainer: '{D.on-warning-container}',
+    surfaceContainerLowest: '{D.surface-container-lowest}', surfaceContainer: '{D.surface-container}',
+    surfaceContainerHigh: '{D.surface-container-high}', surfaceContainerHighest: '{D.surface-container-highest}',
+    outline: '{D.outline}',
+    inverseSurface: '{D.inverse-surface}', inverseOnSurface: '{D.inverse-on-surface}', inversePrimary: '{D.inverse-primary}',
+    chart: ['{D.chart-1}', '{D.chart-2}', '{D.chart-3}', '{D.chart-4}', '{D.chart-5}'],
+  },
 } as const;
 ```

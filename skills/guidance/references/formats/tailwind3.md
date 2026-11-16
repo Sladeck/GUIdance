@@ -57,19 +57,20 @@ module.exports = {
         'ui-body-sm': ['0.875rem', { lineHeight: '1.25rem', fontWeight: '400' }],
         'ui-label': ['0.75rem', { lineHeight: '1rem', fontWeight: '500' }]
       },
+      // Medium and long durations are CSS variables so reduced motion can shorten them (rule 11.2): see the plugin below.
       transitionDuration: {
         'short-1': '50ms',
         'short-2': '100ms',
         'short-3': '150ms',
         'short-4': '200ms',
-        'medium-1': '250ms',
-        'medium-2': '300ms',
-        'medium-3': '350ms',
-        'medium-4': '400ms',
-        'long-1': '450ms',
-        'long-2': '500ms',
-        'long-3': '550ms',
-        'long-4': '600ms'
+        'medium-1': 'var(--duration-medium-1)',
+        'medium-2': 'var(--duration-medium-2)',
+        'medium-3': 'var(--duration-medium-3)',
+        'medium-4': 'var(--duration-medium-4)',
+        'long-1': 'var(--duration-long-1)',
+        'long-2': 'var(--duration-long-2)',
+        'long-3': 'var(--duration-long-3)',
+        'long-4': 'var(--duration-long-4)'
       },
       transitionTimingFunction: {
         'standard': 'cubic-bezier(0.2, 0, 0, 1)',
@@ -96,6 +97,11 @@ module.exports = {
       minWidth: { target: '24px', touch: '44px' },
       minHeight: { target: '24px', touch: '44px', control: '40px', row: '40px' },
       maxWidth: { measure: '60ch' },
+      // Focus: ring-focus ring-offset-focus, with a ring colour that reaches 3:1 against what it sits on (WCAG 1.4.11).
+      ringWidth: { focus: '2px' },
+      ringOffsetWidth: { focus: '2px' },
+      // Set to the sticky header height so a focused element is not hidden under it (WCAG 2.4.11): scroll-pt-header on <html>.
+      scrollPadding: { header: '0px' },
       colors: {
         'primary': 'var(--color-primary)',
         'on-primary': 'var(--color-on-primary)',
@@ -150,6 +156,13 @@ module.exports = {
         '@media (prefers-color-scheme: dark)': { ':root:not([data-theme="light"])': {"--color-primary": "{D.primary}", "--color-on-primary": "{D.on-primary}", "--color-primary-container": "{D.primary-container}", "--color-on-primary-container": "{D.on-primary-container}", "--color-secondary": "{D.secondary}", "--color-on-secondary": "{D.on-secondary}", "--color-secondary-container": "{D.secondary-container}", "--color-on-secondary-container": "{D.on-secondary-container}", "--color-tertiary": "{D.tertiary}", "--color-on-tertiary": "{D.on-tertiary}", "--color-tertiary-container": "{D.tertiary-container}", "--color-on-tertiary-container": "{D.on-tertiary-container}", "--color-error": "{D.error}", "--color-on-error": "{D.on-error}", "--color-error-container": "{D.error-container}", "--color-on-error-container": "{D.on-error-container}", "--color-success": "{D.success}", "--color-on-success": "{D.on-success}", "--color-success-container": "{D.success-container}", "--color-on-success-container": "{D.on-success-container}", "--color-warning": "{D.warning}", "--color-on-warning": "{D.on-warning}", "--color-warning-container": "{D.warning-container}", "--color-on-warning-container": "{D.on-warning-container}", "--color-surface": "{D.surface}", "--color-surface-container-lowest": "{D.surface-container-lowest}", "--color-surface-container-low": "{D.surface-container-low}", "--color-surface-container": "{D.surface-container}", "--color-surface-container-high": "{D.surface-container-high}", "--color-surface-container-highest": "{D.surface-container-highest}", "--color-on-surface": "{D.on-surface}", "--color-on-surface-variant": "{D.on-surface-variant}", "--color-outline": "{D.outline}", "--color-outline-variant": "{D.outline-variant}", "--color-inverse-surface": "{D.inverse-surface}", "--color-inverse-on-surface": "{D.inverse-on-surface}", "--color-inverse-primary": "{D.inverse-primary}", "--color-chart-1": "{D.chart-1}", "--color-chart-2": "{D.chart-2}", "--color-chart-3": "{D.chart-3}", "--color-chart-4": "{D.chart-4}", "--color-chart-5": "{D.chart-5}"} },
         '[data-theme="dark"]': {"--color-primary": "{D.primary}", "--color-on-primary": "{D.on-primary}", "--color-primary-container": "{D.primary-container}", "--color-on-primary-container": "{D.on-primary-container}", "--color-secondary": "{D.secondary}", "--color-on-secondary": "{D.on-secondary}", "--color-secondary-container": "{D.secondary-container}", "--color-on-secondary-container": "{D.on-secondary-container}", "--color-tertiary": "{D.tertiary}", "--color-on-tertiary": "{D.on-tertiary}", "--color-tertiary-container": "{D.tertiary-container}", "--color-on-tertiary-container": "{D.on-tertiary-container}", "--color-error": "{D.error}", "--color-on-error": "{D.on-error}", "--color-error-container": "{D.error-container}", "--color-on-error-container": "{D.on-error-container}", "--color-success": "{D.success}", "--color-on-success": "{D.on-success}", "--color-success-container": "{D.success-container}", "--color-on-success-container": "{D.on-success-container}", "--color-warning": "{D.warning}", "--color-on-warning": "{D.on-warning}", "--color-warning-container": "{D.warning-container}", "--color-on-warning-container": "{D.on-warning-container}", "--color-surface": "{D.surface}", "--color-surface-container-lowest": "{D.surface-container-lowest}", "--color-surface-container-low": "{D.surface-container-low}", "--color-surface-container": "{D.surface-container}", "--color-surface-container-high": "{D.surface-container-high}", "--color-surface-container-highest": "{D.surface-container-highest}", "--color-on-surface": "{D.on-surface}", "--color-on-surface-variant": "{D.on-surface-variant}", "--color-outline": "{D.outline}", "--color-outline-variant": "{D.outline-variant}", "--color-inverse-surface": "{D.inverse-surface}", "--color-inverse-on-surface": "{D.inverse-on-surface}", "--color-inverse-primary": "{D.inverse-primary}", "--color-chart-1": "{D.chart-1}", "--color-chart-2": "{D.chart-2}", "--color-chart-3": "{D.chart-3}", "--color-chart-4": "{D.chart-4}", "--color-chart-5": "{D.chart-5}"},
       });
+    },
+    // Motion durations, and shorter movement under reduced motion (Apple HIG, WCAG C39). Fades stay.
+    // For a single element, Tailwind's own modifier also works: motion-reduce:transition-none.
+    function ({ addBase }) {
+      const normal = { '--duration-medium-1': '250ms', '--duration-medium-2': '300ms', '--duration-medium-3': '350ms', '--duration-medium-4': '400ms', '--duration-long-1': '450ms', '--duration-long-2': '500ms', '--duration-long-3': '550ms', '--duration-long-4': '600ms' };
+      const reduced = Object.fromEntries(Object.keys(normal).map((name) => [name, '150ms']));
+      addBase({ ':root': normal, '@media (prefers-reduced-motion: reduce)': { ':root': reduced } });
     },
   ]
 };

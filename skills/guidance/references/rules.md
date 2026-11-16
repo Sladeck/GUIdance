@@ -7,7 +7,7 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 ## 1. Contrast and colour
 
 **1.1 Text contrast** (Hard) [WCAG-1.4.3 S, APPLE-A11Y A]
-- Normal text 4.5:1; large text 3:1 (18pt regular, 24px; or 14pt bold, 18.66px). W3C rounds the bold size to "approximately 18.5px"; 14pt is 18.66px, so treat bold text under 14pt (18.66px) as normal text. Apple's inspector uses the same AA values (4.5:1 up to 17pt, 3:1 from 18pt or bold).
+- Normal text 4.5:1; large text 3:1 (18pt regular, 24px; or 14pt bold, 18.66px). W3C rounds the bold size to "approximately 18.5px"; 14pt is 18.66px, so treat bold text under 14pt (18.66px) as normal text. Apple's table gives 4.5:1 up to 17pt, and 3:1 at 18pt and for bold text, and calls these WCAG Level AA values. WCAG itself is stricter and wins wherever it applies: bold text under 18.66px still needs 4.5:1, and regular text under 24px too. Apple's sizes are in Apple points, WCAG's in CSS points (W3C: 1pt = 1.333px); no source read here converts one into the other, so on the web use WCAG's pixel sizes and on Apple platforms treat Apple's table as the minimum (judgment).
 - No rounding: 4.499:1 fails. Check light and dark.
 - Measured cost: reduced contrast and unclear links consistently slowed people and increased search effort, while unclear icons had mixed effects, which the authors read as people falling back on the text labels (102 computer science students, static page mock-ups, eye tracking) [SCI-GUIDE-COST B, paper read].
 - Exempt: disabled controls, decoration, text in photos, logotypes. Break: never for readable content.
@@ -54,8 +54,9 @@ Sections: 1 Contrast and colour · 2 Target size · 3 Typography · 4 Spacing an
 ## 2. Target size
 
 **2.1 Minimum** (Hard) [WCAG-2.5.8 S]
-- Every pointer target at least 24x24 CSS px, or spaced so a 24px circle centred on it overlaps no other target or small target's circle.
-- Exempt: links in a sentence, a same-function control elsewhere that meets the size, browser-drawn controls, essential sizes (dense map pins).
+- Every pointer target is at least 24 by 24 CSS px. A smaller one passes when a 24px circle centred on it touches no other target and no other small target's circle.
+- A slider, a colour picker or a text area counts as one target, not one per position.
+- Exempt: links in a sentence and targets limited by the line height of surrounding text; a control elsewhere on the page that does the same thing and meets the size; controls sized by the browser and not restyled; a presentation that is essential or legally required (dense map pins).
 
 **2.2 Platform sizes** (Default, on that platform) [APPLE-A11Y A, ANDROID-TARGET A]
 - iOS / iPadOS: default control 44x44pt, minimum 28x28pt. macOS: default 28x28pt, minimum 20x20pt. Android / Material: 48x48dp (about 9mm).

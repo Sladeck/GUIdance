@@ -43,4 +43,4 @@ Contrast: `(L1 + 0.05) / (L2 + 0.05)`, relative luminance `L = 0.2126 R + 0.7152
 | macOS | 28x28 pt | 20x20 pt | same |
 | Android / Material | 48x48 dp (~9 mm) | | 8 dp between targets |
 
-Apple text: iOS body 17 pt (min 11), macOS body 13 pt (min 10); contrast guidance uses the WCAG AA values. 11 text styles: Large Title, Title 1 to 3, Headline, Body, Callout, Subheadline, Footnote, Caption 1 and 2.
+Apple text: iOS body 17 pt (min 11), macOS body 13 pt (min 10); contrast table: 4.5:1 up to 17 pt, 3:1 at 18 pt and for bold text, which Apple calls WCAG Level AA values (rule 1.1 says where WCAG is stricter). 11 text styles: Large Title, Title 1 to 3, Headline, Body, Callout, Subheadline, Footnote, Caption 1 and 2.

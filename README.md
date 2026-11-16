@@ -149,7 +149,7 @@ Rules without a source are labelled `judgment`. Where sources disagree, the high
 
 ## Citations and resources
 
-Verified on 2026-11-02 (rules), 2026-11-14 (colour, type scale, stack formats), 2026-11-15 (elevation, icons, breakpoints, focus, shadcn/ui and Bootstrap, density) and 2026-11-17 (use of colour, keyboard, focus order, line length, text resize, audio, time limits, moving content, flashing, GOV.UK text input; and the platform rules: orientation, gestures, input purpose, hover content, safe areas, navigation, sheets). Peer-reviewed studies were added on 2026-11-15 from their published abstracts; full texts were not read, except Rello et al. 2016, Reinecke and Gajos 2014 and Seckler et al. 2014, read in full on 2026-11-17. Every value taken from these sources is stored in [`skills/guidance/references/data/`](skills/guidance/references/data/).
+Verified on 2026-11-02 (rules), 2026-11-14 (colour, type scale, stack formats), 2026-11-15 (elevation, icons, breakpoints, focus, shadcn/ui and Bootstrap, density) and 2026-11-17 (use of colour, keyboard, focus order, line length, text resize, audio, time limits, moving content, flashing, GOV.UK text input; and the platform rules: orientation, gestures, input purpose, hover content, safe areas, navigation, sheets). Peer-reviewed studies were added on 2026-11-15 from their published abstracts; full texts were not read, except Rello et al. 2016, Reinecke and Gajos 2014, Seckler et al. 2014 and Tan and Nov 2026, read in full on 2026-11-17. Every value taken from these sources is stored in [`skills/guidance/references/data/`](skills/guidance/references/data/).
 
 **Standards (W3C)**
 - [Understanding SC 1.3.4 Orientation](https://www.w3.org/WAI/WCAG22/Understanding/orientation.html)

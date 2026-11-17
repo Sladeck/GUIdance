@@ -16,5 +16,36 @@
     "accessibility",
     "wcag",
     "material-3"
-  ]
+  ],
+  "commands": {
+    "setup": {
+      "content": "Run the GUIdance `setup` command. Read `${CLAUDE_PLUGIN_ROOT}/skills/guidance/SKILL.md`, then `${CLAUDE_PLUGIN_ROOT}/skills/guidance/commands/setup.md`, and follow it. Paths in those files are relative to `${CLAUDE_PLUGIN_ROOT}/skills/guidance/`. You are running as a plugin: write any GUIdance command you suggest as `/guidance:<command>` (for example `/guidance:fix`), not `/guidance <command>`.\n\nArguments: $ARGUMENTS",
+      "description": "Set up design tokens: colour roles, density and shape, in your stack's format"
+    },
+    "spacing": {
+      "content": "Run the GUIdance `spacing` command. Read `${CLAUDE_PLUGIN_ROOT}/skills/guidance/SKILL.md`, then `${CLAUDE_PLUGIN_ROOT}/skills/guidance/commands/spacing.md`, and follow it. Paths in those files are relative to `${CLAUDE_PLUGIN_ROOT}/skills/guidance/`. You are running as a plugin: write any GUIdance command you suggest as `/guidance:<command>` (for example `/guidance:fix`), not `/guidance <command>`.\n\nArguments: $ARGUMENTS",
+      "description": "Set or change spacing density for the project or one page",
+      "argumentHint": "[preset or what to change] [page|all]"
+    },
+    "shape": {
+      "content": "Run the GUIdance `shape` command. Read `${CLAUDE_PLUGIN_ROOT}/skills/guidance/SKILL.md`, then `${CLAUDE_PLUGIN_ROOT}/skills/guidance/commands/shape.md`, and follow it. Paths in those files are relative to `${CLAUDE_PLUGIN_ROOT}/skills/guidance/`. You are running as a plugin: write any GUIdance command you suggest as `/guidance:<command>` (for example `/guidance:fix`), not `/guidance <command>`.\n\nArguments: $ARGUMENTS",
+      "description": "Set or change how rounded the product's corners are",
+      "argumentHint": "[preset or what to change]"
+    },
+    "build": {
+      "content": "Run the GUIdance `build` command. Read `${CLAUDE_PLUGIN_ROOT}/skills/guidance/SKILL.md`, then `${CLAUDE_PLUGIN_ROOT}/skills/guidance/commands/build.md`, and follow it. Paths in those files are relative to `${CLAUDE_PLUGIN_ROOT}/skills/guidance/`. You are running as a plugin: write any GUIdance command you suggest as `/guidance:<command>` (for example `/guidance:fix`), not `/guidance <command>`.\n\nArguments: $ARGUMENTS",
+      "description": "Build or change UI with your tokens and the rules",
+      "argumentHint": "<what>"
+    },
+    "review": {
+      "content": "Run the GUIdance `review` command. Read `${CLAUDE_PLUGIN_ROOT}/skills/guidance/SKILL.md`, then `${CLAUDE_PLUGIN_ROOT}/skills/guidance/commands/review.md`, and follow it. Paths in those files are relative to `${CLAUDE_PLUGIN_ROOT}/skills/guidance/`. You are running as a plugin: write any GUIdance command you suggest as `/guidance:<command>` (for example `/guidance:fix`), not `/guidance <command>`.\n\nArguments: $ARGUMENTS",
+      "description": "Review code or a page against the rules, with sources",
+      "argumentHint": "[target]"
+    },
+    "fix": {
+      "content": "Run the GUIdance `fix` command. Read `${CLAUDE_PLUGIN_ROOT}/skills/guidance/SKILL.md`, then `${CLAUDE_PLUGIN_ROOT}/skills/guidance/commands/fix.md`, and follow it. Paths in those files are relative to `${CLAUDE_PLUGIN_ROOT}/skills/guidance/`. You are running as a plugin: write any GUIdance command you suggest as `/guidance:<command>` (for example `/guidance:fix`), not `/guidance <command>`.\n\nArguments: $ARGUMENTS",
+      "description": "Fix findings from the last review, then check them again",
+      "argumentHint": "[which]"
+    }
+  }
 }

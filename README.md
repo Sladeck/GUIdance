@@ -93,11 +93,11 @@ On versions before 2.1.275, add the marketplace first:
 /plugin install guidance@guidance
 ```
 
-Installed as a plugin, the command is `/guidance:guidance` (type `/guidance` and pick it), so `/guidance setup` becomes `/guidance:guidance setup`. Asking in plain words ("set up design tokens", "review the settings page") works either way. Update with `/plugin marketplace update guidance`.
+Installed as a plugin, each command has its own entry: `/guidance:setup`, `/guidance:review`, `/guidance:fix` and so on (type `/guidance:` to see them all), and `/guidance:guidance` lists them. Asking in plain words ("set up design tokens", "review the settings page") works either way. Update with `/plugin marketplace update guidance`.
 
 ### Claude Code (manual copy)
 
-Gives the short `/guidance` command.
+Gives one `/guidance` command with the command name after it: `/guidance setup`, `/guidance review`.
 
 ```bash
 git clone https://github.com/Sladeck/GUIdance.git
@@ -115,6 +115,8 @@ None. The skill is text: rules, sources and commands. A browser Claude can drive
 
 ## How to use it
 
+Commands are written here as with a manual copy. Installed as a plugin, put a colon in place of the space: `/guidance:setup`, `/guidance:review /settings`.
+
 Start in a project with `/guidance setup`. Claude looks at the project, asks a few questions if it needs to, shows you the choices for colours, density and shape as tables, and writes the tokens once you have answered.
 
 After that, just work: ask Claude to build a screen and it follows the rules, or run `/guidance review /settings` to see what breaks them, then `/guidance fix` to clean it up. Change your mind later with `/guidance spacing` or `/guidance shape`.
@@ -122,6 +124,8 @@ After that, just work: ask Claude to build a screen and it follows the rules, or
 Plain requests work too: "set up design tokens", "make it denser", "rounder buttons", "review this page", "why is 16px the body size?", "build a settings screen".
 
 ## Commands
+
+Written here as with a manual copy. Installed as a plugin, put a colon in place of the space (`/guidance:setup`, `/guidance:spacing compact`), and list the commands with `/guidance:guidance`.
 
 | Command | What it does |
 | --- | --- |
@@ -149,89 +153,15 @@ Rules without a source are labelled `judgment`. Where sources disagree, the high
 
 ## Citations and resources
 
-Verified on 2026-11-02 (rules), 2026-11-14 (colour, type scale, stack formats), 2026-11-15 (elevation, icons, breakpoints, focus, shadcn/ui and Bootstrap, density) and 2026-11-17 (use of colour, keyboard, focus order, line length, text resize, audio, time limits, moving content, flashing, GOV.UK text input; and the platform rules: orientation, gestures, input purpose, hover content, safe areas, navigation, sheets). Peer-reviewed studies were added on 2026-11-15 from their published abstracts. Twelve of the 22 papers were then read on 2026-11-17 and the rules corrected from them; the other ten still rest on their abstracts. [`sources.md`](skills/guidance/references/sources.md) lists which is which. Every value taken from these sources is stored in [`skills/guidance/references/data/`](skills/guidance/references/data/).
+Every rule names its sources. [`sources.md`](skills/guidance/references/sources.md) lists each one with its link and tier, and when each group was checked. The main ones:
 
-**Standards (W3C)**
-- [Understanding SC 1.3.4 Orientation](https://www.w3.org/WAI/WCAG22/Understanding/orientation.html)
-- [Understanding SC 1.3.5 Identify Input Purpose](https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html)
-- [Understanding SC 1.4.1 Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)
-- [Understanding SC 1.4.2 Audio Control](https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html)
-- [Understanding SC 1.4.3 Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
-- [Understanding SC 1.4.11 Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)
-- [Understanding SC 1.4.4 Resize Text](https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html)
-- [Understanding SC 1.4.8 Visual Presentation](https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html)
-- [Understanding SC 1.4.10 Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html)
-- [Understanding SC 1.4.13 Content on Hover or Focus](https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html)
-- [Understanding SC 2.1.1 Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)
-- [Understanding SC 2.2.1 Timing Adjustable](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html)
-- [Understanding SC 2.2.2 Pause, Stop, Hide](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html)
-- [Understanding SC 2.3.1 Three Flashes or Below Threshold](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html)
-- [Understanding SC 2.4.3 Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)
-- [Understanding SC 2.4.7 Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html)
-- [Understanding SC 2.4.11 Focus Not Obscured (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html)
-- [Understanding SC 2.5.1 Pointer Gestures](https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html)
-- [Understanding SC 2.5.2 Pointer Cancellation](https://www.w3.org/WAI/WCAG22/Understanding/pointer-cancellation.html)
-- [Understanding SC 2.5.4 Motion Actuation](https://www.w3.org/WAI/WCAG22/Understanding/motion-actuation.html)
-- [Understanding SC 2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)
-- [What's New in WCAG 2.2](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22)
-- [Technique C39: prefers-reduced-motion](https://www.w3.org/WAI/WCAG22/Techniques/css/C39.html)
+- **Standards:** W3C WCAG 2.2 (the Understanding documents for each success criterion the rules use).
+- **Platforms:** Apple Human Interface Guidelines, Google Material Design 3, Android Developers.
+- **Research:** Baymard Institute, GOV.UK Design System, Nielsen Norman Group, and 22 peer-reviewed studies on touch, reading, light and dark mode, waiting, forms and first impressions. Twelve of the papers were then read, seven end to end and five for their methods, results and limitations, and the rules corrected from them; the other ten rest on their abstracts, and `sources.md` says which is which.
+- **Design systems:** GitHub Primer, IBM Carbon, Radix Colors, SAP Fiori, AWS Cloudscape.
+- **Framework documentation**, for writing tokens only: Tailwind CSS, MUI, shadcn/ui, Bootstrap, Jetpack Compose, SwiftUI.
 
-**Apple**
-- [Human Interface Guidelines: Accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility)
-- [Human Interface Guidelines: Typography](https://developer.apple.com/design/human-interface-guidelines/typography)
-- [Human Interface Guidelines: Alerts](https://developer.apple.com/design/human-interface-guidelines/alerts)
-- [Human Interface Guidelines: Layout](https://developer.apple.com/design/human-interface-guidelines/layout)
-- [Human Interface Guidelines: Tab bars](https://developer.apple.com/design/human-interface-guidelines/tab-bars)
-- [Human Interface Guidelines: Sidebars](https://developer.apple.com/design/human-interface-guidelines/sidebars)
-- [Human Interface Guidelines: Sheets](https://developer.apple.com/design/human-interface-guidelines/sheets)
-- [Human Interface Guidelines: Gestures](https://developer.apple.com/design/human-interface-guidelines/gestures)
-- [Human Interface Guidelines: Virtual keyboards](https://developer.apple.com/design/human-interface-guidelines/virtual-keyboards)
-
-**Google**
-- [Material Design 3: Spacing](https://m3.material.io/styles/spacing/tokens)
-- [Material Design 3: Density](https://m3.material.io/foundations/layout/grids-spacing/density)
-- [Material Design 3: Corner radius scale](https://m3.material.io/styles/shape/corner-radius-scale)
-- [Material Design 3: Type scale and tokens](https://m3.material.io/styles/typography/type-scale-tokens)
-- [Material Design 3: Color roles](https://m3.material.io/styles/color/roles)
-- [Material Design 3: Easing and duration](https://m3.material.io/styles/motion/easing-and-duration/tokens-specs)
-- [material-color-utilities](https://github.com/material-foundation/material-color-utilities) (role tones)
-- [Material Web: Elevation](https://material-web.dev/components/elevation) (levels and shadow values)
-- [Material Symbols guide](https://developers.google.com/fonts/docs/material_symbols) (icon sizes, weight, grade)
-- [Android Developers: Window size classes](https://developer.android.com/develop/ui/compose/layouts/adaptive/use-window-size-classes) (breakpoints)
-- [Android Accessibility Help: Touch target size](https://support.google.com/accessibility/android/answer/7101858)
-- Material Design 3: [Navigation bar](https://m3.material.io/components/navigation-bar/guidelines), [Navigation rail](https://m3.material.io/components/navigation-rail/guidelines), [Bottom sheets](https://m3.material.io/components/bottom-sheets/guidelines)
-- Android Developers: [Edge-to-edge](https://developer.android.com/develop/ui/views/layout/edge-to-edge), [Gesture navigation](https://developer.android.com/develop/ui/views/touch-and-input/gestures/gesturenav)
-
-**Research**
-- Baymard Institute: [Avoid multi-column forms](https://baymard.com/research-articles/avoid-multi-column-forms), [Inline form validation](https://baymard.com/research-articles/inline-form-validation), [Line length readability](https://baymard.com/research-articles/line-length-readability), [Research methodology](https://baymard.com/research/methodology)
-- GOV.UK Design System: [Recover from validation errors](https://design-system.service.gov.uk/patterns/validation), [Text input](https://design-system.service.gov.uk/components/text-input/)
-- Nielsen Norman Group: [Response times: the 3 important limits](https://www.nngroup.com/articles/response-times-3-important-limits/), [Skeleton screens 101](https://www.nngroup.com/articles/skeleton-screens/), [Error-message guidelines](https://www.nngroup.com/articles/error-message-guidelines/), [Proximity principle](https://www.nngroup.com/articles/gestalt-proximity/), [Visual hierarchy](https://www.nngroup.com/articles/visual-hierarchy-ux-definition/), [Confirmation dialogs](https://www.nngroup.com/articles/confirmation-dialog/), [Placeholders in form fields are harmful](https://www.nngroup.com/videos/placeholders-form-fields/), [5 test users: qual vs quant](https://www.nngroup.com/articles/5-test-users-qual-quant/)
-
-**Peer-reviewed studies** (each link goes to a free copy when that copy is the paper itself, otherwise to the DOI; [`sources.md`](skills/guidance/references/sources.md) lists every free copy)
-- Touch: Henze et al., [100,000,000 taps](https://doi.org/10.1145/2037373.2037395) (MobileHCI 2011); Parhi et al., [Target size study for one-handed thumb use](https://doi.org/10.1145/1152215.1152260) (MobileHCI 2006); Yamanaka et al., [Behavioral differences between tap and swipe](https://doi.org/10.1145/3613904.3642272) (CHI 2024)
-- First impressions: Reinecke et al., [Predicting users' first impressions of website aesthetics](https://kgajos.seas.harvard.edu/papers/reinecke13aesthetics.pdf) (CHI 2013) and [Quantifying visual preferences around the world](https://kgajos.seas.harvard.edu/papers/reinecke14visual.pdf) (CHI 2014); Tuch et al., [Visual complexity and prototypicality](https://research.google.com/pubs/archive/38315.pdf) (IJHCS 2012); Seckler et al., [Objective design factors and subjective aesthetics](https://doi.org/10.1016/j.chb.2015.02.056) (CHB 2015)
-- Reading: Rello et al., [Make it big!](https://doi.org/10.1145/2858036.2858204) (CHI 2016) and [Readable text for people with dyslexia](https://doi.org/10.1007/s10209-015-0438-8) (UAIS 2015); Wallace et al., [Towards individuated reading experiences](https://jeffhuang.com/papers/Readability_TOCHI22.pdf) (TOCHI 2022) and [Space for readability](https://doi.org/10.1167/jov.22.14.3349) (Journal of Vision 2022)
-- Light and dark: Palmén et al., [How bold can we be?](https://doi.org/10.1145/3544548.3581552) (CHI 2023); Buchner et al., [Polarity irrespective of illumination](https://doi.org/10.1080/00140130701306413) (Ergonomics 2007) and [Polarity advantage due to luminance](https://doi.org/10.1080/00140130802641635) (Ergonomics 2009); Piepenbrock et al., [Small character sizes](https://doi.org/10.1177/0018720813515509) (Human Factors 2013) and [Younger and older adults](https://doi.org/10.1080/00140139.2013.790485) (Ergonomics 2013); While et al., [Dark mode or light mode for visualization](https://arxiv.org/abs/2409.10841) (IEEE VIS 2024)
-- Waiting: Tan et al., [Counting the wait](https://arxiv.org/abs/2602.04138) (CHI 2026); Wang et al., [Loading animation and perceived waiting time](https://doi.org/10.3390/jtaer20040306) (JTAER 2025)
-- Forms and guidelines: Bargas-Avila et al., [Do not show errors right away](https://doi.org/10.1016/j.intcom.2007.01.003) (Interacting with Computers 2007); Seckler et al., [Designing usable web forms](https://research.google.com/pubs/archive/42513.pdf) (CHI 2014); Falkowska et al., [Eye-tracking metrics to evaluate user experiences](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12526729/) (Sensors 2025)
-
-**Design systems** (how large products use colour)
-- [GitHub Primer: Color primitives](https://primer.style/foundations/primitives/color)
-- [IBM Carbon: Color overview](https://carbondesignsystem.com/elements/color/overview/)
-- [Radix Colors: Composing a palette](https://www.radix-ui.com/colors/docs/palette-composition/composing-a-palette)
-- [SAP Fiori: Content density (cozy and compact)](https://www.sap.com/design-system/fiori-design-web/v1-154/foundations/visual/cozy-compact) and [AWS Cloudscape: Content density](https://cloudscape.design/foundation/visual-foundation/content-density/) (how products offer density)
-
-**Secondary**
-- [Laws of UX: Law of Proximity](https://lawsofux.com/law-of-proximity/)
-- [30 seconds of code: Nested border radius](https://30secondsofcode.org/css/s/nested-border-radius)
-
-**Framework documentation** (for writing tokens, not design evidence)
-- Tailwind CSS v4: [Theme variables](https://tailwindcss.com/docs/theme), [Dark mode](https://tailwindcss.com/docs/dark-mode)
-- MUI: [Dark mode](https://mui.com/material-ui/customization/dark-mode/), [CSS theme variables](https://mui.com/material-ui/customization/css-theme-variables/configuration/)
-- shadcn/ui: [Theming](https://ui.shadcn.com/docs/theming)
-- Bootstrap 5.3: [Sass](https://getbootstrap.com/docs/5.3/customize/sass/), [Color modes](https://getbootstrap.com/docs/5.3/customize/color-modes/)
-- Jetpack Compose: [material3 reference](https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary), [Custom design systems](https://developer.android.com/develop/ui/compose/designsystems/custom)
-- SwiftUI: [Apple Developer Documentation](https://developer.apple.com/documentation/swiftui)
+Every value taken from these sources is stored in [`skills/guidance/references/data/`](skills/guidance/references/data/).
 
 GUIdance is not affiliated with or endorsed by Apple, Google, the W3C, Baymard Institute, GOV.UK or Nielsen Norman Group. It cites their public guidance and stores the numeric values it uses, not their text.
 

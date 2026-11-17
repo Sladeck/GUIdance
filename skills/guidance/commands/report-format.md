@@ -19,4 +19,4 @@ One numbered list, most serious first: Hard, then Strong, then Default. Within a
    Fix: font-size: var(--text-body) under 900px, or let the stars wrap.
 ```
 
-Why names the rule number and its source key with tier from `references/sources.md`. Never cite a source for a claim it does not make; your own reasoning is "judgment". Fix uses the project's tokens where they exist. Where ends with "read from code" or "seen on the page".
+Why names the rule number and its source key with tier, as the rule gives them (`WCAG-1.4.3 S`); do not open `references/sources.md` for this. Never cite a source for a claim it does not make; your own reasoning is "judgment". Fix uses the project's tokens where they exist. Where ends with "read from code" or "seen on the page".

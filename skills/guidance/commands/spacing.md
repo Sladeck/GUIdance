@@ -1,6 +1,6 @@
 # `/guidance spacing [preset or what to change] [page|all]`
 
-Sets or changes density: how much room the interface gives its content. The project has one density, written as spacing role tokens, so the whole app moves together; a page can override it, and single roles can be tuned on top of a preset. Rule 4.7 in `references/rules.md` gives the limits and their sources; the values are in the Density section of `references/data/scales.md`. Read both first.
+Sets or changes density: how much room the interface gives its content. The project has one density, written as spacing role tokens, so the whole app moves together; a page can override it, and single roles can be tuned on top of a preset. Rule 4.7 in `references/rules/04-spacing-grouping.md` gives the limits and their sources; the values are in the Density section of `references/data/scales.md`. Read both first.
 
 The user decides. Your job is to show the choices as a table, say what is risky and why, and apply exactly what they picked. No pictures, no previews: tables and questions.
 

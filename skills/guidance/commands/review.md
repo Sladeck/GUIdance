@@ -18,7 +18,7 @@ Read the token file: the scales it defines, its `density:` and `shape:` comments
 
 ## 3. Review the code
 
-Go through the checklist below on the code in scope, section by section, reading only the `references/rules.md` sections you need. For each candidate finding, read the rule itself before reporting it: its number, severity, sources and its "Break" line.
+Go through the checklist below on the code in scope, section by section, finding the rules in the index, `references/rules.md`, and reading only the section files in `references/rules/` you need. For each candidate finding, read the rule itself before reporting it: its number, severity, sources and its "Break" line.
 
 - Colours: compute contrast by hand with `references/data/colour.md` and show the working. Say that ratios are computed by hand, and name those within 0.3 of their threshold.
 - Sizes and spacing: follow tokens and aliases to the real value before judging it.
@@ -39,7 +39,7 @@ One numbered list in the format of `commands/report-format.md`, then the counts 
 
 ## Checklist
 
-The items follow the sections of `references/rules.md`; each rule number, in parentheses, covers the clauses before it, back to the previous rule number. Hard is the label `rules.md` gives the rule, not every rule that cites WCAG. The checklist is a reminder of what to look for, not the rule: read the rule before reporting (step 3).
+The items follow the sections of the rules (index: `references/rules.md`); each rule number, in parentheses, covers the clauses before it, back to the previous rule number. Hard is the label the rule's section file gives it, not every rule that cites WCAG. The checklist is a reminder of what to look for, not the rule: read the rule before reporting (step 3).
 
 1. **Contrast and colour**: text 4.5:1, large text 3:1, in both themes, disabled controls exempt (1.1, Hard); control cues, project-defined focus styles, meaningful icons and chart marks 3:1, in both themes, inactive controls exempt (1.2, Hard). Status, errors, required fields, chart series and links have a second cue besides colour (1.3, Hard). Colours named by role, text only on its pair, outline for control boundaries (1.4, 1.5). One or two chart series in brand shades, no rainbow for one measure (1.6). Status values as chips that keep a sign or a word (1.7). Follows the system theme; where the product picks, reading-heavy surfaces start light (1.8).
 2. **Target size**: 24x24 CSS px or spaced (2.1, Hard); 44pt iOS, 48dp Android, 44 to 48px on touch web layouts; swipe actions also have a button (2.2; Hard under 12.2).

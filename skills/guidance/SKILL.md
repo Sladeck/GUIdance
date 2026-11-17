@@ -5,11 +5,11 @@ description: Evidence-cited UI design rules and the commands to apply them (/gui
 
 # GUIdance
 
-Design rules you can defend: each rule in `references/rules.md` states a number or a behaviour, its sources with their weight, and when to break it. The skill is text only: no scripts, nothing generated. You do the work by reading and editing the project, and you always tell the user why: the rule, its source and tier. When the user wants something a rule advises against, say what the risk is and where that comes from, then let them decide. Read only what the current command needs.
+Design rules you can defend: each rule in `references/rules/` (indexed in `references/rules.md`) states a number or a behaviour, its sources with their weight, and when to break it. The skill is text only: no scripts, nothing generated. You do the work by reading and editing the project, and you always tell the user why: the rule, its source and tier. When the user wants something a rule advises against, say what the risk is and where that comes from, then let them decide. Read only what the current command needs.
 
 ## Commands
 
-The first word after `/guidance` picks the command. Plain requests map the same way: "set up design tokens" is setup, "make it denser", "more breathing room", "tighter lists on the reports page" or "change the spacing" is spacing, "rounder corners", "sharper buttons" or "too boxy" is shape, "build a settings screen" is build, "review this code" or "check this page for inconsistencies" is review, "fix those" after a report is fix.
+The first word after `/guidance` picks the command. Installed as a plugin, each command is also its own entry (`/guidance:setup`, `/guidance:review`); in this skill, `/guidance <command>` means either form. When you were started from a `/guidance:<command>` entry, write any command you suggest in that form (`/guidance:fix`), since the space form does not exist there. Plain requests map the same way: "set up design tokens" is setup, "make it denser", "more breathing room", "tighter lists on the reports page" or "change the spacing" is spacing, "rounder corners", "sharper buttons" or "too boxy" is shape, "build a settings screen" is build, "review this code" or "check this page for inconsistencies" is review, "fix those" after a report is fix.
 
 **Before acting, read the command's file.** It lists the other files it needs.
 
@@ -23,7 +23,7 @@ The first word after `/guidance` picks the command. Plain requests map the same 
 | `/guidance review [target]` | Reviews code (a file, folder, component, page, or the uncommitted changes) against the rules; one ordered list of findings with where, why (rule and source) and fix. | `commands/review.md` |
 | `/guidance fix [which]` | Fixes findings from the last review, then checks them again. | `commands/fix.md` |
 
-Commands that report findings also read `commands/report-format.md`. A question with no command ("why 16px body text?", "is this contrast enough?") is answered from `references/rules.md` and its sources, with the rule number, the source key and its tier.
+Commands that report findings also read `commands/report-format.md`. A question with no command ("why 16px body text?", "is this contrast enough?") is answered from the rule's section file (find it in the index, `references/rules.md`) and its sources, with the rule number, the source key and its tier.
 
 ## Source weight
 
@@ -41,7 +41,8 @@ Conflict rule: higher tier wins. Same tier, context decides (Apple on Apple plat
 
 | File | Use |
 | --- | --- |
-| `references/rules.md` | The rules, with sources, severity and when to break them |
+| `references/rules.md` | Index: every rule by number, title and severity, and which section file holds it |
+| `references/rules/` | The rules, one file per section, with sources, severity and when to break them |
 | `references/data/` | Every verified number, so you never search the web: `accessibility.md` (WCAG, platform sizes), `scales.md` (spacing, density presets, shape and shape presets, type, motion, elevation, icons, breakpoints), `colour.md` (Material roles and tones, the contrast formula, building a colour set from a brand colour, neutral surfaces), `stacks.md` (framework traps), `research.md` |
 | `references/formats/<stack>.md` | Worked token files (css, tailwind4, tailwind3, mui, scss, swiftui, compose) to model any stack on |
 | `references/sources.md` | Sources, ranked |

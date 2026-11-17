@@ -1,6 +1,6 @@
 ---
 name: guidance
-description: Evidence-cited UI design rules and the commands to apply them (/guidance setup, spacing, shape, build, review, fix). Installs the rules in a project as design tokens, builds UI that follows them, reviews code against them and fixes what breaks them, always saying why a rule exists and where it comes from. Use for spacing, corners, type, colour and contrast, targets, forms, motion, layout and accessibility questions, on the web (desktop, tablet, phone) and in native iOS and Android apps. Sources ranked by weight (WCAG, Apple, Material, Baymard, GOV.UK, NN/g, peer-reviewed studies).
+description: Evidence-ranked UI design rules. Sets up tokens, then builds, reviews and fixes web and native UI. Use for spacing, layout, corners, type, colour, contrast, targets, forms, motion, accessibility.
 ---
 
 # GUIdance
@@ -39,10 +39,26 @@ Conflict rule: higher tier wins. Same tier, context decides (Apple on Apple plat
 
 ## Files
 
-| File | Use |
-| --- | --- |
-| `references/rules.md` | Index: every rule by number, title and severity, and which section file holds it |
-| `references/rules/` | The rules, one file per section, with sources, severity and when to break them |
-| `references/data/` | Every verified number, so you never search the web: `accessibility.md` (WCAG, platform sizes), `scales.md` (spacing, density presets, shape and shape presets, type, motion, elevation, icons, breakpoints), `colour.md` (Material roles and tones, the contrast formula, building a colour set from a brand colour, neutral surfaces), `stacks.md` (framework traps), `research.md` |
-| `references/formats/<stack>.md` | Worked token files (css, tailwind4, tailwind3, mui, scss, swiftui, compose) to model any stack on |
-| `references/sources.md` | Sources, ranked |
+Every file the commands use, so you can open any of them directly. Read only what the current task needs.
+
+**Rules.** `references/rules.md` is the index: every rule by number, title and severity, and which file holds it. The rules themselves, with sources, severity and when to break them:
+- `references/rules/01-contrast-colour.md`, `02-target-size.md`, `03-typography.md`, `04-spacing-grouping.md`, `05-shape-elevation-icons.md`, `06-hierarchy.md`, `07-forms.md`, `08-feedback-loading.md`, `09-errors.md`, `10-destructive-actions.md`, `11-motion.md`, `12-keyboard-focus-input.md`, `13-platforms.md` (all in `references/rules/`)
+
+**Values.** Every verified number, so you never search the web. Use them directly: Material 3 values verified 2026-11-02 to 2026-11-15, colour 2026-11-14 and 2026-11-15, GUIdance judgment marked as such. Keys match `references/sources.md`.
+- `references/data/scales/spacing-density.md`: the spacing scale; density presets with role values, tuning, touch floor, phone widths
+- `references/data/scales/shape.md`: the radius scale, nested corners; shape presets with role values and tuning
+- `references/data/scales/type.md`: the 15 Material type styles, line height by script, the 5-style subset
+- `references/data/scales/motion.md`: durations and easing
+- `references/data/scales/elevation.md`: the six shadow levels
+- `references/data/scales/icons.md`: icon sizes, weight, grade
+- `references/data/scales/breakpoints.md`: window size classes, widths a review checks, navigation by window size
+- `references/data/colour/roles-tones.md`: Material colour roles, the tones table with luminance per role, success, warning and chart colours
+- `references/data/colour/contrast.md`: computing a contrast ratio by hand
+- `references/data/colour/building.md`: building a colour set from a brand colour and checking every pair; neutral surfaces; one accent or two
+- `references/data/accessibility.md`: WCAG and platform sizes
+- `references/data/stacks.md`: framework traps
+- `references/data/research.md`: research numbers and peer-reviewed study findings behind the rules
+
+**Token files.** Worked examples to model any stack on: `references/formats/css.md`, `tailwind4.md`, `tailwind3.md`, `mui.md`, `scss.md`, `swiftui.md`, `compose.md` (all in `references/formats/`).
+
+**Sources.** `references/sources.md`: every source key with its tier and link.

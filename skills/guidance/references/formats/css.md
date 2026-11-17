@@ -1,15 +1,17 @@
 # Token format: Plain CSS (also CSS modules, Vue, Svelte, Astro, Next.js without Tailwind)
 
+**Contents:** file to create, wiring, filling it in; then the template: spacing, density roles, radius, shape roles, elevation, type, motion, targets, focus, phone widths, reduced motion, colours (light and dark).
+
 **File to create:** guidance.css next to the global stylesheet. Never overwrite an existing file: if it exists, ask, or merge only what is missing.
 
 **Wiring:** Add `@import "./guidance.css";` at the top of the global stylesheet (or import it from the root layout or main entry).
 
 **Filling it in**
-- Fixed values (spacing, radius, elevation, type, motion, targets, focus, measure) are already filled from `../data/scales.md` and `../data/accessibility.md`. Keep them unless the user chose otherwise.
-- Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales.md` (and its Phone widths line for card padding), and update the `density:` and `shape:` notes.
-- `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour.md`, Building a colour set from a brand colour).
+- Fixed values (spacing, radius, elevation, type, motion, targets, focus, measure) are already filled from `../data/scales/` and `../data/accessibility.md`. Keep them unless the user chose otherwise.
+- Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales/spacing-density.md` and `../data/scales/shape.md` (and the Phone widths line of the first, for card padding), and update the `density:` and `shape:` notes.
+- `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour/building.md`).
 - When the user keeps their own colours, delete every colour block and keep the rest.
-- Type: this template has the 5-style subset. For all 15 styles, take the type table in `../data/scales.md`.
+- Type: this template has the 5-style subset. For all 15 styles, take the type table in `../data/scales/type.md`.
 
 ```css
 /*

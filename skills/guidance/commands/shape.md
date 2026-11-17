@@ -1,6 +1,6 @@
 # `/guidance shape [preset or what to change]`
 
-Sets or changes how rounded the product's corners are. The project has one shape, written as radius role tokens that point at the radius scale, so every button, card and dialog moves together. Rules 5.1, 5.2 and 5.5 in `references/rules/05-shape-elevation-icons.md` give the limits and their sources; the values are in the Shape section of `references/data/scales.md`. Read both first.
+Sets or changes how rounded the product's corners are. The project has one shape, written as radius role tokens that point at the radius scale, so every button, card and dialog moves together. Rules 5.1, 5.2 and 5.5 in `references/rules/05-shape-elevation-icons.md` give the limits and their sources; the values are in `references/data/scales/shape.md`. Read both first.
 
 The user decides. Your job is to show the choices as a table, say what is risky and why, and apply exactly what they picked. No pictures, no previews: tables and questions.
 

@@ -34,7 +34,7 @@
 - Cramped screen: remove or move a component before shrinking spacing.
 
 **4.7 One density for the product, one per page** (Default) [M3-DENSITY A, FIORI-DENSITY B, CLOUDSCAPE-DENSITY B]
-- The product has one density: compact, default or comfortable (values in `references/data/scales.md`, Density), expressed through role tokens so the whole app moves together.
+- The product has one density: compact, default or comfortable (values in `references/data/scales/spacing-density.md`), expressed through role tokens so the whole app moves together.
 - A page may override it when its content calls for it: a report table in a default product, a welcome page in a compact one. Material says density can change with context and that not every layout needs it [M3-DENSITY A]. Fiori and Cloudscape disagree: both set density for the whole application and Cloudscape says not to apply compact to individual pages or components [FIORI-DENSITY B, CLOUDSCAPE-DENSITY B]. Material is the higher tier, so overrides are permitted, but keep them few.
 - One density within a page's content: no mixing of presets between its sections [FIORI-DENSITY B]. Two exceptions, both judgment: the shared shell (navigation, header) keeps the product's density on an overridden page, and one self-contained dense component (a data grid, a code editor) may run compact, in line with Material's per-component density scale [M3-DENSITY A].
 - Compact: data-rich products where people scan and compare a lot, such as dashboards, tables and financial tools [M3-DENSITY A], on devices used with a mouse and keyboard [FIORI-DENSITY B]. Comfortable: products that put a focused message, less information or easier navigation first [M3-DENSITY A]. Default: everything else.

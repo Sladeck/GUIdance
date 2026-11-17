@@ -1,6 +1,6 @@
 # 13. Platforms: phone, tablet, desktop and native
 
-These rules apply on the web and in native apps unless a rule names its platform. Target sizes are rule 2.2, type sizes 3.1 and 3.2, widths 4.4, breakpoints `references/data/scales.md`.
+These rules apply on the web and in native apps unless a rule names its platform. Target sizes are rule 2.2, type sizes 3.1 and 3.2, widths 4.4, breakpoints `references/data/scales/breakpoints.md`.
 
 **13.1 Works in both orientations** (Hard, Level AA) [WCAG-1.3.4 S]
 - Content does not restrict its view and operation to portrait or landscape: no orientation lock, no "rotate your device" screen. A control that switches to the other orientation also passes.
@@ -42,7 +42,7 @@ These rules apply on the web and in native apps unless a rule names its platform
 
 **13.9 Navigation follows the window size** (Default) [M3-NAVBAR A, M3-NAVRAIL A, M3-WINDOW A, APPLE-TABBAR A, APPLE-SIDEBAR A]
 - Compact windows, under 600 wide (phones): a navigation bar at the bottom with three to five top-level destinations, each with an icon and a text label, or a modal navigation rail opened from a menu icon [M3-NAVBAR A]. Never a standard, always-visible rail [M3-NAVRAIL A].
-- Medium windows and up, from 600 wide (tablets, desktop): a navigation rail, collapsed or expanded; a medium window with few destinations may keep the navigation bar [M3-NAVRAIL A]. Panes per window size are in `references/data/scales.md`, Breakpoints [M3-WINDOW A].
+- Medium windows and up, from 600 wide (tablets, desktop): a navigation rail, collapsed or expanded; a medium window with few destinations may keep the navigation bar [M3-NAVRAIL A]. Panes per window size are in `references/data/scales/breakpoints.md` [M3-WINDOW A].
 - More than five destinations on a phone: tabs inside a page, or the modal rail behind a menu icon [M3-NAVBAR A].
 - Apple platforms: a tab bar is for moving between top-level sections, not for actions; it stays visible as people move between sections, except under a modal view; its buttons are not disabled or hidden, an empty section explains itself; avoid an overflow "More" tab; fewer tabs are easier to navigate. On iPad, prefer a tab bar, which may offer to convert to a sidebar [APPLE-TABBAR A].
 - Apple sidebars need a lot of room: where space is limited a tab bar may serve better; in general show no more than two levels of hierarchy; consider letting people hide the sidebar [APPLE-SIDEBAR A].

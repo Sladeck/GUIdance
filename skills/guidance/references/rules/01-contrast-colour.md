@@ -16,7 +16,7 @@
 
 **1.4 Palette by role** (Default) [NNG-HIER B, APPLE-A11Y A, judgment]
 - About 2 primary and 2 secondary colours (NN/g), counting brand and emphasis colours only (judgment): status colours and chart palettes carry meaning, not emphasis.
-- Name colours by role, not hue: primary, secondary, surface, on-surface, error and the other roles of rule 1.5 (`references/data/colour.md` has the full list).
+- Name colours by role, not hue: primary, secondary, surface, on-surface, error and the other roles of rule 1.5 (`references/data/colour/roles-tones.md` has the full list).
 - Warm saturated colours, red especially, only for warnings and errors [NNG-HIER B].
 - On Apple platforms prefer system colours: they adapt to Increase Contrast and dark mode [APPLE-A11Y A].
 
@@ -24,9 +24,9 @@
 - Roles, not hues: primary for the most prominent actions, secondary for quieter ones, tertiary for contrasting accents, error for errors, surfaces for backgrounds, outline for control boundaries.
 - Text only in its pair: on-X on X; on-surface and on-surface-variant on any surface. Containers are fills, never text.
 - Outline (3:1) for borders that identify a control; outline variant only for decorative dividers or when the content inside provides the contrast.
-- Both themes from the start. In Material, dark is not an inversion: each role has its own tone (`references/data/colour.md`).
-- Build the colour set from the brand colour and prove every pair with the contrast formula (`references/data/colour.md`). Mood ("calm", "playful") is judgment: colour-psychology evidence is weak, so justify colours by roles and contrast.
-- Backgrounds stay near-neutral in products; colour goes on actions, selection and status: near-grey surfaces with the brand's accents (`references/data/colour.md`) [M3-COLOR A for roles; PRIMER-COLOR B, CARBON-COLOR B, RADIX-COMPOSE B for neutral backgrounds]. Tinted surfaces are a choice for expressive, brand-heavy products.
+- Both themes from the start. In Material, dark is not an inversion: each role has its own tone (`references/data/colour/roles-tones.md`).
+- Build the colour set from the brand colour and prove every pair with the contrast formula (`references/data/colour/building.md`, `references/data/colour/contrast.md`). Mood ("calm", "playful") is judgment: colour-psychology evidence is weak, so justify colours by roles and contrast.
+- Backgrounds stay near-neutral in products; colour goes on actions, selection and status: near-grey surfaces with the brand's accents (`references/data/colour/building.md`) [M3-COLOR A for roles; PRIMER-COLOR B, CARBON-COLOR B, RADIX-COMPOSE B for neutral backgrounds]. Tinted surfaces are a choice for expressive, brand-heavy products.
 
 **1.6 Charts in brand shades** (Default) [M3-COLOR A, judgment]
 - One or two series use brand shades: `primary` for the main one, `primary-container` or the second accent, if the product has one, for the second, so the chart belongs to the product.

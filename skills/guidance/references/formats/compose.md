@@ -1,14 +1,16 @@
 # Token format: Jetpack Compose (Android, Material 3)
 
+**Contents:** file to create, wiring, filling it in; then the template: spacing, targets, density roles, radius, shape roles, Material shapes, elevation, motion, typography, light and dark colour schemes, extended colours, and the `GuidanceTheme` composable.
+
 **File to create:** `GuidanceTheme.kt` in the package that holds the project's theme (often `ui/theme`). Never overwrite an existing file. A project that already calls `MaterialTheme(` with its own `colorScheme` keeps its theme: edit its values where they are defined and add only what is missing.
 
 **Wiring:** wrap the app's content in `GuidanceTheme { ... }` where the project sets its content.
 
 **Filling it in**
-- Fixed values (spacing, radius, elevation, type, motion, targets) are filled from `../data/scales.md` and `../data/accessibility.md`.
-- Density and shape roles are filled for the default density and the soft shape. For another preset, take the values from the Density and Shape presets tables in `../data/scales.md` and update the `density:` and `shape:` notes. `card` and `page` hold the phone-width values: take them from the Phone widths line of `../data/scales.md` (card 12, 16, 24; page 16), and the table's values go in `wide()`.
+- Fixed values (spacing, radius, elevation, type, motion, targets) are filled from `../data/scales/` and `../data/accessibility.md`.
+- Density and shape roles are filled for the default density and the soft shape. For another preset, take the values from the Density and Shape presets tables in `../data/scales/spacing-density.md` and `../data/scales/shape.md` and update the `density:` and `shape:` notes. `card` and `page` hold the phone-width values: take them from the Phone widths line of `../data/scales/spacing-density.md` (card 12, 16, 24; page 16), and the table's values go in `wide()`.
 - Control and row heights are minimums and never go under 48dp, Android's touch size (rules 2.2, 4.7): compact and default 48, comfortable 48. Apply them as a minimum height, never a fixed one, so text can grow (rule 3.6).
-- `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour.md`). Write each as `Color(0xFFRRGGBB)`.
+- `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour/building.md`). Write each as `Color(0xFFRRGGBB)`.
 - Material's roles are parameters of `lightColorScheme` and `darkColorScheme`. `background` and `onBackground` take the `surface` and `on-surface` values, because Material's screens paint with them; `surfaceVariant` takes `surface-container-highest` (judgment). `surfaceDim`, `surfaceBright` and `scrim` keep Material's defaults. `success`, `warning` and the chart colours are not Material roles: they go in `ExtendedColors`.
 - Dynamic colour: if the existing theme switches to a wallpaper-based scheme on Android 12 and later (look for `dynamicColor`), the colours checked in setup are replaced on those devices. Say so and ask whether to turn it off.
 - Shape roles reach a component only where they are passed: give `shape = RadiusRole.button` and the others at the call site or in the project's own wrappers. Stock Material components keep their own default shapes otherwise; which `Shapes` slot each one reads was not checked, so do not rely on `GuidanceShapes` to move them.
@@ -112,7 +114,7 @@ object Motion {
     val emphasizedAccelerate = CubicBezierEasing(0.3f, 0f, 0.8f, 0.15f)
 }
 
-// Type: the 5-style subset of the Material scale (rule 3.1). All 15 styles: ../data/scales.md.
+// Type: the 5-style subset of the Material scale (rule 3.1). All 15 styles: ../data/scales/type.md.
 val GuidanceTypography = Typography(
     headlineLarge = TextStyle(fontSize = 32.sp, lineHeight = 40.sp, fontWeight = FontWeight.Normal),
     titleLarge = TextStyle(fontSize = 22.sp, lineHeight = 28.sp, fontWeight = FontWeight.Normal),

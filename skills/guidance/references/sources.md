@@ -1,5 +1,7 @@
 # Sources, ranked
 
+**Contents:** how sources are weighted (the tiers), the conflict rule, then the source list: every key with its tier, source and link, and notes on when each group was checked.
+
 Checked between 2026-11-02 and 2026-11-17; the Notes give the date per group. Keys match the tags in the rules.
 
 ## How sources are weighted

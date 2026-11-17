@@ -20,7 +20,7 @@ Read the token file: the scales it defines, its `density:` and `shape:` comments
 
 Go through the checklist below on the code in scope, section by section, finding the rules in the index, `references/rules.md`, and reading only the section files in `references/rules/` you need. For each candidate finding, read the rule itself before reporting it: its number, severity, sources and its "Break" line.
 
-- Colours: compute contrast by hand with `references/data/colour.md` and show the working. Say that ratios are computed by hand, and name those within 0.3 of their threshold.
+- Colours: compute contrast by hand with `references/data/colour/contrast.md` and show the working. Say that ratios are computed by hand, and name those within 0.3 of their threshold.
 - Sizes and spacing: follow tokens and aliases to the real value before judging it.
 - Responsive behaviour: read the media queries and what changes at each one.
 

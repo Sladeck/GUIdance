@@ -1,17 +1,19 @@
 # Token format: MUI (Material UI) v6 or later
 
+**Contents:** file to create, wiring, filling it in; then the template: theme options (spacing, shape, an elevation note, type, transitions, colour schemes for light and dark), the GUIdance roles (density, shape, targets, focus, measure, reduced motion), and the roles MUI's palette has no slot for.
+
 **File to create:** guidanceTheme.ts (or .js) next to the file that calls `createTheme`. Never overwrite an existing file: if it exists, ask, or merge only what is missing.
 
 **Wiring:** Wrap the existing options: `createTheme(deepmerge(existingOptions, guidanceThemeOptions))` with `import { deepmerge } from '@mui/utils';`. Put `guidanceThemeOptions` second to let it win, first to only fill gaps. If the existing options have a top-level `palette`, MUI lets it override `colorSchemes`: move those colours into the colour roles below or remove it. For `.js`, drop the `type GuidanceThemeOptions` line and the `: GuidanceThemeOptions` and `as const` annotations.
 
 **Filling it in**
-- Fixed values (spacing, radius, type, motion, targets, focus, measure) are already filled from `../data/scales.md` and `../data/accessibility.md`. Keep them unless the user chose otherwise.
+- Fixed values (spacing, radius, type, motion, targets, focus, measure) are already filled from `../data/scales/` and `../data/accessibility.md`. Keep them unless the user chose otherwise.
 - MUI's palette has no slot for the container roles, the surface levels, `outline`, the inverse roles or the chart colours. They are in `guidanceExtraColors`, as `{L.role}` and `{D.role}` like the palette: use the light or dark set with the project's own dark-mode mechanism.
 - Reduced motion (rule 11.2): by default MUI does not shorten its transitions. From v9.1.0, set `theme.motion.reducedMotion` to `'system'` and MUI follows the user's setting. On earlier versions, `guidanceRoles.reducedMotion` holds the shorter duration; read the setting with `useMediaQuery('(prefers-reduced-motion: reduce)')` from `@mui/material/useMediaQuery` and pass that duration to transitions that move, or swap a slide for a fade.
-- Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales.md` (and its Phone widths line for card padding), and update the `density:` and `shape:` notes.
-- `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour.md`, Building a colour set from a brand colour).
+- Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales/spacing-density.md` and `../data/scales/shape.md` (and the Phone widths line of the first, for card padding), and update the `density:` and `shape:` notes.
+- `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour/building.md`).
 - When the user keeps their own colours, delete every colour block and keep the rest.
-- Type: this template has the 5-style subset. For all 15 styles, take the type table in `../data/scales.md`.
+- Type: this template has the 5-style subset. For all 15 styles, take the type table in `../data/scales/type.md`.
 
 ```ts
 /*

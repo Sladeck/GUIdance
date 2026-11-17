@@ -33,7 +33,7 @@ Verified values; use them directly, do not search the web. Re-verify only if a s
 | Reduced motion (2.3.3, AAA; technique C39) | Honour `prefers-reduced-motion` |
 | New in 2.2 (A/AA) | 2.4.11 focus not obscured, 2.5.7 dragging alternative, 2.5.8 target size, 3.2.6 consistent help, 3.3.7 redundant entry, 3.3.8 accessible authentication |
 
-Contrast: `(L1 + 0.05) / (L2 + 0.05)`, relative luminance `L = 0.2126 R + 0.7152 G + 0.0722 B` on linearised sRGB (`c <= 0.04045 ? c/12.92 : ((c+0.055)/1.055)^2.4`). By hand: see `colour.md`.
+Contrast: `(L1 + 0.05) / (L2 + 0.05)`, relative luminance `L = 0.2126 R + 0.7152 G + 0.0722 B` on linearised sRGB (`c <= 0.04045 ? c/12.92 : ((c+0.055)/1.055)^2.4`). By hand: see `colour/contrast.md`.
 
 ## Platform sizes [Apple HIG, Android, tier A]
 

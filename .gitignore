@@ -1,2 +1,4 @@
 .DS_Store
 *.zip
+evals/results/
+CLAUDE.local.md

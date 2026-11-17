@@ -15,6 +15,7 @@ GUIdance is a Claude skill that gives your interfaces a professional finish: con
 - [Commands](#commands)
 - [How sources are weighted](#how-sources-are-weighted)
 - [Citations and resources](#citations-and-resources)
+- [Testing](#testing)
 - [Why I made this](#why-i-made-this)
 - [License](#license)
 
@@ -107,7 +108,13 @@ cp -r GUIdance/skills/guidance ~/.claude/skills/guidance     # all your projects
 
 ### Claude apps (web, desktop)
 
-Zip the `skills/guidance` folder and upload it as a custom skill in Claude's settings.
+Zip the `guidance` folder itself, so the zip holds a `guidance/` folder with `SKILL.md` inside:
+
+```bash
+cd GUIdance/skills && zip -r guidance.zip guidance
+```
+
+Upload `guidance.zip` as a custom skill, then turn it on in Customize > Skills. Custom skills need code execution turned on in Claude's settings.
 
 ### Requirements
 
@@ -164,6 +171,16 @@ Every rule names its sources. [`sources.md`](skills/guidance/references/sources.
 Every value taken from these sources is stored in [`skills/guidance/references/data/`](skills/guidance/references/data/).
 
 GUIdance is not affiliated with or endorsed by Apple, Google, the W3C, Baymard Institute, GOV.UK or Nielsen Norman Group. It cites their public guidance and stores the numeric values it uses, not their text.
+
+## Testing
+
+`evals/` holds test cases for `claude plugin eval`: a review, a question, a build and a request the skill should ignore. Run them from the repository root; the build case needs the Write tool:
+
+```bash
+claude plugin eval . --allow-tools Write
+```
+
+Each case runs three times with the plugin and three times without it, and every run is a model call on your account. Results go to `evals/results/`, which is not committed.
 
 ## Why I made this
 

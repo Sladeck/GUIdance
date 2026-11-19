@@ -1,6 +1,6 @@
 # Report format
 
-Used by review and fix.
+Used by review, wcag and fix.
 
 ## Severity
 

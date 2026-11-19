@@ -1,9 +1,9 @@
 {
   "name": "guidance",
   "displayName": "GUIdance",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "icon": "./assets/icon.svg",
-  "description": "Evidence-ranked UI design rules for Claude: sets up design tokens, spacing density and corner shape in any stack, then builds, reviews and fixes interfaces against WCAG 2.2, Material 3, Apple, Baymard, GOV.UK and NN/g. Not a UI kit.",
+  "description": "Evidence-ranked UI design rules for Claude: sets up design tokens, spacing density and corner shape in any stack, then builds, reviews and fixes interfaces against WCAG 2.2, Material 3, Apple, Baymard, GOV.UK and NN/g, and checks code or a live page against every WCAG 2.2 A and AA criterion. Not a UI kit.",
   "author": {
     "name": "Sladeck",
     "url": "https://github.com/Sladeck"
@@ -44,9 +44,14 @@
       "description": "Review code or a page against the rules, with sources",
       "argumentHint": "[target]"
     },
+    "wcag": {
+      "content": "Run the GUIdance `wcag` command. Read `${CLAUDE_PLUGIN_ROOT}/skills/guidance/SKILL.md`, then `${CLAUDE_PLUGIN_ROOT}/skills/guidance/commands/wcag.md`, and follow it. Paths in those files are relative to `${CLAUDE_PLUGIN_ROOT}/skills/guidance/`. You are running as a plugin: write any GUIdance command you suggest as `/guidance:<command>` (for example `/guidance:fix`), not `/guidance <command>`.\n\nArguments: $ARGUMENTS",
+      "description": "Check code or a live page (URL) against every WCAG 2.2 A and AA criterion",
+      "argumentHint": "[url, page, file or folder] [A|AA]"
+    },
     "fix": {
       "content": "Run the GUIdance `fix` command. Read `${CLAUDE_PLUGIN_ROOT}/skills/guidance/SKILL.md`, then `${CLAUDE_PLUGIN_ROOT}/skills/guidance/commands/fix.md`, and follow it. Paths in those files are relative to `${CLAUDE_PLUGIN_ROOT}/skills/guidance/`. You are running as a plugin: write any GUIdance command you suggest as `/guidance:<command>` (for example `/guidance:fix`), not `/guidance <command>`.\n\nArguments: $ARGUMENTS",
-      "description": "Fix findings from the last review, then check them again",
+      "description": "Fix findings from the last review or WCAG check, then check them again",
       "argumentHint": "[which]"
     }
   }

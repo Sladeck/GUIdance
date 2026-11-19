@@ -17,7 +17,7 @@ Format of each rule in the section files: rule (severity) [source key + tier, se
 | 9 Errors | `references/rules/09-errors.md` | where errors show, wording, recovery |
 | 10 Destructive actions | `references/rules/10-destructive-actions.md` | undo, confirmations, button wording and defaults |
 | 11 Motion | `references/rules/11-motion.md` | durations, easing, reduced motion, flashing |
-| 12 Keyboard, focus and input | `references/rules/12-keyboard-focus-input.md` | focus indicators, drag alternatives, consistent help, time limits, autoplay, toasts, keyboard and focus order |
+| 12 Keyboard, focus and input | `references/rules/12-keyboard-focus-input.md` | focus indicators and their size, drag alternatives, consistent help, time limits, autoplay, toasts, keyboard and focus order |
 | 13 Platforms: phone, tablet, desktop and native | `references/rules/13-platforms.md` | orientation, gestures, pointer cancellation, device motion, autocomplete and keyboards, hover content, safe areas, system gestures, navigation by window size, sheets |
 
 ## Rules by section
@@ -33,5 +33,5 @@ Format of each rule in the section files: rule (severity) [source key + tier, se
 9. 9.1 Placement and visibility (Strong) · 9.2 Wording (Strong) · 9.3 Recovery (Strong)
 10. 10.1 Undo first, alerts rarely (Strong) · 10.2 Confirmation wording and defaults (Strong)
 11. 11.1 Durations and easing (Default) · 11.2 Reduced motion and flashing (Hard: the flashing bullet; Strong: the rest)
-12. 12.1 Focus visible and unobscured (Hard) · 12.2 Alternatives to dragging and gestures (Hard) · 12.3 Consistent help (Hard, Level A) · 12.4 Time limits and things that start by themselves (Hard: the first four bullets; Default: the last) · 12.5 Everything works from the keyboard, in order (Hard, Level A)
+12. 12.1 Focus visible and unobscured (Hard) · 12.2 Alternatives to dragging and gestures (Hard) · 12.3 Consistent help (Hard, Level A) · 12.4 Time limits and things that start by themselves (Hard: the first four bullets; Default: the last) · 12.5 Everything works from the keyboard, in order (Hard, Level A) · 12.6 A focus indicator big enough to see (Default)
 13. 13.1 Works in both orientations (Hard, Level AA) · 13.2 Every gesture has a simple alternative (Hard: the first bullet; Default, on Apple platforms: the rest) · 13.3 Presses can be cancelled (Hard: the first bullet; the second is judgment) · 13.4 Device motion is never the only way (Hard, Level A) · 13.5 Tell the system what each field is for (Hard: the first bullet; Default: the rest) · 13.6 Content shown on hover or focus (Hard: the first two bullets; the last is judgment) · 13.7 Keep content clear of system areas (Default, on that platform) · 13.8 Leave the system's gestures alone (Default, on that platform) · 13.9 Navigation follows the window size (Default) · 13.10 Sheets (Default, on that platform)

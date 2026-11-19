@@ -17,11 +17,13 @@ Applying 19 of 20 published form guidelines together to three real newspaper reg
 - Both, and NN/g, agree: no error while the user is still typing; clear an error once fixed; error summary on submit; preserve what was entered.
 - Peer-reviewed lab evidence leans to submit-time: in two studies (77 and 90 people), showing errors after the whole form was completed performed best and immediate feedback worst; people filling a form often ignored immediate messages [SCI-FORM-ERR B]. Tier B and from 2007, so it does not overturn Baymard for long forms, but it adds weight to GOV.UK's approach for short ones.
 
-**7.4 Do not ask twice** (Hard, Level A) [WCAG-2.2 S]
-- Information already entered in the same process is prefilled or selectable (3.3.7).
+**7.4 Do not ask twice** (Hard, Level A) [WCAG-3.3.7 S]
+- Information the user already entered, or was given, in the same process is prefilled or offered to select on the same page when the process asks for it again (3.3.7): W3C's example is a checkbox that copies the delivery address into the billing address.
+- Exempt: re-entry that is essential (W3C: a memory game), that security requires (W3C: a password), or where the earlier value is no longer valid. Not covered: separate sessions.
 
-**7.5 Login without puzzles** (Hard) [WCAG-2.2 S]
-- No cognitive test at login without an alternative: allow paste and password managers (3.3.8).
+**7.5 Login without puzzles** (Hard) [WCAG-3.3.8 S]
+- No step of signing in requires a cognitive function test (remembering a password, transcribing a code, solving a puzzle) unless that step offers another method without one, or a mechanism that helps: in practice, password fields that accept paste and password manager autofill (`autocomplete="current-password"`, no paste blocking), and one-time codes that can be pasted (3.3.8).
+- Allowed at AA: a test that asks people to recognise objects, or to pick content they provided themselves (a photo they uploaded).
 
 **7.6 State formats and required fields up front** (Default) [SCI-FORMS B]
 - A field that needs a specific format (password rules, a date format, a length) says so before submission, beside the field; rule 7.2 puts it in hint text.

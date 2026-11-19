@@ -28,9 +28,11 @@ Verified values; use them directly, do not search the web. Re-verify only if a s
 | Focus order (2.4.3, A) | Focusable components receive focus in an order that preserves meaning and operability |
 | Focus visible (2.4.7, AA) | Keyboard-operable interfaces have a mode where the focus indicator is visible |
 | Focus not obscured (2.4.11, AA) | A focused component is never entirely hidden by author content (sticky header or footer, non-modal dialog); partly hidden passes AA. Fix: `scroll-padding` (technique C43); failure F110 |
+| Focus appearance (2.4.13, AAA) | A focus indicator the author defines covers at least the area of a 2 CSS px perimeter of the unfocused component, and those pixels change by 3:1 between states. A solid 2px outline on or outside the edge meets the area; one inset away from the edge needs 3px. Exempt: the browser's indicator unmodified, with its background unmodified |
 | Line length (1.4.8, AAA) | 80 characters max (40 for CJK) |
 | Reflow (1.4.10, AA) | No two-direction scrolling at 320 CSS px wide (= 1280px at 400% zoom), or 256 CSS px high for horizontal content. Exceptions: maps, diagrams, video, games, presentations, data tables, toolbars that must stay visible |
 | Reduced motion (2.3.3, AAA; technique C39) | Honour `prefers-reduced-motion` |
+| All criteria | Every Level A and AA criterion, with what to look for in code: `wcag-criteria.md` |
 | New in 2.2 (A/AA) | 2.4.11 focus not obscured, 2.5.7 dragging alternative, 2.5.8 target size, 3.2.6 consistent help, 3.3.7 redundant entry, 3.3.8 accessible authentication |
 
 Contrast: `(L1 + 0.05) / (L2 + 0.05)`, relative luminance `L = 0.2126 R + 0.7152 G + 0.0722 B` on linearised sRGB (`c <= 0.04045 ? c/12.92 : ((c+0.055)/1.055)^2.4`). By hand: see `colour/contrast.md`.

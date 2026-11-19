@@ -2,7 +2,7 @@
 
 **Contents:** how sources are weighted (the tiers), the conflict rule, then the source list: every key with its tier, source and link, and notes on when each group was checked.
 
-Checked between 2026-11-02 and 2026-11-17; the Notes give the date per group. Keys match the tags in the rules.
+Checked between 2026-11-02 and 2026-11-19; the Notes give the date per group. Keys match the tags in the rules.
 
 ## How sources are weighted
 
@@ -10,7 +10,7 @@ A source's weight comes from two things: how its guidance is produced (sample si
 
 | Tier | What it means | Sources |
 | --- | --- | --- |
-| **S: Standard** | International consensus standard, referenced by law (EU European Accessibility Act via EN 301 549, US ADA and Section 508 practice). Wins every conflict it covers. | W3C WCAG 2.2 |
+| **S: Standard** | International consensus standard, referenced by law (EU European Accessibility Act via EN 301 549, US ADA and Section 508 practice). Wins every conflict it covers. | W3C WCAG 2.2. W3C Group Notes on applying it (WCAG2ICT) are informative, not a standard: marked S (note), used only to apply WCAG, never as a requirement of their own. |
 | **A: Platform authority** | Defines what users already expect on that platform, backed by large internal research and use on billions of devices. Research mostly unpublished, so weight comes from scale and convention. Wins on its own platform. | Apple HIG, Google Material 3 and Android accessibility |
 | **A: Large-scale research** | Published methodology with large samples. | Baymard Institute (200,000+ research hours, 4,400+ moderated test sessions on 240+ sites, quantitative surveys of 1,000+ people per study; e-commerce focused). GOV.UK Design System (patterns validated before inclusion, evidence from user research plus analytics on national services used by millions; transactional public services) |
 | **A: Peer-reviewed, large sample** | Peer-reviewed studies with 400 or more participants, or field data at scale. Measured effects, but each is one study: a number from it is evidence, not a platform standard. | `SCI-*` keys marked A |
@@ -51,6 +51,13 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | WCAG-2.5.2 | S | W3C, Understanding SC 2.5.2 Pointer Cancellation (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/pointer-cancellation.html |
 | WCAG-2.5.4 | S | W3C, Understanding SC 2.5.4 Motion Actuation (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/motion-actuation.html |
 | WCAG-2.5.8 | S | W3C, Understanding SC 2.5.8 Target Size (Minimum) | https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html |
+| WCAG-2.5.7 | S | W3C, Understanding SC 2.5.7 Dragging Movements (Level AA) | https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html |
+| WCAG-3.2.6 | S | W3C, Understanding SC 3.2.6 Consistent Help (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html |
+| WCAG-3.3.7 | S | W3C, Understanding SC 3.3.7 Redundant Entry (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry.html |
+| WCAG-3.3.8 | S | W3C, Understanding SC 3.3.8 Accessible Authentication (Minimum) (Level AA) | https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html |
+| WCAG-2.4.13 | S (AAA) | W3C, Understanding SC 2.4.13 Focus Appearance | https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html |
+| WCAG-22-SPEC | S | W3C, Web Content Accessibility Guidelines (WCAG) 2.2, W3C Recommendation 12 December 2024 (every success criterion and its level) | https://www.w3.org/TR/WCAG22/ |
+| WCAG2ICT | S (note) | W3C, Guidance on Applying WCAG 2 to Non-Web Information and Communications Technologies, W3C Group Note 11 December 2025 (informative, not a standard) | https://www.w3.org/TR/wcag2ict-22/ |
 | WCAG-2.2 | S | W3C, What's New in WCAG 2.2 | https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22 |
 | WCAG-C39 | S (AAA) | W3C Technique C39, prefers-reduced-motion (SC 2.3.3) | https://www.w3.org/WAI/WCAG22/Techniques/css/C39.html |
 | APPLE-A11Y | A | Apple HIG, Accessibility (control sizes, spacing, contrast, reduce motion) | https://developer.apple.com/design/human-interface-guidelines/accessibility |
@@ -139,6 +146,8 @@ Notes:
 - Material 3 and Apple pages were read directly on 2026-11-02; colour, type-scale and stack pages on 2026-11-14.
 - Read in a browser on 2026-11-17: W3C Understanding pages for 1.4.1, 1.4.8, 2.1.1 and 2.4.3 (1.4.8 replaces the earlier citation through Baymard), 1.4.3 again for the large-text sizes, and the GOV.UK validation and text input pages. Also 1.4.2, 1.4.4, 2.2.1, 2.2.2 and 2.3.1, which moved parts of rules 3.6, 11.2 and 12.4 to Hard.
 - Platform pages for section 13 were read in a browser on 2026-11-17: W3C 1.3.4, 1.3.5, 1.4.13, 2.5.1, 2.5.2 and 2.5.4; Apple HIG Layout, Tab bars, Sidebars, Sheets, Gestures and Virtual keyboards; Material 3 Navigation bar, Navigation rail and Bottom sheets; Android edge-to-edge and gesture navigation.
+- Read on 2026-11-19: the WCAG 2.2 Recommendation (12 December 2024) for every Level A and AA criterion behind `data/wcag-criteria.md`, and the Understanding pages for 2.5.7, 3.2.6, 3.3.7 and 3.3.8 (rules 7.4, 7.5, 12.2 and 12.3 now cite them in place of the What's New page) and 2.4.13 (rule 12.6).
+- `WCAG-<number>` keys for criteria no rule cites (1.1.1, 4.1.2 and the others used by `/guidance wcag`) have no row here: each one's Understanding page is `https://www.w3.org/WAI/WCAG22/Understanding/<slug>.html`, with the slug given in `data/wcag-criteria.md`.
 - Re-check yearly: WCAG 3, Material and Apple HIG all move.
 - `SCI-*` studies were found through Consensus on 2026-11-15. Numbers first came from the published abstracts. Twelve papers were then read on 2026-11-17 and the rules corrected from them. Read end to end: SCI-FONTSIZE, SCI-PREF, SCI-FORMS, SCI-WAIT-CLOCK, SCI-FIRSTIMP, SCI-THUMB, SCI-VIS-POL. Read for methods, results and limitations: SCI-WAIT-ANIM, SCI-VC-PT, SCI-GUIDE-COST, SCI-FONTS, and SCI-POL-SIZE (in the first author's dissertation). The other ten still rest on their abstracts: SCI-TAPS, SCI-SWIPE, SCI-STRUCT, SCI-SPACING, SCI-DYSLEXIA, SCI-POLARITY-READ, SCI-POLARITY, SCI-LUMINANCE, SCI-POL-AGE, SCI-FORM-ERR. SCI-FIRSTIMP moved from tier A to B: its appeal ratings came from 242 people, under the 400 that tier A asks for. Links are DOIs, checked against Crossref on 2026-11-17, with a free copy where one was found (author, university or company repository, arXiv, PubMed Central). ACM papers are free to read on the ACM Digital Library since 2026-01-01; the Journal of Vision and MDPI papers are open access at their DOI. No free copy was found for SCI-STRUCT, SCI-POLARITY and SCI-LUMINANCE; for SCI-POL-SIZE and SCI-POL-AGE the free copy is the first author's dissertation, which covers both studies.
 - Density pages were read on 2026-11-15: Material 3 and SAP Fiori in a browser (both block plain fetches), Cloudscape through a page fetch.

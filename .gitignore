@@ -2,3 +2,6 @@
 *.zip
 evals/results/
 CLAUDE.local.md
+
+# Local test fixtures for the skill (see testbed/README.md)
+testbed/

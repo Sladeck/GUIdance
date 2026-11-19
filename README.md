@@ -97,6 +97,17 @@ On versions before 2.1.275, add the marketplace first:
 
 Installed as a plugin, each command has its own entry: `/guidance:setup`, `/guidance:review`, `/guidance:fix` and so on (type `/guidance:` to see them all), and `/guidance:guidance` lists them. Asking in plain words ("set up design tokens", "review the settings page") works either way. Update with `/plugin marketplace update guidance`.
 
+Updates are not automatic by default. To receive new versions on their own, run `claude` in a terminal, open `/plugin`, go to Marketplaces, select `guidance` and turn on auto-update. The desktop app has no auto-update switch for marketplaces.
+
+### Claude desktop app (plugin)
+
+1. Open Settings, then Customize, then Plugins.
+2. Click Add in the top right corner, then Add marketplace.
+3. Choose Add from a repository and enter `Sladeck/GUIdance`.
+4. Install GUIdance from the marketplace and make sure its toggle is on.
+
+To update, open GUIdance in the plugin list and click Update. The app does not update it on its own; to turn on auto-update, use the terminal steps in the Claude Code section above.
+
 ### Claude Code (manual copy)
 
 Gives one `/guidance` command with the command name after it: `/guidance setup`, `/guidance review`.

@@ -9,7 +9,23 @@ Design rules you can defend: each rule in `references/rules/` (indexed in `refer
 
 ## Commands
 
-The first word after `/guidance` picks the command. Installed as a plugin, each command is also its own entry (`/guidance:setup`, `/guidance:review`); in this skill, `/guidance <command>` means either form. When you were started from a `/guidance:<command>` entry, write any command you suggest in that form (`/guidance:fix`), since the space form does not exist there. Plain requests map the same way: "set up design tokens" is setup, "make it denser", "more breathing room", "tighter lists on the reports page" or "change the spacing" is spacing, "rounder corners", "sharper buttons" or "too boxy" is shape, "build a settings screen" is build, "review this code" or "check this page for inconsistencies" is review, "check WCAG", "accessibility audit" or "is this page accessible?" is wcag, "fix those" after a report is fix.
+A command is a short instruction the user types, starting with a slash, that tells you which job to do. The user can start a job in three ways, and all three lead to the same job:
+
+- **Typing it with a space**, when the skill was copied in by hand: `/guidance setup`, `/guidance review`. The word after `/guidance` names the job.
+- **Typing it with a colon**, when the skill was installed as a plugin: `/guidance:setup`, `/guidance:review`. Each job then has its own entry in the slash menu.
+- **Asking in plain words**, with no slash at all. Match the request to a job:
+
+| The user says something like | Job |
+| --- | --- |
+| "set up design tokens" | setup |
+| "make it denser", "more breathing room", "tighter lists on the reports page", "change the spacing" | spacing |
+| "rounder corners", "sharper buttons", "too boxy" | shape |
+| "build a settings screen" | build |
+| "review this code", "check this page for inconsistencies" | review |
+| "check WCAG", "accessibility audit", "is this page accessible?" | wcag |
+| "fix those", after a report | fix |
+
+In this file, `/guidance <command>` stands for both the space and the colon form. When you suggest a command to the user, write it the way they can type it: if you were started from a colon entry such as `/guidance:review`, suggest `/guidance:fix`, because the space form does not exist in a plugin install.
 
 **Before acting, read the command's file.** It lists the other files it needs.
 

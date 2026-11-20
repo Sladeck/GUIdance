@@ -51,7 +51,7 @@ Write nothing before the user answers the apply question of step 3, given after 
    | Space between list items (`space-stack`) | 8 | 4 | 8 | 12 |
    | ... one row per role, values from the Density table | | | | |
 
-   - Under it: the other values a role may take (the step list; multiples of 4 for the heights), the scope it will apply to, and the preset you recommend in one line with the reason ("Use for" row of the Density table). Say the recommendation is judgment.
+   - Under it: the other values a role may take (the step list; multiples of 4 for the heights), the scope it will apply to, and the preset you recommend in one line with the reason ("Use for" row of the Density table). Before recommending, learn what the product is and how it is used (touch or mouse), as in `commands/setup.md` step 3 (README, PRODUCT.md or DESIGN.md, package description, page titles), and name it in the reason. Say the recommendation is judgment.
    - The user answers freely: a preset ("compact"), single rows ("cards 20, sections 48"), or both ("default, but tighter lists"). Take single rows as tunings on top of the preset.
    - A request that was already clear (a preset, a resolved change) skips the table and goes to step 3.
 3. **Show the plan and its risks, then ask once.**

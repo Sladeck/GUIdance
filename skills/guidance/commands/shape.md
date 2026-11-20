@@ -44,7 +44,7 @@ The user decides. Your job is to show the choices as a table, say what is risky 
    | Corners of buttons (`radius-button`) | 8 | 4 | 8 | full |
    | ... one row per role, values from the Shape presets table | | | | |
 
-   - Under it: the other values a role may take (0, 4, 8, 12, 16, 20, 28, 32, 48, full) and the preset you recommend in one line with the reason ("Use for" row of the Shape presets table). Say the recommendation is judgment.
+   - Under it: the other values a role may take (0, 4, 8, 12, 16, 20, 28, 32, 48, full) and the preset you recommend in one line with the reason ("Use for" row of the Shape presets table). Before recommending, learn what the product is and who uses it, as in `commands/setup.md` step 3 (README, PRODUCT.md or DESIGN.md, package description, page titles), and name it in the reason. Say the recommendation is judgment.
    - The user answers freely: a preset ("round"), single rows ("buttons full, cards 12"), or both ("soft, but pill buttons"). Take single rows as tunings on top of the preset.
    - A request that was already clear (a preset, a resolved change) skips the table and goes to step 3.
 3. **Show the plan and its risks, then ask once.**

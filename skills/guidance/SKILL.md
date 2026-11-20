@@ -1,6 +1,6 @@
 ---
 name: guidance
-description: Evidence-ranked UI design rules with sources (WCAG 2.2, Apple, Material 3, Baymard, GOV.UK, NN/g). Sets up design tokens, builds, reviews and fixes web and native UI, and checks code or a live page against WCAG 2.2 AA. Also use it to answer any UI design question with the rule and its source, even one that seems like general knowledge, such as "why 16px body text?", "is 14px fine for my dashboard?", "is this contrast enough?" or "how much space between sections?". Covers spacing, layout, corner radius, font sizes and typography, colour, contrast, touch targets, forms, errors, loading, motion, keyboard and focus, accessibility.
+description: Evidence-ranked UI design rules with sources (WCAG 2.2, Apple, Material 3, Baymard, GOV.UK, NN/g). Sets up design tokens, builds, reviews and fixes web and native UI, and checks code or a live page against WCAG 2.2 AA. Also use it to answer any UI design question with the rule and its source, even one that seems like general knowledge, such as "why 16px body text?", "is 14px fine for my dashboard?", "is this contrast enough?" or "how much space between sections?", and any plain request to change spacing, such as "make the list tighter" or "more room between the cards" (the spacing command). Covers spacing, layout, corner radius, font sizes and typography, colour, contrast, touch targets, forms, errors, loading, motion, keyboard and focus, accessibility.
 ---
 
 # GUIdance

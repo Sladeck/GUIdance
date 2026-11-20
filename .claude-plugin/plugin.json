@@ -1,7 +1,7 @@
 {
   "name": "guidance",
   "displayName": "GUIdance",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "icon": "./assets/icon.svg",
   "description": "Evidence-ranked UI design rules for Claude: sets up design tokens, spacing density and corner shape in any stack, then builds, reviews and fixes interfaces against WCAG 2.2, Material 3, Apple, Baymard, GOV.UK and NN/g, and checks code or a live page against every WCAG 2.2 A and AA criterion. Not a UI kit.",
   "author": {
@@ -26,7 +26,7 @@
     },
     "spacing": {
       "content": "Run the GUIdance `spacing` command. Read `${CLAUDE_PLUGIN_ROOT}/skills/guidance/SKILL.md`, then `${CLAUDE_PLUGIN_ROOT}/skills/guidance/commands/spacing.md`, and follow it. Paths in those files are relative to `${CLAUDE_PLUGIN_ROOT}/skills/guidance/`. You are running as a plugin: write any GUIdance command you suggest as `/guidance:<command>` (for example `/guidance:fix`), not `/guidance <command>`.\n\nArguments: $ARGUMENTS",
-      "description": "Set or change spacing density for the project or one page",
+      "description": "Set or change spacing density for the project or one page. Use it for plain requests too: make a list, table, card or page tighter or roomier, more or less space between items, rows, cards or sections",
       "argumentHint": "[preset or what to change] [page|all]"
     },
     "shape": {

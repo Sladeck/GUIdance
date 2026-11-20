@@ -4,6 +4,8 @@ Sets or changes density: how much room the interface gives its content. The proj
 
 The user decides. Your job is to show the choices as a table, say what is risky and why, and apply exactly what they picked. No pictures, no previews: tables and questions.
 
+Write nothing before the user answers the apply question of step 3, given after the plan was shown. An answer to an earlier question (which list, which page, a preset, the yes or no on a whole-request risk) is a choice, not the go-ahead: show the plan next.
+
 ## What the user can say
 
 | Part | Forms |

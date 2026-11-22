@@ -34,8 +34,8 @@ The user decides. Your job is to show the choices as a table, say what is risky 
 
 ## Steps
 
-1. **Find the tokens.** Locate where styling lives and list the radius tokens, as in `commands/setup.md` steps 1 and 2. Look for the role tokens (`radius-button`, `radius-field`, `radius-chip`, `radius-card`, `radius-overlay`, under the project's own naming) and for a `shape:` comment in the token file.
-   - Role tokens exist: the current preset is the one named in the comment, or else the column most of them match. Roles that differ from it are tuned. Fewer than three matching any column: "custom".
+1. **Find the tokens.** Locate where styling lives and list the radius tokens, as in `commands/setup.md` steps 1 and 2. Look for the role tokens (`radius-button`, `radius-field`, `radius-chip`, `radius-card`, `radius-overlay`, under the project's own naming) and for the Shape line of `design-decisions.md` (in older projects, a `shape:` comment in the token file).
+   - Role tokens exist: the current preset is the one named in `design-decisions.md` (or, in older projects, a token-file comment), or else the column most of them match. Roles that differ from it are tuned. Fewer than three matching any column: "custom".
    - Scale tokens only, or no tokens: there is no shape yet. Read what buttons, inputs, chips, cards and dialogs use today and name the closest preset. Step 4 adds the roles.
 2. **Show the choices** when the request did not settle them. One table, then wait for the answer:
 
@@ -51,6 +51,7 @@ The user decides. Your job is to show the choices as a table, say what is risky 
    - One table: what it is in plain words, role, value now, value after, where it is used (file, count of uses).
    - No role tokens yet (step 1): the plan adds all five radius roles, in the project's format, pointing at scale values, and the changed role is one of them. Adding them is part of this change, not a later option; only replacing raw uses with roles is a separate question (step 4). Never write a raw value where a role belongs.
    - Nested corners that will follow (step 4), each with its `file:line` and new value.
+   - The record: the lines that change in `design-decisions.md`, and, when the file is missing, that it will be created, with any token-file `density:` or `shape:` comment moved into it (`references/formats/decisions.md`).
    - **Risks.** Say what the pick is and why it is a risk (the rule and its source, in a sentence). The user may still choose it. Each has a safer value, shown beside the pick in the plan:
 
      | Pick | Why it is a risk | Safer value |
@@ -72,7 +73,7 @@ The user decides. Your job is to show the choices as a table, say what is risky 
    - **No role tokens**: add them next to the radius scale, in the project's format and naming, pointing at scale tokens, never at raw numbers. Then offer, as a separate question, to replace raw scale uses with roles: list the candidates per role with `file:line` and replace only the ones the user accepts. A value whose role is unclear stays as it is. Where a current value differs from its role's value in the chosen preset, adopting the role moves it: show each one in the plan as a change. In Tailwind v4, use a role through the variable form (`rounded-(--radius-card)`).
    - **Nested corners**: where a rounded element sits inside a rounded container close to its edge (an inset of 2 to 32px and under 0.6 times the outer radius; judgment), set the inner radius to the outer radius minus the padding between them (rule 5.2). A result off the scale is kept. Do not change padding to make it land on the scale: that is a spacing change. Write it as a calculation from the role where the stack allows (`calc(var(--radius-card) - var(--space-100))`); a result of 0 or less becomes 0 or 4px. A list item or thumbnail inside a card takes this derived value. Elements further from the edge keep their own role; one with no role (a thumbnail, an inner box) takes the `radius-card` value when it is rounder than the card it sits in.
    - **One page only** (a risk the user accepted): scope the roles on that page's wrapper, as `commands/spacing.md` step 4 does for a page.
-   - **Record it** in a comment in the token file: the preset, the tuned roles with their values, and the risks the user accepted (`shape: soft, tuned: button full, card 16; accepted: 16px corners on dense cards`). `/guidance review` reads this line and treats what it lists as intended.
+   - **Record it** in `design-decisions.md` as `references/formats/decisions.md` says: the Shape line takes the preset and the tuned roles with their values (`Shape: soft; tuned: button full, card 16 (asked)`); each risk the user accepted goes on the Accepted risks line with its rule (`16px corners on dense cards, rule 5.5`). `/guidance review` reads both lines and treats what they list as intended.
 5. **When the preset changes later**, tuned roles keep their values unless the user resets them. Check them against the risk table again and show any new risk.
 6. **Check** by reading what you changed: the roles point at the values of the plan, every nested corner of the plan has its new value, at most four values are in use or the extra is listed as accepted, and nothing else moved. A browser tool is optional and only for looking at the page afterwards.
 7. **Finish** with the preset and tuned roles in plain words, the accepted risks, the files changed, and what to look at by eye (images clipped by rounder corners, focus rings on pill buttons, elements nested inside cards). Do not commit.

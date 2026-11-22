@@ -8,7 +8,7 @@
 
 **Filling it in**
 - Fixed values (spacing, radius, motion, targets) are filled from `../data/scales/` and `../data/accessibility.md`, in points.
-- Density and shape roles are filled for the default density and the soft shape. For another preset, take the values from the Density and Shape presets tables in `../data/scales/spacing-density.md` and `../data/scales/shape.md` and update the `density:` and `shape:` notes. `card` and `page` hold the iPhone-width values: take them from the Phone widths line of `../data/scales/spacing-density.md` (card 12, 16, 24; page 16), and the table's values go in `wide`, for iPad and Mac.
+- Density and shape roles are filled for the default density and the soft shape. For another preset, take the values from the Density and Shape presets tables in `../data/scales/spacing-density.md` and `../data/scales/shape.md`. The preset is recorded in `design-decisions.md` (`decisions.md`), not here. `card` and `page` hold the iPhone-width values: take them from the Phone widths line of `../data/scales/spacing-density.md` (card 12, 16, 24; page 16), and the table's values go in `wide`, for iPad and Mac.
 - Control and row heights are the preset's height, never under the platform's default control size (rules 2.2, 4.7): on iOS and iPadOS 44, 44 and 48 for compact, default and comfortable; on macOS 32, 40 and 48. Apply them with `.frame(minHeight:)`, never a fixed height, so text can grow (rule 3.6).
 - A page with its own density (rule 4.7): `.environment(\.spaceRoles, ...)` on that page with the other preset. The same modifier on a sheet's content keeps it at default in a compact product.
 - Shape "full" (pills) is `Capsule()`, not a number: a role set to full uses that shape where it is applied.
@@ -18,7 +18,7 @@
 - Checked on Apple's documentation on 2026-11-17: `Color(_:bundle:)`, `Font.TextStyle` and its cases, `Animation.timingCurve(_:_:_:_:duration:)`, `ScaledMetric` with `relativeTo:`, and the environment values `accessibilityReduceMotion` and `colorScheme`. The code block below was type-checked with the Swift compiler against the macOS SDK on the same day.
 
 ```swift
-// GUIdance design tokens. density: default. shape: soft.
+// GUIdance design tokens. Density and shape presets and tuning: design-decisions.md.
 // Sources: Material 3 spacing, shape and motion tokens; WCAG 2.2; Apple HIG.
 import SwiftUI
 

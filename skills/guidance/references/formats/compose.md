@@ -8,7 +8,7 @@
 
 **Filling it in**
 - Fixed values (spacing, radius, elevation, type, motion, targets) are filled from `../data/scales/` and `../data/accessibility.md`.
-- Density and shape roles are filled for the default density and the soft shape. For another preset, take the values from the Density and Shape presets tables in `../data/scales/spacing-density.md` and `../data/scales/shape.md` and update the `density:` and `shape:` notes. `card` and `page` hold the phone-width values: take them from the Phone widths line of `../data/scales/spacing-density.md` (card 12, 16, 24; page 16), and the table's values go in `wide()`.
+- Density and shape roles are filled for the default density and the soft shape. For another preset, take the values from the Density and Shape presets tables in `../data/scales/spacing-density.md` and `../data/scales/shape.md`. The preset is recorded in `design-decisions.md` (`decisions.md`), not here. `card` and `page` hold the phone-width values: take them from the Phone widths line of `../data/scales/spacing-density.md` (card 12, 16, 24; page 16), and the table's values go in `wide()`.
 - Control and row heights are minimums and never go under 48dp, Android's touch size (rules 2.2, 4.7): compact and default 48, comfortable 48. Apply them as a minimum height, never a fixed one, so text can grow (rule 3.6).
 - `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour/building.md`). Write each as `Color(0xFFRRGGBB)`.
 - Material's roles are parameters of `lightColorScheme` and `darkColorScheme`. `background` and `onBackground` take the `surface` and `on-surface` values, because Material's screens paint with them; `surfaceVariant` takes `surface-container-highest` (judgment). `surfaceDim`, `surfaceBright` and `scrim` keep Material's defaults. `success`, `warning` and the chart colours are not Material roles: they go in `ExtendedColors`.
@@ -21,7 +21,7 @@
 - Checked on the Android reference on 2026-11-17: `lightColorScheme` and its parameter names, `darkColorScheme`, `MaterialTheme(colorScheme, shapes, typography, content)`, the `Typography` parameter names, `Shapes(extraSmall, small, medium, large, extraLarge)`, `RoundedCornerShape(size: Dp)`, `CircleShape`, `CubicBezierEasing`, `staticCompositionLocalOf`, `CompositionLocalProvider`, `isSystemInDarkTheme`, `@Immutable`. Not checked: the import paths below, and compilation (no Kotlin compiler was available).
 
 ```kotlin
-// GUIdance design tokens. density: default. shape: soft.
+// GUIdance design tokens. Density and shape presets and tuning: design-decisions.md.
 // Sources: Material 3 spacing, shape, type and motion tokens; WCAG 2.2; Android accessibility.
 import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.foundation.isSystemInDarkTheme

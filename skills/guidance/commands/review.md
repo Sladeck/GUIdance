@@ -14,7 +14,7 @@ With no changes and no target, ask what to review.
 
 ## 2. Read the project's choices first
 
-Read the token file: the scales it defines, its `density:` and `shape:` comments, and anything recorded as tuned or accepted. Those are the user's decisions: a value that follows them is not a finding. List them in one line under the report.
+Read `design-decisions.md` at the project root (or, in older projects without it, the token file's `density:` and `shape:` comments) and the token file's scales: the themes, style, density, shape, and anything recorded as tuned, left as is or accepted. Those are the user's decisions: a value that follows them is not a finding. List them in one line under the report.
 
 ## 3. Review the code
 
@@ -30,7 +30,7 @@ A browser tool is optional and only for looking: if one is available and the pag
 
 - The same finding in several places is one finding, with the places listed.
 - Give each finding its `file:line`. Use the project's token names in the fix.
-- Drop a finding when the code shows it is intended (a documented optical adjustment, a deliberate variant, a decorative element), or when the token file lists it as tuned or accepted.
+- Drop a finding when the code shows it is intended (a documented optical adjustment, a deliberate variant, a decorative element), or when `design-decisions.md` (or the token file, in older projects) lists it as tuned, left as is or accepted.
 - Never report a rule as broken when its "Break" line covers the case.
 
 ## 5. Report
@@ -41,7 +41,7 @@ One numbered list in the format of `commands/report-format.md`, then the counts 
 
 The items follow the sections of the rules (index: `references/rules.md`); each rule number, in parentheses, covers the clauses before it, back to the previous rule number. Hard is the label the rule's section file gives it, not every rule that cites WCAG. The checklist is a reminder of what to look for, not the rule: read the rule before reporting (step 3).
 
-1. **Contrast and colour**: text 4.5:1, large text 3:1, in both themes, disabled controls exempt (1.1, Hard); control cues, project-defined focus styles, meaningful icons and chart marks 3:1, in both themes, inactive controls exempt (1.2, Hard). Status, errors, required fields, chart series and links have a second cue besides colour (1.3, Hard). Colours named by role, text only on its pair, outline for control boundaries (1.4, 1.5). One or two chart series in brand shades, no rainbow for one measure (1.6). Status values as chips that keep a sign or a word (1.7). Follows the system theme; where the product picks, reading-heavy surfaces start light (1.8).
+1. **Contrast and colour**: text 4.5:1, large text 3:1, in both themes, disabled controls exempt: when a pair fails, list only the enabled elements that use it (1.1, Hard); control cues (field borders or backgrounds, including a theme's input overrides, checkbox outlines), project-defined focus styles, meaningful icons and chart marks 3:1, in both themes, inactive controls exempt (1.2, Hard). Status, errors, required fields, chart series and links have a second cue besides colour (1.3, Hard). Colours named by role, text only on its pair, outline for control boundaries (1.4, 1.5). One or two chart series in brand shades, no rainbow for one measure (1.6). Status values as chips that keep a sign or a word (1.7). Follows the system theme; where the product picks, reading-heavy surfaces start light (1.8).
 2. **Target size**: 24x24 CSS px or spaced (2.1, Hard); 44pt iOS, 48dp Android, 44 to 48px on touch web layouts; swipe actions also have a button (2.2; Hard under 12.2).
 3. **Typography**: a named subset of the platform scale, about three sizes per screen (3.1); body at the platform default (3.2); no light weights at small sizes (3.3); 50 to 75 characters per line (3.4); line height about 1.5 for paragraphs (3.5); at 200% text size nothing is clipped, truncated or hidden, form controls resize, no text sized only in viewport units, zoom not blocked (3.6, Hard); paragraphs keep the font's letter and word spacing (3.7).
 4. **Spacing and grouping**: one scale, padding and gaps on parents (4.1); tighter inside groups than between, actions next to what they affect (4.2); space before borders and dividers (4.3); nothing overflows, clips or scrolls sideways at 320, 390, 768 and desktop: read the media queries, fixed widths, `overflow` and flex or grid children without `min-width: 0`; visible truncation with the full text reachable is fine, and maps, diagrams and data tables scrolling in their own container are exempt (4.4, Hard); the same component looks the same everywhere, edges align exactly, at most two border widths (4.5); components have room (4.6); one density within a page (the project's, or the page's own override), with dialogs, menus and alerts at default in compact (4.7).

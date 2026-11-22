@@ -40,7 +40,7 @@ In this file, `/guidance <command>` stands for both the space and the colon form
 | `/guidance wcag [target] [A\|AA]` | Checks code, or a live page by URL (needs a browser tool), against every WCAG 2.2 Level A and AA criterion (AA by default): a finding per failure, a result per criterion, and what a person must test by hand. Not a conformance claim. | `commands/wcag.md` |
 | `/guidance fix [which]` | Fixes findings from the last review or wcag report, then checks them again. | `commands/fix.md` |
 
-Commands that report findings also read `commands/report-format.md`. A question with no command ("why 16px body text?", "is this contrast enough?") is answered from the rule's section file (find it in the index, `references/rules.md`) and its sources, with the rule number, the source key and its tier.
+Commands that report findings also read `commands/report-format.md`. A question with no command ("why 16px body text?", "is this contrast enough?") is answered from the rule's section file (find it in the index, `references/rules.md`) and its sources, with the rule number, the source key and its tier. Cite the rule that sets each number you give: for a value from a data file, the rule that points to that file, not a nearby rule. Every answer carries at least one source key with its tier, a judgment call too: name the sourced default it departs from, with its key (a 13px gap: judgment, off the spacing scale of rule 4.1 [M3-SPACING A]). Keep the labels the rule gives, such as judgment or interpretation.
 
 ## Source weight
 
@@ -77,6 +77,6 @@ Every file the commands use, so you can open any of them directly. Read only wha
 - `references/data/stacks.md`: framework traps
 - `references/data/research.md`: research numbers and peer-reviewed study findings behind the rules
 
-**Token files.** Worked examples to model any stack on: `references/formats/css.md`, `tailwind4.md`, `tailwind3.md`, `mui.md`, `scss.md`, `swiftui.md`, `compose.md` (all in `references/formats/`).
+**Token files.** Worked examples to model any stack on: `references/formats/css.md`, `tailwind4.md`, `tailwind3.md`, `mui.md`, `scss.md`, `swiftui.md`, `compose.md` (all in `references/formats/`). The decisions record (`design-decisions.md` in the project) that setup writes, spacing and shape update, and review and build read: `references/formats/decisions.md`.
 
 **Sources.** `references/sources.md`: every source key with its tier and link.

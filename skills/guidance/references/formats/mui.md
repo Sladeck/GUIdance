@@ -10,7 +10,7 @@
 - Fixed values (spacing, radius, type, motion, targets, focus, measure) are already filled from `../data/scales/` and `../data/accessibility.md`. Keep them unless the user chose otherwise.
 - MUI's palette has no slot for the container roles, the surface levels, `outline`, the inverse roles or the chart colours. They are in `guidanceExtraColors`, as `{L.role}` and `{D.role}` like the palette: use the light or dark set with the project's own dark-mode mechanism.
 - Reduced motion (rule 11.2): by default MUI does not shorten its transitions. From v9.1.0, set `theme.motion.reducedMotion` to `'system'` and MUI follows the user's setting. On earlier versions, `guidanceRoles.reducedMotion` holds the shorter duration; read the setting with `useMediaQuery('(prefers-reduced-motion: reduce)')` from `@mui/material/useMediaQuery` and pass that duration to transitions that move, or swap a slide for a fade.
-- Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales/spacing-density.md` and `../data/scales/shape.md` (and the Phone widths line of the first, for card padding), and update the `density:` and `shape:` notes.
+- Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales/spacing-density.md` and `../data/scales/shape.md` (and the Phone widths line of the first, for card padding). The preset is recorded in `design-decisions.md` (`decisions.md`), not here.
 - `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour/building.md`).
 - When the user keeps their own colours, delete every colour block and keep the rest.
 - Type: this template has the 5-style subset. For all 15 styles, take the type table in `../data/scales/type.md`.
@@ -101,7 +101,7 @@ export const guidanceThemeOptions: GuidanceThemeOptions = {
   },
 };
 
-// density: default (rule 4.7), shape: soft (rule 5.5). Change with /guidance spacing and /guidance shape.
+// Density (rule 4.7) and shape (rule 5.5) roles; presets and tuning: design-decisions.md. Change with /guidance spacing and /guidance shape.
 // Spacing roles are multiples for theme.spacing(): theme.spacing(guidanceRoles.space.group) = 24px.
 // Phone widths (rule 4.6): sx={{ p: { xs: guidanceRoles.phone.card, sm: guidanceRoles.space.card } }}.
 // Radius roles are px strings, because a number in sx is multiplied by theme.shape.borderRadius:

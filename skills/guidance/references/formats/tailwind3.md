@@ -8,7 +8,7 @@
 
 **Filling it in**
 - Fixed values (spacing, radius, elevation, type, motion, targets, focus, measure) are already filled from `../data/scales/` and `../data/accessibility.md`. Keep them unless the user chose otherwise.
-- Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales/spacing-density.md` and `../data/scales/shape.md` (and the Phone widths line of the first, for card padding), and update the `density:` and `shape:` notes.
+- Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales/spacing-density.md` and `../data/scales/shape.md` (and the Phone widths line of the first, for card padding). The preset is recorded in `design-decisions.md` (`decisions.md`), not here.
 - `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour/building.md`).
 - When the user keeps their own colours, delete every colour block and keep the rest.
 - Type: this template has the 5-style subset. For all 15 styles, take the type table in `../data/scales/type.md`.
@@ -36,7 +36,7 @@ module.exports = {
         'ui-xl-plus': '32px',
         'ui-2xl': '48px',
         'ui-full': '9999px',
-        // shape: soft (rule 5.5). Utilities: rounded-card, rounded-button. Change with /guidance shape.
+        // Shape roles (rule 5.5); preset and tuning: design-decisions.md. Utilities: rounded-card, rounded-button. Change with /guidance shape.
         'button': '8px',
         'field': '8px',
         'chip': '8px',
@@ -81,7 +81,7 @@ module.exports = {
         'emphasized-decelerate': 'cubic-bezier(0.05, 0.7, 0.1, 1)',
         'emphasized-accelerate': 'cubic-bezier(0.3, 0, 0.8, 0.15)'
       },
-      // density: default (rule 4.7). Utilities: gap-group, p-card, px-control-x, h-control. Change with /guidance spacing.
+      // Density roles (rule 4.7); preset and tuning: design-decisions.md. Utilities: gap-group, p-card, px-control-x, h-control. Change with /guidance spacing.
       // Phone widths: p-card-phone and px-page-phone below your phone breakpoint (rule 4.6), for example p-card-phone sm:p-card (sm is 640px by default; add a 600px screen for the exact width).
       spacing: {
         'inline': '8px',

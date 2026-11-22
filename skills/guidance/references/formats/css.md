@@ -8,7 +8,7 @@
 
 **Filling it in**
 - Fixed values (spacing, radius, elevation, type, motion, targets, focus, measure) are already filled from `../data/scales/` and `../data/accessibility.md`. Keep them unless the user chose otherwise.
-- Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales/spacing-density.md` and `../data/scales/shape.md` (and the Phone widths line of the first, for card padding), and update the `density:` and `shape:` notes.
+- Density and shape roles are filled for the default density and the soft shape. For another preset, repoint them with the Density and Shape presets tables in `../data/scales/spacing-density.md` and `../data/scales/shape.md` (and the Phone widths line of the first, for card padding). The preset is recorded in `design-decisions.md` (`decisions.md`), not here.
 - `{L.role}` and `{D.role}` are the light and dark colours of that role, from the colour set built in setup (`../data/colour/building.md`).
 - When the user keeps their own colours, delete every colour block and keep the rest.
 - Type: this template has the 5-style subset. For all 15 styles, take the type table in `../data/scales/type.md`.
@@ -42,7 +42,7 @@ Apple HIG accessibility. Colours: built from the brand colour with GUIdance's co
   --space-800: 64px;
   --space-900: 72px;
 
-  /* Density roles (rule 4.7). density: default. Change with /guidance spacing; roles point at scale tokens. */
+  /* Density roles (rule 4.7); preset and tuning: design-decisions.md. Change with /guidance spacing; roles point at scale tokens. */
   --space-inline: var(--space-100);
   --space-control: var(--space-200);
   --space-stack: var(--space-100);
@@ -66,7 +66,7 @@ Apple HIG accessibility. Colours: built from the brand colour with GUIdance's co
   --radius-2xl: 48px;
   --radius-full: 9999px;
 
-  /* Shape roles (rule 5.5). shape: soft. Change with /guidance shape; roles point at scale tokens. */
+  /* Shape roles (rule 5.5); preset and tuning: design-decisions.md. Change with /guidance shape; roles point at scale tokens. */
   --radius-button: var(--radius-sm);
   --radius-field: var(--radius-sm);
   --radius-chip: var(--radius-sm);

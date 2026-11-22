@@ -35,14 +35,14 @@ Write nothing before the user answers the apply question of step 3, given after 
 | inside buttons, left and right; button width | `space-control` |
 | an icon and its label; a label and its field | `space-inline` |
 
-"The list" or "the rows" alone: look at the code. Items separated by a gap are `space-stack`; rows that touch are `row-height`. If the words fit two roles, or none, do not guess: name the candidates by what they are on the user's page ("the gap between the three stat cards, or the padding inside each one?") and ask once. In everything you show the user, describe a role by what it is ("space inside cards"), with the token name after it.
+"The list" or "the rows" alone: look at the code. Items separated by a gap are `space-stack`; rows that touch are `row-height`. People call tables lists, so a table is "the list" too: with only one of them in scope, take it; with both, and a role for each (items with gaps beside a table), the words fit two roles. If the words fit two roles, or none, do not guess: name every candidate by what it is on the user's page ("the gap between the items in Activity, or the height of the rows in the Orders table?") and ask once. In everything you show the user, describe a role by what it is ("space inside cards"), with the token name after it.
 
 **One step** is the next value in this list: 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72 (the spacing scale from 4 up, without 6, 10, 14 and 36). The ends are limits. The two heights move by 4px (Material's density step) and need not be on the scale.
 
 ## Steps
 
-1. **Find the tokens.** Locate where styling lives and list the spacing tokens, as in `commands/setup.md` steps 1 and 2. Look for the role tokens (`space-stack`, `space-field`, `space-group`, `space-section` and the others in the Density table, under the project's own naming), for a `density:` comment in the token file, and for page overrides (a density attribute or class, a nested theme).
-   - Role tokens exist: the current preset is the one named in the comment, or else the column most of their desktop values match. Roles that differ from it are tuned. Fewer than half matching any column: "custom".
+1. **Find the tokens.** Locate where styling lives and list the spacing tokens, as in `commands/setup.md` steps 1 and 2. Look for the role tokens (`space-stack`, `space-field`, `space-group`, `space-section` and the others in the Density table, under the project's own naming), for the Density line of `design-decisions.md` (in older projects, a `density:` comment in the token file), and for page overrides (a density attribute or class, a nested theme).
+   - Role tokens exist: the current preset is the one named in `design-decisions.md` (or, in older projects, a token-file comment), or else the column most of their desktop values match. Roles that differ from it are tuned. Fewer than half matching any column: "custom".
    - Scale tokens only, or no tokens: there is no density yet. Read what the components use today and name the closest preset. Step 4 adds the roles.
 2. **Show the choices** when the request did not settle them. One table, then wait for the answer:
 
@@ -57,6 +57,7 @@ Write nothing before the user answers the apply question of step 3, given after 
 3. **Show the plan and its risks, then ask once.**
    - One table: what it is in plain words, role, value now, value after, where it is used (file, count of uses).
    - No role tokens yet (step 1): the plan adds the spacing roles, in the project's format, pointing at scale tokens, and the changed role is one of them. Adding them is part of this change, not a later option; only replacing raw uses with roles is a separate question (step 4).
+   - The record: the lines that change in `design-decisions.md`, and, when the file is missing, that it will be created, with any token-file `density:` or `shape:` comment moved into it (`references/formats/decisions.md`).
    - **Risks.** Two kinds. Say what the pick is and why it is a risk (the rule and its source, in a sentence). The user may still choose it.
 
      Risks of the whole request: ask a direct yes or no before showing the plan. On no, stop or let the user pick something else.
@@ -91,7 +92,7 @@ Write nothing before the user answers the apply question of step 3, given after 
    - **Touch floor**: unless the user accepted that risk, control and row heights are at least the touch size under 600px wide or on a coarse pointer; the Density section gives the CSS. Put it on the shared control and row styles, not in the token block.
    - **Phone widths**: under 600px the page gutter is 16 and `space-card` takes the phone value from the Density section. A tuned `space-card` goes one step under its desktop value on phones.
    - **A setting people can switch**: write all three presets, default on the root and the other two under the attribute or class. Tuned roles keep their value in every preset. The control itself keeps default target sizes.
-   - **Record it** in a comment in the token file: the preset, the tuned roles with their values, and the risks the user accepted (`density: default, tuned: section 48, stack 4; accepted: compact dialogs`), plus one line per overriding page (`density /reports: compact`). `/guidance review` reads this line and treats what it lists as intended.
+   - **Record it** in `design-decisions.md` as `references/formats/decisions.md` says: the Density line takes the preset, the tuned roles with their values and each overriding page (`Density: default; tuned: section 48, stack 4; pages: /reports compact (asked)`); each risk the user accepted goes on the Accepted risks line with its rule (`compact dialogs, rule 4.7`). `/guidance review` reads both lines and treats what they list as intended.
 5. **When the preset changes later**, tuned roles keep their values unless the user resets them. Check them against the risk table again with the new preset and show any new risk.
 6. **Check** by reading what you changed: the roles point at the values of the plan, the order holds or is listed as accepted, the phone values and the touch floor are in place, and nothing else moved. A browser tool is optional and only for looking at the page afterwards.
 7. **Finish** with the scope, the preset and tuned roles in plain words, the accepted risks, the files changed, and what to look at by eye (dense tables, forms on mobile, anything that now wraps). Do not commit.

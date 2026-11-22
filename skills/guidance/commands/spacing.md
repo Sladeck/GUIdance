@@ -56,6 +56,7 @@ Write nothing before the user answers the apply question of step 3, given after 
    - A request that was already clear (a preset, a resolved change) skips the table and goes to step 3.
 3. **Show the plan and its risks, then ask once.**
    - One table: what it is in plain words, role, value now, value after, where it is used (file, count of uses).
+   - No role tokens yet (step 1): the plan adds the spacing roles, in the project's format, pointing at scale tokens, and the changed role is one of them. Adding them is part of this change, not a later option; only replacing raw uses with roles is a separate question (step 4).
    - **Risks.** Two kinds. Say what the pick is and why it is a risk (the rule and its source, in a sentence). The user may still choose it.
 
      Risks of the whole request: ask a direct yes or no before showing the plan. On no, stop or let the user pick something else.
@@ -65,6 +66,8 @@ Write nothing before the user answers the apply question of step 3, given after 
      | Compact on a product used by touch | Compact is meant for mouse and keyboard [FIORI-DENSITY B]; touch targets get close together |
      | Comfortable on a dense data tool | Fewer rows on screen where people scan and compare [M3-DENSITY A] |
      | A page with its own density | Fiori and Cloudscape set density for the whole application; Material allows it by context (rule 4.7). Keep such pages few |
+
+     A request that names a page ("on the dashboard", a route) is page scope even when the project has no roles yet, and even when the value is used only on that page: ask the page yes or no before the plan. On yes, the roles added for the project take its current values and the page redefines only the changed role (step 4, Page); on no, the change is project-wide.
 
      Risks of a single value: each has a safer value, shown beside the pick in the plan.
 

@@ -22,7 +22,7 @@
 - Optical sizes: 20px inline and dense, 24px in buttons and navigation, 40 to 48 for display only. At most two sizes per screen (judgment).
 - Icon weight follows the adjacent text; icons centre on the text line.
 - A 20 to 24px glyph still has a 44 to 48px tap area on touch (rule 2.2) and at least 24px everywhere (rule 2.1).
-- Meaningful icons: 3:1 contrast (rule 1.2) and an accessible name when they stand alone.
+- Meaningful icons: 3:1 contrast (rule 1.2). An icon that stands alone as a control needs an accessible name: that is rule 12.5 (Hard), not this one.
 
 **5.5 One shape for the product** (Default) [M3-SHAPE A, judgment]
 - The product has one shape: sharp, soft or round (values in `references/data/scales/shape.md`, Shape presets), expressed through radius role tokens for buttons, fields, chips, cards and overlays (dialogs and sheets), so a change moves every instance together.

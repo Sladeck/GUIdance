@@ -7,8 +7,9 @@ Applying 19 of 20 published form guidelines together to three real newspaper reg
 - Exception: fields forming one logical unit share a row (city / postcode, expiry / CVC, day / month / year).
 - Prefer one "Full name" field over first + last.
 
-**7.2 Visible labels, not placeholders** (Strong) [GOVUK-INPUT A, NNG-PLACEHOLDER B]
-- Labels and instructions outside the input, always visible. Never a placeholder in place of a label.
+**7.2 Visible labels, not placeholders** (Hard, Level A: the first bullet; Strong: the rest) [WCAG-3.3.2 S, GOVUK-INPUT A, NNG-PLACEHOLDER B]
+- A placeholder is never the only label. WCAG 3.3.2's text does not mention placeholders, but W3C's Understanding page asks that labels stay available while people fill the field, and a placeholder disappears when they type; GUIdance counts it as a 3.3.2 failure (an interpretation, say so). Exception from W3C: a field whose purpose is clear from an icon and its context, such as a message box beside a send button.
+- Labels and instructions outside the input, always visible.
 - Example formats go in hint text outside the input: GOV.UK rules placeholders out "for hints or examples" as well [GOVUK-INPUT A].
 
 **7.3 When to validate** (Strong) [BAY-INLINE A vs GOVUK-VALID A: same tier, context decides]

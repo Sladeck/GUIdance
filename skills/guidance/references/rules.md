@@ -17,7 +17,7 @@ Format of each rule in the section files: rule (severity) [source key + tier, se
 | 9 Errors | `references/rules/09-errors.md` | where errors show, wording, recovery |
 | 10 Destructive actions | `references/rules/10-destructive-actions.md` | undo, confirmations, button wording and defaults |
 | 11 Motion | `references/rules/11-motion.md` | durations, easing, reduced motion, flashing |
-| 12 Keyboard, focus and input | `references/rules/12-keyboard-focus-input.md` | focus indicators and their size, drag alternatives, consistent help, time limits, autoplay, toasts, keyboard and focus order |
+| 12 Keyboard, focus and input | `references/rules/12-keyboard-focus-input.md` | focus indicators and their size, drag alternatives, consistent help, time limits, autoplay, toasts, keyboard and focus order, accessible names of controls |
 | 13 Platforms: phone, tablet, desktop and native | `references/rules/13-platforms.md` | orientation, gestures, pointer cancellation, device motion, autocomplete and keyboards, hover content, safe areas, system gestures, navigation by window size, sheets |
 
 ## Rules by section
@@ -28,7 +28,7 @@ Format of each rule in the section files: rule (severity) [source key + tier, se
 4. 4.1 One spacing scale (Default) · 4.2 Proximity decides grouping (Strong) · 4.3 Space before lines (Default) · 4.4 Content fits at every width (Hard) · 4.5 Same thing, same look (Default) · 4.6 Give each component room (Default) · 4.7 One density for the product, one per page (Default)
 5. 5.1 One radius scale (Default) · 5.2 Concentric nested corners (Default, wins over 5.1) · 5.3 Elevation: one cue, few levels (Default) · 5.4 Icons: one set, one style, two sizes (Default) · 5.5 One shape for the product (Default)
 6. 6.1 One primary action (Strong) · 6.2 Squint test (Default) · 6.3 Simple and familiar beats novel (Default)
-7. 7.1 Single column (Strong) · 7.2 Visible labels, not placeholders (Strong) · 7.3 When to validate (Strong) · 7.4 Do not ask twice (Hard, Level A) · 7.5 Login without puzzles (Hard) · 7.6 State formats and required fields up front (Default)
+7. 7.1 Single column (Strong) · 7.2 Visible labels, not placeholders (Hard, Level A: a placeholder as the only label; Strong: the rest) · 7.3 When to validate (Strong) · 7.4 Do not ask twice (Hard, Level A) · 7.5 Login without puzzles (Hard) · 7.6 State formats and required fields up front (Default)
 8. 8.1 Response time limits (Strong) · 8.2 Which indicator (Default) · 8.3 Optimistic state (Default)
 9. 9.1 Placement and visibility (Strong) · 9.2 Wording (Strong) · 9.3 Recovery (Strong)
 10. 10.1 Undo first, alerts rarely (Strong) · 10.2 Confirmation wording and defaults (Strong)

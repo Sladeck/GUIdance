@@ -17,6 +17,7 @@ Tokens in a preset (`presets: [require('./guidance.preset.js')]`) under `theme.e
 - Colours: `colorSchemes: { light: { palette }, dark: { palette } }` (MUI v6+, light on by default). With both `palette` and `colorSchemes`, `palette` wins. `palette` needs literal colours (MUI computes shades; `var()` breaks it).
 - `cssVariables: { colorSchemeSelector: 'class' | 'data' | '.mode-%s' | '[data-%s]' }`; `useColorScheme()` reads and sets the mode (`mode` is `undefined` on first render).
 - Merge with `deepmerge` from `@mui/utils`.
+- Focus: set it in the theme, `components.MuiButtonBase.styleOverrides.root['&.Mui-focusVisible']` (an `outline` and `outlineOffset`). ButtonBase is the root of buttons, icon buttons, switches, checkboxes, radios, tabs and menu items, so one rule covers them. A global `:focus-visible` rule does not reach them: ButtonBase sets `outline: 0` on its own class, which wins, and the native input inside a switch or checkbox has `opacity: 0`. With `disableRipple`, there is no focus style at all until this rule exists; contained buttons keep only an elevation shadow (checked in a browser with MUI 9.5.0 and Next.js 16, 2026-11-21). `CssBaseline` sets the body colour and background after a global stylesheet, so a `globals.css` body rule is overridden.
 
 ## Sass
 `@use "./guidance" as *;` for `$` variables; the same values as CSS custom properties for runtime theming.

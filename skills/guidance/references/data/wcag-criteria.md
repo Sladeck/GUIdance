@@ -156,6 +156,7 @@ Used by `/guidance wcag`. Read on 2026-11-19 from the WCAG 2.2 Recommendation of
 
 ### 2.4.11 Focus not obscured, minimum (AA) · `focus-not-obscured-minimum`
 - Rule: 12.1.
+- Look for: a sticky or fixed bar (`position: sticky` or `fixed`, a library app bar set to sticky, a cookie banner) with no `scroll-padding-top` or `scroll-padding-bottom` of at least its height on the scrolling element. With such a bar and no padding, the result is Check by hand at least, never No issue found: code cannot show where focus lands when the page scrolls.
 
 ### 2.5.1 Pointer gestures (A) · `pointer-gestures`
 - Rule: 13.2.
@@ -219,7 +220,7 @@ Used by `/guidance wcag`. Read on 2026-11-19 from the WCAG 2.2 Recommendation of
 
 ### 3.3.2 Labels or instructions (A) · `labels-or-instructions`
 - Asks: where input is needed, labels or instructions are given.
-- Look for: fields with no visible label and no instructions. W3C allows a clear icon in context (a send button beside a chat box) as the label. Rule 7.2 asks for more (visible labels, no placeholder as label); `/guidance wcag` does not report that part, `/guidance review` covers it.
+- Look for: fields with no visible label and no instructions; fields whose only label is a placeholder. The criterion's text does not mention placeholders, but W3C's Understanding page asks that labels stay available while people fill the field, and a placeholder disappears when they type: report it as Fails, and say in the finding that this reads 3.3.2 through that page (rule 7.2). W3C allows a clear icon in context (a send button beside a chat box) as the label. A placeholder usually still gives the field an accessible name, so do not also fail 4.1.2 for it.
 - From code: Yes.
 
 ### 3.3.3 Error suggestion (AA) · `error-suggestion`
@@ -242,7 +243,7 @@ Used by `/guidance wcag`. Read on 2026-11-19 from the WCAG 2.2 Recommendation of
 
 ### 4.1.2 Name, role, value (A) · `name-role-value`
 - Asks: every interface component has a name and role that assistive technology can read; states, properties and values people can set can be set by it too; changes are announced. Native HTML controls used as specified pass.
-- Look for: clickable `div`s and `span`s with no `role`, no `tabindex` and no key handling (also rule 12.5); custom checkboxes, switches, tabs, menus, accordions and comboboxes without their role and state (`aria-checked`, `aria-selected`, `aria-expanded`, `aria-controls`); `aria-hidden="true"` on something focusable or on a parent of one; buttons and fields with no accessible name; `role` values that contradict the element. Components from a maintained accessible library (Radix, React Aria, Headless UI, MUI) usually handle this; check only how the project uses them (judgment).
+- Look for: clickable `div`s and `span`s with no `role`, no `tabindex` and no key handling (also rule 12.5); custom checkboxes, switches, tabs, menus, accordions and comboboxes without their role and state (`aria-checked`, `aria-selected`, `aria-expanded`, `aria-controls`); `aria-hidden="true"` on something focusable or on a parent of one; buttons and fields with no accessible name (also rule 12.5); `role` values that contradict the element. Components from a maintained accessible library (Radix, React Aria, Headless UI, MUI) usually handle this; check only how the project uses them (judgment).
 - From code: Partly. A screen reader confirms what is announced.
 
 ### 4.1.3 Status messages (AA) · `status-messages`

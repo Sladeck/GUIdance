@@ -30,7 +30,7 @@ The user decides. Your job is to show the choices as a table, say what is risky 
 
 "Dropdowns" can mean the closed control or its open list: ask which. If the words fit two roles, or none ("the corners of the sidebar"), do not guess: name the candidates by what they are on the user's page and ask once. A part with no role (an avatar, a one-off hero) is not this command's job: say so, and that a single custom component can be shaped on its own (rule 5.5). In everything you show the user, describe a role by what it is ("corners of cards"), with the token name after it.
 
-**One step** is the next value of the radius scale: 0, 4, 8, 12, 16, 20, 28, 32, 48, then full. A step down from full is the largest scale step under half the component's height (16 for a 40px button): anything larger still draws as a pill.
+**One step** is the next value of the radius scale: 0, 4, 8, 12, 16, 20, 28, 32, 48, then full. A step down from full is the largest scale step under half the component's height (16 for a 40px button): anything larger still draws as a pill. So when the current value is already half the component's height or more, "rounder" changes nothing on screen: say that plainly first, then offer full (the same look, written as a role) or stopping.
 
 ## Steps
 
@@ -49,6 +49,7 @@ The user decides. Your job is to show the choices as a table, say what is risky 
    - A request that was already clear (a preset, a resolved change) skips the table and goes to step 3.
 3. **Show the plan and its risks, then ask once.**
    - One table: what it is in plain words, role, value now, value after, where it is used (file, count of uses).
+   - No role tokens yet (step 1): the plan adds all five radius roles, in the project's format, pointing at scale values, and the changed role is one of them. Adding them is part of this change, not a later option; only replacing raw uses with roles is a separate question (step 4). Never write a raw value where a role belongs.
    - Nested corners that will follow (step 4), each with its `file:line` and new value.
    - **Risks.** Say what the pick is and why it is a risk (the rule and its source, in a sentence). The user may still choose it. Each has a safer value, shown beside the pick in the plan:
 

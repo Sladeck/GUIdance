@@ -12,6 +12,8 @@ Finds where an interface breaks the rules, and says why each rule exists and whe
 
 With no changes and no target, ask what to review.
 
+In a native app (Expo or React Native, SwiftUI, Compose, Flutter), whatever the target, also read where orientation is set for the whole app (rule 13.1 lists the config files and code calls): a lock there applies to every screen. Skip this when reviewing uncommitted changes that touch none of those files. If they are not in the working directory, say 13.1 needs checking by hand and name the file to open.
+
 ## 2. Read the project's choices first
 
 Read `design-decisions.md` at the project root (or, in older projects without it, the token file's `density:` and `shape:` comments) and the token file's scales: the themes, style, density, shape, and anything recorded as tuned, left as is or accepted. Those are the user's decisions: a value that follows them is not a finding. List them in one line under the report.

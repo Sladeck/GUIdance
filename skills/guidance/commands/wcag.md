@@ -15,7 +15,7 @@ A URL whose route or page file is in the working directory is also checked from 
 
 A criterion about a set of pages (2.4.5, 3.2.3, 3.2.4, 3.2.6) is judged from the shared layout and navigation code the target uses; say so.
 
-WCAG is written for the web. For a native app (SwiftUI, Compose), apply the criteria as W3C's guidance for non-web software does [WCAG2ICT S, a W3C Group Note], say so in the header, and mark criteria whose web technique has no direct native equivalent (`lang`, `<title>`, skip links) as needing a person rather than failing them.
+WCAG is written for the web. For a native app (Expo or React Native, SwiftUI, Compose, Flutter), read the app-wide orientation settings whatever the target (`commands/review.md`, step 1; criterion 1.3.4), and apply the criteria as W3C's guidance for non-web software does [WCAG2ICT S, a W3C Group Note], say so in the header, and mark criteria whose web technique has no direct native equivalent (`lang`, `<title>`, skip links) as needing a person rather than failing them.
 
 ## 2. Check
 

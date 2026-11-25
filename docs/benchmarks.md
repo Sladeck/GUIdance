@@ -2,7 +2,15 @@
 
 Each test gives Claude a small project with known problems planted in it and scores the answer against a fixed answer key. It runs with GUIdance and without it, on the same model, files and tools. Each test ran three times on each side; the columns show the lowest and the highest score.
 
-Across the 12 tests there are 332 points. Adding up each test's lowest and highest score, Claude alone scored 229 to 289 and Claude with GUIdance 321 to 332: from 11% higher (GUIdance's lowest against Claude alone's highest) to 45% higher (the other way round).
+## Total score
+
+| | Claude alone | Claude with GUIdance |
+| --- | --- | --- |
+| **12 tests, 332 points** | **229 - 289** (69% - 87%) | **321 - 332** (97% - 100%) |
+
+Each total adds up every test's lowest, then highest, score. Claude with GUIdance scores from 11% higher (its lowest total against Claude alone's highest) to 45% higher (the other way round).
+
+## By test
 
 | Test | What it checks | Without GUIdance | With GUIdance |
 | --- | --- | --- | --- |
@@ -18,6 +26,7 @@ Across the 12 tests there are 332 points. Adding up each test's lowest and highe
 | Design questions | Answers eight common UI questions with the right number or verdict. | 7 - 7 / 8 | 8 - 8 / 8 |
 | WCAG check, input and pointer | Finds 14 keyboard, pointer, gesture and motion failures in one small HTML page. | 39 - 39 / 39 | 39 - 39 / 39 |
 | WCAG check, SwiftUI | Finds 8 failures in a SwiftUI list view, one of them in the app's Info.plist. | 19 - 19 / 22 | 22 - 22 / 22 |
+| **Total** | | **229 - 289 / 332** | **321 - 332 / 332** |
 
 **Scoring.** A planted problem earns 3, 2 or 1 points by severity when the answer names it at the right place with a correct reason; reporting a decoy costs points. GUIdance's own extras are not scored here: a result for every WCAG criterion, a rule and source for every finding, asking before risky changes. Model: Claude Sonnet 5.5 for both sides.
 

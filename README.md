@@ -124,6 +124,8 @@ I was sick of searching again and again for the same answers: how much white spa
 
 So I gathered the best of it in one place, ranked by how much evidence stands behind each source, settled the cases where they disagree, and turned it into something Claude can apply directly: real tokens in real code, and for every choice the reason and the source behind it.
 
+Made by [gmmoulin.com](https://gmmoulin.com).
+
 ## License
 
 [MIT](LICENSE). Use it, change it, ship it.

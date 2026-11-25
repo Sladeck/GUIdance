@@ -9,96 +9,29 @@ GUIdance is a Claude skill that gives your interfaces a professional finish: con
 
 - [What it does](#what-it-does)
 - [Does it help?](#does-it-help)
-- [Scope](#scope)
-- [What it adds to your project](#what-it-adds-to-your-project)
 - [Install](#install)
 - [How to use it](#how-to-use-it)
-- [Commands](#commands)
-- [How sources are weighted](#how-sources-are-weighted)
-- [Citations and resources](#citations-and-resources)
-- [Testing](#testing)
+- [Sources](#sources)
+- [Scope](#scope)
 - [Why I made this](#why-i-made-this)
 - [License](#license)
 
 ## What it does
 
-- **Installs the rules in your project.** Works with any stack (plain CSS, Tailwind, MUI, shadcn/ui, Bootstrap, Sass, and native SwiftUI and Jetpack Compose): it finds where your styling lives, reads the tokens you already have, flags spacing, radius, type and motion values that sit off the scales, and writes clean tokens in your stack's own format.
-- **Builds your colours with you.** From your brand colour it builds the colour roles for light and dark, with near-grey backgrounds the way GitHub, IBM and Radix do it, and shows you every text and boundary pair with its contrast ratio before writing anything.
-- **Sets your density and shape.** Three spacing presets (compact, default, comfortable) and three corner presets (sharp, soft, round), each role adjustable on top, so a data tool and a marketing site do not end up looking the same. You get a table of choices and answer with what you want, in plain words if you like ("more room between the cards", "rounder buttons").
-- **Tells you why, and asks before doing something risky.** When a choice goes against a rule (compact spacing on a touch product, large corners on dense cards, a colour that fails contrast), Claude says what the risk is, which source says so, and what the safer value is. You decide; what you accepted is recorded so later reviews do not flag it again.
-- **Builds UI that follows the rules.** When Claude creates or changes an interface, it uses your tokens and the rules as minimums, then checks its own work.
-- **Reviews your code.** Checks the code against the rules: contrast, target sizes, type, spacing and grouping, corners, elevation, hierarchy, forms, feedback, errors, destructive actions, motion, layout at every width, keyboard and focus, and platform behaviour on phones, tablets, desktop and native apps (orientation, gestures, system areas, navigation by window size, sheets). One ordered list, most serious first, each with where it is, why it is a problem (rule and source) and how to fix it.
-- **Checks your code against WCAG 2.2.** Goes through all 55 Level A and AA success criteria, not only the ones the design rules cover: alt text, headings and landmarks, form labels, names and roles of custom controls, status messages, page titles and language, keyboard traps, captions and the rest. Each criterion gets a result (fails, no issue found, not present, check by hand), each failure a finding with where and how to fix it, and what code cannot settle becomes a short list of things to test by hand. It works on your code or on a live page by its URL; a URL needs a browser Claude can drive, and findings from it can only be fixed when the site's code is in the project. It is a review, not a conformance certificate.
-- **Fixes what it found.** Shows the planned changes, applies them at the source (a token, the shared component, the parent's spacing), then checks each fix again.
+- **Installs the rules in your project** as design tokens in your stack's own format: plain CSS, Tailwind, MUI, shadcn/ui, Bootstrap, Sass, SwiftUI or Jetpack Compose. [What it writes](docs/tokens.md).
+- **Builds your colours with you** from your brand colour, in light and dark, and shows every text and boundary pair with its contrast ratio before writing anything.
+- **Sets your density and shape** from three spacing presets and three corner presets, each adjustable in plain words ("more room between the cards", "rounder buttons").
+- **Tells you why, and asks before doing something risky**, with the rule, its source and the safer value. What you accept is recorded so later reviews do not flag it again.
+- **Builds UI that follows the rules**, using your tokens, then checks its own work.
+- **Reviews your code** for contrast, target sizes, type, spacing, corners, forms, errors, motion, layout at every width, keyboard and focus, and native platform behaviour: one ordered list, most serious first, each with where, why and how to fix it.
+- **Checks your code or a live page against WCAG 2.2**, all 55 Level A and AA criteria, with a result for each and a short list of what to test by hand. Findings on a live page can only be fixed when its code is in the project. It is a review, not a conformance certificate.
+- **Fixes what it found** at the source (a token, the shared component, the parent's spacing), then checks each fix again.
 
 Claude does all the work itself, from the rules and their sources. Nothing is generated by a script and nothing needs installing.
 
 ## Does it help?
 
-Same model, same files, same tools, with and without GUIdance. Without it, each test ran three times (lowest - highest):
-
-| Test | What it checks | Without | With |
-| --- | --- | --- | --- |
-| Review a landing page | Finds 21 planted contrast, zoom, focus, layout, form and target-size problems across a page's HTML and CSS. | 19.5 - 54 / 55 | 55 / 55 |
-| Review a Next.js and MUI page | Finds 12 planted problems on an invoices page, three of them in the MUI theme's overrides. | 22 - 25 / 35 | 35 / 35 |
-| Review a Vite and shadcn/ui page | Finds 12 planted problems on a staff page, four of them in shadcn's CSS variables and `components/ui` files. | 18 - 19 / 33 | 33 / 33 |
-| Review a Vue page | Finds 13 planted problems on a Vue class-booking page, five of them in the tokens file and shared base components. | 33 - 36 / 36 | 36 / 36 |
-| Review a React Native (Expo) screen | Finds 12 planted problems on a plant-watering screen, five of them in the theme, the shared text component, the swipe component and the app config. | 19 - 26 / 31 | 31 / 31 |
-| WCAG check, Next.js and MUI | Finds 14 planted WCAG 2.2 failures on a login page, half of them in the shared layout, header, theme and global CSS. | 30 - 37 / 40 | 40 / 40 |
-| Token setup, Next.js and MUI | Turns a messy MUI theme with three brand blues and competing colour sources into one set of tokens without rescaling existing spacing. | 12.5 - 14 / 17 | 17 / 17 |
-| Build a page, Next.js and MUI | Builds an invoice detail page on the theme, names the contrast and focus failures it inherits, and confirms delete properly. | 7 - 8 / 10 | 10 / 10 |
-| Plain spacing request | Gives the dashboard cards one step more room under MUI's 4px spacing unit, on that page only. | 3 - 5 / 6 | 6 / 6 |
-| Design questions | Answers eight common UI questions with the right number or verdict. | 7 - 7 / 8 | 8 / 8 |
-| WCAG check, input and pointer | Finds 14 keyboard, pointer, gesture and motion failures in one small HTML page. | 39 - 39 / 39 | 39 / 39 |
-| WCAG check, SwiftUI | Finds 8 failures in a SwiftUI list view, one of them in the app's Info.plist. | 19 - 19 / 22 | 22 / 22 |
-
-Scoring and limits: [BENCHMARKS.md](BENCHMARKS.md).
-
-## Scope
-
-GUIdance is written for interfaces in Latin-script languages, read left to right: English, French, Spanish, Portuguese, German, Italian and the like.
-
-- **Why.** Other writing systems have their own design rules: right-to-left layouts mirror the whole interface, and scripts such as Arabic, Chinese, Japanese or Devanagari need different type sizes, line heights and line lengths. Those rules deserve their own sources, not an adaptation of these.
-- **Where the evidence comes from.** The guidelines and studies behind the rules were written and tested mostly in Europe and the Americas, where interfaces share a reading direction and broadly the same layout conventions. Taste still varies inside that area: one of the studies behind the rules found that Northern European countries prefer less colourful websites than Southern European and English-speaking ones. So the rules are a sound base there, to be checked with your own audience for colour and visual complexity; elsewhere they are untested.
-- **What still applies everywhere.** The WCAG requirements (contrast, target size, keyboard, reflow and the other Hard rules) are an international standard and hold in any language.
-
-If your product also ships in other scripts, use GUIdance for the Latin-script version and treat the rest as outside its scope.
-
-## What it adds to your project
-
-Design tokens: named values your whole UI uses instead of numbers picked by eye. Claude writes them in your stack's own format (CSS variables, a Tailwind theme, an MUI theme, Sass variables...) and uses them from then on.
-
-| Tokens | What you get | Based on |
-| --- | --- | --- |
-| **Colours** | A colour set built from your brand colour: 37 colour roles in light and dark (see below), plus chart colours. Every text and boundary pair is checked against its contrast threshold before it is written | Material 3 roles, WCAG 2.2 |
-| **Spacing** | 18 steps on an 8px grid: 0, 2, 4, 6, 8, 10, 12, 14, 16, 20, 24, 32 ... 72px | Material 3 |
-| **Density** | Spacing roles (field, card, group, section, page gutter, control height...) in three presets: compact, default, comfortable | Material 3 density, SAP Fiori, AWS Cloudscape; preset values are judgment |
-| **Corner radius** | 0, 4, 8, 12, 16, 20, 28, 32, 48px and full (pills) | Material 3 |
-| **Shape** | Radius roles (button, field, chip, card, overlay) in three presets: sharp, soft, round | Material 3 shape; preset values are judgment |
-| **Elevation** | 6 shadow levels, from flat to dragged | Material 3 |
-| **Type** | Headline 32, title 22, body 16, small body 14, label 12px, with line heights and weights | Material 3, Apple |
-| **Motion** | Durations from 50 to 600ms, 5 easing curves, shorter versions for reduced motion | Material 3, WCAG |
-| **Targets and focus** | 24px minimum and 44px touch target sizes, focus ring width and offset, readable line length | WCAG 2.2, Apple |
-
-**Colour roles.** A colour role is a colour named after its job, not its look: your code says `--color-primary` or `--color-on-surface` instead of `#5a3ee4`. Change a role's value and every button, background and text colour that uses it follows, in light and dark.
-
-| Group | Roles | Count |
-| --- | --- | --- |
-| **Brand colours:** primary, secondary, tertiary | Each comes as four: the colour (a filled button), *on*-colour (the text on it), a soft *container* version (a tinted card or chip) and *on-container* (the text on that) | 12 |
-| **Status:** error, success, warning | The same four each | 12 |
-| **Backgrounds** | `surface` plus 5 container levels, from the page to raised panels | 6 |
-| **Text on backgrounds** | `on-surface` (main text), `on-surface-variant` (secondary text) | 2 |
-| **Lines** | `outline` (field borders, 3:1 contrast), `outline-variant` (dividers) | 2 |
-| **Inverse** | Dark-on-light flips for things like snackbars | 3 |
-
-A few of the tokens it writes:
-
-```css
---space-200: 16px;      --radius-md: 12px;     --text-body: 1rem;
---space-300: 24px;      --radius-lg: 16px;     --duration-short-4: 200ms;
---color-primary: #5a3ee4;           --color-on-primary: #ffffff;
---elevation-1: 0 1px 2px 0 rgb(0 0 0 / 0.3), 0 1px 3px 1px rgb(0 0 0 / 0.15);
-```
+On 12 tests (reviews, WCAG checks, token setup, a build, a spacing request and design questions), Claude with GUIdance scores 11% to 45% higher than Claude alone on the same model, files and tools: [see the tests and scores](docs/benchmarks.md).
 
 ## Install
 
@@ -156,66 +89,34 @@ None. The skill is text: rules, sources and commands. A browser Claude can drive
 
 ## How to use it
 
-Commands are written here as with a manual copy. Installed as a plugin, put a colon in place of the space: `/guidance:setup`, `/guidance:review /settings`.
-
-Start in a project with `/guidance setup`. Claude looks at the project, asks a few questions if it needs to, shows you the choices for colours, density and shape as tables, and writes the tokens once you have answered.
-
-After that, just work: ask Claude to build a screen and it follows the rules, or run `/guidance review /settings` to see what breaks them, then `/guidance fix` to clean it up. Change your mind later with `/guidance spacing` or `/guidance shape`.
+Start in a project with `/guidance setup`. Claude looks at the project, asks a few questions if it needs to, shows you the choices for colours, density and shape as tables, and writes the tokens once you have answered. After that, just work: ask Claude to build a screen and it follows the rules, or run `/guidance review /settings` to see what breaks them, then `/guidance fix` to clean it up. Change your mind later with `/guidance spacing` or `/guidance shape`.
 
 Plain requests work too: "set up design tokens", "make it denser", "rounder buttons", "review this page", "why is 16px the body size?", "build a settings screen".
 
-## Commands
-
-Written here as with a manual copy. Installed as a plugin, put a colon in place of the space (`/guidance:setup`, `/guidance:spacing compact`), and list the commands with `/guidance:guidance`.
+Commands are written here as with a manual copy. Installed as a plugin, put a colon in place of the space: `/guidance:setup`, `/guidance:review /settings`.
 
 | Command | What it does |
 | --- | --- |
 | `/guidance` | Lists the commands. |
-| `/guidance setup` | Learns what the project is, builds the colour roles from your brand colour and checks every pair for contrast, asks which density and shape you want, then writes or fixes design tokens (spacing, radius, type, motion, colours) in your stack's format. Never overwrites a file, and shows every change before making it. |
-| `/guidance spacing [preset or what to change] [page\|all]` | Sets or changes density. A preset: `/guidance spacing compact` changes the whole project, `/guidance spacing compact /reports` one page. Plain words: `/guidance spacing more room between the cards`. Nothing: it shows a table of choices (every role, its value now, the three presets) and you answer. Risky picks are explained and need your confirmation. |
-| `/guidance shape [preset or what to change]` | Sets or changes how rounded the corners are. A preset: `/guidance shape round`. Plain words: `/guidance shape rounder buttons`. Nothing: it shows a table of choices and you answer. Risky picks are explained and need your confirmation. Keeps nested corners concentric. |
+| `/guidance setup` | Builds your colour roles and writes design tokens (spacing, radius, type, motion, colours) in your stack's format. Shows every change first and never overwrites a file. |
+| `/guidance spacing [preset or change] [page\|all]` | Sets or changes density: `compact`, `default`, `comfortable`, or plain words like "more room between the cards". With nothing, shows a table of choices. |
+| `/guidance shape [preset or change]` | Sets or changes how rounded the corners are: `sharp`, `soft`, `round`, or plain words. Keeps nested corners concentric. |
 | `/guidance build <what>` | Builds or changes UI with your tokens and the rules, then checks the result. |
-| `/guidance review [target]` | Finds what breaks the rules. Give it a page (a route like `/settings`, a page file or a description), a file, folder or component, or nothing for your uncommitted changes. Each finding comes with where it is, why it matters (rule and source) and a fix. Changes nothing. |
-| `/guidance wcag [target] [A\|AA]` | Checks the same targets as review, or one live page by its URL (`/guidance wcag https://example.com/signup`), against every WCAG 2.2 success criterion at Level AA (or `A` only): one finding per failure, a table with a result for every criterion, and a list of what to test by hand with a keyboard or screen reader. Changes nothing. |
-| `/guidance fix [which]` | Fixes the findings of the last review or wcag check: all of them, by number (`1-5`) or by severity (`hard`). Shows the plan first, applies it, then checks again and reports what is fixed, what is left and anything new. |
+| `/guidance review [target]` | Finds what breaks the rules in a page, file, folder, component or your uncommitted changes. Changes nothing. |
+| `/guidance wcag [target] [A\|AA]` | Checks the same targets, or a live page by URL, against every WCAG 2.2 criterion. Changes nothing. |
+| `/guidance fix [which]` | Fixes the findings of the last review or WCAG check (all, by number, or by severity), then checks again. |
 
-## How sources are weighted
+Every option and example: [docs/commands.md](docs/commands.md).
 
-| Tier | Sources | Why |
-| --- | --- | --- |
-| **S** | W3C WCAG 2.2 | International standard, referenced by law. Wins every conflict it covers. |
-| **A** | Apple Human Interface Guidelines, Google Material Design 3 | Define what users already expect on their platforms. |
-| **A** | Baymard Institute, GOV.UK Design System | Large-scale published research (Baymard: 200,000+ research hours, 4,400+ test sessions). |
-| **A** | Peer-reviewed studies with 400+ people or field data | Measured at scale (up to 120 million taps and 2.4 million ratings). One study each, so evidence rather than a standard. |
-| **B** | Nielsen Norman Group | Decades of mostly small qualitative studies: strong on what goes wrong, weaker on exact numbers. |
-| **B** | Smaller peer-reviewed experiments | Controlled and measured; good on the direction of an effect, weaker on exact thresholds. |
-| **C** | Secondary summaries | Used for a formula or a clear statement, never decisive. |
+## Sources
 
-Rules without a source are labelled `judgment`. Where sources disagree, the higher tier wins; at the same tier, context decides (Apple on Apple platforms, Material on Android, Baymard for shops and long forms, GOV.UK for public services and one-question-per-page forms).
-
-## Citations and resources
-
-Every rule names its sources. [`sources.md`](skills/guidance/references/sources.md) lists each one with its link and tier, and when each group was checked. The main ones:
-
-- **Standards:** W3C WCAG 2.2 (the Understanding documents for each success criterion the rules use).
-- **Platforms:** Apple Human Interface Guidelines, Google Material Design 3, Android Developers.
-- **Research:** Baymard Institute, GOV.UK Design System, Nielsen Norman Group, and 22 peer-reviewed studies on touch, reading, light and dark mode, waiting, forms and first impressions. Twelve of the papers were then read, seven end to end and five for their methods, results and limitations, and the rules corrected from them; the other ten rest on their abstracts, and `sources.md` says which is which.
-- **Design systems:** GitHub Primer, IBM Carbon, Radix Colors, SAP Fiori, AWS Cloudscape.
-- **Framework documentation**, for writing tokens only: Tailwind CSS, MUI, shadcn/ui, Bootstrap, Jetpack Compose, SwiftUI.
-
-Every value taken from these sources is stored in [`skills/guidance/references/data/`](skills/guidance/references/data/).
+Every rule names its source, ranked by evidence: WCAG 2.2 first, then Apple, Material 3, Baymard, GOV.UK and large studies, then Nielsen Norman Group and smaller studies. Rules without a source are labelled `judgment`. [How sources are weighted and the full list](docs/sources.md).
 
 GUIdance is not affiliated with or endorsed by Apple, Google, the W3C, Baymard Institute, GOV.UK or Nielsen Norman Group. It cites their public guidance and stores the numeric values it uses, not their text.
 
-## Testing
+## Scope
 
-`evals/` holds test cases for `claude plugin eval`: a review, a WCAG check, a question, a build and a request the skill should ignore. Run them from the repository root; the build case needs the Write tool:
-
-```bash
-claude plugin eval . --allow-tools Write
-```
-
-Each case runs three times with the plugin and three times without it, and every run is a model call on your account. Results go to `evals/results/`, which is not committed.
+Written for Latin-script interfaces read left to right (English, French, Spanish, German and the like). The WCAG rules hold in any language. [Why, and what that means for your product](docs/scope.md).
 
 ## Why I made this
 

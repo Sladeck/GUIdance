@@ -18,8 +18,8 @@ Written by GUIdance. Edit a line here or run /guidance spacing or shape to chang
 
 - Product: <what it is>, for <who>, used on <desk, touch, both> (README)
 - Platforms: <web, iOS, Android, macOS, Windows> (found in code)
-- Stack: <framework and UI library with versions> (found in code)
-- Style: <design language followed: Material through MUI, Apple HIG, Fluent, a house style> (found in code)
+- Stack: <framework and UI library with versions> (found in code; `(asked)` for a library picked in setup's starting point)
+- Style: <design language followed: Material through MUI, Apple HIG, Fluent, a house style, GUIdance tokens> (found in code; `(asked)` when picked in setup's starting point)
 - Light theme: <yes | no> (found in code)
 - Dark theme: <yes | no>; switched by <system setting | toggle | both>; default <light | dark | system> (found in code)
 - Feel: <calm, bold, playful, serious, premium> (asked)

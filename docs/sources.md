@@ -12,6 +12,7 @@ Every rule names its sources. [`sources.md`](../skills/guidance/references/sourc
 | **A** | Peer-reviewed studies with 400+ people or field data | Measured at scale (up to 120 million taps and 2.4 million ratings). One study each, so evidence rather than a standard. |
 | **B** | Nielsen Norman Group | Decades of mostly small qualitative studies: strong on what goes wrong, weaker on exact numbers. |
 | **B** | Smaller peer-reviewed experiments | Controlled and measured; good on the direction of an effect, weaker on exact thresholds. |
+| **B** | Product and public-sector design systems | How large products and governments solved a problem (Primer, Carbon, Fiori, Cloudscape, Ant Design, USWDS). Established practice, not measured evidence. |
 | **C** | Secondary summaries | Used for a formula or a clear statement, never decisive. |
 
 Rules without a source are labelled `judgment`. Where sources disagree, the higher tier wins; at the same tier, context decides (Apple on Apple platforms, Material on Android, Baymard for shops and long forms, GOV.UK for public services and one-question-per-page forms).
@@ -21,8 +22,8 @@ Rules without a source are labelled `judgment`. Where sources disagree, the high
 - **Standards:** W3C WCAG 2.2 (the Understanding documents for each success criterion the rules use).
 - **Platforms:** Apple Human Interface Guidelines, Google Material Design 3, Android Developers.
 - **Research:** Baymard Institute, GOV.UK Design System, Nielsen Norman Group, and 22 peer-reviewed studies on touch, reading, light and dark mode, waiting, forms and first impressions. Twelve of the papers were then read, seven end to end and five for their methods, results and limitations, and the rules corrected from them; the other ten rest on their abstracts, and the skill's `sources.md` says which is which.
-- **Design systems:** GitHub Primer, IBM Carbon, Radix Colors, SAP Fiori, AWS Cloudscape.
-- **Framework documentation**, for writing tokens only: Tailwind CSS, MUI, shadcn/ui, Bootstrap, Jetpack Compose, SwiftUI.
+- **Design systems:** GitHub Primer, IBM Carbon, Radix Colors, SAP Fiori, AWS Cloudscape, Ant Design, U.S. Web Design System (USWDS).
+- **Framework documentation**, for writing tokens only: Tailwind CSS, MUI, Ant Design (antd), shadcn/ui, Bootstrap, Jetpack Compose, SwiftUI.
 
 Every value taken from these sources is stored in [`skills/guidance/references/data/`](../skills/guidance/references/data/).
 

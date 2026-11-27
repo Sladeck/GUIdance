@@ -2,13 +2,13 @@
 
 Applying 19 of 20 published form guidelines together to three real newspaper registration forms meant fewer submission attempts on all three and completion times 18 to 33% shorter, significant on two of the three; usability ratings rose by up to 16% (65 people in a lab, eye tracking) [SCI-FORMS B, full text read]. The authors say longer forms, shops and mobile still need testing. The rules below are the ones with the strongest sources.
 
-**7.1 Single column** (Strong) [BAY-COLUMNS A]
-- One field per row; users skip or misfill multi-column layouts.
+**7.1 Single column** (Strong) [BAY-COLUMNS A, ANTD-FORM B]
+- One field per row; users skip or misfill multi-column layouts. Ant Design arranges fields top to bottom in one column and prohibits multiple columns within one area [ANTD-FORM B].
 - Exception: fields forming one logical unit share a row (city / postcode, expiry / CVC, day / month / year).
 - Prefer one "Full name" field over first + last.
 
 **7.2 Visible labels, not placeholders** (Hard, Level A: the first bullet; Strong: the rest) [WCAG-3.3.2 S, GOVUK-INPUT A, NNG-PLACEHOLDER B]
-- A placeholder is never the only label. WCAG 3.3.2's text does not mention placeholders, but W3C's Understanding page asks that labels stay available while people fill the field, and a placeholder disappears when they type; GUIdance counts it as a 3.3.2 failure (an interpretation, say so). Exception from W3C: a field whose purpose is clear from an icon and its context, such as a message box beside a send button.
+- A placeholder is never the only label. WCAG 3.3.2's text does not mention placeholders, but W3C's Understanding page asks that labels stay available while people fill the field, and a placeholder disappears when they type; GUIdance counts it as a 3.3.2 failure (an interpretation, say so). Exception from W3C: a field whose purpose is clear from an icon and its context, such as a message box beside a send button. A visually hidden `<label>` or an `aria-label` gives the field a name (4.1.2) but leaves the placeholder as the only label people see, so it does not fix this unless that exception applies: the fix is a visible label, or a visible icon or button that shows the purpose.
 - Labels and instructions outside the input, always visible.
 - Example formats go in hint text outside the input: GOV.UK rules placeholders out "for hints or examples" as well [GOVUK-INPUT A].
 

@@ -10,10 +10,11 @@
 - The result can fall off the scale (Material's own 34dp does). Prefer padding that lands it on the scale (24 outer, 8 padding, 16 inner); otherwise the derived value wins: concentricity beats scale purity.
 - Result 0 or negative: use 0 or 2 to 4px inside.
 
-**5.3 Elevation: one cue, few levels** (Default) [M3-ELEVATION A, judgment]
+**5.3 Elevation: one cue, few levels** (Default) [M3-ELEVATION A, ANTD-SHADOW B, judgment]
 - The six Material levels (`references/data/scales/elevation.md`) as tokens, never per-component shadows. Rest at levels 0 to 3; 4 and 5 only for hover and drag.
+- A product built on a component library with its own levels, such as Ant Design's [ANTD-SHADOW B], keeps that library's levels instead: one set of levels matters more than which one (judgment). Never two sets in one product.
 - One cue per surface: a border, a shadow or a tonal step. A border plus a strong shadow is two cues for one job (judgment).
-- At most three shadow levels per screen; higher always means "in front of" (a dialog above a menu above a card).
+- At most three shadow levels per screen; higher always means "in front of" (a dialog above a menu above a card). Ant Design has the same order in four levels: none (inputs), low (a card on hover), medium (dropdowns), high (dialogs) [ANTD-SHADOW B].
 - Dark themes: shadows barely show, so raised surfaces also take a lighter surface-container tone.
 - Break: a brand with one signature shadow used consistently.
 

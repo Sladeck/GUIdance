@@ -1,6 +1,6 @@
 ---
 name: guidance
-description: Evidence-ranked UI design rules with sources (WCAG 2.2, Apple, Material 3, Baymard, GOV.UK, NN/g). Sets up design tokens, builds, reviews and fixes web and native UI, and checks code or a live page against WCAG 2.2 AA. Also use it to answer any UI design question with the rule and its source, even one that seems like general knowledge, such as "why 16px body text?", "is 14px fine for my dashboard?", "is this contrast enough?" or "how much space between sections?", and any plain request to change spacing, such as "make the list tighter" or "more room between the cards" (the spacing command), "check this page for inconsistencies" (the review command) or "is this page accessible?" (the wcag command). Covers spacing, layout, corner radius, font sizes and typography, colour, contrast, touch targets, forms, errors, loading, motion, keyboard and focus, accessibility.
+description: Evidence-ranked UI design rules with sources (WCAG 2.2, Apple, Material 3, Baymard, GOV.UK, NN/g). Sets up design tokens, builds, reviews and fixes web and native UI, and checks code or a live page against WCAG 2.2 AA. Also use it to answer any UI design question with the rule and its source, even one that seems like general knowledge, such as "why 16px body text?", "is 14px fine for my dashboard?", "is this contrast enough?" or "how much space between sections?", and any plain request to change spacing, such as "make the list tighter" or "more room between the cards" (the spacing command), "check this page for inconsistencies" (the review command) or "is this page accessible?" (the wcag command). Covers spacing, layout, corner radius, font sizes and typography, colour, contrast, touch targets, forms, errors, loading, empty states, tables, navigation and search, interface writing, motion, keyboard and focus, accessibility.
 ---
 
 # GUIdance
@@ -48,7 +48,7 @@ Sources are ranked in `references/sources.md`:
 
 - **S**: W3C WCAG 2.2. Legal and consensus standard. Wins every conflict it covers.
 - **A**: Apple HIG and Google Material 3 (platform authority: what users already expect), Baymard and GOV.UK (large-scale published research), peer-reviewed studies with 400+ people or field data (`SCI-*`).
-- **B**: Nielsen Norman Group (decades of mostly small qualitative studies: strong on problems, weaker on exact numbers), smaller peer-reviewed experiments (`SCI-*`).
+- **B**: Nielsen Norman Group (decades of mostly small qualitative studies: strong on problems, weaker on exact numbers), smaller peer-reviewed experiments (`SCI-*`), product and public-sector design systems (Primer, Carbon, Fiori, Cloudscape, Ant Design, USWDS).
 - **C**: secondary summaries. Never decisive.
 - **Judgment**: no source. Always labelled.
 
@@ -59,7 +59,7 @@ Conflict rule: higher tier wins. Same tier, context decides (Apple on Apple plat
 Every file the commands use, so you can open any of them directly. Read only what the current task needs.
 
 **Rules.** `references/rules.md` is the index: every rule by number, title and severity, and which file holds it. The rules themselves, with sources, severity and when to break them:
-- `references/rules/01-contrast-colour.md`, `02-target-size.md`, `03-typography.md`, `04-spacing-grouping.md`, `05-shape-elevation-icons.md`, `06-hierarchy.md`, `07-forms.md`, `08-feedback-loading.md`, `09-errors.md`, `10-destructive-actions.md`, `11-motion.md`, `12-keyboard-focus-input.md`, `13-platforms.md` (all in `references/rules/`)
+- `references/rules/01-contrast-colour.md`, `02-target-size.md`, `03-typography.md`, `04-spacing-grouping.md`, `05-shape-elevation-icons.md`, `06-hierarchy.md`, `07-forms.md`, `08-feedback-loading.md`, `09-errors.md`, `10-destructive-actions.md`, `11-motion.md`, `12-keyboard-focus-input.md`, `13-platforms.md`, `14-tables.md`, `15-navigation-search.md`, `16-writing.md` (all in `references/rules/`)
 
 **Values.** Every verified number, so you never search the web. Use them directly: Material 3 values verified 2026-11-02 to 2026-11-15, colour 2026-11-14 and 2026-11-15, GUIdance judgment marked as such. Keys match `references/sources.md`.
 - `references/data/scales/spacing-density.md`: the spacing scale; density presets with role values, tuning, touch floor, phone widths
@@ -77,6 +77,6 @@ Every file the commands use, so you can open any of them directly. Read only wha
 - `references/data/stacks.md`: framework traps
 - `references/data/research.md`: research numbers and peer-reviewed study findings behind the rules
 
-**Token files.** Worked examples to model any stack on: `references/formats/css.md`, `tailwind4.md`, `tailwind3.md`, `mui.md`, `scss.md`, `swiftui.md`, `compose.md` (all in `references/formats/`). The decisions record (`design-decisions.md` in the project) that setup writes, spacing and shape update, and review and build read: `references/formats/decisions.md`.
+**Token files.** Worked examples to model any stack on: `references/formats/css.md`, `tailwind4.md`, `tailwind3.md`, `mui.md`, `antd.md`, `scss.md`, `swiftui.md`, `compose.md` (all in `references/formats/`). The decisions record (`design-decisions.md` in the project) that setup writes, spacing and shape update, and review and build read: `references/formats/decisions.md`.
 
 **Sources.** `references/sources.md`: every source key with its tier and link.

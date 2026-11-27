@@ -2,7 +2,7 @@
 
 **Contents:** how sources are weighted (the tiers), the conflict rule, then the source list: every key with its tier, source and link, and notes on when each group was checked.
 
-Checked between 2026-11-02 and 2026-11-19; the Notes give the date per group. Keys match the tags in the rules.
+Checked between 2026-11-02 and 2026-11-27; the Notes give the date per group. Keys match the tags in the rules.
 
 ## How sources are weighted
 
@@ -16,20 +16,22 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | **A: Peer-reviewed, large sample** | Peer-reviewed studies with 400 or more participants, or field data at scale. Measured effects, but each is one study: a number from it is evidence, not a platform standard. | `SCI-*` keys marked A |
 | **B: Expert research** | Decades of studies, but most are qualitative with small samples (NN/g itself says 5 users find problems but do not produce reliable numbers; quantitative claims need 40+). Strong on what goes wrong, weaker on exact thresholds. Some articles are expert guidelines rather than single studies. | Nielsen Norman Group |
 | **B: Peer-reviewed experiments** | Controlled, peer-reviewed experiments with smaller samples (tens to a few hundred people). Good on the direction of an effect, weaker on exact thresholds. | `SCI-*` keys marked B |
-| **B: Product design systems** | How large products solved a problem, documented by their own teams. Shows established practice, not measured evidence, and they can disagree with each other. | GitHub Primer, IBM Carbon, SAP Fiori, AWS Cloudscape |
+| **B: Product design systems** | How large products solved a problem, documented by their own teams. Shows established practice, not measured evidence, and they can disagree with each other. | GitHub Primer, IBM Carbon, SAP Fiori, AWS Cloudscape, Ant Design (Ant Group; enterprise web applications; publishes guidelines, no research findings) |
+| **B: Public-sector design system** | Built for government services and tested for accessibility, but its usability research is still developing and it publishes no findings or sample sizes per component, so it ranks below GOV.UK. Shows established public-service practice. | U.S. Web Design System (USWDS): used by dozens of agencies and nearly 200 sites; accessibility test results published per component; at least one round of usability testing per quarter planned |
 | **C: Secondary** | Summaries or tutorials of other sources. Used only where they add a formula or a clean statement; never decisive. | Laws of UX, 30 seconds of code |
 | **Judgment** | No source; reasoning from the rules above. Lowest weight; always labelled. | (none) |
 
 ## Conflict rule
 
 1. Higher tier wins.
-2. Same tier: context decides. Apple on Apple platforms, Material on Android, Baymard for commerce and long forms, GOV.UK for public or one-question-per-page services, WCAG plus research for the general web.
+2. Same tier: context decides. Apple on Apple platforms, Material on Android, Baymard for commerce and long forms, GOV.UK for public or one-question-per-page services, WCAG plus research for the general web. USWDS is tier B: below GOV.UK where they disagree, a second public-service source where they agree.
 3. A tier A or B rule can never relax a tier S requirement, only add to it.
 
 ## Source list
 
 | Key | Tier | Source | Link |
 | --- | --- | --- | --- |
+| WCAG-1.3.1 | S | W3C, Understanding SC 1.3.1 Info and Relationships (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html |
 | WCAG-1.3.4 | S | W3C, Understanding SC 1.3.4 Orientation (Level AA) | https://www.w3.org/WAI/WCAG22/Understanding/orientation.html |
 | WCAG-1.3.5 | S | W3C, Understanding SC 1.3.5 Identify Input Purpose (Level AA) | https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html |
 | WCAG-1.4.1 | S | W3C, Understanding SC 1.4.1 Use of Color (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html |
@@ -45,6 +47,7 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | WCAG-2.2.2 | S | W3C, Understanding SC 2.2.2 Pause, Stop, Hide (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html |
 | WCAG-2.3.1 | S | W3C, Understanding SC 2.3.1 Three Flashes or Below Threshold (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html |
 | WCAG-2.4.3 | S | W3C, Understanding SC 2.4.3 Focus Order (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html |
+| WCAG-2.4.4 | S | W3C, Understanding SC 2.4.4 Link Purpose (In Context) (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html |
 | WCAG-2.4.7 | S | W3C, Understanding SC 2.4.7 Focus Visible | https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html |
 | WCAG-2.4.11 | S | W3C, Understanding SC 2.4.11 Focus Not Obscured (Minimum) | https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html |
 | WCAG-2.5.1 | S | W3C, Understanding SC 2.5.1 Pointer Gestures (Level A) | https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html |
@@ -61,6 +64,7 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | WCAG-22-SPEC | S | W3C, Web Content Accessibility Guidelines (WCAG) 2.2, W3C Recommendation 12 December 2024 (every success criterion and its level) | https://www.w3.org/TR/WCAG22/ |
 | WCAG2ICT | S (note) | W3C, Guidance on Applying WCAG 2 to Non-Web Information and Communications Technologies, W3C Group Note 11 December 2025 (informative, not a standard) | https://www.w3.org/TR/wcag2ict-22/ |
 | WCAG-2.2 | S | W3C, What's New in WCAG 2.2 | https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22 |
+| WCAG-F46 | S | W3C Failure F46, th, caption or non-empty summary in layout tables (SC 1.3.1); says WCAG 2 does not prohibit layout tables | https://www.w3.org/WAI/WCAG22/Techniques/failures/F46 |
 | WCAG-C39 | S (AAA) | W3C Technique C39, prefers-reduced-motion (SC 2.3.3) | https://www.w3.org/WAI/WCAG22/Techniques/css/C39.html |
 | APPLE-A11Y | A | Apple HIG, Accessibility (control sizes, spacing, contrast, reduce motion) | https://developer.apple.com/design/human-interface-guidelines/accessibility |
 | APPLE-TYPE | A | Apple HIG, Typography | https://developer.apple.com/design/human-interface-guidelines/typography |
@@ -71,6 +75,7 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | APPLE-SHEETS | A | Apple HIG, Sheets | https://developer.apple.com/design/human-interface-guidelines/sheets |
 | APPLE-GESTURES | A | Apple HIG, Gestures | https://developer.apple.com/design/human-interface-guidelines/gestures |
 | APPLE-KEYBOARDS | A | Apple HIG, Virtual keyboards | https://developer.apple.com/design/human-interface-guidelines/virtual-keyboards |
+| APPLE-WRITING | A | Apple HIG, Writing (button and link labels, capitalisation, empty states) | https://developer.apple.com/design/human-interface-guidelines/writing |
 | ANDROID-TARGET | A | Google, Android Accessibility Help: Touch target size | https://support.google.com/accessibility/android/answer/7101858 |
 | ANDROID-EDGE | A | Android Developers, Display content edge-to-edge | https://developer.android.com/develop/ui/views/layout/edge-to-edge |
 | ANDROID-GESTURENAV | A | Android Developers, Ensure compatibility with gesture navigation | https://developer.android.com/develop/ui/views/touch-and-input/gestures/gesturenav |
@@ -83,6 +88,8 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | M3-MOTION | A | Material Design 3, Easing and duration tokens | https://m3.material.io/styles/motion/easing-and-duration/tokens-specs |
 | M3-ELEVATION | A | Material Design 3 elevation: levels and shadow values from Google's Material Web source (elevation and md-sys-elevation tokens) | https://material-web.dev/components/elevation |
 | M3-ICONS | A | Google Fonts, Material Symbols guide (sizes, weight, grade) | https://developers.google.com/fonts/docs/material_symbols |
+| M3-STATES | A | Material Design 3, States: state layers and applying states | https://m3.material.io/foundations/interaction/states/state-layers |
+| M3-WRITING | A | Material Design 3, Content design style guide: UX writing best practices (sentence case) | https://m3.material.io/foundations/content-design/style-guide/ux-writing-best-practices |
 | M3-WINDOW | A | Android Developers, Use window size classes (Material 3 breakpoints) | https://developer.android.com/develop/ui/compose/layouts/adaptive/use-window-size-classes |
 | M3-NAVBAR | A | Material Design 3, Navigation bar guidelines | https://m3.material.io/components/navigation-bar/guidelines |
 | M3-NAVRAIL | A | Material Design 3, Navigation rail guidelines | https://m3.material.io/components/navigation-rail/guidelines |
@@ -90,9 +97,16 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | BAY-COLUMNS | A | Baymard Institute, Avoid Multi-Column Forms | https://baymard.com/research-articles/avoid-multi-column-forms |
 | BAY-INLINE | A | Baymard Institute, Inline Form Validation | https://baymard.com/research-articles/inline-form-validation |
 | BAY-LINE | A | Baymard Institute, Line Length Readability | https://baymard.com/research-articles/line-length-readability |
+| BAY-BREADCRUMBS | A | Baymard Institute, E-Commerce Sites Need 2 Types of Breadcrumbs (2013 benchmark of 50 sites; partly gated) | https://baymard.com/blog/ecommerce-breadcrumbs |
+| BAY-NORESULTS | A | Baymard Institute, 5 Proven Strategies for Improving "No Results" Pages (updated 2025; partly gated) | https://baymard.com/blog/no-results-page |
 | BAY-METHOD | A | Baymard Institute, Research methodology | https://baymard.com/research/methodology |
 | GOVUK-VALID | A | GOV.UK Design System, Recover from validation errors | https://design-system.service.gov.uk/patterns/validation |
 | GOVUK-INPUT | A | GOV.UK Design System, Text input (labels, no placeholder text) | https://design-system.service.gov.uk/components/text-input/ |
+| GOVUK-TABLE | A | GOV.UK Design System, Table | https://design-system.service.gov.uk/components/table/ |
+| GOVUK-PAGINATION | A | GOV.UK Design System, Pagination | https://design-system.service.gov.uk/components/pagination/ |
+| GOVUK-BREADCRUMBS | A | GOV.UK Design System, Breadcrumbs | https://design-system.service.gov.uk/components/breadcrumbs/ |
+| GOVUK-BUTTON | A | GOV.UK Design System, Button (wording, disabled buttons) | https://design-system.service.gov.uk/components/button/ |
+| GOVUK-STYLE | A | GOV.UK content and publishing guidance, A to Z style guide (capitalisation, click, numbers, sentence length, active voice, plain English) | https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/style-guides/a-to-z-style-guide/ |
 | NNG-RESPONSE | B | NN/g, Response Times: The 3 Important Limits | https://www.nngroup.com/articles/response-times-3-important-limits/ |
 | NNG-SKELETON | B | NN/g, Skeleton Screens 101 | https://www.nngroup.com/articles/skeleton-screens/ |
 | NNG-ERR | B | NN/g, Error-Message Guidelines | https://www.nngroup.com/articles/error-message-guidelines/ |
@@ -101,6 +115,14 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | NNG-CONFIRM | B | NN/g, Confirmation Dialogs | https://www.nngroup.com/articles/confirmation-dialog/ |
 | NNG-PLACEHOLDER | B | NN/g, Placeholders in Form Fields Are Harmful | https://www.nngroup.com/videos/placeholders-form-fields/ |
 | NNG-SAMPLE | B | NN/g, 5 Test Users: Okay for Qual, Wrong for Quant | https://www.nngroup.com/articles/5-test-users-qual-quant/ |
+| NNG-EMPTY | B | NN/g, Designing Empty States in Complex Applications: 3 Guidelines (2021) | https://www.nngroup.com/articles/empty-state-interface-design/ |
+| NNG-TABLES | B | NN/g, Data Tables: Four Major User Tasks (2022) | https://www.nngroup.com/articles/data-tables/ |
+| NNG-BREADCRUMBS | B | NN/g, Breadcrumbs: 11 Design Guidelines for Desktop and Mobile (2018, reviewed 2026) | https://www.nngroup.com/articles/breadcrumbs/ |
+| NNG-INFINITE | B | NN/g, Infinite Scrolling: When to Use It, When to Avoid It (2022) | https://www.nngroup.com/articles/infinite-scrolling-tips/ |
+| NNG-SEARCH | B | NN/g, Search: Visible and Simple (2001) | https://www.nngroup.com/articles/search-visible-and-simple/ |
+| NNG-STATES | B | NN/g, Button States: Communicate Interaction (2025) | https://www.nngroup.com/articles/button-states-communicate-interaction/ |
+| NNG-PLAIN | B | NN/g, Plain Language Is for Everyone, Even Experts (2017) | https://www.nngroup.com/articles/plain-language-experts/ |
+| NNG-LINKS | B | NN/g, Better Link Labels: 4Ss for Encouraging Clicks (2019) | https://www.nngroup.com/articles/better-link-labels/ |
 | SCI-TAPS | A | Henze et al., 100,000,000 taps, MobileHCI 2011 (120,626,225 touch events from 91,731 installs) | https://doi.org/10.1145/2037373.2037395 |
 | SCI-THUMB | B | Parhi et al., Target size study for one-handed thumb use on small touchscreen devices, MobileHCI 2006 | https://doi.org/10.1145/1152215.1152260 ; free copy: https://www.microsoft.com/en-us/research/?p=155150 |
 | SCI-SWIPE | B | Yamanaka et al., Behavioral Differences between Tap and Swipe, CHI 2024 (crowdsourced) | https://doi.org/10.1145/3613904.3642272 |
@@ -132,11 +154,33 @@ A source's weight comes from two things: how its guidance is produced (sample si
 | BS-COLOR-MODES | stack | Bootstrap 5.3, Color modes | https://getbootstrap.com/docs/5.3/customize/color-modes/ |
 | COMPOSE-M3 | stack | Android Developers, androidx.compose.material3 reference (lightColorScheme, darkColorScheme, Shapes, Typography) | https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary |
 | COMPOSE-CUSTOM | stack | Android Developers, Custom design systems in Compose | https://developer.android.com/develop/ui/compose/designsystems/custom |
+| ANTD-THEME | stack | Ant Design, Customize Theme (ConfigProvider `theme`, algorithms, `motion`) | https://ant.design/docs/react/customize-theme |
+| ANTD-SOURCE | stack | antd 6.7.2 source: theme (seed defaults; size, radius, font, colour and alias derivation), shared styles (focus outline) and component styles (Button, Slider, Tooltip, Modal, Card) | https://github.com/ant-design/ant-design/tree/6.7.2/components |
 | SWIFTUI-DOCS | stack | Apple Developer Documentation, SwiftUI (Color, Font.TextStyle, Animation, ScaledMetric, EnvironmentValues) | https://developer.apple.com/documentation/swiftui |
 | PRIMER-COLOR | B | GitHub Primer, Color primitives (neutral backgrounds, one accent) | https://primer.style/foundations/primitives/color |
 | CARBON-COLOR | B | IBM Carbon Design System, Color overview | https://carbondesignsystem.com/elements/color/overview/ |
 | FIORI-DENSITY | B | SAP Fiori for Web, Content Density (Cozy and Compact) | https://www.sap.com/design-system/fiori-design-web/v1-154/foundations/visual/cozy-compact |
 | CLOUDSCAPE-DENSITY | B | AWS Cloudscape Design System, Content density | https://cloudscape.design/foundation/visual-foundation/content-density/ |
+| CARBON-EMPTY | B | IBM Carbon Design System, Empty states pattern | https://carbondesignsystem.com/patterns/empty-states-pattern/ |
+| CARBON-TABLE | B | IBM Carbon Design System, Data table usage (row sizes, sorting, loading) | https://carbondesignsystem.com/components/data-table/usage/ |
+| CLOUDSCAPE-EMPTY | B | AWS Cloudscape Design System, Empty states pattern | https://cloudscape.design/patterns/general/empty-states/ |
+| USWDS-ABOUT | B | U.S. Web Design System, About and Research (who uses it, how it is researched) | https://designsystem.digital.gov/about/research/ |
+| USWDS-TABLE | B | U.S. Web Design System, Table | https://designsystem.digital.gov/components/table/ |
+| USWDS-PAGINATION | B | U.S. Web Design System, Pagination | https://designsystem.digital.gov/components/pagination/ |
+| USWDS-BREADCRUMB | B | U.S. Web Design System, Breadcrumb | https://designsystem.digital.gov/components/breadcrumb/ |
+| USWDS-SEARCH | B | U.S. Web Design System, Search | https://designsystem.digital.gov/components/search/ |
+| USWDS-BUTTON | B | U.S. Web Design System, Button (states, disabled buttons, label wording) | https://designsystem.digital.gov/components/button/ |
+| ANTD-LAYOUT | B | Ant Design, Layout (8px base unit, 24-column grid) | https://ant.design/docs/spec/layout |
+| ANTD-PROXIMITY | B | Ant Design, Proximity (small, middle and large spacing: 8, 16, 24px) | https://ant.design/docs/spec/proximity |
+| ANTD-FONT | B | Ant Design, Font (base 14px with 22px line height, 3 to 5 sizes, weights, tabular figures) | https://ant.design/docs/spec/font |
+| ANTD-SHADOW | B | Ant Design, Shadow (four levels and their shadows) | https://ant.design/docs/spec/shadow |
+| ANTD-BUTTONS | B | Ant Design, Button (one primary per group, verb labels, danger buttons, default labels) | https://ant.design/docs/spec/buttons |
+| ANTD-FEEDBACK | B | Ant Design, Feedback (loading after about 2s, cancel for long waits, dialogs for important failures) | https://ant.design/docs/spec/feedback |
+| ANTD-FORM | B | Ant Design, Form page (single column within one area) | https://ant.design/docs/spec/research-form |
+| ANTD-EMPTY | B | Ant Design, Empty status (reason and suggested action) | https://ant.design/docs/spec/research-empty |
+| ANTD-DATA | B | Ant Design, Data display (empty table cells, columns that must not wrap) | https://ant.design/docs/spec/data-display |
+| ANTD-NAV | B | Ant Design, Navigation (breadcrumbs, pagination) | https://ant.design/docs/spec/navigation |
+| ANTD-WRITING | B | Ant Design, Copywriting (sentence case, plain words, errors, consistent names) | https://ant.design/docs/spec/copywriting |
 | RADIX-COMPOSE | B | Radix Colors, Composing a palette (accent and gray pairing) | https://www.radix-ui.com/colors/docs/palette-composition/composing-a-palette |
 | LAWS-PROX | C | Laws of UX, Law of Proximity | https://lawsofux.com/law-of-proximity/ |
 | NESTED-RADIUS | C | 30 seconds of code, Nested border radius | https://30secondsofcode.org/css/s/nested-border-radius |
@@ -150,6 +194,8 @@ Notes:
 - Platform pages for section 13 were read in a browser on 2026-11-17: W3C 1.3.4, 1.3.5, 1.4.13, 2.5.1, 2.5.2 and 2.5.4; Apple HIG Layout, Tab bars, Sidebars, Sheets, Gestures and Virtual keyboards; Material 3 Navigation bar, Navigation rail and Bottom sheets; Android edge-to-edge and gesture navigation.
 - Read on 2026-11-19: the WCAG 2.2 Recommendation (12 December 2024) for every Level A and AA criterion behind `data/wcag-criteria.md`, and the Understanding pages for 2.5.7, 3.2.6, 3.3.7 and 3.3.8 (rules 7.4, 7.5, 12.2 and 12.3 now cite them in place of the What's New page) and 2.4.13 (rule 12.6).
 - `WCAG-<number>` keys for criteria no rule cites (1.1.1 and the others used by `/guidance wcag`) have no row here: each one's Understanding page is `https://www.w3.org/WAI/WCAG22/Understanding/<slug>.html`, with the slug given in `data/wcag-criteria.md`.
+- Read on 2026-11-27 for sections 14 to 16 and rules 8.4 and 12.7: USWDS (About, Research, Table, Pagination, Breadcrumb, Search, Button), GOV.UK (Table, Pagination, Breadcrumbs, Button, A to Z style guide), the eight NN/g articles, Baymard breadcrumbs and no-results pages (free parts only), Carbon empty states, data table and disabled states, and Cloudscape empty states, through page fetches with verbatim quotes. Material 3 States and UX writing best practices, Apple HIG Writing, and W3C Failure F46, in a browser. Not obtained: Baymard on infinite scroll and on search fields, Cloudscape table guidance (the page did not render for a fetch).
+- Read on 2026-11-27 through page fetches with verbatim quotes: eleven Ant Design specification pages (Layout, Proximity, Font, Shadow, Button, Feedback, Form page, Empty status, Data display, Navigation, Copywriting), plus Colors, Motion, Values and Introduction, which no rule cites. None shows an update date. The Font and Layout pages give part of their scales only as images; those values come from the antd 6.7.2 source [ANTD-SOURCE] and are stack defaults, not design guidance. Ant Design is tier B like the other product systems: it cites no research of its own.
 - Re-check yearly: WCAG 3, Material and Apple HIG all move.
 - `SCI-*` studies were found through Consensus on 2026-11-15. Numbers first came from the published abstracts. Twelve papers were then read on 2026-11-17 and the rules corrected from them. Read end to end: SCI-FONTSIZE, SCI-PREF, SCI-FORMS, SCI-WAIT-CLOCK, SCI-FIRSTIMP, SCI-THUMB, SCI-VIS-POL. Read for methods, results and limitations: SCI-WAIT-ANIM, SCI-VC-PT, SCI-GUIDE-COST, SCI-FONTS, and SCI-POL-SIZE (in the first author's dissertation). The other ten still rest on their abstracts: SCI-TAPS, SCI-SWIPE, SCI-STRUCT, SCI-SPACING, SCI-DYSLEXIA, SCI-POLARITY-READ, SCI-POLARITY, SCI-LUMINANCE, SCI-POL-AGE, SCI-FORM-ERR. SCI-FIRSTIMP moved from tier A to B: its appeal ratings came from 242 people, under the 400 that tier A asks for. Links are DOIs, checked against Crossref on 2026-11-17, with a free copy where one was found (author, university or company repository, arXiv, PubMed Central). ACM papers are free to read on the ACM Digital Library since 2026-01-01; the Journal of Vision and MDPI papers are open access at their DOI. No free copy was found for SCI-STRUCT, SCI-POLARITY and SCI-LUMINANCE; for SCI-POL-SIZE and SCI-POL-AGE the free copy is the first author's dissertation, which covers both studies.
 - Density pages were read on 2026-11-15: Material 3 and SAP Fiori in a browser (both block plain fetches), Cloudscape through a page fetch.

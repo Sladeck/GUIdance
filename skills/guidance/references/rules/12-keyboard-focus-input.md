@@ -29,3 +29,11 @@
 - Weaker indicators fail it: a 1px outline, a background tint that changes by less than 3:1. Likely to fail, depending on their area (judgment): a 2px dotted or dashed outline, a thin underline. Shadows and glows outside the component do not count toward the area. W3C gives the minimum area of a rectangle as 4 x (width + height) square px.
 - Exempt: the browser's own focus indicator, where neither it nor the background behind it is changed by the author.
 - Break: a product that commits to AA only may keep a smaller indicator; it still meets rule 12.1.
+
+**12.7 Every control shows its state** (Strong: the disabled bullets; Default: the rest) [NNG-STATES B, M3-STATES A, GOVUK-BUTTON A, USWDS-BUTTON B]
+- Each interactive control has distinct enabled, hover (on pointer devices), focused, pressed and disabled looks, plus selected where it can be selected; small changes are enough [NNG-STATES B, USWDS-BUTTON B]. Focus uses an outline, not a colour change alone (rules 12.1 and 12.6) [NNG-STATES B].
+- Material draws states as a layer in the content's colour at a fixed opacity: hover 8%, focus 10%, pressed 10%, dragged 16%, one layer at a time [M3-STATES A]. On other platforms, any consistent cue works; the same state looks the same on every component (rule 4.5).
+- Timing from NN/g: pressed and focus appear within about 100 to 150ms; hover after a slight delay of about 150 to 200ms [NNG-STATES B].
+- Avoid disabled buttons where you can: they have poor contrast and confuse some people [GOVUK-BUTTON A]. In practice (judgment): keep the button enabled and, when pressed, show what is missing next to its cause (rule 9.1). When a control is disabled, say why and how to make it available [USWDS-BUTTON B].
+- A disabled control shows no hover or other state and cannot be pressed [M3-STATES A]. Native `disabled` removes a button from the tab order; `aria-disabled="true"` keeps it focusable, so the reason can be found, but then the code must block every way of activating it, and the style alone never disables anything [USWDS-BUTTON B]. Disabled controls are exempt from contrast (rules 1.1 and 1.2), which is part of why they are hard to read.
+- Break: a disabled state that research with the product's users shows is clearer [GOVUK-BUTTON A].

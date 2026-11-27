@@ -23,3 +23,5 @@ Major Second ratio (1.125), key size 14. 15 baseline styles (plus 15 emphasized,
 Line height by script (Material groups): small (Latin, Cyrillic, Greek, Hebrew); medium, about 7% taller (Japanese, Chinese, Korean, Arabic, Thai, Vietnamese, Hindi and most others); large, about 30% (Burmese, Telugu); extra large, about 100% (Nastaliq).
 
 GUIdance default subset (judgment, web body 16px): headline 32/40, title 22/28, body 16/24, body-sm 14/20, label 12/16 (500).
+
+Ant Design [ANTD-FONT, ANTD-SOURCE]: base 14px with a 22px line height, chosen for enterprise products on common monitors; a product keeps to 3 to 5 sizes, display pages aside; Regular 400 and Medium 500, Semibold 600 for bold English [ANTD-FONT]. antd's default scale (its spec page shows it only as an image, so the values are the library's): 12, 14, 16, 20, 24, 30, 38px, line height size + 8 (20, 22, 24, 28, 32, 38, 46) [ANTD-SOURCE]. 14 suits dense admin tools and dashboards (rule 3.2); other web applications keep 16, and long-form reading pages go to 18 or more.

@@ -49,8 +49,9 @@ Used by `/guidance wcag`. Read on 2026-11-19 from the WCAG 2.2 Recommendation of
 
 ### 1.3.1 Info and relationships (A) · `info-and-relationships`
 - Asks: structure shown visually (headings, lists, tables, labels, groups, required fields) is in the code too, or is stated in text.
-- Look for: headings drawn with styled `div`s or `span`s instead of `h1` to `h6`; heading levels picked for their look so the levels misstate the structure; lists not in `ul`, `ol` or `dl`; data tables without `th` (and `scope` where it is ambiguous), layout done with tables; inputs whose visible label is not tied to them (`label for`/`id`, a wrapping `label`, or `aria-labelledby`); radio and checkbox groups without `fieldset` and `legend` or `role="group"` with a name; a required marker with no `required` or `aria-required`. Skipped heading levels and missing landmarks are best practice, not failures of 1.3.1 on their own: mention them under the report, outside the criterion results (judgment).
+- Look for: headings drawn with styled `div`s or `span`s instead of `h1` to `h6`; heading levels picked for their look so the levels misstate the structure; lists not in `ul`, `ol` or `dl`; data tables without `th` (and `scope` where it is ambiguous); layout tables that carry data-table markup (`th`, `caption`, `scope`, `headers`, a non-empty `summary`) [WCAG-F46 S]. WCAG does not forbid layout tables themselves: one with none of that markup (or `role="presentation"`) passes 1.3.1, and its reading order belongs to 1.3.2; avoiding them is rule 14.1, Strong; inputs whose visible label is not tied to them (`label for`/`id`, a wrapping `label`, or `aria-labelledby`); radio and checkbox groups without `fieldset` and `legend` or `role="group"` with a name; a required marker with no `required` or `aria-required`. Skipped heading levels and missing landmarks are best practice, not failures of 1.3.1 on their own: mention them under the report, outside the criterion results (judgment).
 - From code: Yes for markup; Partly for whether everything visual is reflected.
+- Rule: 14.1 for data tables.
 
 ### 1.3.2 Meaningful sequence (A) · `meaningful-sequence`
 - Asks: where order matters, the reading order in the code matches the meaning.
@@ -140,6 +141,7 @@ Used by `/guidance wcag`. Read on 2026-11-19 from the WCAG 2.2 Recommendation of
 - Asks: what a link does can be told from its text, or from its text with its sentence, paragraph, list item or table cell.
 - Look for: several "Read more", "Click here", "Learn more" or "here" links with different targets and nothing in their context to tell them apart (`aria-label` or visually hidden text can add it); icon-only links with no name; links whose name is a URL.
 - From code: Partly.
+- Rule: 16.2.
 
 ### 2.4.5 Multiple ways (AA) · `multiple-ways`
 - Asks: more than one way to find a page in a set of pages (navigation, search, a site map, links between pages). Exempt: a page that is a step in a process or the result of one.
@@ -220,7 +222,7 @@ Used by `/guidance wcag`. Read on 2026-11-19 from the WCAG 2.2 Recommendation of
 
 ### 3.3.2 Labels or instructions (A) · `labels-or-instructions`
 - Asks: where input is needed, labels or instructions are given.
-- Look for: fields with no visible label and no instructions; fields whose only label is a placeholder. The criterion's text does not mention placeholders, but W3C's Understanding page asks that labels stay available while people fill the field, and a placeholder disappears when they type: report it as Fails, and say in the finding that this reads 3.3.2 through that page (rule 7.2). W3C allows a clear icon in context (a send button beside a chat box) as the label. A placeholder usually still gives the field an accessible name, so do not also fail 4.1.2 for it.
+- Look for: fields with no visible label and no instructions; fields whose only label is a placeholder. The criterion's text does not mention placeholders, but W3C's Understanding page asks that labels stay available while people fill the field, and a placeholder disappears when they type: report it as Fails, and say in the finding that this reads 3.3.2 through that page (rule 7.2). W3C allows a clear icon in context (a send button beside a chat box) as the label. A visually hidden label or `aria-label` added to such a field does not settle 3.3.2 without that icon or a visible label. A placeholder usually still gives the field an accessible name, so do not also fail 4.1.2 for it.
 - From code: Yes.
 
 ### 3.3.3 Error suggestion (AA) · `error-suggestion`

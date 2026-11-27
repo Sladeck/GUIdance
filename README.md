@@ -25,8 +25,8 @@ Same model (Claude Sonnet 5.5), same files, same tools. Each test is a small pro
 
 How much space between sections? Which corner radius? Is 14px fine for body text? Does this grey pass contrast on that blue? I kept searching for the same answers on every project. They exist, spread across Apple's guidelines, Material Design, the W3C and years of usability research, but ask an agent and you get a plausible number, a different one next time, and no source. So I gathered them in one place, ranked by evidence, settled the cases where sources disagree, and wrote them for Claude.
 
-- **Rules with their sources.** Spacing, corners, type, colour, contrast, target sizes, forms, errors, motion, layout, keyboard and focus. Each one names its source, and the reviewer cites it, so you can always ask why.
-- **Tokens in your stack.** Plain CSS, Tailwind, MUI, shadcn/ui, Bootstrap, Sass, SwiftUI or Jetpack Compose. Colours are built from your brand colour, in light and dark, and every text pair's contrast is shown before anything is written.
+- **Rules with their sources.** Spacing, corners, type, colour, contrast, target sizes, forms, errors, empty states, tables, navigation and search, interface writing, motion, layout, keyboard and focus. Each one names its source, and the reviewer cites it, so you can always ask why.
+- **Tokens in your stack.** Plain CSS, Tailwind, MUI, Ant Design, shadcn/ui, Bootstrap, Sass, SwiftUI or Jetpack Compose. Colours are built from your brand colour, in light and dark, and every text pair's contrast is shown before anything is written.
 - **A reviewer that ranks what matters.** One list, most serious first, each finding with where it is, the rule, its source and the fix. `wcag` goes through all 55 Level A and AA criteria of WCAG 2.2.
 
 GUIdance is not a UI kit: no components, no templates, no scripts. Your components, framework and design stay yours; GUIdance makes them consistent. On an existing project, start with one page:
@@ -42,6 +42,8 @@ Run `/guidance:setup` once per project. It reads your code, asks only what it ca
 Then name a command and a target:
 
 ```
+/guidance:guidance
+/guidance:setup
 /guidance:build an invoice detail page
 /guidance:review /settings
 /guidance:spacing more room between the cards
@@ -54,14 +56,18 @@ Or just ask: "make it denser", "is this contrast enough?", "why is 16px the body
 
 ### 8 commands
 
-| | Commands |
-| --- | --- |
-| **Set up** | `setup` writes tokens and colour roles in your stack's format · `spacing` sets density: `compact`, `default`, `comfortable`, or plain words · `shape` sets corners: `sharp`, `soft`, `round`, or plain words, and keeps nested corners concentric |
-| **Build** | `build` makes or changes UI with your tokens and the rules, then checks its own work |
-| **Check** | `review` finds what breaks the rules in a page, file, folder, component or your uncommitted changes · `wcag` checks the same targets, or a live page by URL, against every WCAG 2.2 A and AA criterion. Neither changes anything |
-| **Fix** | `fix` fixes the last review's or WCAG check's findings at the source (a token, the shared component, the parent's spacing): all, by number or by severity, then checks again |
+| Step | Command | What it does |
+| --- | --- | --- |
+| **Help** | `guidance` | Lists the commands in Claude |
+| **Set up** | `setup` | Writes tokens and colour roles in your stack's format |
+| **Set up** | `spacing` | Sets density: `compact`, `default`, `comfortable`, or plain words |
+| **Set up** | `shape` | Sets corners: `sharp`, `soft`, `round`, or plain words, and keeps nested corners concentric |
+| **Build** | `build` | Makes or changes UI with your tokens and the rules, then checks its own work |
+| **Check** | `review` | Finds what breaks the rules in a page, file, folder, component or your uncommitted changes. Changes nothing |
+| **Check** | `wcag` | Checks the same targets, or a live page by URL, against every WCAG 2.2 A and AA criterion. Changes nothing |
+| **Fix** | `fix` | Fixes the last review's or WCAG check's findings at the source (a token, the shared component, the parent's spacing): all, by number or by severity, then checks again |
 
-`/guidance:guidance` lists them in Claude. With a manual copy, use a space instead of the colon: `/guidance review`. Every option and example: [docs/commands.md](docs/commands.md).
+With a manual copy, use a space instead of the colon: `/guidance review`. Every option and example: [docs/commands.md](docs/commands.md).
 
 ## Installation
 

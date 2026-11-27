@@ -1,7 +1,8 @@
 # 6. Hierarchy
 
-**6.1 One primary action** (Strong) [NNG-HIER B, M3-SPACING A]
+**6.1 One primary action** (Strong) [NNG-HIER B, M3-SPACING A, ANTD-BUTTONS B]
 - The most important content or action gets the most prominence: size, contrast, the brightest surface, generous space.
+- At most one primary button per group of buttons, and one call to action per screen [ANTD-BUTTONS B]. With no clear primary action, every button stays default [ANTD-BUTTONS B].
 - Everything emphasised means nothing is. No more than three contrast variations in a complex view.
 - Key actions keep a consistent location across pages.
 

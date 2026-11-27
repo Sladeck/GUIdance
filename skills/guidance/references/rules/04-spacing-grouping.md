@@ -1,14 +1,14 @@
 # 4. Spacing and grouping
 
-**4.1 One spacing scale** (Default) [M3-SPACING A]
+**4.1 One spacing scale** (Default) [M3-SPACING A, ANTD-LAYOUT B]
 - Material 3: 8dp base (space100 = 8dp). Tokens 0, 2, 4, 6, 8, 10, 12, 14, 16, 20, 24, 32, 36, 40, 48, 56, 64, 72dp; main units are multiples of 8, while 2, 4, 6 and 10 are for tight component internals.
-- Layout: 8, 16, 24, 32, 48, 64. Inside components: 4, 8, 12, 16. Density roles use the scale from 4 up without 6, 10, 14 and 36 (rule 4.7; judgment).
+- Layout: 8, 16, 24, 32, 48, 64. Inside components: 4, 8, 12, 16. Ant Design uses the same 8px base unit [ANTD-LAYOUT B]. Density roles use the scale from 4 up without 6, 10, 14 and 36 (rule 4.7; judgment).
 - Padding and gaps on the parent, not margins on children.
 - Desktop can be more generous than mobile; dense reads serious and focused, spacious reads calm.
 - Break: documented optical adjustments of 1 to 2px.
 
-**4.2 Proximity decides grouping** (Strong) [M3-SPACING A, NNG-PROX B, LAWS-PROX C]
-- Space inside a group is clearly smaller than between groups. Proximity groups implicitly; outlines, dividers and shadows group explicitly.
+**4.2 Proximity decides grouping** (Strong) [M3-SPACING A, NNG-PROX B, ANTD-PROXIMITY B, LAWS-PROX C]
+- Space inside a group is clearly smaller than between groups. Ant Design sorts information into three levels by spacing alone: 8px (small), 16px (middle) and 24px (large) [ANTD-PROXIMITY B]. Proximity groups implicitly; outlines, dividers and shadows group explicitly.
 - A label sits closer to its field than to the next label; a heading closer to its content than to the section above; buttons close to what they affect.
 - Similar elements get identical spacing and sizing; leading thumbnails, avatars and icons align.
 - Groups must survive responsive reflow.

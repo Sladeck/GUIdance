@@ -1,6 +1,6 @@
 # What GUIdance adds to your project
 
-Design tokens: named values your whole UI uses instead of numbers picked by eye. Claude writes them in your stack's own format (CSS variables, a Tailwind theme, an MUI theme, Sass variables...) and uses them from then on.
+Design tokens: named values your whole UI uses instead of numbers picked by eye. Claude writes them in your stack's own format (CSS variables, a Tailwind theme, an MUI or Ant Design theme, Sass variables...) and uses them from then on. A project with no design system yet first chooses where to start: these tokens in its own styling, or a component library that fits the stack (MUI, Ant Design, shadcn/ui, Bootstrap), which setup installs or leaves for you to install.
 
 | Tokens | What you get | Based on |
 | --- | --- | --- |

@@ -37,7 +37,7 @@ GUIdance is not a UI kit: no components, no templates, no scripts. Your componen
 
 ## How it works
 
-Run `/guidance:setup` once per project. It reads your code, asks only what it can't tell (what the product is, who uses it, the feel, your brand colour), shows the choices for density and shape as tables, and writes the tokens once you have answered. It never overwrites a file and shows every change first. Your choices go in `design-decisions.md` at the project root, which every later command reads, so a risk you accepted is not flagged again. [What it writes](docs/tokens.md).
+Run `/guidance:setup` once per project. It reads your code, asks only what it can't tell (what the product is, who uses it, the feel, your brand colour), shows the choices for density and shape as tables, and writes the tokens once you have answered. A project with no design system yet picks a starting point first: GUIdance's own tokens, or MUI, Ant Design, shadcn/ui or Bootstrap, with the install commands to run yourself or let Claude run. It never overwrites a file and shows every change first. Your choices go in `design-decisions.md` at the project root, which every later command reads, so a risk you accepted is not flagged again. [What it writes](docs/tokens.md).
 
 Then name a command and a target:
 
@@ -59,7 +59,7 @@ Or just ask: "make it denser", "is this contrast enough?", "why is 16px the body
 | Step | Command | What it does |
 | --- | --- | --- |
 | **Help** | `guidance` | Lists the commands in Claude |
-| **Set up** | `setup` | Writes tokens and colour roles in your stack's format |
+| **Set up** | `setup` | Writes tokens and colour roles in your stack's format, or helps pick a starting point when the project has none |
 | **Set up** | `spacing` | Sets density: `compact`, `default`, `comfortable`, or plain words |
 | **Set up** | `shape` | Sets corners: `sharp`, `soft`, `round`, or plain words, and keeps nested corners concentric |
 | **Build** | `build` | Makes or changes UI with your tokens and the rules, then checks its own work |

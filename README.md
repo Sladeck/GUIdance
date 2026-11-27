@@ -1,4 +1,9 @@
-# GUIdance
+<h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.png">
+    <img src="assets/header-light.png" alt="GUIdance" width="280">
+  </picture>
+</h1>
 
 Design rules with their sources, for Claude. Set up tokens with `setup`, tune them with `spacing` and `shape`, check your UI with `review` and `wcag`, and clean it up with `fix`. Every rule says where it comes from and when it is fine to break it.
 

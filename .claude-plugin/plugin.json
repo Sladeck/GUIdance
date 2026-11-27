@@ -1,7 +1,7 @@
 {
   "name": "guidance",
   "displayName": "GUIdance",
-  "version": "1.10.3",
+  "version": "1.10.4",
   "icon": "./assets/icon.svg",
   "description": "Evidence-ranked UI design rules for Claude: sets up design tokens, spacing density and corner shape in any stack, then builds, reviews and fixes interfaces against WCAG 2.2, Material 3, Apple, Baymard, GOV.UK and NN/g, and checks code or a live page against every WCAG 2.2 A and AA criterion. Not a UI kit.",
   "author": {

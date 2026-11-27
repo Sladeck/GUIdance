@@ -41,7 +41,7 @@ Write nothing before the user answers the apply question of step 3, given after 
 
 ## Steps
 
-1. **Find the tokens.** Locate where styling lives and list the spacing tokens, as in `commands/setup.md` steps 1 and 2. Look for the role tokens (`space-stack`, `space-field`, `space-group`, `space-section` and the others in the Density table, under the project's own naming), for the Density line of `design-decisions.md` (in older projects, a `density:` comment in the token file), and for page overrides (a density attribute or class, a nested theme).
+1. **Find the tokens.** Locate where styling lives and list the spacing tokens, as in `commands/find-tokens.md`. Look for the role tokens (`space-stack`, `space-field`, `space-group`, `space-section` and the others in the Density table, under the project's own naming), for the Density line of `design-decisions.md` (in older projects, a `density:` comment in the token file), and for page overrides (a density attribute or class, a nested theme).
    - Role tokens exist: the current preset is the one named in `design-decisions.md` (or, in older projects, a token-file comment), or else the column most of their desktop values match. Roles that differ from it are tuned. Fewer than half matching any column: "custom".
    - Scale tokens only, or no tokens: there is no density yet. Read what the components use today and name the closest preset. Step 4 adds the roles.
 2. **Show the choices** when the request did not settle them. One table, then wait for the answer:
@@ -51,7 +51,7 @@ Write nothing before the user answers the apply question of step 3, given after 
    | Space between list items (`space-stack`) | 8 | 4 | 8 | 12 |
    | ... one row per role, values from the Density table | | | | |
 
-   - Under it: the other values a role may take (the step list; multiples of 4 for the heights), the scope it will apply to, and the preset you recommend in one line with the reason ("Use for" row of the Density table). Before recommending, learn what the product is and how it is used (touch or mouse), as in `commands/setup.md` step 3 (README, PRODUCT.md or DESIGN.md, package description, page titles), and name it in the reason. Say the recommendation is judgment.
+   - Under it: the other values a role may take (the step list; multiples of 4 for the heights), the scope it will apply to, and the preset you recommend in one line with the reason ("Use for" row of the Density table). Before recommending, learn what the product is and how it is used (touch or mouse) from the README, PRODUCT.md or DESIGN.md, the package description, page titles and metadata, and name it in the reason. Say the recommendation is judgment.
    - The user answers freely: a preset ("compact"), single rows ("cards 20, sections 48"), or both ("default, but tighter lists"). Take single rows as tunings on top of the preset.
    - A request that was already clear (a preset, a resolved change) skips the table and goes to step 3.
 3. **Show the plan and its risks, then ask once.**

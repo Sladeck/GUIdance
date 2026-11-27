@@ -8,14 +8,14 @@ This is a review, not a conformance claim. W3C conformance covers full pages and
 
 | Target | What is checked | How |
 | --- | --- | --- |
-| nothing, a file, folder or component, or a page in the project (a route, a page file or a description) | the code, as `/guidance review` scopes it (`commands/review.md`, step 1) | read the code (step 2); a browser only to look |
+| nothing, a file, folder or component, or a page in the project (a route, a page file or a description) | the code, as `/guidance review` scopes it (`commands/scope.md`) | read the code (step 2); a browser only to look |
 | a URL (`https://...`, `http://localhost:3000/...`) | that one page as a browser renders it | read the rendered page (step 3) |
 
 A URL whose route or page file is in the working directory is also checked from its code (step 3, last bullet), so `/guidance fix` can act on the findings.
 
 A criterion about a set of pages (2.4.5, 3.2.3, 3.2.4, 3.2.6) is judged from the shared layout and navigation code the target uses; say so.
 
-WCAG is written for the web. For a native app (Expo or React Native, SwiftUI, Compose, Flutter), read the app-wide orientation settings whatever the target (`commands/review.md`, step 1; criterion 1.3.4), and apply the criteria as W3C's guidance for non-web software does [WCAG2ICT S, a W3C Group Note], say so in the header, and mark criteria whose web technique has no direct native equivalent (`lang`, `<title>`, skip links) as needing a person rather than failing them.
+WCAG is written for the web. For a native app (Expo or React Native, SwiftUI, Compose, Flutter), read the app-wide orientation settings whatever the target (`commands/scope.md`; criterion 1.3.4), and apply the criteria as W3C's guidance for non-web software does [WCAG2ICT S, a W3C Group Note], say so in the header, and mark criteria whose web technique has no direct native equivalent (`lang`, `<title>`, skip links) as needing a person rather than failing them.
 
 ## 2. Check
 

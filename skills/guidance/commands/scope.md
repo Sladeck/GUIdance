@@ -5,8 +5,8 @@ Used by `/guidance review` (step 1) and `/guidance wcag` (step 1).
 | Target | What is reviewed |
 | --- | --- |
 | nothing | the files changed in the working tree (version control) |
-| a file, folder or component | that code |
-| a page: route (`/settings`), page file or description | the code behind that page: its template, styles and the components it uses |
+| a file, folder or component | that code, and the project's own components it renders directly (one level down) |
+| a page: route (`/settings`), page file (one that renders a whole page or screen, such as a file under `pages/`, `routes/`, `views/`, `app/` or `screens/`) or description | the code behind that page: its template, styles and the components it uses, including the dialogs, drawers and forms it opens |
 
 With no changes and no target, ask what to review.
 

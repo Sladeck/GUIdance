@@ -8,7 +8,9 @@ Read `commands/scope.md`: what is reviewed for each target, and the app-wide ori
 
 ## 2. Read the project's choices first
 
-Read `design-decisions.md` at the project root (or, in older projects without it, the token file's `density:` and `shape:` comments) and the token file's scales: the themes, style, density, shape, and anything recorded as tuned, left as is or accepted. Those are the user's decisions: a value that follows them is not a finding. List them in one line under the report.
+Read `design-decisions.md` at the project root (or, in older projects without it, the token file's `density:` and `shape:` comments) and the token source, found as `commands/find-tokens.md` step 1 says: a token file, or a component library's theme object (`createTheme`, antd's `ConfigProvider` `theme`), which holds the values the library renders. Then its scales: the themes, style, density, shape, and anything recorded as tuned, left as is or accepted. Those are the user's decisions: a value that follows them is not a finding. List them in one line under the report.
+
+When the project uses a component library (MUI, Ant Design, shadcn/ui, Bootstrap...), read its section in `references/data/stacks.md`: the defaults listed there that break rules (text colours, field borders, focus rings, base font size) apply to every component the theme does not override, even though the page's own code never shows them. Report a default only where a component in scope renders it, at that component's `file:line`, with the theme's line as the place to fix it.
 
 ## 3. Review the code
 
